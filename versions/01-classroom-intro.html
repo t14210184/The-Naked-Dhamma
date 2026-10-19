@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="給國中生的佛教因果互動課本。從巴利尼柯耶、漢譯阿含到大乘與藏譯經典，用白話故事、情境判斷、鹽水實驗及理解測驗認識業與因果。">
+  <title>因果不是遊戲積分｜佛教因果互動課本</title>
+  <style>
+    :root{--bg:#f8f7f2;--panel:#ffffff;--ink:#21323b;--muted:#596c75;--line:#dbe4df;--primary:#176b67;--deep:#0d4847;--accent:#b8683e;--soft:#ecf5ef;--soft2:#fff3e8;--hero:#123337;--hero2:#164e4f;--glass:rgba(255,255,255,.86);--shadow:0 15px 44px rgba(19,51,55,.08);--focus:#e79f48;--rad:18px;--fz:17px}
+    html[data-theme="dark"]{--bg:#111c20;--panel:#1b2a2e;--ink:#edf5f2;--muted:#b6c7c9;--line:#375055;--primary:#7bd1c0;--deep:#88e0d0;--accent:#f6b580;--soft:#213d3e;--soft2:#443128;--hero:#112c30;--hero2:#1c4445;--glass:rgba(27,42,46,.88);--shadow:0 14px 36px rgba(0,0,0,.22)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:78px}body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--fz)/1.82 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;letter-spacing:.01em;transition:background .2s,color .2s}
+    button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.55}a{color:var(--primary);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}h1,h2,h3,p{margin-top:0}h1{line-height:1.16;letter-spacing:-.035em}h2{font-size:clamp(1.55rem,2.4vw,2.2rem);line-height:1.35;letter-spacing:-.025em}h3{font-size:1.18rem;line-height:1.5}p{margin-bottom:1em}small{font-size:.83rem}::selection{background:#beded0;color:#183f3f}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .skip{position:absolute;top:-100px;left:12px;z-index:99;background:var(--panel);padding:8px 16px;border-radius:9px}.skip:focus{top:12px}
+    .topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px max(16px,calc((100vw - 1320px)/2));background:var(--glass);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    .brand{display:flex;align-items:center;gap:9px;font-weight:850;text-decoration:none;color:var(--ink);font-size:.98rem;white-space:nowrap}.brand-dot{width:29px;height:29px;display:grid;place-items:center;border-radius:10px;background:var(--primary);color:var(--panel);font-size:17px}
+    .top-actions{display:flex;gap:6px;align-items:center}.toolbtn{background:transparent;color:var(--ink);border:1px solid var(--line);padding:5px 10px;border-radius:12px;font-size:.82rem;line-height:1.5;white-space:nowrap}.toolbtn:hover{background:var(--soft)}
+    .progress-track{height:3px;background:var(--line)}.progress-track>span{display:block;height:100%;width:0%;background:linear-gradient(90deg,#52a887,#dfa266);transition:width .3s}
+    .shell{max-width:1330px;margin:0 auto;display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;padding:20px 24px 72px;align-items:start}
+    .sidebar{position:sticky;top:88px;padding:18px 13px;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);max-height:calc(100vh - 108px);overflow:auto}.nav-h{font-size:.75rem;letter-spacing:.08em;color:var(--muted);font-weight:800;margin:0 0 12px 10px}.navlink{display:flex;align-items:center;gap:10px;padding:9px 12px;margin:2px 0;color:var(--muted);text-decoration:none;border-radius:11px;font-size:.88rem;font-weight:650;line-height:1.45}.navlink:hover,.navlink.active{color:var(--primary);background:var(--soft)}.navn{flex:0 0 auto;display:grid;place-items:center;width:24px;height:24px;border:1px solid var(--line);border-radius:9px;font-size:.74rem}.navlink.active .navn{border-color:var(--primary)}
+    .nav-bottom{padding:15px 11px 3px;margin-top:10px;border-top:1px solid var(--line);font-size:.76rem;color:var(--muted);line-height:1.7}.nav-bottom strong{color:var(--ink)}
+    main{min-width:0}.hero{color:#f6fcf9;min-height:440px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(250px,.7fr);gap:12px;align-items:center;padding:clamp(25px,5.4vw,62px);background:radial-gradient(circle at 83% 30%,rgba(239,186,115,.23),transparent 33%),radial-gradient(circle at 18% 85%,rgba(73,170,166,.25),transparent 36%),linear-gradient(125deg,var(--hero),var(--hero2));border-radius:26px;overflow:hidden;position:relative;isolation:isolate}
+    .hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.13;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:29px 29px;mask-image:linear-gradient(90deg,transparent 20%,#000 100%)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border:1px solid rgba(255,255,255,.28);border-radius:100px;color:#d7f0e9;font-size:.77rem;font-weight:750;letter-spacing:.04em;margin-bottom:20px}.hero h1{font-size:clamp(2.35rem,5vw,4.5rem);margin:0 0 17px;max-width:760px}.hero h1 .light{color:#f7c58b}.hero p{color:#deebe7;max-width:620px;font-size:1rem;line-height:1.8;margin-bottom:25px}.hero-btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:#fffaf2;color:#1e4140;padding:12px 19px;border-radius:12px;font-weight:850;font-size:.92rem;box-shadow:0 5px 15px rgba(0,0,0,.15)}.hero-btn:hover{transform:translateY(-2px)}.hero-caption{display:block;margin-top:15px;color:#c3ded9;font-size:.76rem}
+    .hero-visual{position:relative;width:min(100%,350px);aspect-ratio:1;justify-self:center}.orbit{position:absolute;inset:8%;border:1px dashed rgba(255,255,255,.34);border-radius:50%;animation:rotate 60s linear infinite}.orbit.two{inset:23%;border-style:solid;border-color:rgba(255,255,255,.16);animation-direction:reverse}.core{position:absolute;inset:29%;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(140deg,#f8cd89,#f9efcf);box-shadow:0 18px 55px rgba(0,0,0,.22);color:#3d3e33;transform:rotate(-6deg)}.core span{font-size:clamp(1.8rem,2.5vw,2.55rem);font-weight:900}.core small{font-size:.72rem;font-weight:750}.orb{position:absolute;color:#f9f6ed;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.26);padding:8px 12px;border-radius:14px;box-shadow:0 4px 22px rgba(0,0,0,.13);font-size:.76rem;font-weight:800}.orb.a{top:4%;left:17%;transform:rotate(-12deg)}.orb.b{top:40%;right:-4%;transform:rotate(8deg)}.orb.c{bottom:5%;left:3%;transform:rotate(6deg)}@keyframes rotate{to{transform:rotate(360deg)}}
+    .chapter{margin-top:24px;background:var(--panel);padding:clamp(20px,4vw,46px);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--rad);scroll-margin-top:75px}.chapter-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}.chapter-number{flex:0 0 auto;display:grid;place-items:center;width:48px;height:48px;background:var(--soft);color:var(--primary);font-weight:950;border-radius:15px;font-size:1.04rem}.chapter-head h2{margin:0 0 5px}.chapter-sub{color:var(--muted);font-size:.93rem;margin:0}.lead{font-size:1.06rem;line-height:1.9;max-width:72ch}
+    .callout{padding:17px 19px;border:1px solid var(--line);border-left:4px solid var(--primary);background:var(--soft);border-radius:12px;margin:18px 0}.callout strong{color:var(--deep)}.callout.warning{background:var(--soft2);border-left-color:var(--accent)}.callout.warning strong{color:var(--accent)}.callout p:last-child{margin:0}
+    .pills{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}.pill{font-size:.73rem;display:inline-flex;align-items:center;padding:4px 10px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:100px;font-weight:650}.pill.strong{background:var(--soft);color:var(--primary)}.pill.weak{background:var(--soft2);color:var(--accent)}
+    .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.tile{padding:18px;border-radius:14px;border:1px solid var(--line);background:var(--bg)}.tile strong{display:block;font-size:1.06rem;margin-bottom:5px}.tile p{font-size:.9rem;color:var(--muted);margin:0}.tile-number{display:block;color:var(--primary);font-weight:950;font-size:1.8rem;line-height:1.3;margin-bottom:10px}
+    .section-label{font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:800;margin:26px 0 12px}.select-card{display:flex;align-items:flex-start;flex-direction:column;text-align:left;gap:9px;border:1px solid var(--line);background:var(--bg);padding:16px;border-radius:15px;min-height:153px;color:var(--ink);width:100%;transition:transform .2s,border-color .2s,background .2s}.select-card:hover{transform:translateY(-2px);border-color:var(--primary)}.select-card.selected{border:2px solid var(--primary);padding:15px;background:var(--soft)}.select-card .symbol{font-size:1.45rem;line-height:1}.select-card strong{font-size:1.02rem;line-height:1.35}.select-card span.desc{color:var(--muted);font-size:.79rem;line-height:1.55}
+    .reveal{margin-top:14px;padding:19px;background:var(--soft);border:1px solid var(--line);border-radius:15px;min-height:140px}.reveal h3{margin-bottom:10px}.reveal dt{font-weight:850;margin-top:9px;color:var(--deep)}.reveal dd{margin:0;color:var(--ink)}
+    .source-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);font-size:.8rem;color:var(--muted)}.source-line a{font-weight:750}
+    .table-scroll{max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin-top:14px}table{border-collapse:collapse;min-width:660px;width:100%;text-align:left;font-size:.87rem;line-height:1.7}th,td{padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--soft);color:var(--deep);font-size:.8rem}tr:last-child td{border-bottom:0}
+    .rolecase{min-height:145px}.rolecase small{color:var(--muted)}.case-tag{font-size:.76rem;color:var(--muted);font-weight:750}.case-arrow{display:block;font-size:1.04rem;color:var(--primary);font-weight:950}.case-panel{min-height:184px}
+    .lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,.85fr);gap:19px;padding:20px;border:1px solid var(--line);border-radius:17px;background:var(--bg);margin:17px 0}.lab-controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.choice{padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font-size:.9rem;font-weight:750}.choice[aria-pressed="true"],.choice.active{background:var(--primary);color:var(--bg);border-color:var(--primary)}.lab-visual{display:flex;align-items:end;justify-content:center;gap:20px;padding:7px;min-height:218px}.water{position:relative;border:3px solid #7ab3c2;border-top:0;border-radius:0 0 19px 19px;height:200px;width:114px;overflow:hidden;background:rgba(163,217,225,.13)}.water:before{content:"";position:absolute;top:0;left:-2px;right:-2px;height:5px;border-top:3px solid #7ab3c2}.waterfill{position:absolute;bottom:0;left:0;right:0;min-height:8%;height:28%;background:linear-gradient(180deg,#95d5d6,#5599ae);transition:height .6s,background .6s}.waterfill:before{content:"";position:absolute;top:-4px;left:0;right:0;height:12px;border-radius:50%;background:#a6dce0}.salt{position:absolute;bottom:5px;left:10px;right:10px;display:flex;flex-wrap:wrap;gap:3px;opacity:.85}.salt i{width:6px;height:6px;background:#fff5e3;border-radius:2px}.lab-notes{font-size:.91rem}.lab-notes h3{margin:0 0 8px}.lab-notes p{color:var(--muted)}.mini-caption{display:block;color:var(--muted);font-size:.74rem;line-height:1.6}
+    .tabs{display:flex;flex-wrap:wrap;gap:9px;margin:19px 0}.tab{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 15px;border-radius:12px;font-size:.92rem;font-weight:800}.tab.active,.tab[aria-selected="true"]{background:var(--primary);border-color:var(--primary);color:var(--bg)}.ethic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.ethic{background:var(--bg);border:1px solid var(--line);border-radius:13px;padding:16px}.ethic h3{margin:0 0 6px}.ethic p{font-size:.89rem;color:var(--muted);margin:0}.ethic .good{display:block;color:var(--primary);font-weight:800;font-size:.8rem;margin-bottom:5px}
+    .practice{background:var(--soft);border-radius:15px;padding:18px;margin-top:18px}.practice label{display:flex;align-items:start;gap:10px;margin:9px 0;cursor:pointer;font-size:.91rem}.practice input{width:18px;height:18px;accent-color:var(--primary);margin-top:6px;flex-shrink:0}.practice-output{margin-top:9px;color:var(--deep);font-size:.85rem;font-weight:700}
+    details{border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:0 17px;margin-bottom:10px}summary{cursor:pointer;padding:14px 0;font-weight:850;list-style:none;display:flex;justify-content:space-between;gap:9px}summary::-webkit-details-marker{display:none}summary:after{content:"＋";font-weight:600;color:var(--primary)}details[open] summary:after{content:"−"}details>p{color:var(--muted);font-size:.94rem}details .source-line{margin-bottom:13px}
+    .scenario-wrap{background:var(--bg);padding:19px;border:1px solid var(--line);border-radius:15px}.scenario-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}.scenario-options button,.quiz-options button{background:var(--panel);border:1px solid var(--line);border-radius:12px;color:var(--ink);text-align:left;padding:13px 16px;font-size:.9rem;font-weight:700;line-height:1.65}.scenario-options button:hover:not(:disabled),.quiz-options button:hover:not(:disabled){border-color:var(--primary)}.scenario-options .goodanswer,.quiz-options .goodanswer{background:var(--soft);border:2px solid var(--primary);padding:12px 15px}.scenario-options .badanswer,.quiz-options .badanswer{background:var(--soft2);border:2px solid var(--accent);padding:12px 15px}.feedback{border-left:4px solid var(--primary);padding:11px 14px;background:var(--soft);border-radius:9px;font-size:.92rem;margin-top:15px}.feedback.warn{border-color:var(--accent);background:var(--soft2)}
+    .quiz{border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,25px);background:var(--bg)}.quiz-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.8rem;color:var(--muted);font-weight:750}.quiz-rail{height:7px;background:var(--line);border-radius:7px;overflow:hidden;margin:12px 0 23px}.quiz-rail span{height:100%;display:block;width:0;background:var(--primary);transition:width .3s}.quiz h3{font-size:1.22rem}.quiz-options{display:grid;gap:9px}.quiz-next{margin-top:15px;border:0;border-radius:12px;padding:10px 19px;background:var(--primary);color:var(--bg);font-weight:850}.quiz-done{text-align:center;padding:16px}.quiz-done .result-big{display:block;font-size:3.5rem;line-height:1.15;color:var(--primary);font-weight:950}.reset-btn{background:transparent;border:1px solid var(--primary);padding:10px 18px;border-radius:12px;color:var(--primary);font-weight:800}
+    .source-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.source-item{padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);font-size:.86rem}.source-item a{font-weight:850}.source-item p{margin:5px 0 0;color:var(--muted);font-size:.83rem}
+    .endcard{margin-top:24px;border-radius:22px;background:var(--hero);padding:35px;color:#fff;line-height:1.9}.endcard h2{color:#fff}.endcard p{color:#daeae6}.endcard strong{color:#ffdca6}.footer{padding:25px 14px 12px;text-align:center;color:var(--muted);font-size:.79rem}
+    .mobilelinks{display:none}.backtop{position:fixed;right:18px;bottom:21px;border:1px solid var(--line);background:var(--panel);color:var(--primary);border-radius:50%;width:42px;height:42px;box-shadow:var(--shadow);z-index:25;opacity:0;pointer-events:none;transition:opacity .2s}.backtop.visible{opacity:1;pointer-events:auto}
+    @media(max-width:1020px){.shell{grid-template-columns:200px minmax(0,1fr);padding:16px;gap:15px}.sidebar{padding:12px 7px}.hero{grid-template-columns:minmax(0,1fr) 210px;padding:33px}.hero-visual{width:220px}.orb{font-size:.67rem}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:770px){html{scroll-padding-top:113px}.shell{display:block;padding:0 12px 44px}.sidebar{display:none}.mobilelinks{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:9px 12px;background:var(--glass);border-bottom:1px solid var(--line);position:sticky;top:54px;z-index:29}.mobilelinks::-webkit-scrollbar{display:none}.mobilelinks a{flex:0 0 auto;border-radius:100px;padding:5px 11px;font-size:.78rem;text-decoration:none;color:var(--muted);background:var(--bg);border:1px solid var(--line);font-weight:700}.mobilelinks a.active{color:var(--deep);background:var(--soft);border-color:var(--primary)}.hero{border-radius:0 0 20px 20px;min-height:auto;grid-template-columns:1fr;padding:35px 22px 24px}.hero-visual{display:none}.hero h1{font-size:clamp(2.25rem,8vw,3.5rem)}.topbar{padding:10px 12px}.chapter{margin-top:13px;scroll-margin-top:117px}.lab{grid-template-columns:1fr}.lab-visual{min-height:192px}.source-list{grid-template-columns:1fr}.endcard{margin-top:14px}}
+    @media(max-width:480px){body{font-size:calc(var(--fz) - 1px)}.brand{font-size:.88rem}.brand-dot{width:24px;height:24px}.toolbtn{padding:4px 8px;font-size:.75rem}.top-actions{gap:4px}.hero{padding:30px 20px}.hero h1{font-size:2.28rem}.grid2,.grid3,.ethic-grid,.scenario-options{grid-template-columns:1fr}.select-card{min-height:110px}.chapter{padding:20px 17px}.chapter-head{gap:10px}.chapter-number{width:42px;height:42px}.chapter h2{font-size:1.48rem}.lab{padding:15px}.tile-number{font-size:1.5rem}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}
+    @media print{.topbar,.progress-track,.sidebar,.mobilelinks,.backtop,.hero-btn,.practice,.quiz,.toolbtn{display:none!important}.shell{display:block;max-width:none;padding:0}.hero{min-height:auto;display:block;color:#000;background:#f2f6f4;padding:16px}.hero h1,.hero p{color:#000}.hero-visual{display:none}.chapter{box-shadow:none;break-inside:avoid;padding:16px;border-color:#ddd}.source-item{break-inside:avoid}body{color:#000;background:#fff;font-size:13px}.select-card{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#intro">跳至正文</a>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="回到首頁"><span class="brand-dot">因</span><span>因果．白話互動課本</span></a>
+    <div class="top-actions">
+      <button type="button" class="toolbtn" id="fontDown" aria-label="縮小文字">字−</button>
+      <button type="button" class="toolbtn" id="fontUp" aria-label="放大文字">字＋</button>
+      <button type="button" class="toolbtn" id="themeButton" aria-pressed="false" aria-label="切換深色模式">深色</button>
+    </div>
+  </header>
+  <div class="progress-track" role="progressbar" aria-label="閱讀進度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pageProgress"><span id="pageBar"></span></div>
+  <nav class="mobilelinks" aria-label="快速切換章節" id="mobileNav">
+    <a href="#intro">導讀</a><a href="#little">七種差異</a><a href="#great">四種結果</a><a href="#salt">鹽水實驗</a><a href="#ten">十善練習</a><a href="#intent">動機與因緣</a><a href="#scenarios">生活題</a><a href="#quiz">測驗</a><a href="#sources">原典</a>
+  </nav>
+  <div class="shell">
+    <aside class="sidebar" aria-label="章節目錄">
+      <p class="nav-h">閱讀路線 · 9 個主題</p>
+      <nav id="desktopNav">
+        <a class="navlink" href="#intro"><span class="navn">01</span>先搞懂：什麼是業</a>
+        <a class="navlink" href="#little"><span class="navn">02</span>七種人生差異</a>
+        <a class="navlink" href="#great"><span class="navn">03</span>好人與壞人的難題</a>
+        <a class="navlink" href="#salt"><span class="navn">04</span>鹽水實驗</a>
+        <a class="navlink" href="#ten"><span class="navn">05</span>十善業練習</a>
+        <a class="navlink" href="#intent"><span class="navn">06</span>動機與其他因緣</a>
+        <a class="navlink" href="#scenarios"><span class="navn">07</span>現實情境判斷</a>
+        <a class="navlink" href="#quiz"><span class="navn">08</span>理解測驗</a>
+        <a class="navlink" href="#sources"><span class="navn">09</span>經典證據地圖</a>
+      </nav>
+      <div class="nav-bottom">
+        <strong>適讀對象：國中生以上</strong><br>
+        全文白話、可互動、可列印。<br>
+        <span id="readProgress">尚未開始</span><br><br>
+        這是一份佛教經典的教學整理，不是科學已驗證的來世預測工具。
+      </div>
+    </aside>
+    <main id="main">
+      <section id="home" class="hero" aria-labelledby="hero-title">
+        <div>
+          <span class="eyebrow">經典對照 × 情境挑戰 × 國中生版本</span>
+          <h1 id="hero-title">人生不是一台<br><span class="light">報應計算機</span></h1>
+          <p>好人為什麼也會受苦？壞人怎麼有時看起來過得很好？佛教真的認為生病和貧窮都是「前世做錯事」嗎？<br>用遊戲的比喻認識《小業分別經》《大業分別經》和不同佛教傳承的共同教導。</p>
+          <a href="#intro" class="hero-btn">開始探索　→</a>
+          <span class="hero-caption">單檔網頁，離線也可閱讀與操作；經典外部連結需要網路。</span>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbit"></div><div class="orbit two"></div>
+          <div class="core"><span>因 × 緣</span><small>不是固定分數</small></div>
+          <div class="orb a">選擇與動機</div><div class="orb b">時間與條件</div><div class="orb c">現在仍能改變</div>
+        </div>
+      </section>
+
+      <section class="chapter" id="intro" data-chapter>
+        <div class="chapter-head"><span class="chapter-number">01</span><div><h2>先搞懂：「業」到底是什麼？</h2><p class="chapter-sub">不是神明記分，也不是一切早已注定</p></div></div>
+        <p class="lead">想像人生是一場超大型遊戲。但它不像一般遊戲，沒有螢幕上看得見的「善良 +10、做壞事 −20」積分表。佛教說的<strong>業</strong>，重點是有意圖的身體、語言和心理活動，以及這些行為在因緣成熟時可能帶來的結果。</p>
+        <div class="grid3">
+          <div class="tile"><span class="tile-number">身</span><strong>身體的行為</strong><p>例如扶起跌倒的同學，或故意打傷別人。</p></div>
+          <div class="tile"><span class="tile-number">口</span><strong>說出去的話</strong><p>例如誠實說明事實，或故意造謠霸凌。</p></div>
+          <div class="tile"><span class="tile-number">意</span><strong>心裡的意圖</strong><p>例如想幫助人，或盤算如何報復別人。</p></div>
+        </div>
+        <p class="section-label">先分清三種證據，才不會混淆宗派</p>
+        <div class="grid3">
+          <div class="tile"><span class="pill strong">A｜直接平行經</span><strong>不同古經記同一教導</strong><p>例如巴利 MN 135 與漢譯《中阿含》170《鸚鵡經》。最適合用來比較古老的共同傳承。</p></div>
+          <div class="tile"><span class="pill">B｜教義相近</span><strong>方向相通，文字不盡相同</strong><p>例如早期佛教的十善業，與大乘《十善業道經》《華嚴經》的倫理教導。</p></div>
+          <div class="tile"><span class="pill weak">C｜後期宗派整理</span><strong>是重要發展，但別倒寫回古經</strong><p>例如後代論書更細的業力成熟分類，不等於所有佛教宗派都接受同一固定演算法。</p></div>
+        </div>
+        <div class="callout"><strong>一句話：</strong>我們可以學習行為會造成影響，但不能拿某人的貧窮、疾病或外貌，直接推斷他「前世一定很壞」。</div>
+        <p>同樣重要的是：上座部、漢傳大乘、藏傳佛教都重視業與因果，但<strong>並不是三個傳承共同收錄每一部大乘經</strong>。本課本會把直接平行經與後代相似解釋分開，不強行說成一模一樣。</p>
+        <div class="source-line">對照：<a href="https://suttacentral.net/an6.63" target="_blank" rel="noopener">AN 6.63 意圖與業</a><span>｜</span><a href="https://suttacentral.net/ma111" target="_blank" rel="noopener">《中阿含》111《達梵行經》</a><span>（相關主題，非同一經文的逐字翻譯）</span></div>
+      </section>
+
+      <section class="chapter" id="little" data-chapter>
+        <div class="chapter-head"><span class="chapter-number">02</span><div><h2>《小業分別經》：為什麼每個人的條件不同？</h2><p class="chapter-sub">巴利 MN 135 × 漢譯《鸚鵡經》 × 藏譯相關經本</p></div></div>
+        <p>古代有個年輕人須婆向佛陀提問：「為什麼同樣是人，卻有長壽或短命、健康或多病、有錢或貧窮等差別？」佛陀從有意圖的善惡行為與業果關係回答。</p>
+        <p>經中有 <strong>七組</strong>重要主題。選一張卡片，看看古經的教導與今天的生活例子。</p>
+        <div id="sevenGrid" class="grid3" role="group" aria-label="七種人生差異，選擇一項看詳細內容"></div>
+        <div id="sevenDetail" class="reveal" aria-live="polite"><h3>先選一張卡片</h3><p>每張卡片都有「經典中的相關業行」、「國中生的生活例子」以及「不能誤用的地方」。</p></div>
+        <div class="callout warning"><strong>非常重要：</strong>經典描述業與果報的關聯，不代表我們可以根據一個人的樣貌、家境、健康或出身，反推他曾經做過什麼。七組分類是佛教的宗教教導，不是現代科學用來預測個人命運的統計公式。</div>
+        <div class="source-line">直接平行：<a href="https://suttacentral.net/mn135" target="_blank" rel="noopener">巴利 MN 135</a>　<a href="https://suttacentral.net/ma170" target="_blank" rel="noopener">漢譯《鸚鵡經》MĀ 170</a>　<span>相關藏譯：</span><a href="https://84000.co/translation/toh338" target="_blank" rel="noopener">Toh 338《業分別》</a></div>
+      </section>
+
+      <section class="chapter" id="great" data-chapter>
+        <div class="chapter-head"><span class="chapter-number">03</span><div><h2>《大業分別經》：好人為什麼也會遇到壞結果？</h2><p class="chapter-sub">不只看結果，更要小心「以偏概全」</p></div></div>
+        <p class="lead">你一定有聽過：「明明某人總是欺負別人，怎麼還那麼有錢？」或者：「那個人天天做好事，為什麼卻那麼倒楣？」</p>
+        <p>佛陀在這部經中談到四種情況：人的行為與死後投生的結果，不一定總是符合我們眼前的單一步驟想像。請點擊任一組合，看它真正能說明什麼。</p>
+        <div class="grid2" id="fourGrid" role="group" aria-label="四種業行與投生的案例"></div>
+        <div id="fourDetail" class="reveal case-panel" aria-live="polite"><h3>按上方任一格查看解讀</h3><p>這四格談的是<strong>經文描述的業行與死後去處</strong>，不是「誰這輩子賺多少錢」的四格統計表。</p></div>
+        <h3>那麼，究竟是什麼原因？</h3>
+        <p>經文指出，單憑我們現在看見的善惡行為和一個結果，未必能知道所有相關因緣。較早或較近所造的業，以及臨終時的心念與見解，可能都需要考慮。</p>
+        <p>所以，不要說「壞人只是正在領前世存款」「好人是正在還前世債」就當作已找到唯一答案。這類比喻可以提醒結果有時間差，卻不能代表每件業都有固定價錢、一定全額償還。</p>
+        <div class="callout"><strong>班上的例子：</strong>有人平時認真準備考試，當天卻發高燒，成績不理想；有人沒怎麼讀書，卻剛好猜中題目。這不能證明「讀書沒用」，也不能保證努力的人每次都第一名。<br><small>這只是用來說明「結果受多種因素影響」，不是把來世業報當成考試科學模型。</small></div>
+        <div class="source-line">直接平行：<a href="https://suttacentral.net/mn136" target="_blank" rel="noopener">巴利 MN 136</a>　<a href="https://suttacentral.net/ma171" target="_blank" rel="noopener">漢譯《分別大業經》MĀ 171</a>　<a href="https://test.dhamma.gift/bw/ebt-study/mncomp/mn136comp.html" target="_blank" rel="noopener">學術比較：無著比丘</a></div>
+      </section>
+
+      <section class="chapter" id="salt" data-chapter>
+        <div class="chapter-head"><span class="chapter-number">04</span><div><h2>《鹽喻經》：同一把鹽，為什麼影響不同？</h2><p class="chapter-sub">佛經中最適合用來認識「條件」的比喻</p></div></div>
+        <p>想像把同樣一小把鹽放入水中：放進一杯水可能非常鹹；放進一條大河，整體就不容易被這點鹽改變。佛陀以這個比喻說明：<strong>同類的小惡業，在修養條件不同的情況下，所受結果可能輕重不同。</strong></p>
+        <div class="lab" aria-label="互動鹽水示意">
+          <div>
+            <h3>動手試：固定一把鹽，只改變水量</h3>
+            <div class="lab-controls"><button class="choice" type="button" id="cupBtn" aria-pressed="true">一杯水</button><button class="choice" type="button" id="riverBtn" aria-pressed="false">一條河</button></div>
+            <p class="lab-notes" id="labStatus" aria-live="polite">一杯水很少，同一把鹽顯得很濃。</p>
+            <span class="mini-caption">這是物理濃淡的教學動畫，不是業力有百分比的計算器。</span>
+          </div>
+          <div class="lab-visual" aria-hidden="true">
+            <div class="water"><div class="waterfill" id="waterFill" style="height:29%"></div><div class="salt" id="saltBits"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </div>
+        </div>
+        <p>佛經著重修身、持戒、修心、修慧。這表示我們仍有修正行為、培養智慧的空間。</p>
+        <div class="callout warning"><strong>不能錯誤延伸：</strong>鹽水比喻不是說「多做十件善事，就能抵銷一件重大惡行」，更不是「付錢做功德就能買到免責」。犯錯仍要停止傷害、負起現實責任並盡可能補救。</div>
+        <p>漢傳大乘《大般涅槃經》也有討論業報的定與不定、修行如何影響受報輕重；這是<strong>相關教義的發展</strong>，不能說和早期《鹽喻經》每一句完全一致。</p>
+        <div class="source-line">直接平行：<a href="https://suttacentral.net/an3.100" target="_blank" rel="noopener">AN 3.100《鹽塊經》</a>　<a href="https://suttacentral.net/ma11" target="_blank" rel="noopener">《中阿含》11《鹽喻經》</a>　<span>大乘延伸：</span><a href="https://cbetaonline.dila.edu.tw/zh/T0374_031" target="_blank" rel="noopener">《大般涅槃經》卷31</a></div>
+      </section>
+
+      <section class="chapter" id="ten" data-chapter>
+        <div class="chapter-head"><span class="chapter-number">05</span><div><h2>「十善業」：每天可以怎麼做？</h2><p class="chapter-sub">不是集點卡，而是認識不傷害別人的十種練習</p></div></div>
+        <p>很多佛教經典都教人遠離十種不善行為。它們分成：<strong>身體三種、語言四種、心理三種</strong>。請切換下面三個分類，看看它們在校園中的模樣。</p>
+        <div class="tabs" id="tenTabs" role="tablist" aria-label="十善業分類">
+          <button class="tab active" id="tab-body" role="tab" aria-selected="true" aria-controls="tenContent" data-ten="body">身體 · 3</button>
+          <button class="tab" id="tab-speech" role="tab" aria-selected="false" aria-controls="tenContent" data-ten="speech">語言 · 4</button>
+          <button class="tab" id="tab-mind" role="tab" aria-selected="false" aria-controls="tenContent" data-ten="mind">心理 · 3</button>
+        </div>
+        <div class="ethic-grid" id="tenContent" role="tabpanel" aria-labelledby="tab-body"></div>
+        <div class="practice">
+          <strong>今日小練習：選一件你願意試試看的善行</strong>
+          <p style="font-size:.86rem;color:var(--muted);margin:7px 0 12px">這裡記錄的是「想實踐的行動」，不是功德點數，也不表示做了就一定有獎勵。</p>
+          <label><input type="checkbox" class="practice-check"><span>有人被排擠時，試著不跟著嘲笑，必要時找師長協助。</span></label>
+          <label><input type="checkbox" class="practice-check"><span>發現自己講錯話時，願意承認並改正。</span></label>
+          <label><input type="checkbox" class="practice-check"><span>看到別人進步時，練習真心稱讚，而非嫉妒。</span></label>
+          <label><input type="checkbox" class="practice-check"><span>分享消息前，先確認來源，避免傷害別人。</span></label>
+          <p class="practice-output" id="practiceStatus" aria-live="polite">你可以選擇一項開始。改變不用一次做到完美。</p>
+        </div>
+        <div class="source-line">早期經典：<a href="https://suttacentral.net/mn41" target="_blank" rel="noopener">MN 41《娑羅村經》</a>　<span>大乘經典：</span><a href="https://cbetaonline.dila.edu.tw/zh/T0600" target="_blank" rel="noopener">《十善業道經》T0600</a>　<a href="https://cbetaonline.dila.edu.tw/zh/T0279" target="_blank" rel="noopener">《華嚴經》T0279（十地品）</a></div>
+      </section>
+
+      <section class="chapter" id="intent" data-chapter>
+        <div class="chapter-head"><span class="chapter-number">06</span><div><h2>故意和意外一樣嗎？痛苦都是前世造成的嗎？</h2><p class="chapter-sub">動機很重要；現實世界也有許多其他原因</p></div></div>
+        <h3>問題一：同樣打破玻璃，責任一樣嗎？</h3>
+        <div class="grid2">
+          <div class="tile"><span class="pill strong">沒有傷害意圖</span><strong>情況 A：意外</strong><p>小明幫忙搬東西時不小心撞破玻璃。他願意通知老師並協助處理。</p></div>
+          <div class="tile"><span class="pill weak">有意要報復</span><strong>情況 B：故意</strong><p>小華生氣，刻意拿石頭砸窗戶，還想讓別人受傷。</p></div>
+        </div>
+        <p>兩個人都可能需要處理物品損害，但<strong>在倫理上不能直接畫上等號</strong>。佛教對「業」的討論，特別重視有意圖的行為。</p>
+        <h3>問題二：有人生病，可以說是前世報應嗎？</h3>
+        <p>不可以擅自判定。巴利 SN 36.21 指出，身體狀態、氣候、外在傷害及業等都可能與感受有關，批評把<strong>所有</strong>感受都歸因於過去業的看法。</p>
+        <p>用今天的知識來說，疾病可能涉及感染、遺傳、環境、外傷等原因；這是現代醫學的說明，不是經文逐字所列的現代病因。遇到生病的人，應該給予醫療與關懷，而不是責怪。</p>
+        <h3>問題三：那麼，我們能知道每個人前世發生什麼嗎？</h3>
+        <p>不能只憑眼前情況就推斷。古經提醒我們，不能從單一事件就推出萬事萬物的結論。因此看見某個同學家境不好、遭遇意外，不應替他貼上「業障很重」的標籤。</p>
+        <div class="callout"><strong>對國中生最有用的結論：</strong>當別人受苦，不要當裁判猜前世。你能做到的，是不要加重他的痛苦，並在安全與能力範圍內提供幫助。</div>
+        <div class="source-line">意圖：<a href="https://suttacentral.net/an6.63" target="_blank" rel="noopener">AN 6.63</a>　多種原因：<a href="https://suttacentral.net/sn36.21" target="_blank" rel="noopener">SN 36.21</a>　識依因緣生：<a href="https://suttacentral.net/mn38" target="_blank" rel="noopener">MN 38</a></div>
+      </section>
+
+      <section class="chapter" id="scenarios" data-chapter>
+        <div class="chapter-head"><span class="chapter-number">07</span><div><h2>如果是你，會怎麼判斷？</h2><p class="chapter-sub">互動情境：先選答案，再看經典觀點</p></div></div>
+        <p>以下不是考你有沒有宗教信仰，而是看看你是否理解「不能以偏概全、不責怪受苦者、善惡不能用簡單數字抵銷」。</p>
+        <div class="scenario-wrap">
+          <span class="pill" id="scenarioCount">情境 1／4</span>
+          <h3 id="scenarioTitle" style="margin:14px 0 6px"></h3>
+          <p id="scenarioText"></p>
+          <div class="scenario-options" id="scenarioOptions"></div>
+          <div id="scenarioFeedback" aria-live="polite"></div>
+          <button type="button" class="quiz-next" id="nextScenario" hidden>下一個情境 →</button>
+        </div>
+      </section>
+
+      <section class="chapter" id="quiz" data-chapter>
+        <div class="chapter-head"><span class="chapter-number">08</span><div><h2>理解測驗：你真的讀懂了嗎？</h2><p class="chapter-sub">8 題情境選擇題，每題附理由；不蒐集、不上傳答案</p></div></div>
+        <p>考的是理解，不是背經號碼；也沒有「功德分數」。答錯沒關係，每題都有原因說明。</p>
+        <div class="quiz">
+          <div class="quiz-top"><span id="quizCount">第 1 題／8 題</span><span id="quizScore">已答對 0 題</span></div>
+          <div class="quiz-rail"><span id="quizBar"></span></div>
+          <div id="quizContent" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="sources" data-chapter>
+        <div class="chapter-head"><span class="chapter-number">09</span><div><h2>經典證據地圖：哪些是真正共同傳承？</h2><p class="chapter-sub">古老平行經、教義相近與後代整理，逐項標示</p></div></div>
+        <p>最有力的跨傳承證據，是不同古代經藏保留<strong>直接的平行經</strong>。大乘經典若教導相似道德原則，也很重要，但不能因此說它們就是同一部經，或說上座部都將大乘經典列為自己的藏經。</p>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th scope="col">課程主題</th><th scope="col">巴利經</th><th scope="col">漢譯經</th><th scope="col">比較結論</th></tr></thead>
+            <tbody>
+              <tr><td>七種業果差異</td><td>MN 135</td><td>《中阿含》170</td><td>直接平行；另有藏譯 Toh 338 相關經本</td></tr>
+              <tr><td>四種業行與來世結果</td><td>MN 136</td><td>《中阿含》171</td><td>直接平行；細節及排列有異</td></tr>
+              <tr><td>鹽塊與業報輕重</td><td>AN 3.100</td><td>《中阿含》11</td><td>直接平行；用來說明條件的影響</td></tr>
+              <tr><td>十善與十不善</td><td>MN 41 等</td><td>阿含相關經文</td><td>倫理原則也見大乘《十善業道經》《華嚴經》</td></tr>
+              <tr><td>意圖與業</td><td>AN 6.63</td><td>《中阿含》111 等相關教導</td><td>核心主題相近，勿誤標成直接逐字平行</td></tr>
+              <tr><td>不能全歸因前世</td><td>SN 36.21</td><td>相關因緣教導</td><td>重要的防誤用提醒，不宜擴張為所有傳承逐字相同</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 style="margin-top:25px">不要把這些說法當成跨宗派共同定論</h3>
+        <div>
+          <details><summary>「人生現在有多苦，就是前世欠多少債」</summary><p>不能這樣計算。教義中的業果，不是能夠查詢固定餘額的銀行帳戶；疾病與貧困也涉及其他現實條件。</p></details>
+          <details><summary>「做功德付錢，就能保證消除一切惡業」</summary><p>不能把交易和修行畫上等號。即使不同傳統有布施、供養、懺悔及迴向等實踐，也不代表存在跨宗派共同承認的「付錢保證免責」制度。</p></details>
+          <details><summary>「重業、近業、習慣業、宿業，是佛陀公布的固定四步演算法」</summary><p>這種條列法與後期註釋及業論系統化有關；不能直接說是 MN 136 的逐字內容，更不能說所有宗派的細部模型相同。</p></details>
+          <details><summary>「漢傳的《華嚴經》《地藏經》也是上座部共同收錄的經」</summary><p>不對。可以說某些倫理思想相近，但兩個佛教傳統的經藏範圍不同。藏譯《甘珠爾》同時保存大乘及部分非大乘經典，也不能全部混為一類。</p></details>
+          <details><summary>「佛教來世果報已被現代科學完全證實」</summary><p>不是。本課本是在說明佛教宗教文獻如何理解業與果報；經典傳承的存在、倫理觀念的可比較性，不等同於科學已能測量或證實每個人的輪迴與來世結果。</p></details>
+        </div>
+        <h3 style="margin-top:25px">原文與經典比較資料</h3>
+        <div class="source-list">
+          <div class="source-item"><a href="https://suttacentral.net/mn135" target="_blank" rel="noopener">MN 135《小業分別經》↗</a><p>七組業果的巴利來源。</p></div>
+          <div class="source-item"><a href="https://suttacentral.net/ma170" target="_blank" rel="noopener">《中阿含》170《鸚鵡經》↗</a><p>MN 135 的漢譯平行經。</p></div>
+          <div class="source-item"><a href="https://suttacentral.net/mn136" target="_blank" rel="noopener">MN 136《大業分別經》↗</a><p>四類行為與結果、不可過度推論。</p></div>
+          <div class="source-item"><a href="https://suttacentral.net/ma171" target="_blank" rel="noopener">《中阿含》171《分別大業經》↗</a><p>MN 136 的漢譯平行經。</p></div>
+          <div class="source-item"><a href="https://suttacentral.net/an3.100" target="_blank" rel="noopener">AN 3.100《鹽塊經》↗</a><p>同類小業受報輕重與修行條件。</p></div>
+          <div class="source-item"><a href="https://suttacentral.net/ma11" target="_blank" rel="noopener">《中阿含》11《鹽喻經》↗</a><p>鹽喻在另一部派傳承中的保存。</p></div>
+          <div class="source-item"><a href="https://suttacentral.net/an6.63" target="_blank" rel="noopener">AN 6.63《洞察經》↗</a><p>「思是業」及身語意行為。</p></div>
+          <div class="source-item"><a href="https://suttacentral.net/sn36.21" target="_blank" rel="noopener">SN 36.21《尸婆經》↗</a><p>不能把所有感受都歸於過去業。</p></div>
+          <div class="source-item"><a href="https://suttacentral.net/mn41" target="_blank" rel="noopener">MN 41《娑羅村經》↗</a><p>十種善與不善行為的早期來源。</p></div>
+          <div class="source-item"><a href="https://cbetaonline.dila.edu.tw/zh/T0600" target="_blank" rel="noopener">《十善業道經》T0600↗</a><p>大乘經中相近的十善倫理。</p></div>
+          <div class="source-item"><a href="https://84000.co/translation/toh338" target="_blank" rel="noopener">藏譯 Toh 338《業分別》↗</a><p>七類業果相關藏譯經本；並非 MN 135 逐字相同。</p></div>
+          <div class="source-item"><a href="https://test.dhamma.gift/bw/ebt-study/mncomp/mn135comp.html" target="_blank" rel="noopener">無著比丘 MN 135 比較研究↗</a><p>不同漢譯、梵文與藏譯對應資料。</p></div>
+        </div>
+        <p style="font-size:.81rem;color:var(--muted);margin-top:16px">整理日期：2026-10-19。外部經典網站提供不同語言版本；可切換中文、巴利或英譯。上述資料的宗派對應性不代表每一版本逐字一致。</p>
+      </section>
+
+      <section class="endcard" aria-label="閱讀總結">
+        <h2>最後帶走的，不是「報應公式」</h2>
+        <p>而是六個可以帶進生活的提醒：</p>
+        <p><strong>善惡有因果；動機有意義；果報未必立刻出現；人生還有其他因緣；不要責怪受苦的人；現在仍然可以改變。</strong></p>
+        <p>佛教的目的也不只是讓下一輩子拿到最好的「遊戲開局」。更深的方向，是減少貪婪、憤怒與無知，培養智慧和慈悲，走向苦的止息。</p>
+        <a href="#home" class="hero-btn">回到最前面 ↑</a>
+      </section>
+      <footer class="footer">以繁體中文（台灣用語）撰寫 · 教育用途 · 網頁內測驗僅在本機執行，不上傳資料 · <button type="button" class="toolbtn" onclick="window.print()">列印閱讀版</button></footer>
+    </main>
+  </div>
+  <button class="backtop" id="backtop" type="button" aria-label="返回頁首">↑</button>
+  <script>
+  (()=>{
+    'use strict';
+    const $=id=>document.getElementById(id);
+    const text=(s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const seven=[
+      {icon:'🌱',name:'壽命長短',brief:'殺生／愛護生命',evil:'傷害、奪取生命的故意行為',good:'不殺生，尊重與保護生命',example:'看到弱小動物被欺負，試著安全地求助、阻止傷害。',note:'短命或發生事故，不足以反推當事人前世殺過生。'},
+      {icon:'🩺',name:'疾病多少',brief:'傷害人／不傷害',evil:'故意毆打、折磨或傷害別人',good:'不以暴力傷害他人',example:'不因比別人力氣大，就推人、打人或霸凌。',note:'疾病涉及醫學與環境等許多因素，不能用病情判斷道德。'},
+      {icon:'🌤️',name:'容貌差異',brief:'瞋怒／平和',evil:'容易憤怒、怨恨、敵視',good:'培養耐心、減少怨恨',example:'同學說話讓你不高興，先釐清事情，不急著辱罵。',note:'外表不能用來評判一個人是否善良，這不是現代審美標準。'},
+      {icon:'🤝',name:'影響力高低',brief:'嫉妒／隨喜',evil:'妒忌別人受讚賞與尊重',good:'能欣賞他人的優點與成就',example:'同學得獎時可以恭喜，也可以努力讓自己進步。',note:'缺乏權力或影響力的人，絕不因此被證明曾經嫉妒。'},
+      {icon:'🏡',name:'出身地位',brief:'傲慢／尊重',evil:'自大，輕慢應受尊敬的人',good:'謙遜、有禮，不因身分輕視他人',example:'不以家境、成績、職業或年齡羞辱別人。',note:'古印度的出身階級不是現代社會不平等的正當理由。'},
+      {icon:'🎁',name:'財富多寡',brief:'慳吝／分享',evil:'巴漢經特別談不布施；相關藏譯也強調偷盜等',good:'布施、分享、尊重他人財物',example:'有多餘文具時願意分享，絕不強迫別人捐錢。',note:'經濟制度、機會、家境等也影響財富，不可說窮人前世都吝嗇。'},
+      {icon:'💡',name:'智慧高低',brief:'不問／請教',evil:'對善惡、是非及修行問題不願請教',good:'遇到不懂的問題向有智慧的人求教',example:'遇到不理解的問題先查證、請教老師，也願意改正錯誤。',note:'學習困難、身心障礙不能被說成道德比較差。'}
+    ];
+    let sevenSelected=-1;
+    function renderSeven(){
+      $('sevenGrid').innerHTML=seven.map((x,i)=>`<button type="button" class="select-card ${i===sevenSelected?'selected':''}" aria-pressed="${i===sevenSelected}" data-seven="${i}"><span class="symbol" aria-hidden="true">${x.icon}</span><strong>${x.name}</strong><span class="desc">${x.brief}　→ 點開看看</span></button>`).join('');
+      if(sevenSelected>=0){const x=seven[sevenSelected];$('sevenDetail').innerHTML=`<span class="pill strong">第 ${sevenSelected+1} 組／7 組</span><h3>${x.icon} ${x.name}</h3><dl><dt>經典中的相關不善業</dt><dd>${x.evil}</dd><dt>值得培養的善行</dt><dd>${x.good}</dd><dt>今天的校園例子</dt><dd>${x.example}</dd><dt>最不能誤用的地方</dt><dd>${x.note}</dd></dl>`;}
+    }
+    $('sevenGrid').addEventListener('click',e=>{const btn=e.target.closest('[data-seven]');if(!btn)return;sevenSelected=Number(btn.dataset.seven);renderSeven();});renderSeven();
+    const cases=[
+      {label:'不善行為 → 惡趣',short:'比較符合直覺',result:'經文記載的一種情況：造作不善行為的人，死後投生惡趣。',lesson:'這種例子存在，但不能因此斷言「只要看見某人做壞事，他死後必定立刻去惡趣」。'},
+      {label:'善行 → 善趣',short:'比較符合直覺',result:'經文記載的一種情況：造作善行的人，死後投生善趣。',lesson:'這也存在，但不能保證我們看到的每個行善者，下一個結果都如自己預期。'},
+      {label:'不善行為 → 善趣',short:'乍看不合理',result:'經文也討論：做過不善行為的人，死後卻可能先到善趣。',lesson:'可能涉及不同時期的業及臨終相關條件；不能因此說「做壞事有益」或「惡業完全不存在」。'},
+      {label:'善行 → 惡趣',short:'乍看不合理',result:'經文也討論：做過善行的人，死後卻可能先到惡趣。',lesson:'不能因此否認善行價值。不能僅憑結果斷言是哪一項業成熟，更不能責怪眼前受苦的人。'}
+    ];
+    let fourSelected=-1;
+    function renderFour(){
+      $('fourGrid').innerHTML=cases.map((x,i)=>`<button type="button" class="select-card rolecase ${i===fourSelected?'selected':''}" data-case="${i}" aria-pressed="${i===fourSelected}"><span class="case-tag">情況 ${i+1}／4</span><strong>${x.label.replace(' → ','<span class="case-arrow">↓</span>')}</strong><small>${x.short}</small></button>`).join('');
+      if(fourSelected>=0){const x=cases[fourSelected];$('fourDetail').innerHTML=`<span class="pill strong">情況 ${fourSelected+1}</span><h3>${x.label}</h3><p>${x.result}</p><p><strong>真正要學的是：</strong>${x.lesson}</p>`;}
+    }
+    $('fourGrid').addEventListener('click',e=>{const b=e.target.closest('[data-case]');if(!b)return;fourSelected=Number(b.dataset.case);renderFour();});renderFour();
+    function setWater(mode){
+      const river=mode==='river';$('cupBtn').setAttribute('aria-pressed',String(!river));$('riverBtn').setAttribute('aria-pressed',String(river));$('waterFill').style.height=river?'91%':'29%';$('waterFill').style.background=river?'linear-gradient(180deg,#93d2de,#4d9aba)':'linear-gradient(180deg,#a9c9cb,#477e87)';
+      $('labStatus').textContent=river?'一條河水量很大：同一把鹽不足以讓整條河都變得很鹹。比喻說明修養與條件可能影響果報的輕重。':'一杯水水量很少：同一把鹽就可能變得非常鹹。比喻提醒我們要重視修身、持戒、修心與智慧。';
+    }
+    $('cupBtn').addEventListener('click',()=>setWater('cup'));$('riverBtn').addEventListener('click',()=>setWater('river'));
+    const ten={
+      body:[['不殺生','尊重生命','不虐待動物，不為了好玩傷害別人。'],['不偷盜','尊重財物','不拿同學的東西，不占別人便宜。'],['遠離不當性行為','尊重身體與關係','不強迫、欺騙或侵犯他人的身體。這是現代校園例子，古經規範也有其歷史語境。']],
+      speech:[['不妄語','誠實','不為了逃避責任而捏造謊言。'],['不離間','促進和睦','不傳話挑撥同學彼此討厭。'],['不惡口','適當而善意地說話','生氣也不惡意羞辱他人。'],['不無益語','說有意義的話','不亂傳消息，也不以謠言煽動爭端。']],
+      mind:[['不貪欲','知足、不侵占','想要別人的東西時不打算搶走。'],['不瞋害','慈悲、不懷害意','有衝突時不計畫報復傷害。'],['不邪見','正確理解善惡因果','知道自己的行為會帶來影響，不隨意說傷害別人沒有關係。']]
+    };
+    function renderTen(key){
+      $('tenContent').innerHTML=ten[key].map(([name,good,example])=>`<article class="ethic"><span class="good">善行：${good}</span><h3>${name}</h3><p>${example}</p></article>`).join('');
+      $('tenContent').setAttribute('aria-labelledby','tab-'+key);
+      document.querySelectorAll('[data-ten]').forEach(b=>{const selected=b.dataset.ten===key;b.classList.toggle('active',selected);b.setAttribute('aria-selected',String(selected));b.tabIndex=selected?0:-1;});
+    }
+    $('tenTabs').addEventListener('click',e=>{const t=e.target.closest('[data-ten]');if(t)renderTen(t.dataset.ten);});
+    $('tenTabs').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;const keys=['body','speech','mind'];let i=keys.indexOf(document.querySelector('[data-ten][aria-selected="true"]').dataset.ten);i=(i+(e.key==='ArrowRight'?1:-1)+3)%3;renderTen(keys[i]);document.querySelector('[data-ten="'+keys[i]+'"]').focus();e.preventDefault();});
+    renderTen('body');
+    document.querySelectorAll('.practice-check').forEach(x=>x.addEventListener('change',()=>{const n=document.querySelectorAll('.practice-check:checked').length;$('practiceStatus').textContent=n?`已選擇 ${n} 件想練習的行動。記得：重要的是實際實踐，不是把勾選當成善惡積分。`:'你可以選擇一項開始。改變不用一次做到完美。';}));
+    const scenarios=[
+      {title:'同學長期生病，班上有人說他「前世一定做壞事」。',text:'你正在旁邊，哪個說法比較符合經文提醒？',options:['不能從疾病反推前世，應提供關懷和實際協助。','既然生病，一定是他自己以前的錯。'],answer:0,reason:'SN 36.21 反對將所有感受都歸為過去業。現代醫療也必須考慮各種病因。'},
+      {title:'某個欺負過人的學生，捐錢之後說「全部抵銷了」。',text:'他可以這樣保證嗎？',options:['不行。布施不等於買到免責，仍要停止傷害、承擔責任並補救。','可以。只要捐款夠多，過去做過的事就完全沒關係。'],answer:0,reason:'鹽喻強調修行與條件，不能變成固定加減法，也不提供付錢消災保證。'},
+      {title:'壞人眼前看似過得很好，你應該得出什麼結論？',text:'選一個最謹慎的說法。',options:['這證明欺騙和霸凌其實是正確的。','目前看到的結果不是全部，不能因此否定善惡因果。'],answer:1,reason:'MN 136 與《分別大業經》都提醒：不能把少數觀察變成絕對規則。'},
+      {title:'你不小心撞倒書架，另一人則故意砸壞書架。',text:'兩人的行為有什麼值得比較的地方？',options:['外在損害可能相似，但意圖不同；兩人仍都應處理實際後果。','只要東西都壞了，兩人的心理意圖完全不重要。'],answer:0,reason:'AN 6.63 著重意圖，但不等於沒有意圖就無須處理損害。'}
+    ];
+    let scenarioIndex=0, scenarioAnswered=false;
+    function renderScenario(){
+      const x=scenarios[scenarioIndex];scenarioAnswered=false;$('scenarioCount').textContent=`情境 ${scenarioIndex+1}／${scenarios.length}`;$('scenarioTitle').textContent=x.title;$('scenarioText').textContent=x.text;
+      $('scenarioOptions').innerHTML=x.options.map((op,i)=>`<button type="button" data-opt="${i}">${text(op)}</button>`).join('');$('scenarioFeedback').innerHTML='';$('nextScenario').hidden=true;
+    }
+    $('scenarioOptions').addEventListener('click',e=>{
+      const b=e.target.closest('[data-opt]');if(!b||scenarioAnswered)return;scenarioAnswered=true;let x=scenarios[scenarioIndex],chosen=Number(b.dataset.opt),correct=chosen===x.answer;
+      [...$('scenarioOptions').children].forEach(z=>{z.disabled=true;const isCorrect=Number(z.dataset.opt)===x.answer;z.classList.toggle('goodanswer',isCorrect);if(z===b&&!correct)z.classList.add('badanswer');});
+      $('scenarioFeedback').innerHTML=`<div class="feedback ${correct?'':'warn'}"><strong>${correct?'你的判斷符合經文提醒。':'這個推論需要修正。'}</strong><p style="margin:5px 0 0">${x.reason}</p></div>`;
+      $('nextScenario').textContent=scenarioIndex===scenarios.length-1?'再玩一次 ↺':'下一個情境 →';$('nextScenario').hidden=false;
+    });
+    $('nextScenario').addEventListener('click',()=>{scenarioIndex=(scenarioIndex+1)%scenarios.length;renderScenario();});renderScenario();
+    const quiz=[
+      {q:'《小業分別經》與漢譯《鸚鵡經》主要有哪些共同主題？',options:['七種人生差異與相關業行','如何計算每一個人的銀行餘額','所有疾病都只有一種原因'],answer:0,why:'它們保存七類差異的相近教導，但不提供能反推個人前世的算式。'},
+      {q:'看到一個人貧窮，就說他前世一定很吝嗇。這個推論如何？',options:['完全正確','不合理：單靠現況無法確定前世業行','只有富人才需要注意因果'],answer:1,why:'業不是解釋社會、健康和經濟狀況的唯一原因，也不能根據結果倒推未知的過去。'},
+      {q:'《大業分別經》中的四種情況，最重要的提醒是什麼？',options:['善惡沒有意義','只要看見一個結果，就能知道所有原因','不能以單一觀察推斷所有業果'],answer:2,why:'同一類行為與結果的關係可能複雜，不能以偏概全。'},
+      {q:'《鹽喻經》的「一把鹽」比喻主要幫助理解什麼？',options:['果報可能隨修養及條件而有輕重差異','做壞事再捐款就能完全抵銷','鹽可以用來測量人的業力'],answer:0,why:'經文重視修身、持戒、修心與智慧，並非業力的科學計算器。'},
+      {q:'佛教說「思是業」，比較接近哪個意思？',options:['只要行為結果一樣，意圖永遠不重要','有意圖的身語意行為很重要','所有念頭都是可以兌換現金的功德'],answer:1,why:'意圖是佛教業論的關鍵，但現實損害仍可能需要修復。'},
+      {q:'「十善業」通常如何分組？',options:['身體三、語言四、心理三','身體五、語言五、心理零','布施十次就完成'],answer:0,why:'十善業的基本分類是身三、語四、意三。'},
+      {q:'有同學遭遇重病，哪個做法比較符合課程精神？',options:['宣稱他一定有前世罪業','提醒大家別管他，都是命','關心並幫助他尋求適當醫療和支持'],answer:2,why:'不能用業論責怪受苦者；慈悲與現實協助更重要。'},
+      {q:'「大乘《華嚴經》和巴利 MN 41 都談十善」，能推出什麼？',options:['兩部經一字不差','教義存在相近之處，但並非同一部經','所有傳承的經藏都收錄同樣經典'],answer:1,why:'跨傳承教義相近，不等於文本相同，也不等於經藏收錄完全一致。'}
+    ];
+    let qi=0,score=0,answered=false;
+    function renderQuiz(){
+      $('quizCount').textContent=qi<quiz.length?`第 ${qi+1} 題／${quiz.length} 題`:'已完成';$('quizScore').textContent=`已答對 ${score} 題`;$('quizBar').style.width=`${(qi/quiz.length)*100}%`;
+      if(qi>=quiz.length){
+        $('quizBar').style.width='100%';$('quizContent').innerHTML=`<div class="quiz-done"><span class="result-big">${score} / ${quiz.length}</span><h3>${score===quiz.length?'每一個重要觀念都掌握了':score>=5?'你已理解大部分核心觀念':'可以再看看解析，加深理解'}</h3><p>分數只代表這 8 題的理解程度，<strong>不是功德或道德分數</strong>。最值得記住的是：不要以結果責怪受苦者，現在的行動仍有意義。</p><button class="reset-btn" type="button" id="resetQuiz">重新測驗 ↺</button></div>`;
+        $('resetQuiz').addEventListener('click',()=>{qi=0;score=0;renderQuiz();});return;
+      }
+      const x=quiz[qi];answered=false;
+      $('quizContent').innerHTML=`<h3>${text(x.q)}</h3><div class="quiz-options" id="quizOptions">${x.options.map((op,i)=>`<button type="button" data-qopt="${i}">${String.fromCharCode(65+i)}．${text(op)}</button>`).join('')}</div><div id="quizFeedback" aria-live="polite"></div><button class="quiz-next" id="quizNext" type="button" hidden>${qi===quiz.length-1?'查看測驗結果 →':'下一題 →'}</button>`;
+      $('quizOptions').addEventListener('click',e=>{
+        const b=e.target.closest('[data-qopt]');if(!b||answered)return;answered=true;const sel=Number(b.dataset.qopt),correct=sel===x.answer;if(correct)score++;$('quizScore').textContent=`已答對 ${score} 題`;
+        [...$('quizOptions').children].forEach(btn=>{btn.disabled=true;const good=Number(btn.dataset.qopt)===x.answer;btn.classList.toggle('goodanswer',good);if(btn===b&&!correct)btn.classList.add('badanswer');});
+        $('quizFeedback').innerHTML=`<div class="feedback ${correct?'':'warn'}"><strong>${correct?'答對了！':'這題再想一下。'}</strong><p style="margin:5px 0 0">${text(x.why)}</p></div>`;$('quizNext').hidden=false;
+      });
+      $('quizNext').addEventListener('click',()=>{qi++;renderQuiz();});
+    }
+    renderQuiz();
+    let fz=17;function setFont(delta){fz=Math.min(22,Math.max(14,fz+delta));document.documentElement.style.setProperty('--fz',fz+'px');}
+    $('fontUp').addEventListener('click',()=>setFont(1));$('fontDown').addEventListener('click',()=>setFont(-1));
+    function setTheme(mode){const dark=mode==='dark';document.documentElement.dataset.theme=mode;$('themeButton').textContent=dark?'淺色':'深色';$('themeButton').setAttribute('aria-pressed',String(dark));try{localStorage.setItem('karma-guide-theme',mode);}catch(e){}}
+    try{const saved=localStorage.getItem('karma-guide-theme');setTheme(saved==='dark'?'dark':'light');}catch(e){setTheme('light');}
+    $('themeButton').addEventListener('click',()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+    const links=[...document.querySelectorAll('.navlink,.mobilelinks a')],chapterIds=['intro','little','great','salt','ten','intent','scenarios','quiz','sources'];
+    function updateActive(){let y=window.scrollY+155;let active='intro';for(const id of chapterIds){if($(id).offsetTop<=y)active=id;}links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+active);if(a.getAttribute('href')==='#'+active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}
+    function updateScroll(){const max=document.documentElement.scrollHeight-window.innerHeight;const pct=max>0?Math.min(100,Math.max(0,Math.round(100*window.scrollY/max))):100;$('pageBar').style.width=pct+'%';$('pageProgress').setAttribute('aria-valuenow',pct);$('readProgress').textContent=`頁面捲動進度 ${pct}%`;$('backtop').classList.toggle('visible',window.scrollY>550);updateActive();}
+    window.addEventListener('scroll',updateScroll,{passive:true});window.addEventListener('resize',updateScroll,{passive:true});updateScroll();
+    $('backtop').addEventListener('click',()=>{window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
+  })();
+  </script>
+</body>
+</html>
