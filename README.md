@@ -6,9 +6,10 @@
 
 ## 立即體驗
 
-- 正式網站原始檔：[`index.html`](./index.html)（初次匯入時將一併建立）。
+- 正式網站原始檔：[`index.html`](./index.html)（已推送，GitHub 可直接讀取）。
 - GitHub Pages：需完成 Pages 啟用及外部網址驗證後，才標記為 LIVE；在此以前 **不宣稱已部署**。
-- [本次對話的網站演進歷史](docs/SESSION_EVOLUTION.md)／[歷史版本目錄](docs/VERSION_ARCHIVE.md)。
+- [本次對話的網站演進歷史](docs/SESSION_EVOLUTION.md)／[八個主要歷史版本](docs/VERSION_ARCHIVE.md)。
+- [GitHub 專案 Issues](https://github.com/t14210184/The-Naked-Dhamma/issues)：部署驗收、原典稽核、長者實測、授權決策。
 
 ## 專案定位
 
