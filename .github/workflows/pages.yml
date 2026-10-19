@@ -1,4 +1,5 @@
 name: Publish website to GitHub Pages
+run-name: Publish SHA ${{ github.sha }}
 
 on:
   push:
