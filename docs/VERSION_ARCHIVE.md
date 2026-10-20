@@ -13,4 +13,7 @@
 | 07 | 從論文改為互動遊戲 | [07](../versions/07-story-game.html) | `dbc9534387e38e82b92de719de1ccd2bbd4eddbf` |
 | 08 | 中立觀察、具象井圖、慈心練習 | [08](../versions/08-see-more.html)（同 [首頁](../index.html)） | `d27e27473d66a9c856b941ffa43fa7014e3b5fd2` |
 
+
+| 09 | 《梵網經》六十二見、盲人摸象、追象腳印、沙門果及心材故事互動補充；逐區標示原典、頁尾新增六組考據註釋 | [09](../versions/09-dn1-sutta-exploration.html)（同[首頁](../index.html)） | \`d3ba9863d3efa5c5880cf0ee32d3c30104a44268\` |
+
 歷史檔案保留當時的缺點是為了能追溯；請勿將它們當成最新修正後的教義或唯一正確文獻。
