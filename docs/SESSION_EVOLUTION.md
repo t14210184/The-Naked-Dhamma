@@ -31,4 +31,4 @@
 - 《小部・自說經》第六品第4經與《長阿含》卷19〈龍鳥品〉保留相近的盲人摸象故事；巴利本不具名的國王與漢譯鏡面王不能直接混為逐字一致。
 - 增訂《中部》第27經／《中阿含》第146經追象足跡、《中部》第29經心材、《中部》第63經箭喻、《中部》第22經蛇喻、《增支部》第3集第65經迦羅摩、《長部》第16經四大教法。逐篇完整來源新增於 [SOURCE_INDEX.md](SOURCE_INDEX.md)。
 - 網頁新增互動：宇宙起源推論、摸象部位即時解說、逐步追象驗證，及新增故事卡；維持不點即可完整閱讀的原則。
-- 專案歸檔：現有網頁為第九版 [versions/09-dn1-sutta-exploration.html](../versions/09-dn1-sutta-exploration.html)，Git blob `d3ba9863d3efa5c5880cf0ee32d3c30104a44268`。GitHub Pages 發布 run #39354211114 對 SHA `c5fda9ba438a629af65adcecf8ae3babc9163b8b` 顯示 success；未取得可自行獨立開啟網頁的 HTTP 驗收工具結果，真實長者 UX 測試亦仍未完成。
+- 專案歸檔：現有網頁為第九版 [versions/09-dn1-sutta-exploration.html](../versions/09-dn1-sutta-exploration.html)，Git blob `e6db42fe38301da9219379888c5ea9d2a012808b`。GitHub Pages 發布 run #39354211114 對 SHA `c5fda9ba438a629af65adcecf8ae3babc9163b8b` 顯示 success；未取得可自行獨立開啟網頁的 HTTP 驗收工具結果，真實長者 UX 測試亦仍未完成。
