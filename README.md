@@ -8,7 +8,7 @@
 
 - 正式網站原始檔：[`index.html`](./index.html)（已推送，GitHub 可直接讀取）。
 - **[立即玩互動網站（GitHub Pages）](https://t14210184.github.io/The-Naked-Dhamma/)**：GitHub 官方部署工作 [#39354211114](https://github.com/t14210184/The-Naked-Dhamma/actions/runs/39354211114) 對網站 SHA `c5fda9ba438a629af65adcecf8ae3babc9163b8b` 已回報 `success`，並提供正式網址；獨立 HTTP 與真實 iPhone／長者操作驗收另行追蹤。
-- [本次對話的網站演進歷史](docs/SESSION_EVOLUTION.md)／[九個主要歷史版本](docs/VERSION_ARCHIVE.md)。
+- [本次對話的網站演進歷史](docs/SESSION_EVOLUTION.md)／[十個主要歷史版本](docs/VERSION_ARCHIVE.md)。
 - [GitHub 專案 Issues](https://github.com/t14210184/The-Naked-Dhamma/issues)：部署驗收、原典稽核、長者實測、授權決策。
 
 ## 專案定位
