@@ -1,6 +1,6 @@
-# 本次對話的八個主要對外版本
+# 本次對話的十個主要對外版本
 
-歷史網頁按主要交付節點歸檔於 `versions/`。同名檔曾在對話中多次覆寫；以下是**可還原的八個主要版本**，並非每一次中間編輯的完整 Git diff。其他需求與逐次修正見 [修訂歷程](SESSION_EVOLUTION.md)。
+歷史網頁按主要交付節點歸檔於 `versions/`。同名檔曾在對話中多次覆寫；以下是**可還原的十個主要版本**，並非每一次中間編輯的完整 Git diff。其他需求與逐次修正見 [修訂歷程](SESSION_EVOLUTION.md)。
 
 | 序 | 版本定位 | 原始 HTML | Git blob SHA-1 |
 |---|---|---|---|
@@ -11,9 +11,10 @@
 | 05 | 滑動即能完整閱讀、長者友善 | [05](../versions/05-scroll-first.html) | `e6e71770118eabf41c217270cd309426812647ea` |
 | 06 | 文獻分層與考古研究 | [06](../versions/06-evidence-research.html) | `1dd6a53dd8112c84898baba379580fa04218a9fa` |
 | 07 | 從論文改為互動遊戲 | [07](../versions/07-story-game.html) | `dbc9534387e38e82b92de719de1ccd2bbd4eddbf` |
-| 08 | 中立觀察、具象井圖、慈心練習 | [08](../versions/08-see-more.html)（同 [首頁](../index.html)） | `d27e27473d66a9c856b941ffa43fa7014e3b5fd2` |
+| 08 | 中立觀察、具象井圖、慈心練習 | [08](../versions/08-see-more.html) | `d27e27473d66a9c856b941ffa43fa7014e3b5fd2` |
 
+| 09 | 《梵網經》六十二見、盲人摸象、追象腳印、沙門果及心材故事互動補充；逐區標示原典、頁尾新增七組考據註釋 | [09](../versions/09-dn1-sutta-exploration.html) | `e6db42fe38301da9219379888c5ea9d2a012808b` |
 
-| 09 | 《梵網經》六十二見、盲人摸象、追象腳印、沙門果及心材故事互動補充；逐區標示原典、頁尾新增七組考據註釋 | [09](../versions/09-dn1-sutta-exploration.html)（同[首頁](../index.html)） | `e6db42fe38301da9219379888c5ea9d2a012808b` |
+| 10 | 更換盲人摸象的大象插畫：改為依正常成年象比例重畫的完整側面，清楚顯示長鼻、耳朵、象牙、四腿與尾巴，保留四個觸摸部位的互動與原典連結 | [10](../versions/10-elephant-anatomy-fix.html)（同 [首頁](../index.html)） | `705de2678381d77180a5fa4e7680b5d4ac969730` |
 
 歷史檔案保留當時的缺點是為了能追溯；請勿將它們當成最新修正後的教義或唯一正確文獻。
