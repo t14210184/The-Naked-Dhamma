@@ -62,7 +62,11 @@
 .choice-row button[aria-pressed="true"],.elephant-slices button[aria-pressed="true"]{background:#a9eac9;color:#092b2d;border-color:#cfffea}
 .choice-feedback,.elephant-feedback{padding:17px 19px;border-radius:15px;background:#142e3a;border:1px solid #5c8383;min-height:68px}
 .elephant-panel{background:#17313c;border:1px solid #54787b;border-radius:24px;padding:clamp(16px,2.5vw,28px)}
-.elephant-svg{width:100%;height:auto;max-height:330px;display:block;margin:auto;filter:drop-shadow(0 10px 14px rgba(0,0,0,.18))}
+.elephant-svg{width:100%;height:auto;max-height:520px;display:block;margin:auto;overflow:visible;filter:drop-shadow(0 10px 14px rgba(0,0,0,.18))}
+.elephant-svg .elephant-ear,.elephant-svg .elephant-tusks,.elephant-svg .elephant-legs,.elephant-svg .elephant-tail{transition:filter .2s ease,stroke .2s ease}
+.elephant-svg[data-active="ear"] .elephant-ear,.elephant-svg[data-active="tusk"] .elephant-tusks,.elephant-svg[data-active="leg"] .elephant-legs,.elephant-svg[data-active="tail"] .elephant-tail{filter:drop-shadow(0 0 10px #d0ffd6)}
+@media(max-width:760px){.elephant-svg{max-height:370px}}
+@media(prefers-reduced-motion:reduce){.elephant-svg *{transition:none!important}}
 .elephant-slices{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
 .elephant-slices button{flex:1;min-width:130px}
 .footstep-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:23px 0}
@@ -121,7 +125,49 @@
   <h2>摸到耳朵的人，能說整頭象就是一把扇子嗎？</h2>
   <p class="lead">一群人各摸到大象的一部分，說的都有自己的接觸依據，最後卻吵得不可開交。你可以試著選一個部位，也可以直接往下看。</p></div>
   <p class="origin-tag"><b>故事原典</b> 巴利《小部・自說經》第六品第4經〈外道經〉；漢譯《長阿含經》卷19〈龍鳥品〉「鏡面王盲人摸象」。<a href="#source-elephant">原文連結 ↘</a></p>
-  <div class="elephant-panel"><svg class="elephant-svg" viewBox="0 0 640 350" role="img" aria-label="一頭完整的大象，具有大耳朵、長鼻子、象牙、四條粗腿與尾巴"><g fill="#95b9ba" stroke="#daefea" stroke-width="5" stroke-linejoin="round"><path d="M143 133 C154 67 253 56 364 83 C421 97 469 123 486 191 L469 282 L427 282 L419 197 L364 204 L353 282 L313 282 L309 215 L218 216 L206 282 L165 282 L164 197 C139 178 137 158 143 133Z"/><path d="M179 136 C147 101 114 127 104 165 C91 203 82 225 54 220 C78 251 125 243 145 214 C166 199 178 165 179 136Z" fill="#aecbcc"/><path d="M155 136 C154 198 120 230 86 240 Q66 250 73 270 Q87 280 107 255 Q187 217 198 156Z" fill="#aecbcc"/><path d="M199 179 L222 217 L231 210 L217 165Z" fill="#f6edd8"/><path d="M485 158 C515 192 526 227 511 253" fill="none" stroke="#a3c0b9" stroke-width="8"/></g><circle cx="152" cy="133" r="7" fill="#0b222b"/></svg>
+  <div class="elephant-panel"><svg class="elephant-svg" viewBox="0 0 960 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="一頭比例自然、清楚可辨的成年亞洲象側面。牠有長鼻、兩根象牙、一對耳朵、四條粗腿與尾巴。">
+<defs>
+<linearGradient id="eleBody" x1=".16" y1="0" x2=".8" y2="1"><stop stop-color="#d3c6af"/><stop offset=".43" stop-color="#aea493"/><stop offset="1" stop-color="#817f74"/></linearGradient>
+<linearGradient id="eleEar" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#bdafa1"/><stop offset=".7" stop-color="#827b72"/><stop offset="1" stop-color="#696c68"/></linearGradient>
+<radialGradient id="eleStage" cx="50%" cy="55%" r="62%"><stop stop-color="#30505b"/><stop offset="1" stop-color="#102630"/></radialGradient>
+<clipPath id="eleClip"><path d="M21,342 55,343 95,322 100,344 150,304 144,299 152,302 156,297 150,296 151,289 157,286 161,293 175,284 160,310 126,340 94,355 53,361 99,365 99,493 113,543 133,557 170,554 180,543 174,523 156,522 161,533 151,538 136,521 134,479 140,479 143,461 140,450 155,373 151,360 158,358 154,354 134,361 136,345 179,305 195,277 193,270 208,267 210,239 222,226 233,234 237,249 261,241 267,248 282,239 279,257 289,249 300,250 300,217 305,210 315,246 326,253 356,215 432,169 436,186 380,246 376,269 368,278 374,293 369,303 383,296 387,301 384,321 395,397 426,516 439,534 435,557 416,574 410,588 415,598 462,600 483,585 491,589 484,591 490,597 516,590 501,551 496,407 489,389 499,395 493,377 510,371 519,348 527,273 C556,310 593,339 638,350 C695,369 751,410 800,428 L792,438 789,431 783,442 798,448 797,455 788,455 797,480 804,543 784,574 780,596 822,600 847,588 852,597 883,590 875,515 860,477 854,431 860,381 858,272 863,270 866,224 882,248 903,415 910,441 916,439 879,210 853,161 815,120 762,81 690,51 623,36 498,46 445,32 415,32 337,46 256,31 202,48 149,138 139,145 131,187 104,256 98,298 80,319Z"/></clipPath>
+</defs>
+<rect width="960" height="630" rx="26" fill="url(#eleStage)"/>
+<ellipse cx="511" cy="598" rx="413" ry="17" fill="#06151a" opacity=".44"/>
+<g class="elephant-legs">
+<path d="M276 293 Q257 349 259 442 L248 563 Q234 584 244 595 L351 597 Q368 583 351 560 L366 339Z" fill="#888579" stroke="#b9b4a6" stroke-width="2"/>
+<path d="M651 345 Q636 425 635 514 L639 565 Q622 588 647 595 L750 595 Q768 577 748 556 L742 420Z" fill="#7f8278" stroke="#b1afa4" stroke-width="2"/>
+</g>
+<path d="M21,342 55,343 95,322 100,344 150,304 144,299 152,302 156,297 150,296 151,289 157,286 161,293 175,284 160,310 126,340 94,355 53,361 99,365 99,493 113,543 133,557 170,554 180,543 174,523 156,522 161,533 151,538 136,521 134,479 140,479 143,461 140,450 155,373 151,360 158,358 154,354 134,361 136,345 179,305 195,277 193,270 208,267 210,239 222,226 233,234 237,249 261,241 267,248 282,239 279,257 289,249 300,250 300,217 305,210 315,246 326,253 356,215 432,169 436,186 380,246 376,269 368,278 374,293 369,303 383,296 387,301 384,321 395,397 426,516 439,534 435,557 416,574 410,588 415,598 462,600 483,585 491,589 484,591 490,597 516,590 501,551 496,407 489,389 499,395 493,377 510,371 519,348 527,273 C556,310 593,339 638,350 C695,369 751,410 800,428 L792,438 789,431 783,442 798,448 797,455 788,455 797,480 804,543 784,574 780,596 822,600 847,588 852,597 883,590 875,515 860,477 854,431 860,381 858,272 863,270 866,224 882,248 903,415 910,441 916,439 879,210 853,161 815,120 762,81 690,51 623,36 498,46 445,32 415,32 337,46 256,31 202,48 149,138 139,145 131,187 104,256 98,298 80,319Z" fill="url(#eleBody)" stroke="#d9d1bc" stroke-width="3" stroke-linejoin="round"/>
+<g clip-path="url(#eleClip)">
+<ellipse cx="520" cy="104" rx="330" ry="160" fill="#e7d6b8" opacity=".10"/>
+<path d="M454 91 C506 160 517 258 533 334 S617 429 680 402" stroke="#736e63" stroke-opacity=".34" stroke-width="19" fill="none"/>
+<path d="M733 140 Q693 264 747 380" stroke="#504e49" stroke-opacity=".18" stroke-width="27" fill="none"/>
+<path d="M320 289 Q355 435 363 574" stroke="#6e7067" stroke-opacity=".22" stroke-width="25" fill="none"/>
+<path d="M132 282 Q137 338 110 403 M144 315 Q152 363 117 433 M148 431 Q128 449 114 458 M148 470 Q126 480 118 489" stroke="#706d64" stroke-width="4" opacity=".60" fill="none" stroke-linecap="round"/>
+</g>
+<g class="elephant-ear">
+<path d="M302 54 C359 58 403 90 424 143 C436 182 402 240 349 265 Q323 275 313 237 C304 217 311 175 300 147 C291 118 287 73 302 54Z" fill="url(#eleEar)" stroke="#d4c7b4" stroke-width="3"/>
+<path d="M320 77 Q352 111 360 164 C370 206 358 235 340 252" stroke="#615e59" stroke-width="5" opacity=".56" fill="none"/>
+<path d="M309 62 Q366 84 393 132" stroke="#e5d8c0" stroke-width="3" opacity=".65" fill="none"/>
+</g>
+<path d="M150 141 Q171 131 193 147 M158 150 Q176 146 194 157" stroke="#72695f" stroke-width="3.3" fill="none" stroke-linecap="round"/>
+<ellipse cx="207" cy="159" rx="11" ry="8" fill="#625e56"/><ellipse cx="208" cy="157" rx="5.7" ry="5.5" fill="#121c1d"/><circle cx="205" cy="154" r="2" fill="#f3efe1"/>
+<path d="M198 192 C214 223 215 239 191 269" stroke="#716d62" stroke-opacity=".45" stroke-width="5" fill="none"/>
+<g class="elephant-tusks">
+<path d="M200 246 C168 281 111 334 20 342 C80 353 153 326 210 258Z" fill="#fbecd1" stroke="#b5a68d" stroke-width="2"/>
+<path d="M212 268 C182 315 132 353 53 361 C104 381 182 335 228 281Z" fill="#f4e7d0" stroke="#b5a58e" stroke-width="2"/>
+</g>
+<path d="M148 503 Q148 520 165 532" stroke="#645f56" stroke-width="3" fill="none"/>
+<g class="elephant-legs" stroke="#e8dcc3" stroke-opacity=".85" fill="#c5bfb0">
+<ellipse cx="260" cy="584" rx="11" ry="7"/><ellipse cx="282" cy="586" rx="10" ry="7"/><ellipse cx="305" cy="586" rx="11" ry="7"/>
+<ellipse cx="427" cy="586" rx="11" ry="7"/><ellipse cx="451" cy="587" rx="10" ry="7"/><ellipse cx="475" cy="585" rx="11" ry="7"/>
+<ellipse cx="669" cy="587" rx="11" ry="6"/><ellipse cx="693" cy="586" rx="10" ry="6"/>
+<ellipse cx="795" cy="588" rx="11" ry="7"/><ellipse cx="817" cy="586" rx="10" ry="7"/><ellipse cx="837" cy="584" rx="10" ry="7"/>
+</g>
+<path class="elephant-tail" d="M866 224 Q882 248 903 415 Q907 439 916 439" stroke="transparent" stroke-width="18" fill="none"/>
+</svg>
+   <p class="elephant-hint">大象全貌在上方。想知道為什麼有人會以為大象像扇子、柱子或掃帚？試試下列四個大按鈕。</p>
    <div class="elephant-slices">
     <button type="button" data-elephant="ear" aria-pressed="false">摸耳朵</button>
     <button type="button" data-elephant="tusk" aria-pressed="false">摸象牙</button>
@@ -250,7 +296,7 @@ if('speechSynthesis' in window){const b=$('#listenBtn');b.hidden=false;let readi
 const responses={experience:'深刻的經驗值得尊重，但它能涵蓋的範圍可能有限。經文正提醒人們不要把部分體驗直接當成全宇宙的定論。',scope:'這是最關鍵的問題：觀察到了什麼？又有哪些是另外推算、尚未驗證的？'};
 document.querySelectorAll('[data-question="certainty"] button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-question="certainty"] button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('certaintyReply').textContent=responses[b.dataset.answer];}));
 const animal={ear:'摸到耳朵的人覺得像簸箕（大扇子）。這是摸到的一個部分，不是整頭象的模樣。',tusk:'摸到象牙的人覺得像犁具。他摸到了真的象牙，卻不能說整頭象就是一把犁。',leg:'摸到象腿的人覺得像柱子。感受到的是粗壯的腿，不代表象只有一根柱子。',tail:'摸到尾巴的人覺得像掃帚。每個人所接觸的片段不同，才會有看似衝突的說法。'};
-document.querySelectorAll('[data-elephant]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-elephant]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('elephantReply').textContent=animal[b.dataset.elephant];}));
+document.querySelectorAll('[data-elephant]').forEach(b=>b.addEventListener('click',()=>{document.querySelector('#elephant .elephant-svg')?.setAttribute('data-active',b.dataset.elephant);document.querySelectorAll('[data-elephant]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('elephantReply').textContent=animal[b.dataset.elephant];}));
 const tracks={'1':'只有大腳印，連經驗豐富的追象人也不下定論：可能還有其他大象留下相似腳印。','2':'除了大腳印，還有刮痕，證據更強了一點，但經文中的追象人仍繼續觀察。','3':'直到實際看見那頭大象，才不再只靠間接線索猜測。'};
 document.querySelectorAll('[data-track]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-track]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('footprintReply').textContent=tracks[b.dataset.track];}));
 })();
