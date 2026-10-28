@@ -53,6 +53,12 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
 @media(max-width:900px){.version-triptych{grid-template-columns:1fr}.modern-scenes{grid-template-columns:1fr}}
 @media(max-width:700px){.path-row{grid-template-columns:49px 1fr;gap:13px;padding:16px}.path-row .path-number{width:43px;height:43px;font-size:1.1em}.modern-card,.version-story{padding:19px}.version-story .version-big{font-size:1.21em}}
 @media print{.path-row,.version-story,.modern-card,.modern-answer{background:#fff;color:#111;border:1px solid #888}}
+
+.episode-shell{padding-top:30px}.episode-shell>p{font-size:.88em;font-weight:850;color:#e1f4eb;margin-bottom:14px}.episode-menu{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.episode-menu a{border:1px solid #75a697;background:#173941;color:#f8fffb;border-radius:13px;padding:12px 14px;text-decoration:none;font-size:.81em;font-weight:850;line-height:1.48;min-height:65px}.episode-menu a:hover{background:#2f6056}.episode-menu span{color:#ffe0a7;font-weight:950;padding-right:8px}.reading-track{height:4px;background:#1b3c46}.reading-track span{display:block;width:0;height:100%;background:linear-gradient(90deg,#b2eac4,#ffd79d);transition:width .1s ease}.quiz-options button[aria-pressed=true]{background:#356456;border-color:#b6f7d2}.quiz-options button:focus-visible,.cow-choice:focus-visible,.switch-choice:focus-visible{outline:4px solid #ffe1a6;outline-offset:3px}.episode-menu a:focus-visible{outline:4px solid #ffe1a6}
+@media(max-width:1000px){.episode-menu{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.episode-menu{grid-template-columns:1fr 1fr}.episode-menu a{font-size:.76em;padding:10px;min-height:70px}.episode-menu span{display:block;padding:0}}
+@media(max-width:380px){.episode-menu{grid-template-columns:1fr}.episode-menu span{display:inline}}
+@media(prefers-reduced-motion:reduce){.reading-track span{transition:none}}
 </style>
 </head>
 <body>
@@ -63,7 +69,7 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
   <nav aria-label="文章導覽"><a href="#story">開始聽故事</a><a href="#monopoly">牛群互動</a><a href="#compare">三本經對照</a><a href="#library">經文來源</a></nav>
   <div class="font-tools" aria-label="閱讀字級"><button type="button" id="fontDown" aria-label="縮小字體">A−</button><button type="button" id="fontUp" aria-label="放大字體">A＋</button></div>
  </div>
-</header>
+<div class="reading-track" aria-hidden="true"><span id="readingFill"></span></div></header>
 <main id="main">
 <section class="hero" id="top">
  <div class="container hero-grid">
@@ -91,6 +97,14 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
    </svg>
    <div class="visual-compare"><div><b>布施財物</b><small>早期經典肯定其善果</small></div><div><b>改變身心</b><small>經典還談更高的修習</small></div></div>
    <p class="visual-quote">這個故事出自《增支部》與兩部漢譯《阿含》。<a href="#s-velama" class="src">故事的來源</a></p>
+  </div>
+ </div>
+
+ <div class="container episode-shell" aria-label="選擇想聽的經典故事">
+  <p><strong>你想先看哪個故事？</strong>八個入口都能直接點，也可以從頭往下慢慢讀。</p>
+  <div class="episode-menu">
+   <a href="#story"><span>01</span>富豪竟是佛陀前世</a><a href="#metta"><span>02</span>三餐幾百大鍋飯</a><a href="#robe"><span>03</span>養母親手做新衣</a><a href="#monopoly"><span>04</span>黑牛白牛誰更強？</a>
+   <a href="#worship"><span>05</span>滿天花雨還不夠？</a><a href="#ancestors"><span>06</span>亡者收得到嗎？</a><a href="#king"><span>07</span>國王問捐給誰</a><a href="#free-gifts"><span>08</span>不用花錢的五個禮物</a>
   </div>
  </div>
 </section>
@@ -464,30 +478,23 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
 <script>
 (function(){
 'use strict';
-var result=document.getElementById('quizResult');
-var responses={
- money:'巨額布施有它的價值；但 AN 9.20 接著還列出供養修行者、僧團、皈依、持戒、慈心與無常想的更高比較。金額不是最後答案。',
- temple:'供養四方僧團住處在經文中很重要；但它不是最最後比較的修習。佛陀還指出皈依、持戒與修習慈心、無常想的更高位置。',
- wisdom:'你選到 AN 9.20 比較的較高層次了：慈心修習高於此前財施與持戒，無常想居此經最後比較的修習。請記住：一瞬修習不等於保證解脫。'
-};
-document.querySelectorAll('[data-answer]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-answer]').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');result.innerHTML='<strong>原典提醒：</strong> '+responses[b.getAttribute('data-answer')]})});
-var checkResult=document.getElementById('checkResult');
-document.querySelectorAll('.check').forEach(function(c){c.addEventListener('change',function(){var n=document.querySelectorAll('.check:checked').length;checkResult.textContent=n===0?'沒有勾選也沒關係。宗教布施應以理解、自願和能力為前提。':'你勾選了 '+n+' 個值得追問的情況。先保留自己的決定權，索取完整費用、用途與承諾資料，必要時尋求可靠協助；這不是對特定團體的違法判決。';})});
-var size=20;var down=document.getElementById('fontDown');var up=document.getElementById('fontUp');
-function scale(d){size=Math.max(18,Math.min(26,size+d));document.documentElement.style.setProperty('--base',size+'px')}
-down.addEventListener('click',function(){scale(-2)});up.addEventListener('click',function(){scale(2)});
-document.getElementById('copyLink').addEventListener('click',function(){var message=document.getElementById('copyMessage');var url=location.href.split('#')[0];if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(function(){message.textContent='連結已複製，可分享給朋友。'},function(){message.textContent='無法自動複製，請直接複製瀏覽器網址。'})}else{message.textContent='請直接複製瀏覽器網址：'+url}});
+function all(selector){return Array.from(document.querySelectorAll(selector));}
+function pressed(button,selector){all(selector).forEach(function(el){el.setAttribute('aria-pressed',String(el===button));});}
+const answers={money:'不是。佛陀沒有說只挑最貴的東西才有價值；即使飯菜簡單，真誠和恭敬也重要。',temple:'也不是。經文肯定布施、供養僧團和精舍；但修行不只停在財物。',wisdom:'是這個意思。布施時要真誠，也要改變自己的行為與心；修無常想不等於一秒就開悟。'};
+all('[data-answer]').forEach(function(button){button.addEventListener('click',function(){pressed(button,'[data-answer]');document.getElementById('quizResult').textContent=answers[button.getAttribute('data-answer')];});});
+all('[data-pot]').forEach(function(button){button.addEventListener('click',function(){pressed(button,'[data-pot]');const pali=button.getAttribute('data-pot')==='pali';const el=document.getElementById('potResult');el.replaceChildren();const strong=document.createElement('strong');strong.textContent=pali?'巴利本：早上 100 鍋＋中午 100 鍋＋晚上 100 鍋。':'漢譯本：早上 300 鍋＋中午 300 鍋＋晚上 300 鍋。';const span=document.createElement('span');span.textContent=pali?'總共 300 鍋。與漢譯數字不同，但都強調慈心的價值。':'總共 900 鍋。與巴利本數字不同，但都強調慈心的價值。';el.append(strong,span);});});
+all('[data-cow]').forEach(function(button){button.addEventListener('click',function(){pressed(button,'[data-cow]');document.getElementById('cowResponse').textContent='毛色不是判斷能否負重的標準。經文說要看牛是否受過訓練、強健而可靠；判斷人的德行，也不能只看出身與服飾。';});});
+const ghosts={match:'依經文的宗教敘述：若亡者處在可以接受供養的餓鬼境界，可能從供養受益。這不能用來判定特定亡者的去處。',other:'依經文：如果指定親人不符合，但有其他親屬在能受益的境界，其他親屬可能受益。',none:'依經文：即使沒有適合受益的亡者，施主自己的布施善果仍在。這不是保證送達的付費服務。'};
+all('[data-ghost]').forEach(function(button){button.addEventListener('click',function(){pressed(button,'[data-ghost]');document.getElementById('ghostResult').textContent=ghosts[button.getAttribute('data-ghost')];});});
+all('.check').forEach(function(box){box.addEventListener('change',function(){const count=all('.check:checked').length;document.getElementById('checkResult').textContent=count?'你勾選了 '+count+' 個值得追問的情況。先保留決定權，索取完整費用、捐款用途與承諾內容。這不是對特定機構的違法判決。':'沒有勾選也沒關係。真正的捐款應建立在充分理解、自主意願與能力之上。';});});
+let fontSize=20;function adjust(step){fontSize=Math.max(18,Math.min(27,fontSize+step));document.documentElement.style.setProperty('--base',fontSize+'px');}
+document.getElementById('fontDown').addEventListener('click',function(){adjust(-2);});document.getElementById('fontUp').addEventListener('click',function(){adjust(2);});
+const copy=document.getElementById('copyLink');
+copy.addEventListener('click',function(){const msg=document.getElementById('copyMessage'),url=location.href.split('#')[0];if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(function(){msg.textContent='網址已複製，可以分享給朋友。';},function(){msg.textContent='無法自動複製，請從瀏覽器網址列複製。';});}else{msg.textContent='請從瀏覽器網址列複製：'+url;}});
+const fill=document.getElementById('readingFill');
+function updateProgress(){if(!fill)return;const total=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);const percent=Math.max(0,Math.min(100,window.scrollY/total*100));fill.style.width=percent.toFixed(1)+'%';}
+window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();
 })();
-
-const answerEl=document.getElementById('quizResult');
-if(answerEl){const answerText={money:'不是。佛陀沒有說「只買最貴的」就好；即使飯菜簡單，布施的真誠與尊敬也重要。',temple:'也不是。經文肯定財物布施、供養僧團與住所的善果；只是還有自己持戒、培養慈心和智慧。',wisdom:'正是這個意思。財施有其善果，但也要改變行為與內心；無常觀不代表只想一秒就證悟。'};
-document.querySelectorAll('[data-answer]').forEach(function(b){b.addEventListener('click',function(){answerEl.textContent=answerText[b.getAttribute('data-answer')];});});}
-document.querySelectorAll('[data-pot]').forEach(function(b){b.addEventListener('click',function(){const pali=b.getAttribute('data-pot')==='pali';document.querySelectorAll('[data-pot]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});const target=document.getElementById('potResult');if(target){target.innerHTML=pali?'<strong>巴利經：早上 100 鍋 ＋ 中午 100 鍋 ＋ 晚上 100 鍋。</strong><span>總共 300 鍋。重點仍是慈心修習的價值，不是誰的鍋比較多。</span>':'<strong>漢譯：早上 300 鍋 ＋ 中午 300 鍋 ＋ 晚上 300 鍋。</strong><span>總共 900 鍋；兩種傳承數字不同，都肯定短暫修慈心有更大的果報。</span>';}});});
-
-
-document.querySelectorAll('[data-cow]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-cow]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});document.getElementById('cowResponse').textContent='這頭牛的顏色，不足以決定牠是否能負重。經文說，要看是否受過訓練、有力而穩當；人的德行也不能只看身分與外表。';});});
-const ghostResponses={match:'依這部經的宗教敘述：若亡者處在可以接受供養的餓鬼境界，可能從供養受益。現實中無法用這個互動判定任何已故親人的處境。',other:'依經文的條件敘述：若指定親人不符合，而其他親屬處於符合條件的境界，其他親屬可能受益。',none:'依經文：如果沒有適合受益的亡者，施主仍有布施的善果。這不等於任何人能出售保證送達的服務。'};
-document.querySelectorAll('[data-ghost]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-ghost]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});document.getElementById('ghostResult').textContent=ghostResponses[b.getAttribute('data-ghost')];});});
 </script>
 </body>
 </html>
