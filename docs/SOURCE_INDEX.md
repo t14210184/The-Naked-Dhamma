@@ -69,12 +69,12 @@
 
 | 主題 | 巴利原典 | 漢譯原典 | 校勘重點 |
 |---|---|---|---|
-| 富豪隨藍布施與觀修比較 | [AN 9.20 Velāma Sutta](https://www.dhammatalks.org/suttas/AN/AN9_20.html) | [《中阿含》155《須達哆經》](https://agama.buddhason.org/MA/MA155.htm)；[《增一阿含》27.3](https://buddhaspace.org/agama1/sub/27.3.html) | **隨藍是釋迦牟尼佛的過去世，不是給孤獨長者。** AN 9.20 末級「一彈指頃修無常想」；MA155 末級觀「無常、苦、空、非神」，未明寫一彈指；EA27.3 末級為「世間不可樂想」。巴利本分列皈依與五戒。 |
-| 大鍋飲食與慈心 | [SN 20.4](https://agama.buddhason.org/SN/SN0498.htm) | [《雜阿含》1253](https://agama.buddhason.org/SA/SA1253.htm) | 兩經均將巨額食物布施與短暫修慈心相比。漢譯與巴利本列舉鍋數／分時說法不同，不能宣稱數字逐字相同。 |
-| 反對只准供養自己弟子的排他說法 | [AN 3.57（部分編號系統為 3.58）](https://find.dhamma.gift/bw/an/an3.57.html) | [《雜阿含》95](https://buddhaspace.org/agama/sub/95.html) | 佛陀反對「只能布施給我和弟子」的說法，也指出施予戒德良好者果報較大，不能將福田概念解釋成某一機構獨占功德。 |
+| 富豪隨藍布施與觀修比較 | [AN 9.20 Velāma Sutta](https://www.dhammatalks.org/suttas/AN/AN9_20.html) | [《中阿含》155《須達哆經》](https://agama.buddhason.org/MA/MA155.htm)；[《增一阿含》27.3](https://agama.buddhason.org/MA/MA155.htm) | **隨藍是釋迦牟尼佛的過去世，不是給孤獨長者。** AN 9.20 末級「一彈指頃修無常想」；MA155 末級觀「無常、苦、空、非神」，未明寫一彈指；EA27.3 末級為「世間不可樂想」。巴利本分列皈依與五戒。 |
+| 大鍋飲食與慈心 | [SN 20.4](https://www.dhammatalks.org/suttas/SN/SN20_4.html) | [《雜阿含》1253](https://agama.buddhason.org/SA/SA1253.htm) | 兩經均將巨額食物布施與短暫修慈心相比。漢譯與巴利本列舉鍋數／分時說法不同，不能宣稱數字逐字相同。 |
+| 反對只准供養自己弟子的排他說法 | [AN 3.57（部分編號系統為 3.58）](https://www.dhammatalks.org/suttas/AN/AN3_58.html) | [《雜阿含》95](https://buddhaspace.org/agama/sub/95.html) | 佛陀反對「只能布施給我和弟子」的說法，也指出施予戒德良好者果報較大，不能將福田概念解釋成某一機構獨占功德。 |
 | 養母供衣、個人與僧團供養 | [MN 142《施分別經》](https://suttacentral.net/mn142/en/sujato) | [《中阿含》180《瞿曇彌經》](https://agama.buddhason.org/MA/MA180.htm) | 肯定僧團供養的價值，也討論受施者與施者德行。不同譯本分類數目與詳細措辭不能任意套用。 |
 | 涅槃前的供養與依法而行 | [DN 16《大般涅槃經》](https://www.dhammatalks.org/suttas/DN/DN16.html) | [《長阿含》2《遊行經》](https://agama.buddhason.org/DA/DA02.htm) | 依法修行是最高供養；不能反向推論所有獻花、舍利塔及外在供養都無價值。 |
-| 供養亡者的條件 | [AN 10.177（有不同編號系統）](https://study.jhana.info/suttas/an10.177) | [《雜阿含》1041](https://buddhaspace.org/agama/sub/1041.html) | 某些亡者所處境界可能受益，不代表付費代辦即可保證所有亡者獲指定結果；宗教信念不能冒充科學確認。 |
+| 供養亡者的條件 | [AN 10.177（有不同編號系統）](https://www.dhammatalks.org/suttas/AN/AN10_166.html) | [《雜阿含》1041](https://buddhaspace.org/agama/sub/1041.html) | 某些亡者所處境界可能受益，不代表付費代辦即可保證所有亡者獲指定結果；宗教信念不能冒充科學確認。 |
 
 ### P2：其他七組用來防止單一結論過度延伸的早期經本
 
