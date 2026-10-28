@@ -50,7 +50,9 @@ async function run(){
    await evaluate('(()=>{for(let i=0;i<4;i++)document.querySelector("#fontDown").click();return 1;})()');
    const pic=await send('Page.captureScreenshot',{format:'jpeg',quality:70,captureBeyondViewport:false});writeFileSync(join(imgs,'mobile.jpg'),Buffer.from(pic.data,'base64'));
    if(process.env.QA_PRINT_PREVIEW==='1')console.log('SCREENSHOT_MOBILE_BASE64='+pic.data);
-   await evaluate('(()=>{document.querySelector(".cow-grid").scrollIntoView({block:"center"});return 1;})()');await sleep(180);
+   await evaluate('(()=>{document.documentElement.style.scrollBehavior="auto";const target=document.querySelector(".cow-grid");window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-120,behavior:"instant"});return window.scrollY;})()');await sleep(250);
+   const cowPosition=await evaluate('(()=>({top:Math.round(document.querySelector(".cow-grid").getBoundingClientRect().top),height:Math.round(document.querySelector(".cow-grid").getBoundingClientRect().height)}))()');
+   check(cowPosition.top>=-4&&cowPosition.top<500,'Cow illustrations appear in the screenshot viewport '+JSON.stringify(cowPosition));
    const cowImage=await send('Page.captureScreenshot',{format:'jpeg',quality:70,captureBeyondViewport:false});
    writeFileSync(join(imgs,'cow-story-mobile.jpg'),Buffer.from(cowImage.data,'base64'));
    if(process.env.QA_PRINT_PREVIEW==='1')console.log('SCREENSHOT_COW_BASE64='+cowImage.data);
