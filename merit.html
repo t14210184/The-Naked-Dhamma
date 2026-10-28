@@ -59,6 +59,17 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
 @media(max-width:620px){.episode-menu{grid-template-columns:1fr 1fr}.episode-menu a{font-size:.76em;padding:10px;min-height:70px}.episode-menu span{display:block;padding:0}}
 @media(max-width:380px){.episode-menu{grid-template-columns:1fr}.episode-menu span{display:inline}}
 @media(prefers-reduced-motion:reduce){.reading-track span{transition:none}}
+
+/* Keep the masthead compact even at the largest reader font on narrow phones. */
+@media(max-width:680px){
+ .header-inner{min-width:0;max-width:100%;gap:6px}
+ .header .logo{font-size:16px;min-width:0;flex:0 1 auto;white-space:nowrap}
+ .header .logo span:last-child{display:inline-block;min-width:0;max-width:min(185px,calc(100vw - 145px));overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .header .logo .logo-icon{flex:0 0 36px}
+ .font-tools{flex:0 0 auto;margin-left:auto}
+ .font-tools button{min-width:43px;width:43px;padding:0}
+}
+@media(max-width:360px){.header .logo span:last-child{display:none}}
 </style>
 </head>
 <body>
