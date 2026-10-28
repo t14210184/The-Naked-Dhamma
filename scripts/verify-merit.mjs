@@ -40,9 +40,10 @@ async function run(){
    const interact=await evaluate('(()=>{document.querySelector("[data-answer=wisdom]").click();let a=document.querySelector("#quizResult").textContent;document.querySelector("[data-pot=pali]").click();let b=document.querySelector("#potResult").textContent;document.querySelector("[data-cow=white]").click();let c=document.querySelector("#cowResponse").textContent;document.querySelector("[data-ghost=none]").click();let d=document.querySelector("#ghostResult").textContent;return {quiz:a.includes("改變"),pots:b.includes("300 鍋"),cow:c.includes("毛色"),ghost:d.includes("施主")};})()');
    check(Object.values(interact).every(Boolean),'Interactive scenes '+JSON.stringify(interact));
    await evaluate('(()=>{for(let i=0;i<4;i++)document.querySelector("#fontUp").click();return 1;})()');
-   const large=await evaluate('(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth,font:getComputedStyle(document.body).fontSize}))()');
+   const large=await evaluate('(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth,font:getComputedStyle(document.body).fontSize,offenders:[...document.querySelectorAll("body *")].filter(e=>{const r=e.getBoundingClientRect();return r.right>innerWidth+2&&r.width>0}).slice(0,10).map(e=>({tag:e.tagName,cls:String(e.className).slice(0,35),right:Math.ceil(e.getBoundingClientRect().right),width:Math.ceil(e.getBoundingClientRect().width)}))}))()');
    check(large.scroll<=large.client+2,'Enlarged 390px text has no overflow '+JSON.stringify(large));
-   const pic=await send('Page.captureScreenshot',{format:'jpeg',quality:61,captureBeyondViewport:false});writeFileSync(join(imgs,'mobile.jpg'),Buffer.from(pic.data,'base64'));
+   await evaluate('(()=>{for(let i=0;i<4;i++)document.querySelector("#fontDown").click();return 1;})()');
+   const pic=await send('Page.captureScreenshot',{format:'jpeg',quality:70,captureBeyondViewport:false});writeFileSync(join(imgs,'mobile.jpg'),Buffer.from(pic.data,'base64'));
    if(process.env.QA_PRINT_PREVIEW==='1')console.log('SCREENSHOT_MOBILE_BASE64='+pic.data);
   }
   if(w===1440){const pic=await send('Page.captureScreenshot',{format:'jpeg',quality:58,captureBeyondViewport:false});writeFileSync(join(imgs,'desktop.jpg'),Buffer.from(pic.data,'base64'));if(process.env.QA_PRINT_PREVIEW==='1')console.log('SCREENSHOT_DESKTOP_BASE64='+pic.data);}
@@ -54,5 +55,5 @@ async function run(){
  check(fallback.words>3000&&fallback.links>=13,'Story readable with JavaScript removed '+JSON.stringify(fallback));
  console.log('BROWSER_QA_SUMMARY '+JSON.stringify({checks:'done',failures}));
 }
-try{await run()}catch(e){console.error('BROWSER_QA_FATAL '+e.stack);failures++;}finally{ws?.close();proc.kill('SIGKILL');rmSync(dir,{recursive:true,force:true});}
+try{await run()}catch(e){console.error('BROWSER_QA_FATAL '+e.stack);failures++;}finally{ws?.close();proc.kill('SIGKILL');await sleep(300);try{rmSync(dir,{recursive:true,force:true,maxRetries:10,retryDelay:200});}catch(e){console.warn('Temp Chrome profile cleanup deferred: '+e.message);}}
 if(failures)process.exitCode=1;
