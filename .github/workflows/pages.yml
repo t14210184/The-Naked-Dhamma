@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - "index.html"
+      - "merit.html"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -29,10 +30,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Prepare one-page static website
+      - name: Prepare both public story pages
         run: |
           mkdir -p _site
           cp index.html _site/index.html
+          cp merit.html _site/merit.html
           touch _site/.nojekyll
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
