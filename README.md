@@ -7,8 +7,9 @@
 ## 立即體驗
 
 - 正式網站原始檔：[`index.html`](./index.html)（已推送，GitHub 可直接讀取）。
-- **第二篇《功德不是價目表》**：[互動網頁](https://t14210184.github.io/The-Naked-Dhamma/merit.html)／[完整單檔原始碼](./merit.html)。以隨藍富豪、三百大鍋食物、佛陀養母供新衣、不得壟斷布施與最高供養等故事，探索布施、戒、慈心、智慧與功德商品化。採無追蹤、深色大字、響應式及不需 JavaScript 也可閱讀的設計。此連結是否已公開上線，以本次 GitHub Pages 部署與實際 HTTP 讀回為準。
+- **第二篇《功德不是價目表》互動故事館（擴充版）**：[開啟網頁](https://t14210184.github.io/The-Naked-Dhamma/merit.html)／[完整單檔原始碼](./merit.html)。改以八組原典故事／譬喻帶領讀者：隨藍財富故事與佛陀前世、清晨大鍋飯、養母親手縫衣、反壟斷布施及牛群毛色、花雨中的最高供養、供養亡者的條件、波斯匿王請教及五種大布施。結合原創 SVG 插畫、點選牛群、巴漢大鍋數量切換、情境問答、字級調整與無 JavaScript 仍完整可讀的正文；部署狀態必須以同 SHA GitHub Pages 工作及公網讀回判定。
 - **第二篇文獻分層**：目前選編 13 組可查證早期材料，其中 6 組有巴漢平行記載（P1）、7 組以單一早期經典核對（P2）。此為有明確範圍的**選編**，非聲稱已窮盡所有功德相關經藏經文。詳細差異見 [新篇來源索引](docs/SOURCE_INDEX.md#第二篇功德不是價目表選編與平行經校勘2026-10-28)。
+- **網頁品質檢查**：[`scripts/verify-merit.mjs`](scripts/verify-merit.mjs) 透過 GitHub Actions 的原生 Chrome 進行六種螢幕寬度、放大字級、互動、頁內連結與無 JavaScript 閱讀檢查。這是瀏覽器自動化測試，不能替代 iPhone Safari 與一般長者實測。
 - **[立即玩互動網站（GitHub Pages）](https://t14210184.github.io/The-Naked-Dhamma/)**：GitHub 官方部署工作 [#39354211114](https://github.com/t14210184/The-Naked-Dhamma/actions/runs/39354211114) 對網站 SHA `c5fda9ba438a629af65adcecf8ae3babc9163b8b` 已回報 `success`，並提供正式網址；獨立 HTTP 與真實 iPhone／長者操作驗收另行追蹤。
 - [本次對話的網站演進歷史](docs/SESSION_EVOLUTION.md)／[十個主要歷史版本](docs/VERSION_ARCHIVE.md)。
 - [GitHub 專案 Issues](https://github.com/t14210184/The-Naked-Dhamma/issues)：部署驗收、原典稽核、長者實測、授權決策。
