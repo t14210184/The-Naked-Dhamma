@@ -25,6 +25,19 @@
 @media(max-width:360px){.logo span:last-child{display:none}.container{width:calc(100% - 26px)}.hero .lead{font-size:1.08em}.rung{padding:12px}.section{padding:50px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 @media print{:root{color-scheme:light;--bg:white;--ink:#161616;--muted:#333}body{color:#111;background:#fff}.header,.quiz,.checkup,.button-row{display:none}.section{padding:20px 0;break-inside:avoid}a{color:#164a3b}.panel,.person,.rung,.glass,.claim,.parallel-card,.practice-card,.evidence-card{background:#fff;color:#111;border:1px solid #888}.gold,.mint{color:#184d38}}
+
+/* Story-first revision: stories visible without scripts; controls are enhancements only */
+body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ellipse at 75% 5%,#27534c 0%,transparent 45%),radial-gradient(ellipse at 3% 100%,#163a49 0%,transparent 43%),#091b24}
+.hero h1{font-size:clamp(2.55rem,5.8vw,4.75rem)}.hero h1 strong{font-weight:950}.hero .hero-question{font-size:1.16em;color:var(--gold);line-height:1.52}.hero-visual svg{display:block;max-width:100%;height:auto}.hero-visual .visual-top{margin-bottom:10px}.hero .button-row{margin:27px 0}
+.story-timeline{display:grid;gap:18px;margin-top:28px}.story-beat{position:relative;padding:clamp(22px,3vw,32px);border:1px solid #6b8985;border-radius:24px;background:linear-gradient(155deg,#1b4046,#122c36)}.story-beat p{font-size:1em}.story-beat p:last-child{margin-bottom:0}
+.scene-index{display:inline-block;font-size:.78em;font-weight:900;color:#ffdc9c;background:#385044;border:1px solid #87896d;padding:5px 13px;border-radius:100px;margin:0 0 18px}.speech{position:relative;padding:14px 20px;border-radius:19px;background:#204f4b;border:1px solid #81b8a9;margin:12px 0;max-width:830px}.speech-right{background:#314d5c;border-color:#84a4b6;margin-left:8%}.speech .speaker{display:block;font-size:.78em;font-weight:850;color:#ffdea4}.speech p{margin:5px 0!important;font-size:1.05em;font-weight:750;line-height:1.58}
+.aside-fun{margin-top:22px;border-left:4px solid #e9b66e;background:#353a39;padding:16px 19px;border-radius:12px;line-height:1.65}.aside-fun span{display:block;color:#ffdaa7;font-weight:900;font-size:.75em;margin-bottom:5px}.treasure-roll{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0}.treasure-roll>div{background:#30483f;border:1px solid #c69a58;border-radius:16px;padding:14px 8px;text-align:center}.treasure-roll b{display:block;font-size:clamp(1.25rem,2.3vw,2.1rem);line-height:1.35;color:#ffda96}.treasure-roll span{font-size:.79em;color:#f0e6ce}
+.story-beat.climax{border:2px solid #e2b975;background:linear-gradient(120deg,#394f43,#183842 65%)}.big-reveal{font-size:clamp(1.42rem,3.5vw,2.1rem)!important;font-weight:850;line-height:1.58;color:#fff;padding:14px 0}.big-reveal em{font-style:normal;color:#ffe3a5}
+.play-panel{background:#132e37;border:2px solid #6aa996;border-radius:24px;padding:clamp(22px,3vw,29px);margin-top:24px}.play-panel h3{margin:11px 0 20px}.play-panel.compact{margin-top:19px}.quiz-options button{display:flex;gap:12px;align-items:flex-start}.option-mark{flex:0 0 36px;height:36px;border-radius:12px;background:#9ddfc3;color:#153c34;display:grid;place-items:center;font-weight:950}.quiz-result{min-height:0;margin-top:13px;font-size:1em;line-height:1.65}.quiz-result:empty{display:none}.always{color:#d1e7e3;font-size:.86em;line-height:1.63}
+.story-scene{align-items:start}.illustration{padding:18px;border:1px solid #68978f;background:linear-gradient(155deg,#23434b,#19313b);border-radius:26px;box-shadow:0 23px 55px #0004}.illustration svg{display:block;width:100%;height:auto}.illustration>p{color:#c3d7d5;font-size:.76em;text-align:center;margin:12px 0 0}.switch-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.switch-choice{min-height:56px;background:#244752;color:#f8fff9;border:2px solid #648884;border-radius:14px;font-size:.9em;font-weight:850;padding:10px}.switch-choice[aria-pressed=true]{background:#c1f0d7;color:#093229;border-color:#a0ebc7}.pot-result{margin-top:13px;background:#244f47;border:1px solid #76a795;border-radius:14px;padding:16px;line-height:1.6}.pot-result strong,.pot-result span{display:block}.pot-result span{color:#d8e6df;font-size:.82em;margin-top:5px}
+@media(max-width:900px){.treasure-roll{grid-template-columns:1fr 1fr}.hero-grid{grid-template-columns:1fr}.hero-visual{max-width:700px;margin:auto}}
+@media(max-width:680px){.hero{padding-top:42px}.story-beat{padding:21px}.speech{padding:14px}.speech-right{margin-left:4%}.treasure-roll{gap:7px}.treasure-roll>div{padding:10px 6px}.switch-row{grid-template-columns:1fr}.play-panel{padding:18px}.quiz-options button{font-size:1em;min-height:68px}.hero .button{width:100%}}
+@media print{.story-beat,.speech,.play-panel,.illustration{background:#fff!important;color:#111!important;border:1px solid #666}.speech .speaker,.story-beat .scene-index{color:#333}.big-reveal,.big-reveal em{color:#111!important}}
 </style>
 </head>
 <body>
@@ -37,54 +50,76 @@
  </div>
 </header>
 <main id="main">
-<section class="hero" aria-labelledby="hero-title">
+
+<section class="hero" id="top">
  <div class="container hero-grid">
   <div>
-   <span class="tag">看見更多 · 第二個互動故事</span>
-   <h1 id="hero-title">功德，<em>不是價目表。</em></h1>
-   <p class="lead">一個人捐出整座寺院，另一個人身上沒幾個錢，只是認真練習不傷害他人。佛陀會怎麼比較？</p>
-   <p style="color:#e3f3eb">答案藏在兩千多年前，不同佛教傳承都保存的故事裡。<strong>不用先信佛，也能先看故事，再自己查經文。</strong></p>
-   <div class="button-row"><a class="button" href="#story">開始玩：佛陀怎麼說？</a><a class="button outline" href="#library">先看原典證據</a></div>
-   <p class="muted tiny" style="margin-top:16px">本文不收捐款，也沒有「功德點數」。你不點任何互動，依然能讀完整篇。</p>
+   <span class="tag">看見更多 · 第二個真實經典故事館</span>
+   <h1>你以為功德<br>要<strong class="mint">花大錢</strong>才能買到？</h1>
+   <p class="lead">佛陀曾經說起一位超級富豪：金碗、銀碗、大象、牛車……他捐出去的東西，多到像在搬空一座城。</p>
+   <p class="hero-question">結果佛陀說：<strong>還有比這更值得做的事。</strong></p>
+   <p>最意外的是，故事裡那個大富豪，竟然就是<strong>佛陀自己的過去世</strong>。</p>
+   <div class="button-row"><a href="#story" class="button">開始聽故事 <span aria-hidden="true">↓</span></a><a href="#metta" class="button outline">先看「三百大鍋」</a></div>
+   <p class="tiny muted">全篇不需要登入、不捐款、不先相信任何信仰。可一路往下看故事，遇到好奇的地方再按按鈕。</p>
   </div>
-  <div class="hero-visual" role="img" aria-label="一側是一枚巨大的金色錢幣，一側是雙手捧起的柔和光芒；旁邊顯示捐錢與修心不能按金額直接換算">
-   <div class="floating" aria-hidden="true"></div>
-   <div class="visual-top"><span>想像一個功德櫃檯</span><span>NO PRICE TAG</span></div>
-   <div class="counter-art" aria-hidden="true">
-    <svg class="gold-coin" viewBox="0 0 160 160" fill="none"><circle cx="80" cy="80" r="67" fill="#dba955" stroke="#ffdf99" stroke-width="9"/><circle cx="80" cy="80" r="53" stroke="#9c6e2f" stroke-width="3"/><path d="M61 58c1-27 42-28 44-5 1 15-18 18-22 30v11" stroke="#694c21" stroke-width="9" stroke-linecap="round"/><circle cx="82" cy="112" r="6" fill="#694c21"/><path d="M45 31l8 9M117 121l7 9" stroke="#fff0b9" stroke-width="6" stroke-linecap="round"/></svg>
-    <svg class="hand-art" viewBox="0 0 195 160" fill="none"><path d="M55 108c-21-4-27-26-20-33 10-9 29 12 40 18 19 10 38 7 53-4 12-9 22-22 31-17 15 8-2 41-27 51-22 10-57 6-77-15Z" fill="#d4b4a0" stroke="#f5d8bb" stroke-width="3"/><path d="M91 27c15 21 15 34 0 44-15-10-15-23 0-44Z" fill="#d2fbd3"/><path d="M90 60c-26-8-45-1-48 18 20 4 33 1 48-18ZM99 60c26-8 45-1 48 18-20 4-33 1-48-18Z" fill="#a6e6c4"/><path d="M95 106V68" stroke="#9af0c1" stroke-width="6" stroke-linecap="round"/><path d="m53 36-7-9m98 4 8-8M96 12V3" stroke="#ffeab3" stroke-width="4" stroke-linecap="round"/></svg>
-   </div>
-   <div class="visual-compare"><div><b>一筆巨款</b><small>有它的布施價值</small></div><div><b>一念善意</b><small>也不是零元等於零功德</small></div></div>
-   <p class="visual-quote">佛陀比較的是修行，不是刷卡額度。<a class="src" href="#s-velama">AN 9.20</a></p>
+  <div class="hero-visual" aria-label="具象插畫：裝滿金銀器皿的寶箱、布施食物的木碗，與象徵慈心的嫩芽">
+   <div class="visual-top"><span>古代大富豪的布施</span><span>現代插畫 · 非古畫</span></div>
+   <svg viewBox="0 0 600 406" role="img" aria-label="巨大金幣堆與裝滿財寶的箱子，旁邊有一隻盛著米飯的小碗和一株剛長出的小樹">
+    <defs><linearGradient id="boxL" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b47b3e"/><stop offset="1" stop-color="#5e4032"/></linearGradient><linearGradient id="skyL" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#294c56"/><stop offset="1" stop-color="#173238"/></linearGradient></defs>
+    <rect x="0" y="0" width="600" height="406" rx="22" fill="url(#skyL)"/>
+    <circle cx="460" cy="84" r="58" fill="#a1dec8" opacity=".15"/><path d="M0 320Q160 269 310 311T600 315V406H0Z" fill="#254d48"/>
+    <g fill="#eab861" stroke="#ffe19a" stroke-width="4"><ellipse cx="143" cy="243" rx="93" ry="25"/><ellipse cx="143" cy="218" rx="93" ry="25"/><ellipse cx="143" cy="190" rx="93" ry="25"/><ellipse cx="225" cy="244" rx="88" ry="25"/><ellipse cx="215" cy="217" rx="90" ry="25"/></g>
+    <g fill="url(#boxL)" stroke="#d29d5d" stroke-width="6"><path d="M47 141h265l-23 167H77Z"/><path d="M38 126Q174 56 321 128l-8 37H48Z"/></g><path d="M166 153v158m31-158v158" stroke="#f9d792" stroke-width="10"/><path d="M83 243h218" stroke="#f9d792" stroke-width="10"/><circle cx="185" cy="239" r="19" fill="#f7c768" stroke="#6c4426" stroke-width="5"/>
+    <g fill="#f4cd74" stroke="#ffe5a8" stroke-width="5"><circle cx="77" cy="94" r="30"/><circle cx="133" cy="69" r="26"/><circle cx="204" cy="73" r="29"/><circle cx="265" cy="90" r="23"/></g>
+    <path d="M357 295Q380 333 431 333T507 294" fill="#ba9671" stroke="#ead3aa" stroke-width="7"/><ellipse cx="433" cy="295" rx="74" ry="22" fill="#e7e1c8"/><path d="M393 288q40-27 80 0" fill="none" stroke="#fff9df" stroke-width="13" stroke-linecap="round"/>
+    <path d="M504 253Q514 180 516 145" fill="none" stroke="#c0f0c8" stroke-width="8" stroke-linecap="round"/><path d="M519 198c-22-33-58-31-61-6 17 18 39 13 61 6ZM515 185c14-33 46-47 63-23-12 22-31 26-63 23" fill="#8ee2b2"/><circle cx="518" cy="134" r="12" fill="#fcdfa1"/>
+    <g fill="#fff2d8" font-size="19" font-weight="800"><text x="180" y="369" text-anchor="middle">八萬四千件又八萬四千件……</text><text x="455" y="369" text-anchor="middle">心意也重要</text></g>
+   </svg>
+   <div class="visual-compare"><div><b>布施財物</b><small>早期經典肯定其善果</small></div><div><b>改變身心</b><small>經典還談更高的修習</small></div></div>
+   <p class="visual-quote">這個故事出自《增支部》與兩部漢譯《阿含》。<a href="#s-velama" class="src">故事的來源</a></p>
   </div>
  </div>
 </section>
-<section class="section" id="story">
+
+<section class="section chapter" id="story">
  <div class="container">
-  <div class="eyebrow">01 / 有人真的拿天價布施去問佛陀</div>
-  <h2>那位超級富豪，<br><span class="mint">原來是佛陀的前世。</span></h2>
-  <p class="section-lead">這不是在說給孤獨長者前世很有錢。故事裡有三個不同身分，先認清楚，才不會讀錯。</p>
-  <div class="story-rail" aria-label="故事的三個人物及先後順序">
-   <article class="person"><div class="badge-num">現在來問問題的人</div><h3>給孤獨長者</h3><p>佛陀時代的在家信徒。長者說：「我家還有布施，但給的是粗食。」</p></article>
-   <article class="person"><div class="badge-num">正在回答的人</div><h3>釋迦牟尼佛</h3><p>佛陀先說：即使食物普通，布施時的用心、恭敬與信念也很重要。</p></article>
-   <article class="person"><div class="badge-num">佛陀講述的過去世</div><h3>隨藍婆羅門</h3><p>過去世極富有的布施者。<strong>佛陀明確告訴長者：隨藍就是我過去世的身分。</strong></p></article>
-  </div>
-  <div class="panel">
-   <p class="caps">依 AN 9.20、MĀ 155 改寫；不是逐字對白 <a class="src" href="#s-velama">P1 原典</a></p>
-   <p>佛陀說：過去有位名叫隨藍的富豪，布施的金銀財物、車乘與其他資源多到難以計算。</p>
-   <p>但佛陀接著把「供養聖者、興建僧團住處、皈依、持戒、修慈心與觀察無常」一層一層往上比較。最後，最重要的竟然不是更多金銀財物。</p>
-   <p><strong>重點：佛陀並不是否定布施，而是拒絕把「花得多」當成修行的終點。</strong></p>
-   <div class="quiz" aria-label="互動猜題">
-    <h3>猜猜看：在這部經裡，哪一種被放在更高的位置？</h3>
-    <p class="quiz-hint">點一下就會在下方立刻看到解說；答案也直接寫在按鈕下方。</p>
-    <div class="quiz-options" role="group" aria-label="選擇你認為的答案">
-     <button type="button" data-answer="money" aria-pressed="false">A. 一次送出成千上萬的財寶</button>
-     <button type="button" data-answer="temple" aria-pressed="false">B. 建好供僧團使用的房舍</button>
-     <button type="button" data-answer="wisdom" aria-pressed="false">C. 真正修習慈心，並培養無常想</button>
-    </div>
-    <div class="quiz-result" role="status" aria-live="polite" id="quizResult">先猜一個答案。這不是測驗你對不對，而是看看原典怎麼顛覆直覺。</div>
-    <p class="always"><strong>不按也能看到答案：</strong>AN 9.20 在這個比較中，以修習無常想為最高一級；修慈心也高於其前面的財施與持戒。經文沒有說觀想一秒就保證證悟。</p>
+  <div class="eyebrow">故事一 · 佛陀向一位布施大戶，講起自己的前世</div>
+  <h2>「我家還有布施，<br><span class="gold">只是飯菜很粗糙。」</span></h2>
+  <p class="section-lead">先想像：一位出了名慷慨的長者，走進佛陀居住的園林。佛陀沒有第一句就叫他多捐，而是問他一個很日常的問題。</p>
+  <div class="story-timeline">
+   <div class="story-beat"><span class="scene-index">第一幕 · 家裡的餐桌</span>
+    <div class="speech speech-left"><span class="speaker">佛陀問給孤獨長者</span><p>家裡現在還有做布施嗎？</p></div>
+    <div class="speech speech-right"><span class="speaker">給孤獨長者回答</span><p>有啊！只是拿得出來的，是加了糠的粗米飯，配點很簡單的菜。</p></div>
+    <p>這裡的<strong>給孤獨長者</strong>，是佛陀在世時一位有名的在家支持者。他不是等一下要出場的古代富豪。佛陀接著強調：<strong>東西不管粗或細，送出去時是否用心、恭敬、真誠，都很重要。</strong><a href="#s-velama" class="src">AN 9.20／中阿含155</a></p>
+    <div class="aside-fun"><span>現代白話旁白，不是佛陀原話</span>送一盒普通便當，和把昂貴禮物當垃圾丟給人，差別不只在發票金額。</div>
    </div>
+   <div class="story-beat"><span class="scene-index">第二幕 · 驚人的布施清單</span>
+    <h3>佛陀突然說起一位名叫「隨藍」的古代富豪。</h3>
+    <p>這個人的財產不是「很多」兩個字能形容。巴利本列出：<strong>八萬四千個盛著銀子的金盤、八萬四千個盛著金子的銀盤、八萬四千個裝珠寶的銅盤</strong>。還有成群的裝飾大象、車子、乳牛、精緻衣物與床具……飲食與其他物資，經文形容多到像河流一樣源源不絕。</p>
+    <div class="treasure-roll" aria-label="巴利本隨藍布施的幾種驚人數量"><div><b>84,000</b><span>金盤盛銀</span></div><div><b>84,000</b><span>銀盤盛金</span></div><div><b>84,000</b><span>寶石銅盤</span></div><div><b>84,000</b><span>裝飾大象</span></div></div>
+    <p class="muted tiny">這是原經敘事中的數量，不是經考古確認的古印度財產帳冊；漢譯《中阿含》與《增一阿含》的物品清單亦有不同。</p>
+   </div>
+   <div class="story-beat climax"><span class="scene-index">第三幕 · 一句話揭開故事主角</span>
+    <p>故事說到這裡，佛陀告訴給孤獨長者：</p>
+    <p class="big-reveal">「那位名叫隨藍的富豪，<em>就是我自己過去世的身分。</em>」</p>
+    <p><strong>請不要搞錯：</strong>隨藍是<strong>釋迦牟尼佛的前世</strong>，不是來請教的給孤獨長者。巴利本與漢譯本都保留這個身分揭露，只是放在故事裡的位置不完全一樣。</p>
+    <p>《中阿含》第155經還有更關鍵的一句：<strong>佛陀說自己當年雖然做了那麼龐大的布施，當時仍然沒有脫離生老病死與一切痛苦。</strong>這才是整個故事最震撼的地方：連佛陀過去世都不是靠「財物夠多」就完成了解脫。</p>
+   </div>
+   <div class="story-beat"><span class="scene-index">第四幕 · 真正的轉折</span>
+    <p>佛陀沒有嘲笑布施。祂開始一層一層比較：供養真正有德行的修行者、供養僧團、建造僧團住所，都有珍貴的果報；但再往下，還有<strong>皈依、持戒、修習對眾生的慈心，以及觀察無常</strong>。</p>
+    <p>到了巴利《增支部》AN 9.20，最後提到的，是哪怕極短時間修習<strong>無常想</strong>，果報仍比前面列舉的布施與修習更大。這是經文對修行的比較，<strong>不代表想一秒就開悟，也不是「捐款可以消除罪業」的算法。</strong></p>
+   </div>
+  </div>
+  <div class="play-panel">
+    <span class="caps">你來選｜從這個故事學到什麼？</span>
+    <h3>長者聽完，哪件事情今天就能開始做？</h3>
+    <div class="quiz-options" role="group" aria-label="給孤獨長者故事問答">
+     <button type="button" data-answer="money" aria-pressed="false"><span class="option-mark">A</span>只要把食物換成最貴的，就一定最好</button>
+     <button type="button" data-answer="temple" aria-pressed="false"><span class="option-mark">B</span>從此不用捐，因為布施都沒有價值</button>
+     <button type="button" data-answer="wisdom" aria-pressed="false"><span class="option-mark">C</span>布施要真誠，也要開始改變自己的行為與心</button>
+    </div>
+    <div class="quiz-result" id="quizResult" role="status" aria-live="polite">請點 A、B 或 C。答案會直接出現在這裡，不必跑去別處找。</div>
+    <p class="always"><strong>直接說答案：</strong>是 C。佛陀同時肯定布施與自身的持戒、慈心、智慧，沒有教人用金額取代修行。<a href="#s-velama" class="src">查三個版本</a></p>
   </div>
  </div>
 </section>
@@ -120,31 +155,47 @@
   <div class="note"><strong>共同核心：</strong>各傳承都不以財富規模作修行最高標準；<strong>差異：</strong>最後一級的觀修用語與排列不完全相同。經文用「果報較大」作比較，不代表可以任意算出幾倍、幾元或幾次法會。</div>
  </div>
 </section>
-<section class="section" id="metta">
+
+<section class="section chapter" id="metta">
  <div class="container">
-  <div class="eyebrow">04 / 又一組巴漢平行經 · 會讓大食堂也驚訝</div>
-  <h2>三百大鍋食物，<br>竟然輸給<span class="gold">短短的慈心？</span></h2>
-  <div class="scene" style="margin-top:26px">
-   <div><p>《雜阿含》第1253經形容：有人清晨、中午、傍晚都拿出大批食物布施。另一人只在短暫時間，對一切眾生修習慈心。</p>
-    <p>經文認為，<strong>修習慈心有更大的果報</strong>。巴利《相應部》SN 20.4 也有相似的「大鍋食物 vs. 擠牛奶般短的慈心」比較。</p>
-    <p>這是經典中的價值排序，<strong>不是告訴你飢餓的人不用吃飯</strong>；布施食物仍有實質利益，慈心也應該能帶動關心與善行。</p>
-    <div class="note"><strong>漢巴細節不同：</strong>漢譯寫「晨朝三百釜，日中、日暮亦復如是」；巴利譯本以早中晚各百大鍋為例。數量差異要保留，不應混成「佛陀認證每天幾百萬份便當」。<a class="src" href="#s-metta">SN 20.4／SA 1253</a></div>
+  <div class="eyebrow">故事二 · 食堂的大鍋，與一個小到不能再小的動作</div>
+  <h2>一天三餐，<br><span class="mint">端出幾百大鍋飯。</span></h2>
+  <p class="section-lead">如果有人一天要煮數百大鍋食物，分給需要的人，你會覺得功德很大嗎？佛陀用這樣誇張而具體的畫面，提出另一個更讓人意外的比較。</p>
+  <div class="scene story-scene">
+   <div>
+    <div class="story-beat"><span class="scene-index">想像經文描寫的大食堂</span>
+     <p>天還沒亮，爐火燒起來。第一排大鍋冒著蒸氣；大家忙著把米飯送出去。中午又煮，傍晚還煮。</p>
+     <p>《雜阿含》第1253經的版本說：<strong>清晨三百大鍋，中午三百大鍋，傍晚再三百大鍋。</strong>巴利《相應部》第20相應第4經則說：<strong>早、中、晚各一百大鍋。</strong></p>
+     <p>兩個版本的鍋數不同，但<strong>都拿巨量布施和短暫修習慈心相比</strong>。佛陀說：即使只是像擠牛奶時短暫一拉的時間，真實培養對眾生的慈心，也有更大的果報。</p>
+     <p><strong>這可不是叫飢餓的人「不要吃飯、改去打坐」！</strong>食物仍可救急。經文是在強調心的修習，不是取消援助別人的責任。<a href="#s-metta" class="src">看兩本原典</a></p>
+    </div>
+    <div class="play-panel compact">
+     <span class="caps">同一個故事，兩種經本</span>
+     <h3>點一下，看看「大鍋數量」怎麼不同。</h3>
+     <div class="switch-row" role="group" aria-label="切換巴利與漢譯的鍋數比較">
+      <button type="button" class="switch-choice" data-pot="han" aria-pressed="true">看漢譯《雜阿含》</button>
+      <button type="button" class="switch-choice" data-pot="pali" aria-pressed="false">看巴利《相應部》</button>
+     </div>
+     <div class="pot-result" id="potResult" role="status" aria-live="polite"><strong>漢譯：早上 300 鍋 ＋ 中午 300 鍋 ＋ 晚上 300 鍋。</strong><span>總共 900 鍋；這是經文的故事數字，不是現代實測。</span></div>
+     <p class="always">不按也看得懂：<strong>漢譯一天 900 鍋；巴利本一天 300 鍋。</strong>兩者都說短暫培養慈心的果報更大。</p>
+    </div>
    </div>
-   <div class="art-card">
-    <svg class="story-svg" viewBox="0 0 470 330" role="img" aria-label="三口盛著食物的大鍋旁，一棵翠綠的小樹從雙手之間長出；象徵布施食物與培養慈心的比較">
-     <defs><linearGradient id="soup" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd89b"/><stop offset="1" stop-color="#c18149"/></linearGradient></defs>
-     <path d="M15 272h440" stroke="#91a7a1" stroke-width="5" stroke-linecap="round"/>
-     <g fill="#324d58" stroke="#a5ccc9" stroke-width="5"><path d="M26 169h132l-12 85Q92 284 36 254Z"/><path d="M173 149h128l-10 105q-53 32-108 0Z"/><path d="M311 169h132l-11 85q-57 29-111 0Z"/></g>
-     <ellipse cx="92" cy="170" rx="65" ry="13" fill="url(#soup)"/><ellipse cx="237" cy="149" rx="65" ry="13" fill="url(#soup)"/><ellipse cx="376" cy="170" rx="65" ry="13" fill="url(#soup)"/>
-     <g stroke="#e1efdf" stroke-width="4" stroke-linecap="round" opacity=".8"><path d="M77 143c-20-22 15-31-4-50"/><path d="M110 132c-18-23 10-28-5-50"/><path d="M220 120c-17-23 6-32-8-52"/><path d="M251 115c-20-24 7-30-4-54"/><path d="M374 137c-19-20 8-34-7-53"/></g>
-     <path d="M194 58q42-32 77 0" fill="none" stroke="#c9f4d6" stroke-width="4" stroke-linecap="round"/>
-     <path d="M232 49V14" stroke="#b1e5c8" stroke-width="6" stroke-linecap="round"/><path d="M233 30c-23-24-48-8-35 12 7 11 20 12 35 12 25-31 49-19 38 3-12 13-28 9-38-3" fill="#9bdfb5"/>
-     <circle cx="235" cy="50" r="38" stroke="#b6edbf" stroke-width="2" stroke-dasharray="4 10" opacity=".8"/>
-     <text x="235" y="313" fill="#e9f3ed" font-size="19" font-weight="800" text-anchor="middle">食物幫助身體 · 慈心改變對待眾生的方式</text>
+   <div class="illustration art-pot" role="img" aria-label="古代廚房裡三口冒著熱氣、盛滿米飯的大鍋，木柴在鍋底燃燒，旁邊有米碗">
+    <svg viewBox="0 0 570 490" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+     <defs><linearGradient id="potBg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#315c62"/><stop offset="1" stop-color="#142e38"/></linearGradient><linearGradient id="potFill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#efc17b"/><stop offset="1" stop-color="#d79658"/></linearGradient></defs>
+     <rect width="570" height="490" rx="25" fill="url(#potBg)"/><path d="M0 385H570" stroke="#71847a" stroke-width="13"/><path d="M40 0v75m490-75v75" stroke="#a6c1a1" stroke-width="8" opacity=".3"/>
+     <g stroke="#f4ece2" stroke-width="8" stroke-linecap="round" fill="none" opacity=".8"><path d="M114 180c-35-44 33-55-2-91"/><path d="M151 160c-30-43 20-56-12-89"/><path d="M283 166c-29-43 25-54-7-89"/><path d="M329 154c-36-43 34-52 5-91"/><path d="M459 171c-32-44 26-56-5-89"/></g>
+     <g fill="#354e57" stroke="#b4cfbd" stroke-width="8"><path d="M46 245q0 135 99 135t100-135Z"/><path d="M200 228q0 148 94 148t95-148Z"/><path d="M353 245q0 135 91 135t90-135Z"/></g>
+     <g fill="url(#potFill)" stroke="#ffe1a7" stroke-width="6"><ellipse cx="146" cy="247" rx="102" ry="22"/><ellipse cx="293" cy="228" rx="97" ry="22"/><ellipse cx="443" cy="247" rx="92" ry="22"/></g>
+     <g fill="#fff2cc"><circle cx="127" cy="236" r="7"/><circle cx="163" cy="250" r="7"/><circle cx="293" cy="218" r="9"/><circle cx="311" cy="231" r="7"/><circle cx="421" cy="236" r="9"/></g>
+     <path d="M70 401l55 41m65-38-67 39m148-40 52 38m56-38-61 38m97-38 58 40" stroke="#b87b44" stroke-width="16" stroke-linecap="round"/>
+     <g fill="#f4b35d"><path d="M142 403q-32-26-13-45 26 12 13 45ZM298 398q-31-27-9-50 25 22 9 50ZM450 400q-30-32-6-51 23 18 6 51Z"/></g>
+     <text x="285" y="459" fill="#ecf8ed" text-anchor="middle" font-size="25" font-weight="800">煮飯，是實在的幫助</text>
     </svg>
-    <p class="muted tiny" style="text-align:center">本站原創示意插畫；非古代經卷圖像。</p>
+    <p>原創情境插畫：經文沒有記載這三口鍋的外形。</p>
    </div>
   </div>
+  <div class="note"><strong>「慈」不是「替別人難過」而已：</strong>經文所說的是有意培養希望眾生安樂的心，並持續修習。單純喊一句口號，不等於真有這樣的心。</div>
  </div>
 </section>
 <section class="section" id="robe">
@@ -322,6 +373,12 @@ function scale(d){size=Math.max(18,Math.min(26,size+d));document.documentElement
 down.addEventListener('click',function(){scale(-2)});up.addEventListener('click',function(){scale(2)});
 document.getElementById('copyLink').addEventListener('click',function(){var message=document.getElementById('copyMessage');var url=location.href.split('#')[0];if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(function(){message.textContent='連結已複製，可分享給朋友。'},function(){message.textContent='無法自動複製，請直接複製瀏覽器網址。'})}else{message.textContent='請直接複製瀏覽器網址：'+url}});
 })();
+
+const answerEl=document.getElementById('quizResult');
+if(answerEl){const answerText={money:'不是。佛陀沒有說「只買最貴的」就好；即使飯菜簡單，布施的真誠與尊敬也重要。',temple:'也不是。經文肯定財物布施、供養僧團與住所的善果；只是還有自己持戒、培養慈心和智慧。',wisdom:'正是這個意思。財施有其善果，但也要改變行為與內心；無常觀不代表只想一秒就證悟。'};
+document.querySelectorAll('[data-answer]').forEach(function(b){b.addEventListener('click',function(){answerEl.textContent=answerText[b.getAttribute('data-answer')];});});}
+document.querySelectorAll('[data-pot]').forEach(function(b){b.addEventListener('click',function(){const pali=b.getAttribute('data-pot')==='pali';document.querySelectorAll('[data-pot]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});const target=document.getElementById('potResult');if(target){target.innerHTML=pali?'<strong>巴利經：早上 100 鍋 ＋ 中午 100 鍋 ＋ 晚上 100 鍋。</strong><span>總共 300 鍋。重點仍是慈心修習的價值，不是誰的鍋比較多。</span>':'<strong>漢譯：早上 300 鍋 ＋ 中午 300 鍋 ＋ 晚上 300 鍋。</strong><span>總共 900 鍋；兩種傳承數字不同，都肯定短暫修慈心有更大的果報。</span>';}});});
+
 </script>
 </body>
 </html>
