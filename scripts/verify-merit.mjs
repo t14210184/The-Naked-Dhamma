@@ -36,6 +36,11 @@ async function run(){
   await send('Page.navigate',{url:pathToFileURL(file).href});await sleep(600);
   const m=await evaluate('(()=>{let d=document.documentElement;return {w:innerWidth,client:d.clientWidth,scroll:d.scrollWidth,body:document.body.scrollWidth,txt:document.querySelector("main").innerText.length,chapter:document.querySelectorAll("main section").length};})()');
   check(m.client>0&&m.scroll<=m.client+2&&m.body<=m.client+2&&m.txt>3000&&m.chapter>=15,'Responsive '+w+'px '+JSON.stringify(m));
+  if(w===320){
+   await evaluate('(()=>{for(let i=0;i<4;i++)document.querySelector("#fontUp").click();return 1;})()');
+   const huge=await evaluate('(()=>({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,font:getComputedStyle(document.body).fontSize}))()');
+   check(huge.client+2>=huge.scroll,'320px maximum reader font layout '+JSON.stringify(huge));
+  }
   if(w===390){
    const interact=await evaluate('(()=>{document.querySelector("[data-answer=wisdom]").click();let a=document.querySelector("#quizResult").textContent;document.querySelector("[data-pot=pali]").click();let b=document.querySelector("#potResult").textContent;document.querySelector("[data-cow=white]").click();let c=document.querySelector("#cowResponse").textContent;document.querySelector("[data-ghost=none]").click();let d=document.querySelector("#ghostResult").textContent;return {quiz:a.includes("改變"),pots:b.includes("300 鍋"),cow:c.includes("毛色"),ghost:d.includes("施主")};})()');
    check(Object.values(interact).every(Boolean),'Interactive scenes '+JSON.stringify(interact));
@@ -45,6 +50,10 @@ async function run(){
    await evaluate('(()=>{for(let i=0;i<4;i++)document.querySelector("#fontDown").click();return 1;})()');
    const pic=await send('Page.captureScreenshot',{format:'jpeg',quality:70,captureBeyondViewport:false});writeFileSync(join(imgs,'mobile.jpg'),Buffer.from(pic.data,'base64'));
    if(process.env.QA_PRINT_PREVIEW==='1')console.log('SCREENSHOT_MOBILE_BASE64='+pic.data);
+   await evaluate('(()=>{document.querySelector(".cow-grid").scrollIntoView({block:"center"});return 1;})()');await sleep(180);
+   const cowImage=await send('Page.captureScreenshot',{format:'jpeg',quality:70,captureBeyondViewport:false});
+   writeFileSync(join(imgs,'cow-story-mobile.jpg'),Buffer.from(cowImage.data,'base64'));
+   if(process.env.QA_PRINT_PREVIEW==='1')console.log('SCREENSHOT_COW_BASE64='+cowImage.data);
   }
   if(w===1440){const pic=await send('Page.captureScreenshot',{format:'jpeg',quality:58,captureBeyondViewport:false});writeFileSync(join(imgs,'desktop.jpg'),Buffer.from(pic.data,'base64'));if(process.env.QA_PRINT_PREVIEW==='1')console.log('SCREENSHOT_DESKTOP_BASE64='+pic.data);}
  }
