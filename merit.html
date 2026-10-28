@@ -47,6 +47,12 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
 @media(max-width:700px){.cow-grid{grid-template-columns:1fr 1fr}.gift-grid{grid-template-columns:1fr 1fr}.gift-card{padding:16px}.gift-card h3{font-size:1.1em}}
 @media(max-width:380px){.gift-grid{grid-template-columns:1fr}.cow-choice{min-height:0}.cow-game{padding:13px}}
 @media print{.cow-choice,.gift-card,.cow-game{color:#111;background:#fff;border-color:#777}.gift-card h3,.gift-card p,.gift-card .gift-example{color:#111}}
+
+.path-map{display:grid;gap:11px;margin-top:25px}.path-row{display:grid;grid-template-columns:69px 1fr;gap:20px;align-items:start;padding:21px;border:1px solid #73988b;background:#163943;border-radius:21px}.path-row .path-number{width:58px;height:58px;border-radius:19px;display:grid;place-items:center;background:#caecd5;color:#143b2f;font-weight:950;font-size:1.45em}.path-row h3{margin:3px 0 9px}.path-row p{font-size:.92em;margin:0}.path-kicker{font-size:.76em;color:#ffe0ad;font-weight:900}.path-last{background:#255243;border:2px solid #b9e6bb}.deep-accordion{background:#183740;border:1px solid #658b7b;border-radius:16px;margin:19px 0}.deep-accordion summary{cursor:pointer;padding:19px;font-weight:900;color:#d4fbe6}.deep-accordion .inner{padding:0 20px 20px}.deep-accordion .inner p{font-size:.88em}.version-triptych{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:26px}.version-story{background:#1b3d46;border:1px solid #749486;border-radius:22px;padding:23px}.version-story h3{font-size:1.24em;margin:13px 0}.version-label{font-size:.75em;font-weight:900;color:#ffe0aa;line-height:1.5}.version-story .version-big{font-size:1.3em;color:#c1f3d6;font-weight:900;margin:20px 0}.version-story .version-small{border-top:1px solid #5f7e7d;padding-top:13px;color:#d4e3dd;font-size:.84em}.compare-summary{margin-top:18px;padding:25px;background:#284c42;border-radius:20px;border:1px solid #90c4a8}.compare-summary strong{color:#ffdda5}.compare-summary p{margin:9px 0 0}
+.modern-scenes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin:27px 0}.modern-card{background:#1b3640;border:1px solid #5d8887;border-radius:22px;padding:25px}.modern-id{display:inline-block;color:#efce9f;font-weight:850;font-size:.73em}.modern-head{display:flex;gap:15px;align-items:flex-start;margin:12px 0 18px}.modern-head>span{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-size:1.35em;border-radius:16px;background:#294d51}.modern-head h3{font-size:1.24em;line-height:1.4}.modern-card>p{font-size:.95em}.modern-answer{padding:17px;background:#24463f;border-left:4px solid #9ed3b8;border-radius:12px;font-size:.87em;line-height:1.72}.modern-answer strong{color:#ffdbab}
+@media(max-width:900px){.version-triptych{grid-template-columns:1fr}.modern-scenes{grid-template-columns:1fr}}
+@media(max-width:700px){.path-row{grid-template-columns:49px 1fr;gap:13px;padding:16px}.path-row .path-number{width:43px;height:43px;font-size:1.1em}.modern-card,.version-story{padding:19px}.version-story .version-big{font-size:1.21em}}
+@media print{.path-row,.version-story,.modern-card,.modern-answer{background:#fff;color:#111;border:1px solid #888}}
 </style>
 </head>
 <body>
@@ -54,17 +60,16 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
 <header class="header">
  <div class="header-inner">
   <a class="logo" href="./index.html" aria-label="回到《看見更多》第一篇"><span class="logo-icon" aria-hidden="true">✦</span><span>The Naked Dhamma</span></a>
-  <nav aria-label="文章導覽"><a href="#story">富豪的故事</a><a href="#ladder">功德順序</a><a href="#myths">拆解迷思</a><a href="#library">原典查證</a></nav>
+  <nav aria-label="文章導覽"><a href="#story">開始聽故事</a><a href="#monopoly">牛群互動</a><a href="#compare">三本經對照</a><a href="#library">經文來源</a></nav>
   <div class="font-tools" aria-label="閱讀字級"><button type="button" id="fontDown" aria-label="縮小字體">A−</button><button type="button" id="fontUp" aria-label="放大字體">A＋</button></div>
  </div>
 </header>
 <main id="main">
-
 <section class="hero" id="top">
  <div class="container hero-grid">
   <div>
    <span class="tag">看見更多 · 第二個真實經典故事館</span>
-   <h1>你以為功德<br>要<strong class="mint">花大錢</strong>才能買到？</h1>
+   <h1 id="hero-title">你以為功德<br>要<strong class="mint">花大錢</strong>才能買到？</h1>
    <p class="lead">佛陀曾經說起一位超級富豪：金碗、銀碗、大象、牛車……他捐出去的東西，多到像在搬空一座城。</p>
    <p class="hero-question">結果佛陀說：<strong>還有比這更值得做的事。</strong></p>
    <p>最意外的是，故事裡那個大富豪，竟然就是<strong>佛陀自己的過去世</strong>。</p>
@@ -89,7 +94,6 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
   </div>
  </div>
 </section>
-
 <section class="section chapter" id="story">
  <div class="container">
   <div class="eyebrow">故事一 · 佛陀向一位布施大戶，講起自己的前世</div>
@@ -132,39 +136,6 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
   </div>
  </div>
 </section>
-<section class="section" id="ladder">
- <div class="container">
-  <div class="eyebrow">02 / 不是官方兌換表，而是經文逐級比較</div>
-  <h2>從巨大布施到修心，<br><span class="gold">原典怎麼排列？</span></h2>
-  <p class="section-lead">以下依巴利 AN 9.20 的比較次序濃縮呈現。每一級都可以有價值；這張圖不是所有佛教教義的唯一排行榜，更不是「一彈指＝多少新台幣」的換算。</p>
-  <div class="ladder">
-   <div class="rung"><span class="number">01</span><div><strong>極大量的財物布施</strong><p>富豪隨藍的大布施。經文沒有說這毫無功德。</p></div><span class="r-label">布施財物</span></div>
-   <div class="rung"><span class="number">02</span><div><strong>供養具有不同修行成果的人</strong><p>從初得正見者、四果聖者、獨覺者，到佛陀；經文另作多級細分。</p></div><span class="r-label">布施對象</span></div>
-   <div class="rung"><span class="number">03</span><div><strong>供養佛陀為首的僧團</strong><p>把資源給修行共同體，而不是只給某個人。</p></div><span class="r-label">僧團供養</span></div>
-   <div class="rung"><span class="number">04</span><div><strong>為四方僧團建造住處</strong><p>是供修行者居住的房舍，不等於任何金碧輝煌的宗教建築都自動有同樣意義。</p></div><span class="r-label">支持修行</span></div>
-   <div class="rung"><span class="number">05</span><div><strong>出於信心皈依三寶</strong><p>開始選擇自己要走的生活與修行方向。</p></div><span class="r-label">建立方向</span></div>
-   <div class="rung"><span class="number">06</span><div><strong>受持五戒</strong><p>實際減少殺害、偷盜、性方面的傷害、說謊及酒醉放逸。</p></div><span class="r-label">改變行為</span></div>
-   <div class="rung"><span class="number">07</span><div><strong>哪怕短暫修習慈心（Mettā）</strong><p>真誠希望眾生安樂，而不只是唸出漂亮的句子。</p></div><span class="r-label">培養善意</span></div>
-   <div class="rung final"><span class="number">08</span><div><strong>哪怕一彈指頃，修習無常想（Aniccasaññā）</strong><p>觀察事物與經驗會變化。這是經中更高果報的比較，<u>不代表瞬間證悟或抵銷不善業</u>。</p></div><span class="r-label">培養智慧</span></div>
-  </div>
-  <p class="ladder-end">請特別注意：第 8 級是巴利本的用語；漢譯本最後一級並不完全相同。下一段就直接對讀。</p>
-  <div class="note"><strong>另一部原典也談「功德不是只有捐錢」。</strong>《增支部》AN 8.36 列出三種福業基礎：布施、持戒、修習。佛教不是「只做心理練習就好」；它同樣重視真實的善行。<a class="src" href="#s-three">AN 8.36</a></div>
- </div>
-</section>
-<section class="section" id="compare">
- <div class="container">
-  <div class="eyebrow">03 / 同一個故事，不同傳承</div>
-  <h2>先別把三種經文，<br><span class="mint">硬湊成一句話。</span></h2>
-  <p class="section-lead">如果不同佛教傳承都保留了相似教導，這很值得重視；但相似不等於逐字完全相同，更不能因此證明每句話都經歷史佛陀親口說出。</p>
-  <div class="parallel">
-   <article class="parallel-card"><div class="flag">巴利《增支部》 · AN 9.20</div><h3>無常想</h3><p>末級強調：即使短至「一彈指頃」，修習<strong>無常想</strong>，果報亦高於先前各級。</p><div class="original">皈依與持五戒分成兩級；稱為 aniccasaññā。</div><a class="src" href="#s-velama">查原典</a></article>
-   <article class="parallel-card"><div class="flag">漢譯《中阿含》 · 第155經</div><h3>無常、苦、空、非神</h3><p>末級說能觀<strong>一切諸法無常、苦、空及非神</strong>，比此前善行更勝。</p><div class="original">「非神」與非我相關；經文這一段沒有巴利本「一彈指頃」的限定。</div><a class="src" href="#s-velama">查原典</a></article>
-   <article class="parallel-card"><div class="flag">漢譯《增一阿含》 · 27.3</div><h3>世間不可樂想</h3><p>末級作<strong>「須臾之間起於世間不可樂想」</strong>，不是巴利本的逐字複製。</p><div class="original">此版本把慈心描述為彈指頃；不能把它改寫成最後一級的相同字詞。</div><a class="src" href="#s-velama">查原典</a></article>
-  </div>
-  <div class="note"><strong>共同核心：</strong>各傳承都不以財富規模作修行最高標準；<strong>差異：</strong>最後一級的觀修用語與排列不完全相同。經文用「果報較大」作比較，不代表可以任意算出幾倍、幾元或幾次法會。</div>
- </div>
-</section>
-
 <section class="section chapter" id="metta">
  <div class="container">
   <div class="eyebrow">故事二 · 食堂的大鍋，與一個小到不能再小的動作</div>
@@ -207,7 +178,6 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
   <div class="note"><strong>「慈」不是「替別人難過」而已：</strong>經文所說的是有意培養希望眾生安樂的心，並持續修習。單純喊一句口號，不等於真有這樣的心。</div>
  </div>
 </section>
-
 <section class="section chapter" id="robe">
  <div class="container">
   <div class="eyebrow">故事三 · 一件親手縫的衣服，讓阿難忍不住開口</div>
@@ -244,7 +214,6 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
   </div>
  </div>
 </section>
-
 <section class="section chapter" id="monopoly">
  <div class="container">
   <div class="eyebrow">故事四 · 一個很敢問的人，把佛陀問到「捐款壟斷」問題上</div>
@@ -278,7 +247,6 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
   </div>
  </div>
 </section>
-
 <section class="section chapter" id="worship">
  <div class="container">
   <div class="eyebrow">故事五 · 花瓣飄滿樹林的那個晚上</div>
@@ -313,7 +281,6 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
   </div>
  </div>
 </section>
-
 <section class="section chapter" id="ancestors">
  <div class="container">
   <div class="eyebrow">故事六 · 一個想念亡者的人，問了最難回答的問題</div>
@@ -370,21 +337,51 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
   </div>
   <div class="note"><strong>這不是「不做好事也能自動領功德」：</strong>戒行要在真實生活中實踐。經文對五戒的宗教果報是文本主張；上面的生活例子是現代教學編寫。<a class="src" href="#s-five">AN 8.39</a></div>
  </div>
-</section><section class="section" id="myths">
+</section>
+<section class="section" id="ladder">
  <div class="container">
-  <div class="eyebrow">08 / 對當代宗教話術，怎樣不失準地提問</div>
-  <h2>四張迷思拆解卡。<br><span class="gold">不必先把誰當騙子。</span></h2>
-  <p class="section-lead">這一區是<strong>現代分析</strong>，不是佛陀對今天某個寺院的直接判決。一般募款、公益及付費活動，與利用恐懼保證消災的宣傳，必須分開看待。</p>
-  <div class="claims">
-   <article class="claim"><span class="claim-name">【現代說法 A】</span><h3>「捐多少，消多少業障。」</h3><p>聽起來就像線上結帳：選方案、刷卡、換安定。</p><div class="answer"><b>經典怎麼看：</b>AN 9.20 比的是不同善行與修習的果報，沒有提供以新台幣計價、抵銷不善行的功德匯率；AN 6.63 還強調意圖及自身行為。<a class="src" href="#s-velama">AN 9.20</a><a class="src" href="#s-intent">AN 6.63</a></div></article>
-   <article class="claim"><span class="claim-name">【現代說法 B】</span><h3>「你生病失業，一定是前世欠債。」</h3><p>如果所有問題都用一張業障帳單解釋，現實原因就被排除了。</p><div class="answer"><b>經典怎麼看：</b>SN 36.21 否定一切感受都「只因過去業」；身體與外在條件等也要考慮。人生困境不能被當成責怪受害者的藉口。<a class="src" href="#s-ill">SN 36.21</a></div></article>
-   <article class="claim"><span class="claim-name">【現代說法 C】</span><h3>「付款就保證往生親人超度成功。」</h3><p>這個保證，真的能在早期經典找到嗎？</p><div class="answer"><b>經典怎麼看：</b>AN 10.177 與《雜阿含》1041 談到有條件的亡者受益，也明確說不是所有境界都能收到；絕不等於保證任何付費法會都有指定結果。<a class="src" href="#s-dead">P1 對照</a></div></article>
-   <article class="claim"><span class="claim-name">【現代說法 D】</span><h3>「付不起大供養，就只能慢慢等功德。」</h3><p>若窮人沒有錢，難道就沒有向善與修行的道路？</p><div class="answer"><b>經典怎麼看：</b>AN 8.39 把守五戒稱作對無量眾生的五種「大布施」：給別人安全、不恐懼、不受傷害的空間。<a class="src" href="#s-five">AN 8.39</a></div></article>
+  <div class="eyebrow">故事回顧 · 佛陀到底怎麼比較這些善行？</div>
+  <h2>不是比誰捐得多，<br><span class="mint">而是一路走向更深的修行。</span></h2>
+  <p class="section-lead">如果把《增支部》那篇長長的比較整理成一張路線圖，你會看到：佛陀從外在布施一路談到自己的行為和內心。但請記住：<strong>這是那部經的比較次序，不是換算功德的價格表。</strong></p>
+  <div class="path-map" aria-label="從財物布施、僧團供養、皈依、持戒、慈心到無常想的原經比較次序">
+   <div class="path-row"><span class="path-number">1</span><div><span class="path-kicker">你拿出什麼？</span><h3>金銀、衣服、食物等財物</h3><p>隨藍曾捐出非常龐大的財寶。經典承認布施的善果。</p></div></div>
+   <div class="path-row"><span class="path-number">2</span><div><span class="path-kicker">你幫助的是誰？</span><h3>供養有修行成果的人與僧團</h3><p>經文接著區分聖果修行者、佛陀、佛陀為首的僧團，並談到建造提供僧團使用的住處。</p></div></div>
+   <div class="path-row"><span class="path-number">3</span><div><span class="path-kicker">你自己做了什麼？</span><h3>真誠皈依，開始守五戒</h3><p>不光是把東西送出去，也開始調整自己如何對待別人。</p></div></div>
+   <div class="path-row"><span class="path-number">4</span><div><span class="path-kicker">你怎麼對待眾生？</span><h3>哪怕短短一會兒，也認真修習慈心</h3><p>希望眾生安樂；這不是買賣，也不是嘴巴唸一句就能取得證書。</p></div></div>
+   <div class="path-row path-last"><span class="path-number">5</span><div><span class="path-kicker">你是否開始看清事物？</span><h3>培養對無常的觀察</h3><p>巴利本在最後提到修習無常想，哪怕只有一彈指的時間。兩種漢譯的表達不同，下一段直接攤給你看。</p></div></div>
   </div>
+  <details class="deep-accordion"><summary>想知道「供養聖者」的完整細分嗎？按這裡展開</summary><div class="inner"><p>巴利 AN 9.20 由供養具有正見的人、繼續供養一來者、不還者、阿羅漢、獨覺者、佛陀，再到佛陀為首的僧團與四方僧團的住處；其中多次將供養一位較高證果者與供養百位較低階段修行者比較。這些是經文宣示的果報差異，不能翻成「某種人等於幾張鈔票」。</p><p>為了讓一般讀者先掌握重點，主圖把多種聖者供養集中顯示，但沒有刪去這段精確說明。<a href="#s-velama" class="src">AN 9.20</a></p></div></details>
+  <div class="note"><strong>別把「短時間」當成修行速成包。</strong>真正的修習不是打卡一秒就突然解脫；《中阿含》那個版本，也沒有寫「最後一級必須是一彈指」的時間說法。</div>
+ </div>
+</section>
+<section class="section" id="compare">
+ <div class="container">
+  <div class="eyebrow">原典小偵探 · 同個故事竟然有三種結尾</div>
+  <h2>故事說到最後，<br><span class="gold">三本經書的重點字眼不完全一樣。</span></h2>
+  <p class="section-lead">你可能以為，三種佛教傳承都記載相似故事，就必須每個字相同。其實不用。來看看，佛陀在故事最後要大家修習什麼。</p>
+  <div class="version-triptych">
+   <article class="version-story"><span class="version-label">第一份記載 · 巴利語傳承</span><h3>留意：一切都在改變</h3><p class="version-big">「修習無常想」</p><p>就算只有<strong>一彈指這樣短的時間</strong>，認真修習對無常的觀察，在這篇經的比較裡，也比前面列舉的善行果報更大。</p><p class="version-small">「無常」不是在說所有東西都不值得珍惜，而是事物會依條件變化，不能當成永遠不變。</p><a href="#s-velama" class="src">AN 9.20</a></article>
+   <article class="version-story"><span class="version-label">第二份記載 · 漢譯《中阿含》</span><h3>看清：變化、苦、空與非我</h3><p class="version-big">「無常、苦、空及非神」</p><p>這本經在最後談到，觀察一切事物<strong>無常、有苦、空、非我</strong>的特性，比先前的布施等行為更殊勝。</p><p class="version-small">原文用「非神」這個古代譯詞，指向不是固定不變的自我；它沒有在這裡說「一彈指」的時間。</p><a href="#s-velama" class="src">中阿含155</a></article>
+   <article class="version-story"><span class="version-label">第三份記載 · 漢譯《增一阿含》</span><h3>別把世間享樂抓得太緊</h3><p class="version-big">「世間不可樂想」</p><p>這本經在最後提到：即使短暫修習對世間事物<strong>不可一味貪戀</strong>的觀察，也具有極大的果報。</p><p class="version-small">不是要你討厭世人、討厭生活；也不能把這六個字改寫成跟前兩本逐字相同。</p><a href="#s-velama" class="src">增一阿含27.3</a></article>
+  </div>
+  <div class="compare-summary"><strong>三本經書共同說了什麼？</strong><p>巨大的布施值得肯定；但修習戒行、慈心與更深入的觀察，不能被金錢取代。三本對修習內容的最後表述不同，不要把它們混成佛陀的一段逐字引文。</p></div>
+ </div>
+</section>
+<section class="section" id="myths">
+ <div class="container">
+  <div class="eyebrow">回到今天 · 聽到這幾句話，你會怎麼想？</div>
+  <h2>假如「功德」能放進購物車，<br><span class="mint">我們該問什麼？</span></h2>
+  <p class="section-lead">這些是為理解現代情境而寫的<strong>假設例子</strong>，不是在指控任何特定寺廟，也不是佛陀原話。正當的捐款、公益、寺院維持需要，應和虛假的保證或恐嚇式宣傳分開判斷。</p>
+  <div class="modern-scenes">
+   <article class="modern-card"><span class="modern-id">假設情境 A · 客服訊息</span><div class="modern-head"><span aria-hidden="true">💬</span><h3>「付一筆錢，這個業障就清空了。」</h3></div><p>如果一個人做錯事，只要買儀式就一筆勾銷，難道不需要停止傷害、道歉、補救和改變行為？</p><div class="modern-answer"><strong>經典能支持什麼？</strong>布施有善果，但《增支部》的布施與修行比較，沒有提供付款抵銷惡業的匯率；意圖與身口意行為也重要。<a class="src" href="#s-intent">AN 6.63</a></div></article>
+   <article class="modern-card"><span class="modern-id">假設情境 B · 恐懼行銷</span><div class="modern-head"><span aria-hidden="true">⚠</span><h3>「你生病，一定是過去世業障。」</h3></div><p>有些病痛需要醫療，有些困難涉及環境、制度、意外或人際互動。把每件事都套進單一因果故事，可能延誤真正的幫助。</p><div class="modern-answer"><strong>經典能支持什麼？</strong>《相應部》SN 36.21 明確反對所有感受都單純由過去業造成的說法。<a href="#s-ill" class="src">SN 36.21</a></div></article>
+   <article class="modern-card"><span class="modern-id">假設情境 C · 專屬通道</span><div class="modern-head"><span aria-hidden="true">🔒</span><h3>「只能捐給本團體，別家都沒有福報。」</h3></div><p>經文確實比較供養對象與果報；但佛陀也明白否認「只有布施給我或我弟子才有價值」的說法。</p><div class="modern-answer"><strong>經典能支持什麼？</strong>《雜阿含》95 和巴利對應經，連洗碗後懷著善意留下的食物都肯定有善的可能。<a href="#s-vaccha" class="src">雜阿含95</a></div></article>
+   <article class="modern-card"><span class="modern-id">假設情境 D · 保證配送</span><div class="modern-head"><span aria-hidden="true">✉</span><h3>「付費就能保證亡者收到功德。」</h3></div><p>真正的原典故事恰好是有人問：死去的親人能不能收到？佛陀的回答並非「永遠保證」。</p><div class="modern-answer"><strong>經典能支持什麼？</strong>布施利益亡者的說法有條件，不能證成任何組織保證送達的商業承諾。<a href="#s-dead" class="src">雜阿含1041</a></div></article>
+  </div>
+  <div class="note"><strong>反過來也要公平：</strong>有些宗教團體真實提供救災、醫療、教育與修行空間，也需要資源支持。接受捐款，不等於有問題；<strong>真正要問的是宣傳有沒有誤導、信徒能不能自主選擇，以及資金使用是否透明。</strong></div>
   <div class="panel">
-   <h3>再拆一個難題：「法施最勝」，等於印越多經書越厲害嗎？</h3>
-   <p>巴利《法句經》第354偈確實說法施勝過其他布施。但<strong>法施應著重幫助人理解與實踐正法</strong>；不能反過來創造「一本經書＝多少功德」的收據，也不能把它誤引成《佛說法印經》的原句。<a class="src" href="#s-dhamma">Dhp 354</a></p>
-   <p class="muted tiny">宗教傳統關於輪迴、餓鬼、業異熟的敘述在經典中確實存在；本站不把它們說成已由現代科學實驗獨立證明。</p>
+   <h3>「法的布施最殊勝」是不是也能印成付費兌換券？</h3>
+   <p>巴利《法句經》第354偈確實說，一切布施中，以法布施最殊勝。這可以理解為分享能使人理解與實踐正法的教導有其珍貴價值；<strong>並沒有說印一本經書，固定等於幾萬元布施，也沒有說只要印書就不必自己修行。</strong><a href="#s-dhamma" class="src">Dhp 354</a></p>
   </div>
  </div>
 </section>
@@ -435,9 +432,9 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
   <div class="eyebrow">11 / 證據閱覽室 · 讀者可以自行對照</div>
   <h2>每個重要說法，<br><span class="gold">都該找得到原典。</span></h2>
   <p class="section-lead">下方不是裝飾性書目；每張資料卡都說明經號、現存傳承、交集與差異，以及原典閱讀連結。本站只整理原意，不長篇轉載受版權保護的現代譯文。</p>
-  <div class="index-top"><span class="type p1">P1 · 巴漢早期平行經</span><span class="type p2">P2 · 本次以單一早期傳承核對</span><span class="type p5">P5 · 現代說明／比喻</span></div>
-  <div class="note"><strong>請勿誤讀證據分級：</strong>P1 表示不同早期傳承保存可比對的故事或教導，<u>不等於佛陀歷史原話已逐字獲證</u>；P2 只是目前這一頁尚未核對出足夠平行材料，<u>不表示沒有平行經</u>。P5 是現代分析，應接受財務、歷史與社會資料的獨立檢驗。</div>
-  <article class="evidence-card" id="s-velama"><div class="evidence-head"><div><div class="id">文獻 01 · AN 9.20《隨藍經》</div><h3>布施到智慧：隨藍故事</h3></div><span class="type p1">P1 跨早期傳承</span></div><p><strong>漢譯／平行：</strong>《中阿含》155《須達哆經》；《增一阿含》27.3</p><p><strong>共通、差異與推論界線：</strong>共同主軸：巨額財施不及戒、慈心及觀察；差異：巴利末級為「無常想」，中阿含為「無常、苦、空及非神」，增一阿含為「世間不可樂想」。巴利分列皈依、五戒，漢譯層級安排不盡相同。</p><div class="evidence-links"><a href="https://www.dhammatalks.org/suttas/AN/AN9_20.html" target="_blank" rel="noopener noreferrer">巴利 AN 9.20 ↗</a><a href="https://agama.buddhason.org/MA/MA155.htm" target="_blank" rel="noopener noreferrer">漢譯 MĀ 155／對照 ↗</a><a href="https://agama.buddhason.org/MA/MA155.htm" target="_blank" rel="noopener noreferrer">漢譯 EĀ 27.3 ↗</a></div></article>
+  <div class="index-top"><span class="type p1">兩種以上早期傳承有相近記載</span><span class="type p2">目前核對一個早期經本</span><span class="type p5">現代比喻或分析</span></div>
+  <div class="note"><strong>經文相似，不代表每個字都相同。</strong>本站把「不同佛教傳承都有類似故事」和「目前只核對一個早期經本」分開標示。前者不等於有古代錄音，後者也不是說不存在其他對應經文。想深究編號與不同譯本，請往下看原典資料卡。</div>
+  <article class="evidence-card" id="s-velama"><div class="evidence-head"><div><div class="id">文獻 01 · AN 9.20《隨藍經》</div><h3>布施到智慧：隨藍故事</h3></div><span class="type p1">P1 跨早期傳承</span></div><p><strong>漢譯／平行：</strong>《中阿含》155《須達哆經》；《增一阿含》27.3</p><p><strong>共通、差異與推論界線：</strong>共同主軸：巨額財施不及戒、慈心及觀察；差異：巴利最後比較的修習為「無常想」，中阿含為「無常、苦、空及非神」，增一阿含為「世間不可樂想」。巴利分列皈依、五戒，漢譯層級安排不盡相同。</p><div class="evidence-links"><a href="https://www.dhammatalks.org/suttas/AN/AN9_20.html" target="_blank" rel="noopener noreferrer">巴利 AN 9.20 ↗</a><a href="https://agama.buddhason.org/MA/MA155.htm" target="_blank" rel="noopener noreferrer">漢譯 MĀ 155／對照 ↗</a><a href="https://agama.buddhason.org/MA/MA155.htm" target="_blank" rel="noopener noreferrer">漢譯 EĀ 27.3 ↗</a></div></article>
 <article class="evidence-card" id="s-metta"><div class="evidence-head"><div><div class="id">文獻 02 · SN 20.4《大口鍋經》</div><h3>三餐大鍋布施與短暫慈心</h3></div><span class="type p1">P1 跨早期傳承</span></div><p><strong>漢譯／平行：</strong>《雜阿含》1253</p><p><strong>共通、差異與推論界線：</strong>兩本均以大量食物布施對比短暫修習慈心；漢譯用「晨朝三百釜」、巴利表述「早中晚各百大口鍋」。這是比喻比較，不是金錢兌換率。</p><div class="evidence-links"><a href="https://www.dhammatalks.org/suttas/SN/SN20_4.html" target="_blank" rel="noopener noreferrer">SN 20.4 與漢譯對讀 ↗</a><a href="https://agama.buddhason.org/SA/SA1253.htm" target="_blank" rel="noopener noreferrer">漢譯 SA 1253 ↗</a></div></article>
 <article class="evidence-card" id="s-vaccha"><div class="evidence-head"><div><div class="id">文獻 03 · AN 3.57《婆蹉經》（部分系統編為 AN 3.58）</div><h3>不能壟斷布施</h3></div><span class="type p1">P1 跨早期傳承</span></div><p><strong>漢譯／平行：</strong>《雜阿含》95</p><p><strong>共通、差異與推論界線：</strong>佛陀否認只應供養自己與弟子的排他性說法；同時指出供養具戒德的人有較大果報。</p><div class="evidence-links"><a href="https://www.dhammatalks.org/suttas/AN/AN3_58.html" target="_blank" rel="noopener noreferrer">巴利 AN 3.57 ↗</a><a href="https://buddhaspace.org/agama/sub/95.html" target="_blank" rel="noopener noreferrer">漢譯 SA 95 ↗</a></div></article>
 <article class="evidence-card" id="s-robe"><div class="evidence-head"><div><div class="id">文獻 04 · MN 142《施分別經》</div><h3>佛陀的養母與新衣</h3></div><span class="type p1">P1 跨早期傳承</span></div><p><strong>漢譯／平行：</strong>《中阿含》180《瞿曇彌經》</p><p><strong>共通、差異與推論界線：</strong>佛陀的養母帶來新衣，佛陀勸她供養僧團；兩傳承都包含個人供養、僧團供養及布施清淨的討論，但分項說法不可逕作逐句一致。</p><div class="evidence-links"><a href="https://agama.buddhason.org/MA/MA180.htm" target="_blank" rel="noopener noreferrer">巴漢並排 MĀ 180／MN 142 ↗</a><a href="https://suttacentral.net/mn142/en/sujato" target="_blank" rel="noopener noreferrer">MN 142 巴利譯本入口 ↗</a></div></article>
@@ -470,8 +467,8 @@ body{font-size:var(--base);line-height:1.77}.hero{background:radial-gradient(ell
 var result=document.getElementById('quizResult');
 var responses={
  money:'巨額布施有它的價值；但 AN 9.20 接著還列出供養修行者、僧團、皈依、持戒、慈心與無常想的更高比較。金額不是最後答案。',
- temple:'供養四方僧團住處在經文中很重要；但它不是最末級。佛陀還指出皈依、持戒與修習慈心、無常想的更高位置。',
- wisdom:'你選到 AN 9.20 比較的較高層次了：慈心修習高於此前財施與持戒，無常想居此經末級。請記住：一瞬修習不等於保證解脫。'
+ temple:'供養四方僧團住處在經文中很重要；但它不是最最後比較的修習。佛陀還指出皈依、持戒與修習慈心、無常想的更高位置。',
+ wisdom:'你選到 AN 9.20 比較的較高層次了：慈心修習高於此前財施與持戒，無常想居此經最後比較的修習。請記住：一瞬修習不等於保證解脫。'
 };
 document.querySelectorAll('[data-answer]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-answer]').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');result.innerHTML='<strong>原典提醒：</strong> '+responses[b.getAttribute('data-answer')]})});
 var checkResult=document.getElementById('checkResult');
