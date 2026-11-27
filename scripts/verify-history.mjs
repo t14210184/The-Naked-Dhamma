@@ -45,16 +45,23 @@ async function run(){
  if(w===390){
  const interactions=await evaluate('(()=>{const result={};for(const id of ["q-four","q-teacher","q-kalama","q-rahula","q-evidence"]){const b=[...document.querySelectorAll("[aria-controls="+id+"]")];result[id]=b.length===3&&b.every(x=>{x.click();return document.getElementById(id).textContent===x.dataset.feedback&&x.getAttribute("aria-pressed")==="true"&&b.filter(y=>y.getAttribute("aria-pressed")==="true").length===1})}const patch=document.querySelector("#patch");for(let i=0;i<5;i++)patch.click();result.drum=patch.disabled&&document.querySelectorAll(".drum-patch.visible").length===5;document.querySelector("#reset-drum").click();result.reset=!patch.disabled&&document.querySelectorAll(".drum-patch.visible").length===0;document.querySelectorAll(".audit-check").forEach(c=>c.click());result.audit=document.querySelector("#audit-status").textContent.includes("7／7");const input=document.querySelector("#source-search");input.value="1258";input.dispatchEvent(new Event("input"));result.search=[...document.querySelectorAll("[data-source]")].filter(c=>!c.hidden).length>0&&[...document.querySelectorAll("[data-source]")].filter(c=>!c.hidden).length<30;input.value="";input.dispatchEvent(new Event("input"));result.clear=document.querySelectorAll("[data-source]:not([hidden])").length===30;return result})()');
  check(Object.values(interactions).every(Boolean),'All quiz options, drum, audit and source search '+JSON.stringify(interactions));
- await evaluate('(()=>{document.querySelector("#fontUp").focus();return document.activeElement.id})()');
- await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
- check(await evaluate('parseFloat(getComputedStyle(document.body).fontSize)')>20,'Keyboard Enter activates font control');
- await evaluate('document.querySelector("#fontDown").click()');
  for(const [id,name] of [['top','mobile'],['drum','drum-mobile'],['lab','audit-mobile']]){
  await evaluate('document.getElementById('+JSON.stringify(id)+').scrollIntoView({behavior:"instant"})');await sleep(250);
  const shot=await send('Page.captureScreenshot',{format:'jpeg',quality:75,captureBeyondViewport:false});writeFileSync(join(imgs,name+'.jpg'),Buffer.from(shot.data,'base64'));
  }
  }
- if(w===1440){const shot=await send('Page.captureScreenshot',{format:'jpeg',quality:75,captureBeyondViewport:false});writeFileSync(join(imgs,'desktop.jpg'),Buffer.from(shot.data,'base64'));}
+ if(w===1440){
+ await send('Page.bringToFront');await send('Emulation.setFocusEmulationEnabled',{enabled:true});
+ check(await evaluate('(()=>{document.querySelector("#fontUp").focus();return document.activeElement.id==="fontUp"})()'),'Native button accepts keyboard focus');
+ await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,nativeVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,nativeVirtualKeyCode:13});
+ await sleep(100);
+ check(await evaluate('parseFloat(getComputedStyle(document.body).fontSize)')===22,'Desktop native Enter activates font control');
+ await send('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space',windowsVirtualKeyCode:32,nativeVirtualKeyCode:32,text:' ',unmodifiedText:' '});await send('Input.dispatchKeyEvent',{type:'keyUp',key:' ',code:'Space',windowsVirtualKeyCode:32,nativeVirtualKeyCode:32});
+ await sleep(100);
+ check(await evaluate('parseFloat(getComputedStyle(document.body).fontSize)')===24,'Desktop native Space activates font control');
+ await evaluate('(()=>{document.querySelector("#fontDown").click();document.querySelector("#fontDown").click()})()');
+ const shot=await send('Page.captureScreenshot',{format:'jpeg',quality:75,captureBeyondViewport:false});writeFileSync(join(imgs,'desktop.jpg'),Buffer.from(shot.data,'base64'));}
+
  }
  check(exceptions.length===0,'No browser exceptions '+JSON.stringify(exceptions));
  const noJs=join(dir,'nojs.html');writeFileSync(noJs,html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,''),'utf8');
