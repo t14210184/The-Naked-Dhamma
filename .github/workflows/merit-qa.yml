@@ -4,7 +4,13 @@ on:
     paths:
       - "merit.html"
       - "history.html"
+      - "history-research.html"
       - "index.html"
+      - "assets/history/**"
+      - "docs/HISTORY_COVERAGE.tsv"
+      - "docs/HISTORY_IMAGES_RIGHTS.tsv"
+      - "scripts/build-history.mjs"
+      - "scripts/data/**"
       - "scripts/render-social.py"
       - "scripts/verify-history.mjs"
       - "scripts/verify-merit.mjs"
