@@ -1,10 +1,12 @@
 import assert from "node:assert/strict";
+import { Script } from "node:vm";
 import { readFileSync, mkdirSync } from "node:fs";
 import { createServer } from "node:http";
 import { chromium, webkit } from "playwright";
 import AxeBuilder from "@axe-core/playwright";
 
 const html=readFileSync("history.html","utf8");
+for(const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new Script(m[1],{filename:"history-inline.js"});
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
 assert.equal(ids.length,new Set(ids).size,"duplicate IDs");
 assert([...html.matchAll(/href="#([^"]+)"/g)].every(x=>ids.includes(x[1])),"broken internal anchors");
@@ -16,7 +18,7 @@ mkdirSync(output,{recursive:true});
 const server=createServer((req,res)=>{const path=req.url.split("?")[0];if(["/history.html","/index.html","/merit.html"].includes(path)){res.setHeader("content-type","text/html; charset=utf-8");res.end(readFileSync(path.slice(1)));}else{res.writeHead(404);res.end()}});
 await new Promise(r=>server.listen(0,"127.0.0.1",r));
 const base="http://127.0.0.1:"+server.address().port+"/history.html";
-const browser=await ({chromium,webkit}[engine]).launch({headless:true});
+const browser=await ({chromium,webkit}[engine]).launch(engine==="chromium"?{headless:true,channel:"chromium"}:{headless:true});
 let context;
 const errors=[];
 const check=async (p,desc)=>{assert(await p,desc);console.log("PASS "+desc)};
@@ -29,7 +31,7 @@ async function inspect(page,label){
 }
 async function go(page,id){
  await page.goto(base+"#"+id);
- await page.waitForFunction(id=>{const target=document.getElementById(id);return document.documentElement.classList.contains("enhanced")&&!!target&&!target.closest("[hidden]")},id);
+ await page.waitForFunction(id=>{const target=document.getElementById(id);return document.documentElement.classList.contains("enhanced")&&!!target&&!target.closest("[hidden]")&&(id!=="all"||document.querySelectorAll("[data-station]:not([hidden])").length===22)},id);
 }
 async function axe(page,label){
  const result=await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21a","wcag21aa","wcag22aa"]).analyze();
@@ -39,7 +41,7 @@ async function axe(page,label){
 try {
  context=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,hasTouch:true,locale:"zh-TW"});
  await context.tracing.start({screenshots:true,snapshots:true,sources:true});
- const page=await context.newPage();page.on("pageerror",e=>errors.push(String(e)));
+ const page=await context.newPage();page.on("pageerror",e=>{errors.push(String(e));console.error("PAGE_ERROR",e.stack||String(e))});
  await page.goto(base);
  await page.waitForFunction(()=>document.documentElement.classList.contains("enhanced")&&document.querySelector("#four").hidden);
  const landing=await inspect(page,"initial landing");
