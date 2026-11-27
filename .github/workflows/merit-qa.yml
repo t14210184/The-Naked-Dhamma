@@ -1,8 +1,10 @@
-name: Verify merit story readability
+name: Verify interactive story readability
 on:
   pull_request:
     paths:
       - "merit.html"
+      - "history.html"
+      - "scripts/verify-history.mjs"
       - "scripts/verify-merit.mjs"
       - ".github/workflows/merit-qa.yml"
   workflow_dispatch:
@@ -24,10 +26,12 @@ jobs:
         env:
           QA_PRINT_PREVIEW: '1'
         run: node scripts/verify-merit.mjs
+      - name: Check history page in Chrome
+        run: node scripts/verify-history.mjs
       - name: Upload responsive screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: merit-responsive-screenshots
+          name: responsive-story-screenshots
           path: qa-screenshots/
           if-no-files-found: ignore
