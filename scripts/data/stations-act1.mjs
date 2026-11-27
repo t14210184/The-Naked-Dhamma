@@ -5,7 +5,7 @@ export const ACT1_STATIONS = [
   `<section id="four" class="chapter" data-station="1" tabindex="-1"><div class="container">
     <div class="kicker">第 01 站 · 佛陀最後一段旅程</div>
     <h2>誰說的都要查</h2>
-    <p>假設今天有個人跑來對你說：「我親耳聽過佛陀這樣講！」你該不該馬上點頭？早期《大般涅槃經》（DN 16）與漢譯《長阿含》第2經《遊行經》（DA 2）描寫佛陀最後旅途，主動教弟子怎麼面對四種不同「權威來源」的轉述。<a class="src" href="./history-research.html#four-authority">DN 16；DA 2（研究對讀）</a> <a class="src" href="#s-four">來源索引</a></p>
+    <p>假設今天有個人跑來對你說：「我親耳聽過佛陀這樣講！」你該不該馬上點頭？早期《大般涅槃經》（DN 16）與漢譯《長阿含》第2經《遊行經》（DA 2）描寫佛陀最後旅途，主動教弟子怎麼面對四種不同「權威來源」的轉述。<a class="src" href="./history-research.html#c01-001">命題 C01-001（DN 16；DA 2）</a> <a class="src" href="#s-four">來源索引</a></p>
     <div class="scene">
       <svg viewBox="0 0 460 190" role="img" aria-labelledby="s01-svg-t s01-svg-d">
         <title id="s01-svg-t">四位前來轉述的訪客與同一張查證桌</title>
@@ -72,11 +72,11 @@ export const ACT1_STATIONS = [
     <div class="table-wrap"><table role="table"><caption>跨部派四大教法與同名規則對照</caption><thead><tr><th>文獻／傳統</th><th>比對標準</th><th>歷史學意義與限制</th></tr></thead><tbody>
       <tr><th data-label="文獻／傳統">巴利 DN 16／AN 4.180</th><td data-label="比對標準">經（sutta）、律（vinaya）兩項</td><td data-label="歷史學意義與限制">Sujato 討論當時 sutta 未必指今日封閉整部經藏，可能指早期教法綱要（本母／四諦）。</td></tr>
       <tr><th data-label="文獻／傳統">法藏部《長阿含》DA 2</th><td data-label="比對標準">諸經、律、法 三項（T01, 17c）</td><td data-label="歷史學意義與限制">較巴利多出「依法」，顯示口傳與翻譯層次差異。</td></tr>
-      <tr><th data-label="文獻／傳統">《增壹阿含》EA 28.5</th><td data-label="比對標準">契經、律、阿毘曇、戒（T02, 652b）</td><td data-label="歷史學意義與限制">將「阿毘曇」列入，反映較晚期三藏分類形成後的編輯痕跡。</td></tr>
+      <tr><th data-label="文獻／傳統">《增壹阿含》EA 28.5</th><td data-label="比對標準">契經、律、阿毘曇、戒四項；分「東・南・西・北」四方來僧對論</td><td data-label="歷史學意義與限制">不同於巴利四位權威者程序！東・南・西・北方各依「經本／義理／文辭(味)／戒行」作四種處理，且列「阿毘曇」顯露較晚三藏編輯層次。</td></tr>
       <tr><th data-label="文獻／傳統">吐魯番梵本 SF 245</th><td data-label="比對標準">依契經不依人；驗經、律、法性（dharmatā）</td><td data-label="歷史學意義與限制">Waldschmidt 刊本 Wal 24.2–13 明文對比「依經不依人」。</td></tr>
       <tr><th data-label="文獻／傳統">律藏《大品》／後世四依</th><td data-label="比對標準">律制四大標準（Kd 6）／依法不依人等四依</td><td data-label="歷史學意義與限制">Lamotte 研究指出三者功能與時代不同，不可混為一談。</td></tr>
     </tbody></table></div>
-    <p><a class="src" href="./history-research.html#four-authority">閱讀 S01 完整原文對讀與限制</a></p>
+    <aside class="note"><strong>跨版本差異提醒（EA 28.5 ≠ 巴利四大權威轉述者）：</strong>實讀 CBETA／SuttaCentral 原文可見，EA 28.5〈聲聞品／廣演義〉(T02, 652b–c) 問的是「從東・南・西・北方來、通義不通經本或只通味不通義的比丘怎麼核對」，與 DN 16/DA 2 的「親聞佛說／僧團／長老」並不相同，不能因同名「四大」而消弭差異。<a class="src" href="./history-research.html#c01-003">見命題 C01-003 逐版本分析</a> <a class="src" href="./history-research.html#c01-002">見 C01-002 同名規則區辨</a></aside>
     <nav class="station-nav" aria-label="站點 1 導覽"><p class="small">目前第 1／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="./history-research.html#four-authority">研究詳頁</a><a class="button" href="#drum">下一站 →</a></div></nav>
   </div></section>`,
 
@@ -84,7 +84,7 @@ export const ACT1_STATIONS = [
   `<section id="drum" class="chapter" data-station="2" tabindex="-1"><div class="container">
     <div class="kicker">第 02 站 · 兩個古老版本的警告</div>
     <h2>鼓還叫原來的鼓嗎？</h2>
-    <p>古代有面名叫阿能訶（Āṇaka）的鼓。巴利《相應部》SN 20.7 說它裂開時人們不斷打入木楔（āṇi），直到原本的木鼓框完全消失；漢譯《雜阿含經》SA 1258 則說這面鼓聲音原徹四十里，破後改繃牛皮纏補，美聲卻再也回不來，最後皮剝落唯餘聚木。連「警告傳承變質」的故事本身，在不同傳承裡也有異文！<a class="src" href="./history-research.html#drum-parallels">SN 20.7；SA 1258（研究對讀）</a> <a class="src" href="#s-drum">來源索引</a></p>
+    <p>古代有面名叫阿能訶（Āṇaka）的鼓。巴利《相應部》SN 20.7 說它裂開時人們不斷打入木楔（āṇi），直到原本的木鼓框完全消失；漢譯《雜阿含經》SA 1258 則說這面鼓聲音原徹四十里，破後改繃牛皮纏補，美聲卻再也回不來，最後皮剝落唯餘聚木。連「警告傳承變質」的故事本身，在不同傳承裡也有異文！<a class="src" href="./history-research.html#c02-001">命題 C02-001（SN 20.7；SA 1258）</a> <a class="src" href="#s-drum">來源索引</a></p>
     <div class="play">
       <p class="kicker">雙版本視覺對照 · 同一面鼓（教學示意，非原經比例）</p>
       <h3>切換巴利版與漢譯版，看看材質如何改變</h3>
@@ -141,7 +141,7 @@ export const ACT1_STATIONS = [
   `<section id="teacher" class="chapter" data-station="3" tabindex="-1"><div class="container">
     <div class="kicker">第 03 站 · 不會讀心的人怎麼辨認導師</div>
     <h2>連老師也可以調查？</h2>
-    <p>《中部》第47經《思察經》（MN 47）與漢譯《中阿含》第186經《求解經》（MA 186）記載：如果你不會讀心術，怎麼知道一位老師是否真如他所宣稱那樣覺悟？經文說，連佛陀自己也可以用眼睛看、耳朵聽來調查。<a class="src" href="./history-research.html#teacher-investigation">MN 47；MA 186</a> <a class="src" href="#s-teacher">來源索引</a></p>
+    <p>《中部》第47經《思察經》（MN 47）與漢譯《中阿含》第186經《求解經》（MA 186）記載：如果你不會讀心術，怎麼知道一位老師是否真如他所宣稱那樣覺悟？經文說，連佛陀自己也可以用眼睛看、耳朵聽來調查。<a class="src" href="./history-research.html#c03-001">命題 C03-001（MN 47；MA 186）</a> <a class="src" href="#s-teacher">來源索引</a></p>
     <ol class="steps">
       <li><h3>看身語清淨與雜染</h3><p>眼見耳聞的言行中有無貪瞋癡混雜的跡象？</p></li>
       <li><h3>看時間夠不夠久</h3><p>是剛起步裝出來的，還是長期（dīgharattaṁ）一貫如此？</p></li>
@@ -182,7 +182,7 @@ export const ACT1_STATIONS = [
   `<section id="kalama" class="chapter" data-station="4" tabindex="-1"><div class="container">
     <div class="kicker">第 04 站 · 伽藍人的困擾</div>
     <h2>每個人都說自己對</h2>
-    <p>不同宗教導師來到伽藍人住的小鎮，每位都稱讚自己、貶低別人，讓尚未歸信的居民十分困惑。巴利《增支部》AN 3.65 提出十種「不可單憑」的理由；漢譯《中阿含》第16經《伽藍經》（MA 16）則沒有那十條清單，而是直接切入貪瞋癡與善惡行為。千萬別把這部經誤讀成「只信自己喜歡的就是對」！<a class="src" href="./history-research.html#kalama-context">AN 3.65；MA 16；Bodhi (1988)</a> <a class="src" href="#s-kalama">來源索引</a></p>
+    <p>不同宗教導師來到伽藍人住的小鎮，每位都稱讚自己、貶低別人，讓尚未歸信的居民十分困惑。巴利《增支部》AN 3.65 提出十種「不可單憑」的理由；漢譯《中阿含》第16經《伽藍經》（MA 16）則沒有那十條清單，而是直接切入貪瞋癡與善惡行為。千萬別把這部經誤讀成「只信自己喜歡的就是對」！<a class="src" href="./history-research.html#c04-001">命題 C04-001（AN 3.65；MA 16；Bodhi 1988）</a> <a class="src" href="#s-kalama">來源索引</a></p>
     <div class="play">
       <span class="kicker">版本比對與四種安穩探索</span>
       <div class="controls js-only" role="group" aria-label="伽藍經版本切換">
@@ -232,7 +232,7 @@ export const ACT1_STATIONS = [
   `<section id="rahula" class="chapter" data-station="5" tabindex="-1"><div class="container">
     <div class="kicker">第 05 站 · 阿育王碑銘也提到的教誡</div>
     <h2>一盆水、一面鏡子</h2>
-    <p>佛陀探望年輕的羅睺羅，洗完腳後沒有直接講大道理，而是拿起洗腳盆做了一連串動作：倒到剩一點點、全倒光、反蓋在地上、再翻回正面——藉此警告「故意說謊卻不知羞恥」的人，他的修行實質就跟空盆一樣。經文還用戰場上的王象和每天照臉的鏡子作比喻。<a class="src" href="./history-research.html#rahula-reflection">MN 61；MA 14《羅云經》</a> <a class="src" href="./history-research.html#bairat-rahula">拜拉特石刻交叉佐證</a></p>
+    <p>佛陀探望年輕的羅睺羅，洗完腳後沒有直接講大道理，而是拿起洗腳盆做了一連串動作：倒到剩一點點、全倒光、反蓋在地上、再翻回正面——藉此警告「故意說謊卻不知羞恥」的人，他的修行實質就跟空盆一樣。經文還用戰場上的王象和每天照臉的鏡子作比喻。<a class="src" href="./history-research.html#c05-001">命題 C05-001（MN 61；MA 14）</a> <a class="src" href="./history-research.html#c05-003">命題 C05-003（拜拉特石刻佐證）</a></p>
     <div class="play">
       <span class="kicker">動手倒水盆 · 對應 MN 61 與 MA 14 原文順序</span>
       <h3>點點看洗腳盆的五個狀態</h3>
@@ -294,7 +294,7 @@ export const ACT1_STATIONS = [
   `<section id="direction" class="chapter" data-station="6" tabindex="-1"><div class="container">
     <div class="kicker">第 06 站 · 修行方向不是功德價目表</div>
     <h2>教法把你帶去哪裡？</h2>
-    <p>摩訶波闍波提請佛陀給一句簡要可守持的教法。巴利《增支部》AN 8.53（亦見律藏《小品》Cv 10.5）給了八組清楚的「方向羅盤」——看一套教法是令人更貪婪執著、增加負擔，還是越來越少欲知足、平靜易處。<a class="src" href="./history-research.html#direction-tests">AN 8.53；AN 7.83；Cv 10.5</a> <a class="src" href="#s-direction">來源索引</a></p>
+    <p>摩訶波闍波提請佛陀給一句簡要可守持的教法。巴利《增支部》AN 8.53（亦見律藏《小品》Cv 10.5）給了八組清楚的「方向羅盤」——看一套教法是令人更貪婪執著、增加負擔，還是越來越少欲知足、平靜易處。<a class="src" href="./history-research.html#c06-001">命題 C06-001（AN 8.53；Cv 10.5）</a> <a class="src" href="#s-direction">來源索引</a></p>
     <div class="table-wrap"><table role="table"><caption>八組修行方向對照（AN 8.53）</caption><thead><tr><th>✓ 趨向解脫方向</th><th>× 相反方向</th></tr></thead><tbody>
       <tr><th data-label="✓ 趨向解脫方向">離貪（virāga）</th><td data-label="× 相反方向">增長貪染（sarāga）</td></tr>
       <tr><th data-label="✓ 趨向解脫方向">離繫縛（visaṁyoga）</th><td data-label="× 相反方向">增加束縛（saṁyoga）</td></tr>
@@ -324,7 +324,7 @@ export const ACT1_STATIONS = [
   `<section id="truth" class="chapter" data-station="7" tabindex="-1"><div class="container">
     <div class="kicker">第 07 站 · 護持真實</div>
     <h2>相信，和知道，差在哪？</h2>
-    <p>《中部》MN 95《商伽經》指出五種常見依據——<strong>信仰、喜好、口傳、推理、見解忍可</strong>——在現實中都可能「誠信卻為空虛謬誤」，也可能「不信卻真實無誤」。因此經文提出三道階梯，第一階就叫「守護真理」：誠實說「這是我的信念」，而不獨斷宣告「只有我對，其他都是愚妄」。<a class="src" href="./history-research.html#truth-epistemology">MN 95:14, 19–21</a> <a class="src" href="#s-truth">來源索引</a></p>
+    <p>《中部》MN 95《商伽經》指出五種常見依據——<strong>信仰、喜好、口傳、推理、見解忍可</strong>——在現實中都可能「誠信卻為空虛謬誤」，也可能「不信卻真實無誤」。因此經文提出三道階梯，第一階就叫「守護真理」：誠實說「這是我的信念」，而不獨斷宣告「只有我對，其他都是愚妄」。<a class="src" href="./history-research.html#c07-001">命題 C07-001（MN 95）</a> <a class="src" href="#s-truth">來源索引</a></p>
     <div class="play">
       <span class="kicker">訊息分類桌（按鍵替代拖曳，無障礙操作）</span>
       <h3>同一種信念，證據不同，位置就不同</h3>

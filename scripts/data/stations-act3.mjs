@@ -5,7 +5,7 @@ export const ACT3_STATIONS = [
   `<section id="mahayana" class="chapter" data-station="13" tabindex="-1"><div class="container">
     <div class="kicker">第 13 站 · 古印度的延伸及新發展</div>
     <h2>大乘經典從哪裡來？</h2>
-    <p>大乘佛教約在西元前後於古印度文化圈逐步萌芽。Harry Falk 與辛嶋靜志（2012）公布 Split 藏本《八千頌般若》犍陀羅語樺皮殘卷，碳十四測年約西元75年（2σ 區間 47–147 CE），證明早期大乘經典確實出於印度文化圈，並非中國人憑空創造。同時 Paul Harrison、Gregory Schopen 與 David Drewes（2010）也已推翻「大乘是由反抗僧團的在家居士所創立」的過時舊說，改以出家僧尼在保守寺院中主導書寫與受持的「多條交織河道（braided stream）」解釋。<a class="src" href="./history-research.html#mahayana-origins">Split 寫本與大乘起源研究</a> <a class="src" href="#s-baums">來源索引</a></p>
+    <p>大乘佛教約在西元前後於古印度文化圈逐步萌芽。Harry Falk 與辛嶋靜志（2012）公布 Split 藏本《八千頌般若》犍陀羅語樺皮殘卷，碳十四測年約西元75年（2σ 區間 47–147 CE），證明早期大乘經典確實出於印度文化圈，並非中國人憑空創造。同時 Paul Harrison、Gregory Schopen 與 David Drewes（2010）也已推翻「大乘是由反抗僧團的在家居士所創立」的過時舊說，改以出家僧尼在保守寺院中主導書寫與受持的「多條交織河道（braided stream）」解釋。<a class="src" href="./history-research.html#c13-001">Split 寫本與大乘起源（C13-001）</a> <a class="src" href="#s-baums">來源索引</a></p>
     <div class="play">
       <span class="kicker">大乘交織河道探索（九項思想演變 × 「佛說」雙重定義）</span>
       <h3>點選九項大乘核心概念，分辨早期基礎與後世系統化</h3>
@@ -45,7 +45,7 @@ export const ACT3_STATIONS = [
   `<section id="texts" class="chapter" data-station="14" tabindex="-1"><div class="container">
     <div class="kicker">第 14 站 · 真假、晚出與翻譯爭議</div>
     <h2>佛經也有身分證問題</h2>
-    <p>中國古代佛教界自己（東晉道安、南朝梁僧祐《出三藏記集》）早就編寫「疑經錄」辨別經典來源。中華電子佛典協會（CBETA）也明言收錄不等於真偽認證。面對本土撰述經典（Robert Buswell 稱 indigenous scriptures），更須區分「文本出自哪裡」與「作者是否蓄意詐欺」。<a class="src" href="./history-research.html#text-attribution">16類文獻與疑經研究</a> <a class="src" href="./history-research.html#heart-sutra-origin">心經假說對讀</a> <a class="src" href="./history-research.html#surangama-origin">楞嚴 T945 vs T642</a></p>
+    <p>中國古代佛教界自己（東晉道安、南朝梁僧祐《出三藏記集》）早就編寫「疑經錄」辨別經典來源。中華電子佛典協會（CBETA）也明言收錄不等於真偽認證。面對本土撰述經典（Robert Buswell 稱 indigenous scriptures），更須區分「文本出自哪裡」與「作者是否蓄意詐欺」。<a class="src" href="./history-research.html#c14-001">疑經錄與本土經典</a> <a class="src" href="./history-research.html#c14-002">心經 T223／T250／T251 對讀</a> <a class="src" href="./history-research.html#c14-002b">福井文雅替代假說</a> <a class="src" href="./history-research.html#c14-003">楞嚴 T945 vs T642</a></p>
     <div class="play">
       <span class="kicker">佛典身分鑑定桌 · 涵蓋原表全部 16 類經典／文獻</span>
       <h3>選擇任一部經典，逐步打開線索與研究限制</h3>
@@ -81,9 +81,9 @@ export const ACT3_STATIONS = [
       <div class="tab-row js-only" role="group" aria-label="心經來源假說">
         <button type="button" data-heart="trad" aria-pressed="false">傳統說法（印→漢）</button>
         <button type="button" data-heart="nattier" aria-pressed="true">Nattier (1992)／Attwood (2021)（漢編回譯）</button>
-        <button type="button" data-heart="alt" aria-pressed="false">替代解釋（摘錄＋陀羅尼）</button>
+        <button type="button" data-heart="alt" aria-pressed="false">福井文雅等替代解釋（漢印重組／陀羅尼）</button>
       </div>
-      <p id="s14-heart-out" class="result" role="status" aria-live="polite">【Nattier (1992) &amp; Attwood (2021)：印度般若經 → 羅什漢譯 → 漢地摘編《心經》→ 回譯梵文】比對出羅什《大品般若》措辭重疊與梵本語法痕跡（Attwood 2021 分析 22 個比較點，本站尚未逐一核對其全文22點）；但仍不能證成作者有意欺騙。</p>
+      <p id="s14-heart-out" class="result" role="status" aria-live="polite">【Nattier (1992) &amp; Attwood (2021)：印度般若經 → 羅什漢譯 → 漢地摘編《心經》→ 回譯梵文】比對出《大品般若經》（T0223 卷1〈習應品〉）核心句「非色異空、非空異色，色即是空、空即是色…是諸法空相…無苦集滅道，亦無智亦無得」與《心經》（T0250／T0251）重疊，且「度一切苦厄」見於 T0250／T0251 而未見於 T0223〈習應品〉對應段；Attwood (2021) 另分析 22 點（付費全文未逐點查證，不虛構細節），此假說仍不證成作者有意欺騙。</p>
       <div class="grid">
         <article class="card"><h3>《楞嚴經》T945 ≠ T642</h3><p>唐代《大佛頂首楞嚴經》（T945）與鳩摩羅什譯自印度原本的《首楞嚴三昧經》（T642）是兩部不同經典，不可藉經名相似混同來源；Jia（2022）重新考察房融參與翻譯潤色的跨文化互動。</p></article>
         <article class="card"><h3>「格義（geyi）」考證</h3><p>Victor Mair（2012）指出教科書常說「魏晉廣泛用老莊語彙譯經叫格義」係近代建構；史料中原意僅短暫用於對應印度名數清單（numbered lists）的講經分類法。</p></article>
@@ -114,7 +114,7 @@ export const ACT3_STATIONS = [
   `<section id="china" class="chapter" data-station="15" tabindex="-1"><div class="container">
     <div class="kicker">第 15 站 · 孝道、吃素、寺院生計</div>
     <h2>到了中國，佛教怎麼生活？</h2>
-    <p>佛教進入重視家族宗法、孝道與王權的漢地社會後，經歷深刻調適。但務必避免「古印度不重視孝道、也不禁肉，全都是中國發明」的粗略對立！Gregory Schopen（1997）、John Strong（1983）與廣興（2005）指出早期印度佛經早已稱父母為「梵天」與「初師」（《善生經》DN 31／DA 16 亦明訂奉養父母）；而柯嘉豪（John Kieschnick, 2005）則追蹤早期三淨肉律規如何在《大般涅槃經》與梁武帝推行下，經歷數百年於公元10世紀左右確立為漢傳僧團普遍素食正統。<a class="src" href="./history-research.html#china-adaptation">孝道調適研究</a> <a class="src" href="./history-research.html#food-vinaya">MN 55 與素食史</a></p>
+    <p>佛教進入重視家族宗法、孝道與王權的漢地社會後，經歷深刻調適。但務必避免「古印度不重視孝道、也不禁肉，全都是中國發明」的粗略對立！Gregory Schopen（1997）、John Strong（1983）與廣興（2005）指出早期印度佛經早已稱父母為「梵天」與「初師」（《善生經》DN 31／DA 16 亦明訂奉養父母）；而柯嘉豪（John Kieschnick, 2005）則追蹤早期三淨肉律規如何在《大般涅槃經》與梁武帝推行下，經歷數百年於公元10世紀左右確立為漢傳僧團普遍素食正統。<a class="src" href="./history-research.html#c15-001">孝道調適（C15-001）</a> <a class="src" href="./history-research.html#c15-002">MN 55 與素食史（C15-002）</a></p>
     <div class="play">
       <span class="kicker">情境模擬 · 古代僧人面對漢地社會的三道現實課題（史實背景＋教學對比）</span>
       <div class="tab-row js-only" role="group" aria-label="中國化情境">
@@ -146,7 +146,7 @@ export const ACT3_STATIONS = [
   `<section id="chan" class="chapter" data-station="16" tabindex="-1"><div class="container">
     <div class="kicker">第 16 站 · 禪宗傳承能逐代查到嗎？</div>
     <h2>一朵花和二十八位祖師</h2>
-    <p>傳統禪宗說釋迦牟尼在靈山拈花、只有迦葉微笑，經印度二十八祖傳至達摩來華。史丹佛哲學百科、John McRae、Albert Welter（2000）、石井修道（2000）與釋惠敏（2013）卻一步步在燈錄時間線上查出了「斷層」——這個故事是在北宋禪林逐漸結合定型的。<a class="src" href="./history-research.html#flower-sermon">拈花微笑斷層考證</a> <a class="src" href="./history-research.html#chan-lineages">禪宗九項主張與壇經</a></p>
+    <p>傳統禪宗說釋迦牟尼在靈山拈花、只有迦葉微笑，經印度二十八祖傳至達摩來華。史丹佛哲學百科、John McRae、Albert Welter（2000）、石井修道（2000）與釋惠敏（2013）卻一步步在燈錄時間線上查出了「斷層」——這個故事是在北宋禪林逐漸結合定型的。<a class="src" href="./history-research.html#c16-001">拈花斷層考證（C16-001）</a> <a class="src" href="./history-research.html#c16-002">禪宗世系評估（C16-002）</a></p>
     <div class="play">
       <span class="kicker">文獻偵探：一朵花出現在哪一本書、哪個年代？</span>
       <div class="tab-row js-only" role="group" aria-label="逐冊開啟文獻時間線">
@@ -163,7 +163,7 @@ export const ACT3_STATIONS = [
         <span class="tag">版本對照 · IMG05（敦煌寫本官方連結＋1310刻本對比）</span>
         <h3>《六祖壇經》敦煌本 vs 後世刊本</h3>
         <img src="assets/history/evidence/img05-platform-sutra-1310.jpg" width="900" height="785" loading="lazy" alt="1310年高麗刻本六祖壇經對開木刻漢文頁面，記載風吹幡動等公案" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small"><strong>重要區分：</strong>上圖為<strong>1310年高麗木刻版（BnF Coréen 110, Public Domain）</strong>，屬後世增廣本，<strong>並非敦煌唐寫本</strong>。大英圖書館敦煌寫本 <code>Or.8210/S.5475</code> 受反爬蟲保護，依法以官方館藏連結提供查閱：<a href="https://idp.bl.uk/collection/C4D4682ACF944CAF9378F5C5701576A0/" target="_blank" rel="noopener noreferrer">IDP S.5475 官方頁面 ↗</a></p>
+        <p class="small"><strong>重要區分：</strong>上圖為<strong>1310年高麗木刻版（BnF Coréen 110, Public Domain）</strong>，屬後世增廣刊本，<strong>絕非敦煌唐寫本，亦不可當成敦煌寫本之替代件</strong>。大英圖書館敦煌寫本 <code>Or.8210/S.5475</code> 因官網反爬蟲機制對自動請求受阻（<code>ACCESS_BLOCKED</code>，非版權禁止），請讀者由官方館藏頁親自查閱：<a href="https://idp.bl.uk/collection/C4D4682ACF944CAF9378F5C5701576A0/" target="_blank" rel="noopener noreferrer">IDP S.5475 官方頁面 ↗</a></p>
       </article>
       <article class="card-box">
         <span class="tag">後世藝術想像 · IMG06</span>
@@ -190,7 +190,7 @@ export const ACT3_STATIONS = [
   `<section id="tibet" class="chapter" data-station="17" tabindex="-1"><div class="container">
     <div class="kicker">第 17 站 · 秘密、伏藏與轉世</div>
     <h2>從印度密教到西藏</h2>
-    <p>早期佛教已有護持咒語等元素，但具備完整灌頂、本尊觀想與曼荼羅的成熟密續主要自西元7世紀起在印度發展。Christian Wedemeyer（2012）提醒我們勿將密教簡化為「墮落巫術」，而應放回中世紀印度大寺的知識體系與符號學中理解。傳入西藏後，既有大量印度失傳典籍的珍貴保存，也有苯教雙向互動、伏藏（11世紀起分地伏藏／意伏藏，曾受薩迦班智達批判）與轉世制度（13世紀噶瑪巴至1792清廷金瓶掣籤）。<a class="src" href="./history-research.html#tantric-history">Wedemeyer 與印度密教</a> <a class="src" href="./history-research.html#tibetan-lineages">西藏八期與八主張</a></p>
+    <p>早期佛教已有護持咒語等元素，但具備完整灌頂、本尊觀想與曼荼羅的成熟密續主要自西元7世紀起在印度發展。Christian Wedemeyer（2012）提醒我們勿將密教簡化為「墮落巫術」，而應放回中世紀印度大寺的知識體系與符號學中理解。傳入西藏後，既有大量印度失傳典籍的珍貴保存，也有苯教雙向互動、伏藏（11世紀起分地伏藏／意伏藏，曾受薩迦班智達批判）與轉世制度（13世紀噶瑪巴至1792清廷金瓶掣籤）。<a class="src" href="./history-research.html#c17-001">Wedemeyer 密教脈絡（C17-001）</a> <a class="src" href="./history-research.html#c17-002">西藏史實與主張（C17-002）</a></p>
     <div class="play">
       <span class="kicker">來源盒分類 · 分清「歷史檔案」「宗派自述」與「宗教信念」</span>
       <div class="tab-row js-only" role="group" aria-label="選擇藏傳主張">
@@ -240,7 +240,7 @@ export const ACT3_STATIONS = [
   `<section id="politics" class="chapter" data-station="18" tabindex="-1"><div class="container">
     <div class="kicker">第 18 站 · 戰爭、政治、經濟的選擇性保存</div>
     <h2>誰留下書，誰沒能留下？</h2>
-    <p>寺院需要土地、糧食、保護與抄經網絡。政權滅佛、殖民改造、戰火與官修大藏經（如北宋 971–983 年依《開元釋教錄》雕印首部木刻大藏經《開寶藏》），共同決定了後人讀得到什麼。至於印度北部大型寺院在11–13世紀的衰退，考古學家 Lars Fogelin（2015）強調不能單一歸咎突厥入侵，而必須看多重結構因素交織。<a class="src" href="./history-research.html#politics-preservation">政治與開寶藏</a> <a class="src" href="./history-research.html#india-decline">Fogelin 印度衰退研究</a></p>
+    <p>寺院需要土地、糧食、保護與抄經網絡。政權滅佛、殖民改造、戰火與官修大藏經（如北宋 971–983 年依《開元釋教錄》雕印首部木刻大藏經《開寶藏》），共同決定了後人讀得到什麼。至於印度北部大型寺院在11–13世紀的衰退，考古學家 Lars Fogelin（2015）強調不能單一歸咎突厥入侵，而必須看多重結構因素交織。<a class="src" href="./history-research.html#c18-001">政治與開寶藏（C18-001）</a> <a class="src" href="./history-research.html#c18-002">Fogelin 印度衰退（C18-002）</a></p>
     <div class="play">
       <span class="kicker">古圖書館保存沙盒（玩具教學模擬，非古代真實統計數字）</span>
       <h3>勾選不同歷史力量，看看文獻如何被選擇性保留或遺失</h3>

@@ -10,7 +10,6 @@ on:
       - "history.html"
       - "history-research.html"
       - "assets/history/**"
-      - "versions/**"
       - "scripts/render-social.py"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
@@ -41,7 +40,6 @@ jobs:
           cp index.html merit.html history.html history-research.html _site/
           cp assets/history/history.css assets/history/history.js assets/history/research.js _site/assets/history/
           cp assets/history/evidence/* _site/assets/history/evidence/
-          if [ -d versions ]; then mkdir -p _site/versions && cp -r versions/* _site/versions/; fi
           touch _site/.nojekyll
       - name: Generate four independent share images
         run: |

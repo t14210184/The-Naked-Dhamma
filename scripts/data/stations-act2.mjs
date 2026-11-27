@@ -5,7 +5,7 @@ export const ACT2_STATIONS = [
   `<section id="evidence" class="chapter" data-station="8" tabindex="-1"><div class="container">
     <div class="kicker">第 08 站 · 石刻、手稿與不同版本</div>
     <h2>當歷史偵探</h2>
-    <p>傳世佛經歷經數百年口耳相傳與抄寫，有沒有不靠宗教傳說、能用物質材料獨立查證年代的線索？有！最重要的是西元前3世紀孔雀王朝阿育王石刻，以及西元前1至後4世紀的犍陀羅樺樹皮手稿。<a class="src" href="./history-research.html#ashoka-inscriptions">阿育王碑銘研究</a> <a class="src" href="./history-research.html#gandhara-manuscripts">犍陀羅寫本</a></p>
+    <p>傳世佛經歷經數百年口耳相傳與抄寫，有沒有不靠宗教傳說、能用物質材料獨立查證年代的線索？有！最重要的是西元前3世紀孔雀王朝阿育王石刻，以及西元前1至後4世紀的犍陀羅樺樹皮手稿。<a class="src" href="./history-research.html#c08-001">藍毘尼柱（C08-001）</a> <a class="src" href="./history-research.html#c08-002">銘文轉寫（C08-002）</a> <a class="src" href="./history-research.html#c08-003">拜拉特七經（C08-003）</a> <a class="src" href="./history-research.html#c08-004">拘那含柱（C08-004）</a> <a class="src" href="./history-research.html#c08-005">僧團詔令（C08-005）</a> <a class="src" href="./history-research.html#c08-006">犍陀羅寫本（C08-006）</a> <a class="src" href="./history-research.html#c08-007">LOC 2018305008（C08-007）</a></p>
     <div class="play">
       <span class="kicker">真實史料放大鏡 · 先觀察實物，再開啟轉寫與限制</span>
       <h3>切換五件可查證實物照片，使用放大與標註圖層</h3>
@@ -55,7 +55,7 @@ export const ACT2_STATIONS = [
         <span class="tag">A 考古實物 · IMG02</span>
         <h3>犍陀羅樺樹皮手稿（西元前1–後1世紀）</h3>
         <img src="assets/history/evidence/img02-gandhara-bl-or14915.jpg" width="1000" height="667" loading="lazy" alt="大英圖書館Or. 14915號西元1世紀犍陀羅語佉盧文樺樹皮手稿殘片實物影像" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small">館藏／來源：大英圖書館 BL Or. 14915（CC0）；另見 <a href="https://www.loc.gov/item/2018305008/" target="_blank" rel="noopener noreferrer">美國國會圖書館 2018305008（官方連結，館方網站限制自動擷取）</a>。Split 藏本《八千頌般若》C14 測年約 75 CE（2σ 47–147 CE）。<a href="#s-scroll">見來源</a></p>
+        <p class="small">館藏／來源：大英圖書館 BL Or. 14915（CC0）；另見 <a href="https://www.loc.gov/item/2018305008/" target="_blank" rel="noopener noreferrer">美國國會圖書館 2018305008（Public Domain Mark 1.0，官網對自動請求回傳 HTTP 403 屬技術存取受阻 ACCESS_BLOCKED，非版權禁止）</a>。Split 藏本《八千頌般若》C14 測年約 75 CE（2σ 47–147 CE）。<a href="./history-research.html#c08-007">見寫本命題</a> · <a href="#s-scroll">見來源</a></p>
       </article>
     </div>
     <div class="table-wrap"><table role="table"><caption>阿育王四項核心碑銘證據與可確認範圍（對應原表 T07）</caption><thead><tr><th>碑銘證據</th><th>可以確認的歷史事實</th><th>不可自動推論的範圍</th></tr></thead><tbody>
@@ -82,7 +82,7 @@ export const ACT2_STATIONS = [
   `<section id="transmission" class="chapter" data-station="9" tabindex="-1"><div class="container">
     <div class="kicker">第 09 站 · 口傳不是錄音，也不是隨便亂編</div>
     <h2>二千多年的傳話遊戲</h2>
-    <p>佛滅後數百年間，僧團靠口耳相傳保存教法。這是不是就像派對裡的「傳話遊戲」一傳就全走樣？Alexander Wynne（2004）研究指出，早期僧團對戒本與定型句採行高度紀律化的集體背誦與校對；但 Mark Allon（2022）與臺灣佛學期刊（越建東 2007；溫宗堃 2010）對比巴利與漢譯阿含，也確認經文確實經歷增刪、模板化編輯與改寫。<a class="src" href="./history-research.html#oral-transmission">Allon 2022；Wynne 2004</a> <a class="src" href="#s-allon">來源索引</a></p>
+    <p>佛滅後數百年間，僧團靠口耳相傳保存教法。這是不是就像派對裡的「傳話遊戲」一傳就全走樣？Alexander Wynne（2004）研究指出，早期僧團對戒本與定型句採行高度紀律化的集體背誦與校對；但 Mark Allon（2022）與臺灣佛學期刊（越建東 2007；溫宗堃 2010）對比巴利與漢譯阿含，也確認經文確實經歷增刪、模板化編輯與改寫。<a class="src" href="./history-research.html#c09-001">口傳張力研究（C09-001）</a> <a class="src" href="#s-allon">來源索引</a></p>
     <div class="play">
       <span class="kicker">雙向口傳形成沙盒（教學玩具模型，非歷史統計機率）</span>
       <h3>經典形成是「集體校對保守性」與「異文擴編」並存</h3>
@@ -139,7 +139,7 @@ export const ACT2_STATIONS = [
   `<section id="history" class="chapter" data-station="10" tabindex="-1"><div class="container">
     <div class="kicker">第 10 站 · 從印度到世界各地</div>
     <h2>把時間拉到兩千多年</h2>
-    <p>歷史上的喬達摩大約活動於西元前5世紀，但從佛陀入滅到阿育王石刻（前3世紀中葉）之間相隔約一個半世紀，是史料最薄弱的斷層。這裡整合現代學術約略年代（不採單一宗派佛曆，且各地區發展不同步）、佛陀生平證據評估，以及歷次結集的不同記載。<a class="src" href="./history-research.html#historical-buddha">歷史佛陀與年代</a> <a class="src" href="./history-research.html#councils">結集史料分析</a></p>
+    <p>歷史上的喬達摩大約活動於西元前5世紀，但從佛陀入滅到阿育王石刻（前3世紀中葉）之間相隔約一個半世紀，是史料最薄弱的斷層。這裡整合現代學術約略年代（不採單一宗派佛曆，且各地區發展不同步）、佛陀生平證據評估，以及歷次結集的不同記載。<a class="src" href="./history-research.html#c10-001">歷史佛陀（C10-001）</a> <a class="src" href="./history-research.html#c10-002">十二時期（C10-002）</a> <a class="src" href="./history-research.html#c10-003">結集分析（C10-003）</a></p>
     <div class="play">
       <span class="kicker">互動歷史地圖與 12 時期時間滑桿（示意地理定位，不代表現代或古代精確國界）</span>
       <h3>拖動或點按切換 12 個歷史時期</h3>
@@ -231,7 +231,7 @@ export const ACT2_STATIONS = [
   `<section id="branches" class="chapter" data-station="11" tabindex="-1"><div class="container">
     <div class="kicker">第 11 站 · 部派、核心思想與三大傳承</div>
     <h2>不同傳承保存了什麼？</h2>
-    <p>佛教不是從一開始就「一分為二或分成十八個整齊分支」。南傳《島史》把根本分裂歸因於毘舍離十事非法、說一切有部歸因於「大天五事」、《舍利弗問經》歸因於戒律增廣；Nattier 與 Prebish（1977）指出根本分裂早於阿育王（約佛滅116年前後）且偏重戒律實務分歧。更重要的是：今天的上座部不等於古代全部上座系，大乘也不是由大眾部單線分出的單一宗派。<a class="src" href="./history-research.html#school-schism">部派分裂研究</a> <a class="src" href="./history-research.html#early-core">早期核心與五語無我</a></p>
+    <p>佛教不是從一開始就「一分為二或分成十八個整齊分支」。南傳《島史》把根本分裂歸因於毘舍離十事非法、說一切有部歸因於「大天五事」、《舍利弗問經》歸因於戒律增廣；Nattier 與 Prebish（1977）指出根本分裂早於阿育王（約佛滅116年前後）且偏重戒律實務分歧。更重要的是：今天的上座部不等於古代全部上座系，大乘也不是由大眾部單線分出的單一宗派。<a class="src" href="./history-research.html#c11-001">部派分裂（C11-001）</a> <a class="src" href="./history-research.html#c11-002">早期核心與無我（C11-002）</a> <a class="src" href="./history-research.html#c11-003">轉法輪／緣起對讀（C11-003）</a></p>
     <div class="play">
       <span class="kicker">交織河道網絡示意（V01 升級，非單一血統樹狀分家）</span>
       <h3>點按不同分支，看它們各自保存了什麼與面臨的限制</h3>
@@ -328,7 +328,7 @@ export const ACT2_STATIONS = [
   `<section id="south" class="chapter" data-station="12" tabindex="-1"><div class="container">
     <div class="kicker">第 12 站 · 斯里蘭卡三座大寺與近代戒脈</div>
     <h2>南傳也經過重整</h2>
-    <p>許多人以為南傳上座部兩千五百年來完全沒有改變，但「經典早年保存」與「現行宗派制度」必須分開。古代斯里蘭卡至少並存大寺、無畏山寺與祇陀林寺三大僧團中心；12世紀王權統合後大寺派才取得主導；18世紀中期斯里蘭卡具足戒更曾斷絕，須迎請暹羅與緬甸重新傳戒。<a class="src" href="./history-research.html#theravada-history">Deeg (2024)；Gethin (1998)</a> <a class="src" href="#s-gethin">來源索引</a></p>
+    <p>許多人以為南傳上座部兩千五百年來完全沒有改變，但「經典早年保存」與「現行宗派制度」必須分開。古代斯里蘭卡至少並存大寺、無畏山寺與祇陀林寺三大僧團中心；12世紀王權統合後大寺派才取得主導；18世紀中期斯里蘭卡具足戒更曾斷絕，須迎請暹羅與緬甸重新傳戒。<a class="src" href="./history-research.html#c12-001">南傳制度重整（C12-001）</a> <a class="src" href="./history-research.html#c12-004">固都陶 729 碑（C12-004）</a> <a class="src" href="#s-gethin">來源索引</a></p>
     <div class="grid">
       <article class="card-box">
         <span class="tag">考古遺址實景 · IMG03</span>
@@ -364,7 +364,7 @@ export const ACT2_STATIONS = [
       <span class="tag">歷史實物 · 緬甸固都陶碑林</span>
       <h3>敏東王 729 塊巴利三藏經文石碑（1860–1868 刻成、1871 第五次結集）</h3>
       <img src="assets/history/evidence/extra-kuthodaw-slab.jpg" width="800" height="1067" loading="lazy" alt="緬甸固都陶碑林白色小塔內直立刻滿緬文拼寫巴利三藏經文的大理石碑" style="max-width:340px;width:100%;height:auto;border-radius:8px;margin:8px 0">
-      <p class="small">攝於2006（Wagaung, CC BY-SA 3.0）。UNESCO 世界記憶列 729 塊經文大理石碑（不含另有說明碑；勿誤作 730 塊經文碑）。<a class="src" href="./history-research.html#theravada-history">見詳頁校勘</a></p>
+      <p class="small">攝於2006（Wagaung, CC BY-SA 3.0）。UNESCO 世界記憶列 729 塊經文大理石碑（不含另有說明碑；勿誤作 730 塊經文碑）。<a class="src" href="./history-research.html#c12-004">見詳頁校勘（C12-004）</a></p>
     </div>
     <aside class="note"><b>不能否定巴利經藏價值</b><p>制度歷經統合、戒脈斷絕重建與近代王室法制化（如泰國 1833 法宗派與 1902 僧團法），並不等於推翻巴利經藏保存大量早期核心文獻的學術價值。</p></aside>
     <nav class="station-nav" aria-label="站點 12 導覽"><p class="small">目前第 12／22 站 · 第二幕結束，可稍後繼續</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#branches">← 上一站</a><a class="button secondary" href="./history-research.html#theravada-history">研究詳頁</a><a class="button" href="#mahayana">進入第三幕 →</a></div></nav>

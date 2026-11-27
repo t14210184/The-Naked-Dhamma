@@ -5,7 +5,7 @@ export const ACT4_STATIONS = [
   `<section id="japan" class="chapter" data-station="19" tabindex="-1"><div class="container">
     <div class="kicker">第 19 站 · 制度適應最明顯的案例之一</div>
     <h2>日本和尚為什麼能結婚生子？</h2>
-    <p>來到現代日本寺廟，許多住持已婚育兒並將寺院交給子女繼承——這代表佛教完全失去了修行傳統嗎？歷史研究呈現出更細緻的脈絡：淨土真宗開祖親鸞（1173–1263）早在明治維新數百年前便以「非僧非俗」實踐公開婚配；德川時期檀家制度讓寺院承擔戶籍登記等國家行政功能；而 1872 年明治政府的「肉食妻帶解禁令」（Jaffe 2001）並非強制僧侶結婚，而是撤除國家層級的刑罰禁制，經各宗派激烈辯論後才逐漸普遍化。<a class="src" href="./history-research.html#japan-institutions">Jaffe 2001 制度史研究</a> <a class="src" href="#s-japan">來源索引</a></p>
+    <p>來到現代日本寺廟，許多住持已婚育兒並將寺院交給子女繼承——這代表佛教完全失去了修行傳統嗎？歷史研究呈現出更細緻的脈絡：淨土真宗開祖親鸞（1173–1263）早在明治維新數百年前便以「非僧非俗」實踐公開婚配；德川時期檀家制度讓寺院承擔戶籍登記等國家行政功能；而 1872 年明治政府的「肉食妻帶解禁令」（Jaffe 2001）並非強制僧侶結婚，而是撤除國家層級的刑罰禁制，經各宗派激烈辯論後才逐漸普遍化。<a class="src" href="./history-research.html#c19-001">Jaffe 2001 制度史（C19-001）</a> <a class="src" href="#s-japan">來源索引</a></p>
     <div class="play">
       <span class="kicker">制度變遷三時期切換</span>
       <h3>點選三個歷史轉折點，觀察出家制度如何與國家社會重構</h3>
@@ -31,7 +31,7 @@ export const ACT4_STATIONS = [
   `<section id="women" class="chapter" data-station="20" tabindex="-1"><div class="container">
     <div class="kicker">第 20 站 · 律藏異文與女性授戒接力</div>
     <h2>女性的地位一直都是這樣嗎？</h2>
-    <p>早期經典已記載女性出家並證得解脫，但現存律藏亦含要求比丘尼從屬於比丘的「八敬法」。Anālayo 與 Ute Hüsken 跨部派比較諸律後指出，不同部派律藏對女性受戒與八敬法細節記載不一，部分規定可能反映較晚才成熟定型的僧團制度。至於歷史上斯里蘭卡比丘尼僧團中斷後，則展開了一場跨越千餘年的跨海傳戒接力：<a class="src" href="./history-research.html#bhikkhuni-history">八敬法與傳戒史</a> <a class="src" href="#s-nuns">來源索引</a></p>
+    <p>早期經典已記載女性出家並證得解脫，但現存律藏亦含要求比丘尼從屬於比丘的「八敬法」。Anālayo 與 Ute Hüsken 跨部派比較諸律後指出，不同部派律藏對女性受戒與八敬法細節記載不一，部分規定可能反映較晚才成熟定型的僧團制度。至於歷史上斯里蘭卡比丘尼僧團中斷後，則展開了一場跨越千餘年的跨海傳戒接力：<a class="src" href="./history-research.html#c20-001">八敬法與傳戒史（C20-001）</a> <a class="src" href="#s-nuns">來源索引</a></p>
     <div class="play">
       <span class="kicker">歷史接力棒路線圖（429 CE → 2025 CE）</span>
       <h3>點選四個關鍵歷史節點</h3>
@@ -66,7 +66,7 @@ export const ACT4_STATIONS = [
   `<section id="modern" class="chapter" data-station="21" tabindex="-1"><div class="container">
     <div class="kicker">第 21 站 · 現代主義建構與臺灣四期歷史</div>
     <h2>你認識的佛教，其實只有一百年？</h2>
-    <p>「佛教其實只是科學哲學與心理減壓，不是講神通鬼神的宗教」——這真是佛陀原本的樣子嗎？David McMahan（2008）與 Erik Braun（2013）指出，這種重視理性、個人內觀冥想與去儀式化的佛教形象，正是在 19 至 20 世紀亞洲佛教面對西方殖民、科學與傳教挑戰時，由阿那伽里迦・達摩波羅、雷迪尊者與鈴木大拙等改革者重新建構的「佛教現代主義」。同時 C. Pierce Salguero（2026）與近年心理研究（PMC11300403）也提醒，抽離倫理脈絡的禪修仍可能引發焦慮或解離等「禪病」風險，不能當成萬靈丹或取代醫療。<a class="src" href="./history-research.html#buddhist-modernism">佛教現代主義研究</a> <a class="src" href="#s-modern">來源索引</a></p>
+    <p>「佛教其實只是科學哲學與心理減壓，不是講神通鬼神的宗教」——這真是佛陀原本的樣子嗎？David McMahan（2008）與 Erik Braun（2013）指出，這種重視理性、個人內觀冥想與去儀式化的佛教形象，正是在 19 至 20 世紀亞洲佛教面對西方殖民、科學與傳教挑戰時，由阿那伽里迦・達摩波羅、雷迪尊者與鈴木大拙等改革者重新建構的「佛教現代主義」。同時 C. Pierce Salguero（2026）與近年心理研究（PMC11300403）也提醒，抽離倫理脈絡的禪修仍可能引發焦慮或解離等「禪病」風險，不能當成萬靈丹或取代醫療。<a class="src" href="./history-research.html#c21-001">佛教現代主義（C21-001）</a> <a class="src" href="#s-modern">來源索引</a></p>
     <div class="play">
       <span class="kicker">拆解現代流行佛教形象</span>
       <h3>點選四個常見現代說法，核對史料真實位置</h3>
@@ -87,7 +87,7 @@ export const ACT4_STATIONS = [
       <tr><th data-label="現代常見佛教形象">現代內觀方法完全等同佛陀當年教法</th><td data-label="歷史評估">無法證明</td></tr>
       <tr><th data-label="現代常見佛教形象">慈善服務就是佛教唯一核心</th><td data-label="歷史評估">現代宗教實踐的特定強調方式</td></tr>
     </tbody></table></div>
-    <h3>臺灣佛教的四層歷史累積 <a class="src" href="./history-research.html#taiwan-history">臺灣佛教史詳頁</a> <a class="src" href="#s-tw">來源索引</a></h3>
+    <h3>臺灣佛教的四層歷史累積 <a class="src" href="./history-research.html#c21-002">總論（C21-002）</a> <a class="src" href="./history-research.html#c21-003">日治（C21-003）</a> <a class="src" href="./history-research.html#c21-004">戰後（C21-004）</a> <a class="src" href="./history-research.html#c21-005">現代多元（C21-005）</a> <a class="src" href="#s-tw">來源索引</a></h3>
     <p>今天在臺灣看到的廟會拜拜、大型佛教慈善組織與禪修中心，也是清代以來四段歷史交互累積的成果（Jones 1999；Bingenheimer 2004；Madsen 2007；林佩瑩 2020）：</p>
     <div class="play">
       <span class="kicker">臺灣佛教四個歷史時期（IMG09–IMG12 實景與檔案對照）</span>
@@ -144,7 +144,7 @@ export const ACT4_STATIONS = [
   `<section id="lab" class="chapter" data-station="22" tabindex="-1"><div class="container">
     <div class="kicker">第 22 站 · 把工具帶著走</div>
     <h2>下一次有人說「這是佛陀親口講的」</h2>
-    <p>走完兩千五百年的線索，我們不需要把宗教神話全部當成歷史，也不必把後世發展一概罵成造假；真正有用的，是學會區分「哪種主張該要求哪種等級的證據」。下方提供純質性舉證負擔判準、五層佛教歷史模型，以及能複製筆記帶著走的七步查證工作台。<a class="src" href="./history-research.html#evidence-risk">舉證負擔與限制研究</a> <a class="src" href="./history-research.html#five-layers">五層模型詳解</a> <a class="src" href="#s-lib">來源資料庫</a></p>
+    <p>走完兩千五百年的線索，我們不需要把宗教神話全部當成歷史，也不必把後世發展一概罵成造假；真正有用的，是學會區分「哪種主張該要求哪種等級的證據」。下方提供純質性舉證負擔判準、五層佛教歷史模型，以及能複製筆記帶著走的七步查證工作台。<a class="src" href="./history-research.html#c22-001">舉證負擔（C22-001）</a> <a class="src" href="./history-research.html#c22-002">五層模型（C22-002）</a> <a class="src" href="#s-lib">來源資料庫</a></p>
 
     <div class="play">
       <span class="kicker">質性審查優先程度（取代偽造百分比條圖；對應原圖 V04）</span>
@@ -273,6 +273,6 @@ export const ACT4_STATIONS = [
       <p class="small">本網站多數原典已在公開平台逐條查核，但部分付費專書與論文目前僅依據公開摘要與目錄驗證，尚未完成全部寫本的獨立全書校勘；任何讀者發現可核對之勘誤，請依研究頁書目提出查證修正。</p>
     </div>
 
-    <nav class="station-nav" aria-label="站點 22 導覽"><p class="small">目前第 22／22 站 · 探索館終點</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#modern">← 上一站</a><a class="button secondary" href="./history-research.html">研究與完整書目頁</a><a class="button" href="#library">查看 31 組來源庫 →</a></div></nav>
+    <nav class="station-nav" aria-label="站點 22 導覽"><p class="small">目前第 22／22 站 · 探索館終點</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#modern">← 上一站</a><a class="button secondary" href="./history-research.html">研究與完整書目頁</a><a class="button" href="#library">查看 39 組來源庫 →</a></div></nav>
   </div></section>`
 ];

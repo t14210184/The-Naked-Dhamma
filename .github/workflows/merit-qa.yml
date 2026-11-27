@@ -9,6 +9,7 @@ on:
       - "assets/history/**"
       - "docs/HISTORY_COVERAGE.tsv"
       - "docs/HISTORY_IMAGES_RIGHTS.tsv"
+      - "docs/HISTORY_LEGACY_URLS.tsv"
       - "scripts/build-history.mjs"
       - "scripts/data/**"
       - "scripts/render-social.py"
@@ -48,6 +49,7 @@ jobs:
       fail-fast: false
       matrix:
         engine: [chromium, webkit]
+        batch: [0, 1, 2, 3]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -59,16 +61,18 @@ jobs:
         run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.57.0 @axe-core/playwright@4.10.2
       - name: Install test browser
         run: npx playwright install --with-deps ${{ matrix.engine }}
-      - name: Verify all three share preview images
+      - name: Verify all four share preview images
+        if: matrix.batch == 0
         run: /usr/bin/python3 scripts/render-social.py qa-screenshots/social
       - name: Verify history in native test browser and axe
         env:
           ENGINE: ${{ matrix.engine }}
+          MATRIX_BATCH: ${{ matrix.batch }}
         run: node scripts/verify-history.mjs
       - name: Upload screenshots and trace
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: history-${{ matrix.engine }}-evidence
+          name: history-${{ matrix.engine }}-batch-${{ matrix.batch }}-evidence
           path: qa-screenshots/
           if-no-files-found: warn

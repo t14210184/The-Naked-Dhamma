@@ -6,9 +6,9 @@
 
 ## 立即體驗
 
-第三篇 v1.1 候選優化：四幕目錄、單站閱讀與完整長文模式、暖紙／柔光雙主題、22 站內容與 30 組擴充來源、雙版本古鼓、續讀、案例筆記、社群預覽。實際驗收以對應 SHA 的 Chromium／WebKit、axe、公開 HTTPS exact bytes 及真機驗收為準；模擬 WebKit 不代表 iPhone 或 LINE 真機通過。
+第三篇 v2.0 候選重建（[PR #10](https://github.com/t14210184/The-Naked-Dhamma/pull/10)，尚待人類審查與部署批准）：雙頁同鏈架構（大眾互動探索館 `history.html` × 學術證據研究詳頁 `history-research.html`）、四幕目錄、22 站獨立實作互動、39 組證據來源、48 項命題級正反評估與 277 條覆蓋清冊、95 個舊版連結追查清冊，以及暖紙／柔光雙主題與 16–28px 字級。實際驗收以對應 SHA 的 Chromium／WebKit、axe、全矩陣實測為準；模擬 WebKit 不代表 iPhone 或 LINE 真機通過，`AC-17`／`AC-18`（跨年齡真人與實機讀屏）未測前維持 `NOT_RUN`。
 
-- **第三篇《這真的是佛陀說的嗎？》**：[網站入口](https://t14210184.github.io/The-Naked-Dhamma/history.html)／[完整單檔原始碼](./history.html)。22 個探索站點、30 組證據與來源，涵蓋佛教歷史、傳承變化、四大教法、古鼓、導師查證、伽藍經及現代證據辨識。互動含情境選擇、鼓的材料替換、七步查證清單、來源搜尋與字級調整；不點互動也能閱讀。來源分層並註明未定問題，不將宗教傳承當作歷史證明。發布與測試狀態以對應提交的 GitHub Actions 和公網讀回為準。
+- **第三篇《這真的是佛陀說的嗎？》**：[線上正式 v1.1 入口](https://t14210184.github.io/The-Naked-Dhamma/history.html)／候選原始碼 [`history.html`](./history.html) 與 [`history-research.html`](./history-research.html)（由 `scripts/data/*` 與 `scripts/build-history.mjs` 建置）。22 個探索站點與 39 組證據來源，涵蓋早期四大教法（含 DN 16／DA 2／EA 28.5 異文區分）、古鼓雙版本、導師查證、伽藍經與菩提比丘評注、阿育王石刻、犍陀羅手稿、口傳與寫本年代切分、《心經》T223／T250／T251 實際字句與福井文雅替代解釋、中國／禪／藏／日／女眾傳戒／現代主義與臺灣四期、七步查證法。來源三軸分層並標示 `PRIMARY_CHECKED`、`FULLTEXT_CHECKED`、`ABSTRACT_ONLY`、`CATALOG_ONLY`、`ACCESS_BLOCKED` 等實際查核狀態。
 
 - 正式網站原始檔：[`index.html`](./index.html)（已推送，GitHub 可直接讀取）。
 - **第二篇《功德不是價目表》互動故事館（擴充版）**：[開啟網頁](https://t14210184.github.io/The-Naked-Dhamma/merit.html)／[完整單檔原始碼](./merit.html)。改以八組原典故事／譬喻帶領讀者：隨藍財富故事與佛陀前世、清晨大鍋飯、養母親手縫衣、反壟斷布施及牛群毛色、花雨中的最高供養、供養亡者的條件、波斯匿王請教及五種大布施。結合原創 SVG 插畫、點選牛群、巴漢大鍋數量切換、情境問答、字級調整與無 JavaScript 仍完整可讀的正文；部署狀態必須以同 SHA GitHub Pages 工作及公網讀回判定。

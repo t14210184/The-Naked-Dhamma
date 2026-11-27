@@ -1,245 +1,278 @@
 input_id	input_file	locator	unit_type	source_summary	disposition	claim_ids	public_anchor	research_anchor	evidence_ids	reason	verification_state
-CH01	inputs/buddhist_history_original.txt	L12-48	CHAPTER_PROSE	沒有任何宗派能證明完整逐字保存全部佛說；歷史等級非宗教價值評分，不給虛構偽造機率；口傳保守與改寫並存（Allon 2022）	KEEP	C09-001,C22-001	#transmission	#oral-transmission	E14,E31	保留方法論總綱並於站09、22及研究頁完整展開	VERIFIED
-CH02	inputs/buddhist_history_original.txt	L49-109	CHAPTER_PROSE	近代學術約略年代取代宗派佛曆；地域發展不同步（劍橋世界史、考古史）	KEEP	C10-002	#history	#chronology	E15,E26	納入站10時間軸與地圖並區分地區年代	VERIFIED
-CH03	inputs/buddhist_history_original.txt	L110-166	CHAPTER_PROSE	歷史喬達摩活動於前5世紀（約前405說無共識）；沙門環境早有輪迴業力禪定；阿育王藍毘尼石柱與犍陀羅寫本早於佛陀數百年	KEEP	C10-001,C08-001,C08-006	#history	#historical-buddha	E15,E11,E12	納入站08、站10並與實物年代區分	VERIFIED
-CH04	inputs/buddhist_history_original.txt	L167-205	CHAPTER_PROSE	佛滅至阿育王約一個半世紀史料斷層；第一次結集爭議與集體口傳機制；臺灣期刊巴漢定型句編輯研究（整齊≠最原始）	CORRECT	C10-003,C09-001	#history	#councils	E16,E14	補齊Prebish(1974)、Wynne(2004)與越建東(2007)／溫宗堃(2010)具體出處	VERIFIED
-CH05	inputs/buddhist_history_original.txt	L206-246	CHAPTER_PROSE	巴利尼柯耶與漢譯阿含平行比較；無我相經跨五語線索；古老共同存在≠科學證實輪迴	CORRECT	C11-002	#branches	#early-core	E17,E14	補齊SN 22.59、SA 34、RS 22與梵藏平行實際性質與殘卷限制	VERIFIED
-CH06	inputs/buddhist_history_original.txt	L247-275	CHAPTER_PROSE	阿育王前268–232統治，公共倫理含跨宗教尊重；有能力干預不等於已全面重寫佛經	KEEP	C08-001,C18-001	#evidence	#ashoka-inscriptions	E11	於站08、站18保留政治介入與未過推論界線	VERIFIED
-CH07	inputs/buddhist_history_original.txt	L276-306	CHAPTER_PROSE	十八/二十部派名單矛盾；今上座部≠古上座系；大乘非大眾部單一直系；消失部派僅見於對手批評	KEEP	C11-001	#branches	#school-schism	E16	於站11補齊根本分裂三種史書與Nattier/Prebish(1977)	VERIFIED
-CH08	inputs/buddhist_history_original.txt	L307-346	CHAPTER_PROSE	經典保存與現行宗派制度分開；斯里蘭卡三寺、覺音《清淨道論》、12世紀波羅迦羅摩跋訶一世統合、1753暹羅傳戒與1902泰國僧團法	CORRECT	C12-001	#south	#theravada-history	E18	補齊Max Deeg(2024)、1764種姓、阿摩羅補羅派與固都陶729碑校勘	VERIFIED
-CH09	inputs/buddhist_history_original.txt	L347-396	CHAPTER_PROSE	大乘約西元前後形成於印度；Falk & Karashima 2012西元1世紀般若寫本；區分歷史佛說與宗教佛說；反對單純居士反抗或賺錢單因論	CORRECT	C13-001	#mahayana	#mahayana-origins	E19,E13	補齊Split C14測年、Harrison/Schopen/Drewes僧尼起源研究	VERIFIED
-CH10	inputs/buddhist_history_original.txt	L397-482	CHAPTER_PROSE	16筆經典評估；心經Nattier 1992與22點研究及日本學者不同解讀；楞嚴經2022研究爭議；道安僧祐疑經錄與CBETA收錄非認證	CORRECT	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	補齊Attwood(2021)摘要核實界線、T945≠T642、Jia(2022)、T1666 OUP 2019及Mair格義考證	VERIFIED
-CH11	inputs/buddhist_history_original.txt	L483-525	CHAPTER_PROSE	中國孝道重組與盂蘭盆節（印度已有亡者功德觀）；三淨肉與梁武帝6世紀推行全面素食	CORRECT	C15-001,C15-002	#china	#china-adaptation	E22,E23	補齊印度早經孝道(DN 31/DA 16)、Schopen/廣興、Kieschnick(2005)10世紀確立素食	VERIFIED
-CH12	inputs/buddhist_history_original.txt	L526-557	CHAPTER_PROSE	禪宗靈山拈花與二十八祖缺逐代證據；SEP與McRae研究、敦煌壇經；譜系制度功能不等於欺騙意圖	CORRECT	C16-001,C16-002	#chan	#flower-sermon	E24	補齊《寶林傳》801、《景德》1004、《天聖廣燈錄》1029/1036及釋惠敏(2013)	VERIFIED
-CH13	inputs/buddhist_history_original.txt	L558-609	CHAPTER_PROSE	成熟密續7世紀後發展；藏傳政治背景、苯教雙向互動（不全部歸苯教）；伏藏與轉世區分歷史與信仰	CORRECT	C17-001,C17-002	#tibet	#tibetan-lineages	E25	補齊Wedemeyer(2012)、桑傑喇嘛、薩迦班智達批判與1792金瓶掣籤	VERIFIED
-CH14	inputs/buddhist_history_original.txt	L610-655	CHAPTER_PROSE	政治滅佛與戰亂造成存活者偏差；印度佛教衰退不可單歸因穆斯林入侵，須採Fogelin多因素分析	CORRECT	C18-001,C18-002	#politics	#india-decline	E26	補齊《開寶藏》(971–983)依《開元釋教錄》選擇性保存典籍論證	VERIFIED
-CH15	inputs/buddhist_history_original.txt	L656-675	CHAPTER_PROSE	日本淨土真宗婚配先例、1872明治法令解除婚姻肉食禁制（非強制結婚）與寺院家族經營	KEEP	C19-001	#japan	#japan-institutions	E27	保留並明確對應親鸞(1173–1263)與Jaffe(2001)研究	VERIFIED
-CH16	inputs/buddhist_history_original.txt	L676-699	CHAPTER_PROSE	早期女性出家解脫與八敬法跨部派律藏差異；各地比丘尼傳承中斷與當代跨傳承復戒	CORRECT	C20-001	#women	#bhikkhuni-history	E28	補齊Anālayo/Hüsken律藏比較、429/433南京傳戒、1996/1998及2022/2025不丹復戒	VERIFIED
-CH17	inputs/buddhist_history_original.txt	L700-725	CHAPTER_PROSE	19世紀殖民與科學衝擊下之佛教現代主義；內觀與西方正念抽離原有倫理涅槃目標	CORRECT	C21-001	#modern	#buddhist-modernism	E29	補齊McMahan(2008)、Braun(2013)亞洲改革者與Salguero(2026)/PMC11300403禪修風險	VERIFIED
-CH18	inputs/buddhist_history_original.txt	L726-769	CHAPTER_PROSE	臺灣清代、日治、戰後、20世紀後期人間佛教四期形成（太虛、印順、佛光山、慈濟、法鼓山）	KEEP	C21-002	#modern	#taiwan-history	E30	保留四期並補Jones(1999)、Bingenheimer(2004)、Madsen(2007)、林佩瑩(2020)入口	VERIFIED
-CH19	inputs/buddhist_history_original.txt	L770-786	CHAPTER_PROSE	三大傳統交叉校正而非選定單一派為絕對正確	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	完整保留10項比較並補宗派內部差異說明	VERIFIED
-CH20	inputs/buddhist_history_original.txt	L787-818	CHAPTER_PROSE	六類需提高舉證負擔之宗教主張（唯一正統、神通免查、秘密親授、捐款消業、棄倫理法律、禁止質疑）	KEEP	C22-001	#lab	#evidence-risk	E31	保留六類警覺並於站22以質性證據負擔呈現	VERIFIED
-CH21	inputs/buddhist_history_original.txt	L819-845	CHAPTER_PROSE	十大資料庫入口與本報告證據限制（未全讀專著、未逐字校勘、無虛構真偽機率）	KEEP	C22-001,C22-002	#library	#method	E31	擴充為31組分級研究證據庫與公開檢索限制紀錄	VERIFIED
-CH22	inputs/buddhist_history_original.txt	L846-871	CHAPTER_PROSE	五層佛教歷史模型結論：不混同歷史事實、宗教信仰、哲學推論、祖師權威與超自然主張	KEEP	C22-002	#lab	#five-layers	E31,E14	保留總結並深化為可展開互動五層模型	VERIFIED
-T01-R01	inputs/buddhist_history_original.txt	L18	TABLE_ROW	可信度分級：極高 — 可靠年代考古遺跡、碑銘、實物及相互印證	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	VERIFIED
-T01-R02	inputs/buddhist_history_original.txt	L19	TABLE_ROW	可信度分級：高 — 不同語言、不同傳承早期文獻相互印證	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	VERIFIED
-T01-R03	inputs/buddhist_history_original.txt	L20	TABLE_ROW	可信度分級：中 — 有歷史文獻與合理推論，缺乏同時代直接證據	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	VERIFIED
-T01-R04	inputs/buddhist_history_original.txt	L21	TABLE_ROW	可信度分級：低 — 主要依賴數百年後宗教傳記、宗派自述或單一傳承	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	VERIFIED
-T01-R05	inputs/buddhist_history_original.txt	L22	TABLE_ROW	可信度分級：極低 — 缺乏獨立證據的神話、神蹟、秘密傳承與神聖身分主張	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	VERIFIED
-T01-R06	inputs/buddhist_history_original.txt	L23	TABLE_ROW	可信度分級：無法判定 — 現有歷史研究方法無法證實或證偽	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	VERIFIED
-T02-R01	inputs/buddhist_history_original.txt	L31	TABLE_ROW	影響因素：長期口耳相傳 → 遺漏、記憶偏差、內容擴寫	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R02	inputs/buddhist_history_original.txt	L32	TABLE_ROW	影響因素：語言與文字轉換 → 原始概念被重新解釋	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R03	inputs/buddhist_history_original.txt	L33	TABLE_ROW	影響因素：宗派競爭 → 新增支持自身立場的教義	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R04	inputs/buddhist_history_original.txt	L34	TABLE_ROW	影響因素：政治權力介入 → 選擇性保存、禁止或改造經典	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R05	inputs/buddhist_history_original.txt	L35	TABLE_ROW	影響因素：戰爭與宗教迫害 → 寺院、文獻與傳承者消失	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R06	inputs/buddhist_history_original.txt	L36	TABLE_ROW	影響因素：經濟與生存需求 → 宗教儀式、祈福與喪葬服務增加	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R07	inputs/buddhist_history_original.txt	L37	TABLE_ROW	影響因素：地方文化融合 → 吸收當地神祇、習俗與價值觀	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R08	inputs/buddhist_history_original.txt	L38	TABLE_ROW	影響因素：性別與社會階級 → 教義及出家制度受到社會結構影響	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R09	inputs/buddhist_history_original.txt	L39	TABLE_ROW	影響因素：祖師權威與正統競爭 → 建構祖師世系、追溯神聖來源	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R10	inputs/buddhist_history_original.txt	L40	TABLE_ROW	影響因素：後世抄寫與編輯 → 註解混入正文、不同版本合併	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T02-R11	inputs/buddhist_history_original.txt	L41	TABLE_ROW	影響因素：殖民與現代化 → 佛教被重新包裝成哲學、科學或民族文化	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	VERIFIED
-T03-R01	inputs/buddhist_history_original.txt	L53	TABLE_ROW	時間軸1：西元前600–400年 — 古印度沙門運動興起與歷史釋迦牟尼（生平細節較低）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R02	inputs/buddhist_history_original.txt	L54	TABLE_ROW	時間軸2：西元前400–300年 — 佛滅後口傳、戒律爭議與早期分化（中）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R03	inputs/buddhist_history_original.txt	L55	TABLE_ROW	時間軸3：西元前268–232年左右 — 阿育王統治與強力政治支持（極高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R04	inputs/buddhist_history_original.txt	L56	TABLE_ROW	時間軸4：西元前300–100年 — 部派佛教發展與各自傳承經律（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R05	inputs/buddhist_history_original.txt	L57	TABLE_ROW	時間軸5：西元前100–西元200年 — 早期佛教手稿與大乘經典逐漸出現（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R06	inputs/buddhist_history_original.txt	L58	TABLE_ROW	時間軸6：西元100–500年 — 大乘、般若、中觀、瑜伽行派發展（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R07	inputs/buddhist_history_original.txt	L59	TABLE_ROW	時間軸7：西元100–600年 — 傳入中國、中亞、朝鮮、日本（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R08	inputs/buddhist_history_original.txt	L60	TABLE_ROW	時間軸8：西元500–1000年 — 印度密教發展，漢地宗派與藏傳形成（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R09	inputs/buddhist_history_original.txt	L61	TABLE_ROW	時間軸9：西元1000–1300年 — 印度大寺衰退；斯里蘭卡僧團重整（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R10	inputs/buddhist_history_original.txt	L62	TABLE_ROW	時間軸10：西元1200–1600年 — 東南亞上座部確立主流地位（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R11	inputs/buddhist_history_original.txt	L63	TABLE_ROW	時間軸11：西元1600–1900年 — 國家宗教制度、殖民統治、宗派改革（極高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T03-R12	inputs/buddhist_history_original.txt	L64	TABLE_ROW	時間軸12：西元1900年至今 — 現代化、人間佛教、全球禪修與心理學化（極高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	VERIFIED
-T04-R01	inputs/buddhist_history_original.txt	L118	TABLE_ROW	佛陀生平說法：曾有一位稱為喬達摩的修行導師（高）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T04-R02	inputs/buddhist_history_original.txt	L119	TABLE_ROW	佛陀生平說法：活動於古印度北部及今尼泊爾南部一帶（高）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T04-R03	inputs/buddhist_history_original.txt	L120	TABLE_ROW	佛陀生平說法：建立修行者團體並傳授解脫方法（高）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T04-R04	inputs/buddhist_history_original.txt	L121	TABLE_ROW	佛陀生平說法：出身具有一定社會地位的釋迦族（中高）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T04-R05	inputs/buddhist_history_original.txt	L122	TABLE_ROW	佛陀生平說法：是現代人理解的王國王子（中低（後世王室化描寫））	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T04-R06	inputs/buddhist_history_original.txt	L123	TABLE_ROW	佛陀生平說法：29歲出家、35歲成道、80歲入滅（傳統記載，精確年齡未獨立證實）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T04-R07	inputs/buddhist_history_original.txt	L124	TABLE_ROW	佛陀生平說法：出生時走七步並宣告天上天下唯我獨尊（無獨立歷史證據）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T04-R08	inputs/buddhist_history_original.txt	L125	TABLE_ROW	佛陀生平說法：菩提樹下遭遇魔王及超自然事件（歷史方法無法驗證）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T04-R09	inputs/buddhist_history_original.txt	L126	TABLE_ROW	佛陀生平說法：具有宿命通、天眼通等神通（歷史方法無法驗證）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T04-R10	inputs/buddhist_history_original.txt	L127	TABLE_ROW	佛陀生平說法：後世佛傳的全部對話及事件（不可直接當成逐字史實）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	VERIFIED
-T05-R01	inputs/buddhist_history_original.txt	L173	TABLE_ROW	第一次結集：佛滅後500阿羅漢誦經律；細節與完整經藏形成爭議大	CORRECT	C10-003	#history	#councils	E16,E11	完整保留4列並標明第三次結集「主要據南傳史書記載」與Prebish(1974)研究	VERIFIED
-T05-R02	inputs/buddhist_history_original.txt	L174	TABLE_ROW	第二次結集：約百年後戒律會議；具較強歷史基礎但與首次分裂關係未定	CORRECT	C10-003	#history	#councils	E16,E11	完整保留4列並標明第三次結集「主要據南傳史書記載」與Prebish(1974)研究	VERIFIED
-T05-R03	inputs/buddhist_history_original.txt	L175	TABLE_ROW	第三次結集：阿育王支持清理僧團；政治介入有碑銘，會議細節欠獨立佐證	CORRECT	C10-003	#history	#councils	E16,E11	完整保留4列並標明第三次結集「主要據南傳史書記載」與Prebish(1974)研究	VERIFIED
-T05-R04	inputs/buddhist_history_original.txt	L176	TABLE_ROW	第四次結集：寫經或整理論藏；不同傳承指涉不同事件，不可混談	CORRECT	C10-003	#history	#councils	E16,E11	完整保留4列並標明第三次結集「主要據南傳史書記載」與Prebish(1974)研究	VERIFIED
-T06-R01	inputs/buddhist_history_original.txt	L214	TABLE_ROW	早期教義：苦、集、滅、道（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R02	inputs/buddhist_history_original.txt	L215	TABLE_ROW	早期教義：八正道（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R03	inputs/buddhist_history_original.txt	L216	TABLE_ROW	早期教義：無常（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R04	inputs/buddhist_history_original.txt	L217	TABLE_ROW	早期教義：無我（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R05	inputs/buddhist_history_original.txt	L218	TABLE_ROW	早期教義：緣起（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R06	inputs/buddhist_history_original.txt	L219	TABLE_ROW	早期教義：五蘊（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R07	inputs/buddhist_history_original.txt	L220	TABLE_ROW	早期教義：戒律與倫理（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R08	inputs/buddhist_history_original.txt	L221	TABLE_ROW	早期教義：禪定與正念（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R09	inputs/buddhist_history_original.txt	L222	TABLE_ROW	早期教義：貪、瞋、癡（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R10	inputs/buddhist_history_original.txt	L223	TABLE_ROW	早期教義：業力、輪迴（高（超越死亡實存非史學能驗證））	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R11	inputs/buddhist_history_original.txt	L224	TABLE_ROW	早期教義：涅槃與解脫（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T06-R12	inputs/buddhist_history_original.txt	L225	TABLE_ROW	早期教義：完整阿毘達磨理論體系（較晚形成）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	VERIFIED
-T07-R01	inputs/buddhist_history_original.txt	L253	TABLE_ROW	阿育王碑銘：藍毘尼石柱 — 王權支持佛教聖地與紀念活動	KEEP	C08-001,C05-003	#evidence	#ashoka-inscriptions	E11	補齊四筆碑銘實物圖版／照片與Hultzsch 1925文獻定位於站08	VERIFIED
-T07-R02	inputs/buddhist_history_original.txt	L254	TABLE_ROW	阿育王碑銘：拜拉特（Bhabra）碑銘 — 國王推薦七項佛教教導供僧俗學習	KEEP	C08-001,C05-003	#evidence	#ashoka-inscriptions	E11	補齊四筆碑銘實物圖版／照片與Hultzsch 1925文獻定位於站08	VERIFIED
-T07-R03	inputs/buddhist_history_original.txt	L255	TABLE_ROW	阿育王碑銘：僧團分裂相關詔令 — 王權介入僧團秩序與分裂問題	KEEP	C08-001,C05-003	#evidence	#ashoka-inscriptions	E11	補齊四筆碑銘實物圖版／照片與Hultzsch 1925文獻定位於站08	VERIFIED
-T07-R04	inputs/buddhist_history_original.txt	L256	TABLE_ROW	阿育王碑銘：尼迦利薩格爾石柱 — 當時已存在過去佛信仰及佛塔崇拜	KEEP	C08-001,C05-003	#evidence	#ashoka-inscriptions	E11	補齊四筆碑銘實物圖版／照片與Hultzsch 1925文獻定位於站08	VERIFIED
-T08-R01	inputs/buddhist_history_original.txt	L291	TABLE_ROW	古部派：大眾部 — 部分支系發展較超越人間的佛陀觀	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	VERIFIED
-T08-R02	inputs/buddhist_history_original.txt	L292	TABLE_ROW	古部派：說一切有部 — 對時間、存在及現象分類提出高度系統化理論	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	VERIFIED
-T08-R03	inputs/buddhist_history_original.txt	L293	TABLE_ROW	古部派：經量部 — 重視經典，相對批判部分論藏理論	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	VERIFIED
-T08-R04	inputs/buddhist_history_original.txt	L294	TABLE_ROW	古部派：犢子部及相關部派 — 探討無我與人格延續間的哲學問題	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	VERIFIED
-T08-R05	inputs/buddhist_history_original.txt	L295	TABLE_ROW	古部派：法藏部 — 戒律傳承對今日漢傳佛教具重要影響	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	VERIFIED
-T08-R06	inputs/buddhist_history_original.txt	L296	TABLE_ROW	古部派：南傳上座部 — 保存完整巴利三藏及自身註釋傳統	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	VERIFIED
-T08-R07	inputs/buddhist_history_original.txt	L297	TABLE_ROW	古部派：根本說一切有部 — 其戒律成為藏傳佛教重要制度基礎	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	VERIFIED
-T09-R01	inputs/buddhist_history_original.txt	L319	TABLE_ROW	斯里蘭卡僧團：大寺派 — 後來成為現代上座部主要制度與文獻來源	KEEP	C12-001	#south	#theravada-history	E18	站12完整呈現三寺對比表格、遺址照片與Max Deeg(2024)研究	VERIFIED
-T09-R02	inputs/buddhist_history_original.txt	L320	TABLE_ROW	斯里蘭卡僧團：無畏山寺派 — 曾接觸與接受較多不同佛教思想與修行傳統	KEEP	C12-001	#south	#theravada-history	E18	站12完整呈現三寺對比表格、遺址照片與Max Deeg(2024)研究	VERIFIED
-T09-R03	inputs/buddhist_history_original.txt	L321	TABLE_ROW	斯里蘭卡僧團：祇陀林寺派 — 具有自身僧團及思想傳承	KEEP	C12-001	#south	#theravada-history	E18	站12完整呈現三寺對比表格、遺址照片與Max Deeg(2024)研究	VERIFIED
-T10-R01	inputs/buddhist_history_original.txt	L359	TABLE_ROW	大乘思想：慈悲 — 早期佛教已存在	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	VERIFIED
-T10-R02	inputs/buddhist_history_original.txt	L360	TABLE_ROW	大乘思想：菩薩概念 — 早期已有，大乘發展成普遍修行道路	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	VERIFIED
-T10-R03	inputs/buddhist_history_original.txt	L361	TABLE_ROW	大乘思想：般若與空性 — 與無我緣起相關，後成完整哲學體系	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	VERIFIED
-T10-R04	inputs/buddhist_history_original.txt	L362	TABLE_ROW	大乘思想：六波羅蜜 — 具有早期基礎，完整體系後世發展	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	VERIFIED
-T10-R05	inputs/buddhist_history_original.txt	L363	TABLE_ROW	大乘思想：無量佛及佛國 — 具有較早基礎，後世大幅擴充	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	VERIFIED
-T10-R06	inputs/buddhist_history_original.txt	L364	TABLE_ROW	大乘思想：阿彌陀佛與西方極樂世界 — 後來發展的淨土信仰系統	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	VERIFIED
-T10-R07	inputs/buddhist_history_original.txt	L365	TABLE_ROW	大乘思想：如來藏、佛性 — 後期印度大乘重要思想發展	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	VERIFIED
-T10-R08	inputs/buddhist_history_original.txt	L366	TABLE_ROW	大乘思想：唯識學 — 約西元4–5世紀形成高度系統化理論	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	VERIFIED
-T10-R09	inputs/buddhist_history_original.txt	L367	TABLE_ROW	大乘思想：完整三身佛理論 — 後世對佛陀身分與存在形式之哲學發展	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	VERIFIED
-T11-R01	inputs/buddhist_history_original.txt	L401	TABLE_ROW	經典鑑定：巴利四部尼柯耶 — 保存大量早期內容；相對較強非逐字證實	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R02	inputs/buddhist_history_original.txt	L402	TABLE_ROW	經典鑑定：漢譯四阿含經 — 不同印度部派早期經文；須逐篇比對	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R03	inputs/buddhist_history_original.txt	L403	TABLE_ROW	經典鑑定：《法句經》 — 不同傳承保存古老偈頌；部分具較強早期證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R04	inputs/buddhist_history_original.txt	L404	TABLE_ROW	經典鑑定：《經集》 — 部分篇章具古老特徵；內部仍有年代差異	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R05	inputs/buddhist_history_original.txt	L405	TABLE_ROW	經典鑑定：《金剛經》 — 印度大乘般若經典；缺乏直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R06	inputs/buddhist_history_original.txt	L406	TABLE_ROW	經典鑑定：《法華經》 — 早期印度大乘經典，具不同形成層次；缺直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R07	inputs/buddhist_history_original.txt	L407	TABLE_ROW	經典鑑定：《華嚴經》 — 多個印度大乘文獻逐步集合；缺直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R08	inputs/buddhist_history_original.txt	L408	TABLE_ROW	經典鑑定：《阿彌陀經》 — 印度及中亞淨土思想傳統；缺直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R09	inputs/buddhist_history_original.txt	L409	TABLE_ROW	經典鑑定：《無量壽經》 — 不同語言及版本的淨土經典；缺直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R10	inputs/buddhist_history_original.txt	L410	TABLE_ROW	經典鑑定：《心經》 — 具強有力漢地編纂研究證據；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R11	inputs/buddhist_history_original.txt	L411	TABLE_ROW	經典鑑定：《楞嚴經》 — 印度來源、漢地編集及翻譯長期爭議；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R12	inputs/buddhist_history_original.txt	L412	TABLE_ROW	經典鑑定：《大乘起信論》 — 作者與翻譯歸屬高度質疑；論書非佛陀直接教導	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R13	inputs/buddhist_history_original.txt	L413	TABLE_ROW	經典鑑定：《盂蘭盆經》 — 具漢地宗教文化編集高度疑慮；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R14	inputs/buddhist_history_original.txt	L414	TABLE_ROW	經典鑑定：《父母恩重經》 — 明顯漢地孝道文化與本土撰述特徵；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R15	inputs/buddhist_history_original.txt	L415	TABLE_ROW	經典鑑定：《六祖壇經》 — 中國禪宗祖師文獻，多版本；非釋迦牟尼教導	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T11-R16	inputs/buddhist_history_original.txt	L416	TABLE_ROW	經典鑑定：佛教密續 — 主要於西元7世紀後成熟；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	VERIFIED
-T12-R01	inputs/buddhist_history_original.txt	L489	TABLE_ROW	中國適應：離家出家 vs 不奉養父母 → 強調出家也是報答父母恩情	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	VERIFIED
-T12-R02	inputs/buddhist_history_original.txt	L490	TABLE_ROW	中國適應：不婚不育 vs 無後為大 → 發展超度祖先與功德迴向	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	VERIFIED
-T12-R03	inputs/buddhist_history_original.txt	L491	TABLE_ROW	中國適應：托缽受供 vs 不從事生產批評 → 發展寺院經濟、農業及勞作傳統	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	VERIFIED
-T12-R04	inputs/buddhist_history_original.txt	L492	TABLE_ROW	中國適應：解脫輪迴 vs 現實生活需求 → 發展祈福、消災、治病儀式	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	VERIFIED
-T12-R05	inputs/buddhist_history_original.txt	L493	TABLE_ROW	中國適應：印度宇宙觀 vs 本土鬼神祖先 → 地獄、亡者與地方神祇融合	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	VERIFIED
-T12-R06	inputs/buddhist_history_original.txt	L494	TABLE_ROW	中國適應：外來宗教 vs 儒道王權競爭 → 發展護國佛教與本土化思想	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	VERIFIED
-T13-R01	inputs/buddhist_history_original.txt	L516	TABLE_ROW	素食主張：佛陀反對殺生 — 有很強早期文獻基礎	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	VERIFIED
-T13-R02	inputs/buddhist_history_original.txt	L517	TABLE_ROW	素食主張：佛陀要求所有佛教徒終生吃素 — 缺乏充分早期文獻支持	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	VERIFIED
-T13-R03	inputs/buddhist_history_original.txt	L518	TABLE_ROW	素食主張：大乘佛教發展出強烈素食倫理 — 有文獻證據	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	VERIFIED
-T13-R04	inputs/buddhist_history_original.txt	L519	TABLE_ROW	素食主張：中國皇帝推動僧團素食制度 — 有歷史證據	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	VERIFIED
-T13-R05	inputs/buddhist_history_original.txt	L520	TABLE_ROW	素食主張：所有吃肉南傳僧侶都違反戒律 — 不符合不同早期律藏記載	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	VERIFIED
-T14-R01	inputs/buddhist_history_original.txt	L538	TABLE_ROW	禪宗主張：佛陀本人曾修習及教導禪定（高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	VERIFIED
-T14-R02	inputs/buddhist_history_original.txt	L539	TABLE_ROW	禪宗主張：印度存在長期佛教禪修傳統（高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	VERIFIED
-T14-R03	inputs/buddhist_history_original.txt	L540	TABLE_ROW	禪宗主張：達摩具有歷史人物基礎（中高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	VERIFIED
-T14-R04	inputs/buddhist_history_original.txt	L541	TABLE_ROW	禪宗主張：達摩所有神異傳說（低）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	VERIFIED
-T14-R05	inputs/buddhist_history_original.txt	L542	TABLE_ROW	禪宗主張：靈山拈花、迦葉微笑（高度可能為後世傳承敘事）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	VERIFIED
-T14-R06	inputs/buddhist_history_original.txt	L543	TABLE_ROW	禪宗主張：印度二十八祖完整逐代傳承（缺乏可靠逐代證據）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	VERIFIED
-T14-R07	inputs/buddhist_history_original.txt	L544	TABLE_ROW	禪宗主張：禪宗祖師傳承譜系經後世整理（高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	VERIFIED
-T14-R08	inputs/buddhist_history_original.txt	L545	TABLE_ROW	禪宗主張：六祖慧能所有故事均為史實（不能成立）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	VERIFIED
-T14-R09	inputs/buddhist_history_original.txt	L546	TABLE_ROW	禪宗主張：唐宋禪宗的形成與發展（高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	VERIFIED
-T15-R01	inputs/buddhist_history_original.txt	L570	TABLE_ROW	藏傳時期：7–9世紀 — 吐蕃王室引進支持佛教	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	VERIFIED
-T15-R02	inputs/buddhist_history_original.txt	L571	TABLE_ROW	藏傳時期：約779年 — 赤松德贊支持桑耶寺與僧團制度	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	VERIFIED
-T15-R03	inputs/buddhist_history_original.txt	L572	TABLE_ROW	藏傳時期：9–10世紀 — 政治動盪，制度與傳承受影響	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	VERIFIED
-T15-R04	inputs/buddhist_history_original.txt	L573	TABLE_ROW	藏傳時期：10–12世紀 — 後弘期再度興盛，大量引入印度文獻	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	VERIFIED
-T15-R05	inputs/buddhist_history_original.txt	L574	TABLE_ROW	藏傳時期：11–15世紀 — 不同藏傳宗派逐漸形成	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	VERIFIED
-T15-R06	inputs/buddhist_history_original.txt	L575	TABLE_ROW	藏傳時期：15世紀 — 格魯派形成	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	VERIFIED
-T15-R07	inputs/buddhist_history_original.txt	L576	TABLE_ROW	藏傳時期：17世紀 — 格魯派與蒙古軍政支持形成新政教秩序	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	VERIFIED
-T15-R08	inputs/buddhist_history_original.txt	L577	TABLE_ROW	藏傳時期：20世紀 — 政治衝突、制度破壞及海外流亡傳承	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	VERIFIED
-T16-R01	inputs/buddhist_history_original.txt	L595	TABLE_ROW	藏傳主張：印度密教文獻傳入西藏 — 高	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	VERIFIED
-T16-R02	inputs/buddhist_history_original.txt	L596	TABLE_ROW	藏傳主張：西藏保存大量印度失傳文獻 — 高	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	VERIFIED
-T16-R03	inputs/buddhist_history_original.txt	L597	TABLE_ROW	藏傳主張：蓮花生具歷史人物基礎 — 有一定支持，生平傳說需區分	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	VERIFIED
-T16-R04	inputs/buddhist_history_original.txt	L598	TABLE_ROW	藏傳主張：蓮花生所有神異事蹟 — 無法獨立驗證	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	VERIFIED
-T16-R05	inputs/buddhist_history_original.txt	L599	TABLE_ROW	藏傳主張：伏藏經典預先隱藏待發現 — 須逐份檢驗，秘密來源難證實	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	VERIFIED
-T16-R06	inputs/buddhist_history_original.txt	L600	TABLE_ROW	藏傳主張：透過精神感應取得古代經典 — 無法以一般歷史方法確認	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	VERIFIED
-T16-R07	inputs/buddhist_history_original.txt	L601	TABLE_ROW	藏傳主張：活佛轉世者確為前世人物再生 — 宗教信仰主張，歷史方法無法驗證	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	VERIFIED
-T16-R08	inputs/buddhist_history_original.txt	L602	TABLE_ROW	藏傳主張：密宗傳承可追溯至佛陀秘密教法 — 缺乏充分直接證據	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	VERIFIED
-T17-R01	inputs/buddhist_history_original.txt	L614	TABLE_ROW	政治戰亂事件：阿育王支持佛教（前3世紀） — 提高傳播能力及制度化程度	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R02	inputs/buddhist_history_original.txt	L615	TABLE_ROW	政治戰亂事件：北魏滅佛（446年） — 寺院與僧團受到破壞	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R03	inputs/buddhist_history_original.txt	L616	TABLE_ROW	政治戰亂事件：北周滅佛（574年起） — 宗教資產與僧團制度受限制	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R04	inputs/buddhist_history_original.txt	L617	TABLE_ROW	政治戰亂事件：唐武宗會昌滅佛（845年） — 寺院裁撤、資產沒收、僧尼還俗	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R05	inputs/buddhist_history_original.txt	L618	TABLE_ROW	政治戰亂事件：斯里蘭卡僧團整合（12世紀） — 大寺派取得主導地位	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R06	inputs/buddhist_history_original.txt	L619	TABLE_ROW	政治戰亂事件：印度北部寺院衰退（11–13世紀） — 教育、文獻與師承網絡萎縮	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R07	inputs/buddhist_history_original.txt	L620	TABLE_ROW	政治戰亂事件：日本明治神佛分離（1868年起） — 神佛融合制度受衝擊	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R08	inputs/buddhist_history_original.txt	L621	TABLE_ROW	政治戰亂事件：中國太平天國戰爭（1850–1864） — 大量宗教設施破壞與戰後重建	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R09	inputs/buddhist_history_original.txt	L622	TABLE_ROW	政治戰亂事件：英國殖民斯里蘭卡、緬甸（19世紀） — 教育、民族認同與宗教改革	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R10	inputs/buddhist_history_original.txt	L623	TABLE_ROW	政治戰亂事件：泰國僧團法（1902年起） — 中央集權國家制度管理	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T17-R11	inputs/buddhist_history_original.txt	L624	TABLE_ROW	政治戰亂事件：中國文化大革命（1966–1976） — 寺院、文物與傳承活動嚴重破壞	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	VERIFIED
-T18-R01	inputs/buddhist_history_original.txt	L644	TABLE_ROW	印度衰退因素：軍事入侵與寺院破壞 — 重要直接因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	VERIFIED
-T18-R02	inputs/buddhist_history_original.txt	L645	TABLE_ROW	印度衰退因素：王室轉移宗教資源 — 重要制度因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	VERIFIED
-T18-R03	inputs/buddhist_history_original.txt	L646	TABLE_ROW	印度衰退因素：寺院過度集中土地與資源 — 部分研究認為是結構性問題	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	VERIFIED
-T18-R04	inputs/buddhist_history_original.txt	L647	TABLE_ROW	印度衰退因素：與印度教傳統競爭及融合 — 長期因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	VERIFIED
-T18-R05	inputs/buddhist_history_original.txt	L648	TABLE_ROW	印度衰退因素：商業活動及城市結構改變 — 地區性經濟因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	VERIFIED
-T18-R06	inputs/buddhist_history_original.txt	L649	TABLE_ROW	印度衰退因素：僧團與普通百姓關係改變 — 部分學者重要解釋	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	VERIFIED
-T18-R07	inputs/buddhist_history_original.txt	L650	TABLE_ROW	印度衰退因素：師承、教育及抄經網絡瓦解 — 傳承中斷重要因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	VERIFIED
-T19-R01	inputs/buddhist_history_original.txt	L664	TABLE_ROW	日本制度對照：出家離開家庭 vs 僧侶可結婚生子	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	VERIFIED
-T19-R02	inputs/buddhist_history_original.txt	L665	TABLE_ROW	日本制度對照：依法共同生活 vs 部分寺院家族經營	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	VERIFIED
-T19-R03	inputs/buddhist_history_original.txt	L666	TABLE_ROW	日本制度對照：以修行解脫為核心 vs 兼供喪葬祖先祭祀	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	VERIFIED
-T19-R04	inputs/buddhist_history_original.txt	L667	TABLE_ROW	日本制度對照：不以血緣世襲 vs 部分寺院由家族成員接任	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	VERIFIED
-T19-R05	inputs/buddhist_history_original.txt	L668	TABLE_ROW	日本制度對照：與國家保持自主 vs 德川時期承擔人口登記行政	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	VERIFIED
-T20-R01	inputs/buddhist_history_original.txt	L688	TABLE_ROW	女性受戒傳承：古印度比丘尼 — 曾存在完整僧團，後隨印度佛教衰退消失	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	VERIFIED
-T20-R02	inputs/buddhist_history_original.txt	L689	TABLE_ROW	女性受戒傳承：斯里蘭卡比丘尼 — 古代有完整傳承，後因動盪中斷	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	VERIFIED
-T20-R03	inputs/buddhist_history_original.txt	L690	TABLE_ROW	女性受戒傳承：漢傳比丘尼 — 5世紀獲斯里蘭卡協助傳戒，保存法藏部傳統	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	VERIFIED
-T20-R04	inputs/buddhist_history_original.txt	L691	TABLE_ROW	女性受戒傳承：藏傳佛教 — 完整受戒制度建立與傳承具歷史及制度爭議	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	VERIFIED
-T20-R05	inputs/buddhist_history_original.txt	L692	TABLE_ROW	女性受戒傳承：現代南傳佛教 — 部分地區跨傳承合作恢復比丘尼受戒	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	VERIFIED
-T21-R01	inputs/buddhist_history_original.txt	L712	TABLE_ROW	現代流行說法：佛教只是哲學，不是宗教 — 近代常見重新詮釋	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	VERIFIED
-T21-R02	inputs/buddhist_history_original.txt	L713	TABLE_ROW	現代流行說法：佛教就是心理學 — 現代化詮釋，不能概括全部歷史	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	VERIFIED
-T21-R03	inputs/buddhist_history_original.txt	L714	TABLE_ROW	現代流行說法：佛教完全沒有神祇與超自然思想 — 不符合早期佛教文獻	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	VERIFIED
-T21-R04	inputs/buddhist_history_original.txt	L715	TABLE_ROW	現代流行說法：佛教所有教義符合現代科學 — 缺乏充分證據	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	VERIFIED
-T21-R05	inputs/buddhist_history_original.txt	L716	TABLE_ROW	現代流行說法：正念就是完整的八正道 — 過度簡化	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	VERIFIED
-T21-R06	inputs/buddhist_history_original.txt	L717	TABLE_ROW	現代流行說法：現代內觀方法完全等同佛陀教法 — 無法證明	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	VERIFIED
-T21-R07	inputs/buddhist_history_original.txt	L718	TABLE_ROW	現代流行說法：慈善服務就是佛教唯一核心 — 現代宗教實踐特定強調方式	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	VERIFIED
-T22-R01	inputs/buddhist_history_original.txt	L772	TABLE_ROW	三大傳承比較：早期經典保存（完整巴利經藏／阿含經及其他早期文獻／部分經律及其他印度文獻）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T22-R02	inputs/buddhist_history_original.txt	L773	TABLE_ROW	三大傳承比較：主要戒律來源（上座部律藏／法藏部四分律／根本說一切有部律）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T22-R03	inputs/buddhist_history_original.txt	L774	TABLE_ROW	三大傳承比較：後世哲學發展（阿毘達磨及義註／中觀唯識天台華嚴／中觀唯識密教論辯）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T22-R04	inputs/buddhist_history_original.txt	L775	TABLE_ROW	三大傳承比較：地方文化融合（南亞東南亞／儒道地方信仰／西藏喜馬拉雅）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T22-R05	inputs/buddhist_history_original.txt	L776	TABLE_ROW	三大傳承比較：政治干預（王室改革殖民／皇帝支持滅佛國家管理／王室政教制度）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T22-R06	inputs/buddhist_history_original.txt	L777	TABLE_ROW	三大傳承比較：傳承中斷及重建（有／有／有）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T22-R07	inputs/buddhist_history_original.txt	L778	TABLE_ROW	三大傳承比較：後世編纂與註釋（有／有／有）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T22-R08	inputs/buddhist_history_original.txt	L779	TABLE_ROW	三大傳承比較：祖師權威與傳承敘事（有／有／有）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T22-R09	inputs/buddhist_history_original.txt	L780	TABLE_ROW	三大傳承比較：宗教儀式與民間信仰（有／有／有）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T22-R10	inputs/buddhist_history_original.txt	L781	TABLE_ROW	三大傳承比較：能證明完整保存佛陀原始教導（無法／無法／無法）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	VERIFIED
-T23-R01	inputs/buddhist_history_original.txt	L823	TABLE_ROW	研究來源：悉尼大學犍陀羅佛典研究計畫 — 古代手稿、文字學及平行經典	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-T23-R02	inputs/buddhist_history_original.txt	L824	TABLE_ROW	研究來源：美國國會圖書館犍陀羅手稿 — 可直接查閱古代手稿數位影像	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-T23-R03	inputs/buddhist_history_original.txt	L825	TABLE_ROW	研究來源：SuttaCentral — 巴利、漢譯及其他早期經律平行比對	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-T23-R04	inputs/buddhist_history_original.txt	L826	TABLE_ROW	研究來源：CBETA 中華電子佛典 — 漢文佛典及歷代註釋資料	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-T23-R05	inputs/buddhist_history_original.txt	L827	TABLE_ROW	研究來源：漢文佛典歸屬研究資料庫 CBC@ — 作者、翻譯者及經典來源爭議	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-T23-R06	inputs/buddhist_history_original.txt	L828	TABLE_ROW	研究來源：臺灣大學佛學數位圖書館 — 國際佛學研究與中文學術資源	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-T23-R07	inputs/buddhist_history_original.txt	L829	TABLE_ROW	研究來源：史丹佛哲學百科全書：佛陀 — 歷史佛陀與哲學思想	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-T23-R08	inputs/buddhist_history_original.txt	L830	TABLE_ROW	研究來源：史丹佛哲學百科全書：禪宗 — 禪宗思想及傳承史研究	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-T23-R09	inputs/buddhist_history_original.txt	L831	TABLE_ROW	研究來源：牛津大學出版社印度佛教考古史 — 物質文化、經濟及制度變遷	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-T23-R10	inputs/buddhist_history_original.txt	L832	TABLE_ROW	研究來源：劍橋世界史：佛教的傳播 — 跨地區傳播與歷史發展	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	VERIFIED
-IMG01	inputs/buddhist_history_original.txt	L140	IMAGE_TOPIC	藍毘尼阿育王石柱（舊 image ref）	KEEP	C08-001	#evidence	#ashoka-inscriptions	E11	嵌入Public Domain ASI 1896石柱照與Rummindei婆羅米文近照（另增拜拉特、尼迦利薩格爾、鹿野苑圖版）	VERIFIED
-IMG02	inputs/buddhist_history_original.txt	L151	IMAGE_TOPIC	犍陀羅樺皮卷（舊 image ref）	REPLACE	C08-006	#evidence	#gandhara-manuscripts	E12	LOC JSON回傳403僅供官方館藏連結；改嵌入CC0大英圖書館Or.14915樺皮手稿實照	VERIFIED
-IMG03	inputs/buddhist_history_original.txt	L315	IMAGE_TOPIC	無畏山寺遺址（group query 1）	KEEP	C12-001	#south	#theravada-history	E18	嵌入CC BY 4.0無畏山寺大塔考古實景並標示近代修復差異	VERIFIED
-IMG04	inputs/buddhist_history_original.txt	L315	IMAGE_TOPIC	祇陀林寺遺址（group query 2）	KEEP	C12-001	#south	#theravada-history	E18	嵌入CC BY-SA 4.0祇陀林寺遺址照片	VERIFIED
-IMG05	inputs/buddhist_history_original.txt	L530	IMAGE_TOPIC	敦煌《六祖壇經》寫本（group query 1）	RIGHTS_LINK_ONLY	C16-002	#chan	#chan-lineages	E24	IDP(idp.bl.uk)設有反爬蟲挑戰不繞過；提供Or.8210/S.5475官方館藏連結，並附Public Domain 1310年高麗版《壇經》明標非敦煌寫本供演變對照	VERIFIED
-IMG06	inputs/buddhist_history_original.txt	L530	IMAGE_TOPIC	達摩後世藝術（group query 2）	KEEP	C16-002	#chan	#chan-lineages	E24	嵌入CC0大都會博物館藏雲谷等顏達摩像（16–17世紀），明標千年後藝術想像非真人肖像	VERIFIED
-IMG07	inputs/buddhist_history_original.txt	L636	IMAGE_TOPIC	那爛陀寺考古遺址（group query 1）	KEEP	C18-002	#politics	#india-decline	E26	嵌入CC BY-SA 4.0那爛陀第五僧院遺址照片	VERIFIED
-IMG08	inputs/buddhist_history_original.txt	L636	IMAGE_TOPIC	超戒寺考古遺址（group query 2）	KEEP	C18-002	#politics	#india-decline	E26	嵌入CC BY-SA 4.0超戒寺遺址與倒伏石柱照片	VERIFIED
-IMG09	inputs/buddhist_history_original.txt	L731	IMAGE_TOPIC	臺灣傳統佛教與民間信仰（龍山寺）	KEEP	C21-002	#modern	#taiwan-history	E30	嵌入Public Domain 1895–1922艋舺龍山寺歷史照片	VERIFIED
-IMG10	inputs/buddhist_history_original.txt	L740	IMAGE_TOPIC	日治時期臺灣佛教歷史照片	KEEP	C21-002	#modern	#taiwan-history	E30	嵌入Public Domain 約1932年臺北西本願寺臺灣別院歷史照片	VERIFIED
-IMG11	inputs/buddhist_history_original.txt	L749	IMAGE_TOPIC	戰後臺灣佛教組織材料（佛光山）	KEEP	C21-002	#modern	#taiwan-history	E30	嵌入CC0佛光山當代實景，明確標註組織創於1967年而照片為當代實景非早年檔案	VERIFIED
-IMG12	inputs/buddhist_history_original.txt	L758	IMAGE_TOPIC	現代臺灣佛教社會服務影像（慈濟）	REPLACE	C21-002	#modern	#taiwan-history	E30	為尊重個人肖像隱私，不採無授權志工臉部群眾照，改嵌入CC0臺北慈濟醫院建築實景	VERIFIED
-V01	inputs/buddhist_history_original.txt	L70-109	DIAGRAM	佛教傳承的簡化發展關係圖	REPLACE	C11-001	#branches	#school-schism	E16	改為交織河道與虛線不確定圖例＋文字表，避免單線族譜誤導	VERIFIED
-V02	inputs/buddhist_history_original.txt	L192-205	DIAGRAM	經典可能的形成過程圖	REPLACE	C09-001	#transmission	#oral-transmission	E14	改為可操作雙向過程圖，平衡集體校對保守性與異文擴編	VERIFIED
-V03	inputs/buddhist_history_original.txt	L428-449	DIAGRAM	兩種《心經》來源假說圖	KEEP	C14-002	#texts	#heart-sutra-origin	E20	並列傳統與Nattier/Attwood假說並加入日本學者替代解讀及漢梵關鍵片段對比	VERIFIED
-V04	inputs/buddhist_history_original.txt	L789-806	DIAGRAM	歷史主張審查優先程度（九項）	REPLACE	C22-001	#lab	#evidence-risk	E31	移除可能暗示百分比量化之五格條，改採純質性證據負擔等級與舉證理由	VERIFIED
-V05	inputs/buddhist_history_original.txt	L850-862	DIAGRAM	五層佛教歷史模型（非占比）	KEEP	C22-002	#lab	#five-layers	E31	升級為可展開互動五層模型，標明交互影響、非內容占比與非高低價值	VERIFIED
-PDF-P01	inputs/history_audit_20p.pdf	Page 1	PDF_AUDIT_PAGE	v1.0稽核總覽與P0–P2優先矩陣（公網讀回、深淺主題、LINE OG、28px行寬、Safari、校勘）	KEEP	C22-002	#top	#method	E31	與現行v1.1比較：雙主題、OG、四幕、28px收邊多已於v1.1實作，餘缺與22站互動升級併入v2.0	VERIFIED
-PDF-P02	inputs/history_audit_20p.pdf	Page 2	PDF_AUDIT_PAGE	GitHub Pages五大404根因排查、相對路徑與verify-live讀回閘門	KEEP	C22-002	#top	#method	E31	已於pages.yml實作並擴充至v2.0四HTML＋assets清單讀回	VERIFIED
-PDF-P03	inputs/history_audit_20p.pdf	Page 3	PDF_AUDIT_PAGE	LINE/FB OG標籤、App WebView localStorage隔離、正負極性人因實證（Piepenbrock 2013/2014、Dobres 2017、Sethi & Ziat 2023）	KEEP	C22-002	#top	#method	E31	保留雙主題預設暖紙淺色與try/catch localStorage保護並維持於v2.0	VERIFIED
-PDF-P04	inputs/history_audit_20p.pdf	Page 4	PDF_AUDIT_PAGE	雙主題對比（#14171A與≥3:1邊框）、大字級邊距收斂、≤56px頂部列與max-width:36em	CORRECT	C22-002	#top	#method	E31	檢視v1.1色票並確保深色模式邊框與非文字UI對比均≥3:1	VERIFIED
-PDF-P05	inputs/history_audit_20p.pdf	Page 5	PDF_AUDIT_PAGE	高齡認知負荷模型（61–126分）、四幕導引、非自動消失續讀、WCAG 2.2表與四大互動精進	KEEP	C01-001,C02-001	#menu	#method	E01,E05	v2.0更進一步把22站全數擴充為各自獨立實作之探索模組	VERIFIED
-PDF-P06	inputs/history_audit_20p.pdf	Page 6	PDF_AUDIT_PAGE	七步與圖書館精進、iPhone Safari地雷1–3（input≥16px、overflow-x:clip、100svh）	KEEP	C22-001	#lab	#method	E31	全部防雷CSS於v2.0歷史頁與研究頁全面落實並由Chromium/WebKit測試檢查	VERIFIED
-PDF-P07	inputs/history_audit_20p.pdf	Page 7	PDF_AUDIT_PAGE	Safari地雷4–6（safe-area、取消orientation欄數、hover媒體查詢、reduced-motion）與四道CI閘門	KEEP	C22-001	#top	#method	E31	落實於CSS並保留merit-qa.yml雙引擎與axe-core掃描	VERIFIED
-PDF-P08	inputs/history_audit_20p.pdf	Page 8	PDF_AUDIT_PAGE	實體iPhone長者15分鐘6項SOP（尚待真人測試）與第一幕S01四大教法校勘開始	UNKNOWN	C01-001	#four	#four-authority	E01,E02,E03	真人實測標NOT_RUN等待人類招募；S01文本校勘全數納入v2.0	VERIFIED
-PDF-P09	inputs/history_audit_20p.pdf	Page 9	PDF_AUDIT_PAGE	第一幕S01–S04校勘（EA 28.5、SF 245、Sujato/Lamotte、古鼓雙版、MN 47、Bodhi 1988）	KEEP	C01-001,C02-001,C03-001,C04-001	#four	#four-authority	E01,E03,E04,E05,E06,E07	全部已讀原文核實並於v2.0落實	VERIFIED
-PDF-P10	inputs/history_audit_20p.pdf	Page 10	PDF_AUDIT_PAGE	第一幕S04四安穩、S05拜拉特交叉、S06 AN 8.53/Cv 10.5、S07 MN 95三階梯	KEEP	C04-001,C05-003,C06-001,C07-001	#kalama	#kalama-context	E07,E08,E09,E10,E11	全部於v2.0互動與研究頁對讀區落實	VERIFIED
-PDF-P11	inputs/history_audit_20p.pdf	Page 11	PDF_AUDIT_PAGE	第二幕S08–S12校勘（Wynne 2004、Split C14 75 CE、阿盧寺vs實物、Bechert、Nattier/Prebish 1977、1753戒脈）	KEEP	C08-006,C09-001,C10-001,C11-001,C12-001	#evidence	#gandhara-manuscripts	E12,E13,E14,E15,E16,E18	全部納入站08–12及研究頁	VERIFIED
-PDF-P12	inputs/history_audit_20p.pdf	Page 12	PDF_AUDIT_PAGE	第三幕S12(730碑數線索)與S13–S17校勘（Harrison/Schopen、T1666、T945≠T642、Mair格義、孝道、Kieschnick、拈花斷層、Wedemeyer、伏藏轉世）	CORRECT	C12-001,C13-001,C14-001,C15-001,C16-001,C17-001	#mahayana	#mahayana-origins	E18,E19,E21,E22,E23,E24,E25	固都陶經文碑校為729塊(1868刻成/1871結集)，其餘校勘全數納入S13–S17	VERIFIED
-PDF-P13	inputs/history_audit_20p.pdf	Page 13	PDF_AUDIT_PAGE	S17–S18（金瓶掣籤、Fogelin 2015、開寶藏）與第四幕S19–S21（Jaffe、429南京、不丹2022/2025、McMahan/Braun/Salguero、臺灣四線）	CORRECT	C17-002,C18-002,C19-001,C20-001,C21-001,C21-002	#women	#bhikkhuni-history	E25,E26,E27,E28,E29,E30	不丹2025人數註明265位／報導亦作近270位之統計口徑差異；其餘全數納入	VERIFIED
-PDF-P14	inputs/history_audit_20p.pdf	Page 14	PDF_AUDIT_PAGE	舊v1.1三階段時程及引用著作#1–15（無障礙極性、iOS測試、古鼓討論、Bodhi、不丹、Mair Scribd）	MERGE	C02-001,C04-001,C14-001,C20-001	#texts	#text-attribution	E05,E07,E21,E28	舊PR#9三階段已被v2.0取代；書目#4,#15 Scribd轉載改追原始論文DOI (Piepenbrock/Mair/Bodhi/BNF)	VERIFIED
-PDF-P15	inputs/history_audit_20p.pdf	Page 15	PDF_AUDIT_PAGE	引用著作#16–43（釋惠敏2013 PDF、GitHub工程範例#17–20、UX/排版文章#21–43）	EXCLUDE	C16-001	#chan	#flower-sermon	E24	保留#16釋惠敏(2013)；#17–20(setu/Getman/minthep/Tutorloop)屬無關工程範本及#21–43一般網誌不列學術佛學證據	VERIFIED
-PDF-P16	inputs/history_audit_20p.pdf	Page 16	PDF_AUDIT_PAGE	引用著作#44–70（Playwright測試文章#44–53、Wynne 2004、犍陀羅OAPEN/Austriaca、Aluvihāra、Bechert、Fogelin、維基大眾部）	MERGE	C08-006,C09-001,C10-001,C11-001,C18-002	#evidence	#oral-transmission	E13,E14,E15,E16,E26	採用Wynne 2004、OAPEN、Austriaca與Bechert/Fogelin正式出版品；排除一般網誌與百科條目作為主要確證	VERIFIED
-PDF-P17	inputs/history_audit_20p.pdf	Page 17	PDF_AUDIT_PAGE	引用著作#71–100（Mahāsāṃghika、Siam Nikāya、Harrison、Wedemeyer Scribd、Buswell JIABS/Fairfield、T1666/T945、Jia 2022、Mair、孝道）	MERGE	C12-001,C13-001,C14-003,C15-001,C17-001	#texts	#surangama-origin	E18,E19,E21,E22,E25	採Jia(2022) MDPI、Buswell Fairfield、Cambridge孝道與Mair；Scribd/dokumen.pub盜轉連結改為正式出版社/DOI書目	VERIFIED
-PDF-P18	inputs/history_audit_20p.pdf	Page 18	PDF_AUDIT_PAGE	引用著作#101–124（Schopen、Kieschnick、Welter、釋惠敏靈山禪寺、薩迦班智達Cam repo、Karmapa、Fogelin OUP）	MERGE	C15-002,C16-001,C17-002,C18-002	#china	#food-vinaya	E23,E24,E25,E26	採用Cambridge/Nanzan/Cam Repo/OUP正式來源；排除Scribd/dokumen.pub/個人部落格#113及無關條目#123	VERIFIED
-PDF-P19	inputs/history_audit_20p.pdf	Page 19	PDF_AUDIT_PAGE	引用著作#125–150（CBETA/CHIBS、開寶藏、Jaffe PUP、Anālayo Hamburg PDF、8 Garudhammas、Sakyadhita、Virginia/Columbia不丹演講）	MERGE	C18-001,C19-001,C20-001	#women	#bhikkhuni-history	E26,E27,E28	採用CHIBS、Hamburg University Anālayo PDF、PUP Jaffe與大學活動紀錄；排除論壇貼文#134與部落格轉載	VERIFIED
-PDF-P20	inputs/history_audit_20p.pdf	Page 20	PDF_AUDIT_PAGE	引用著作#151–166（Bhutan Nuns 2025、McMahan、Salguero/Cheetah House、PMC11300403、Sujato #156、臺灣史Jones/Clart/Madsen、技術CSS#162–166）	MERGE	C01-001,C20-001,C21-001,C21-002	#modern	#buddhist-modernism	E04,E28,E29,E30	採用BNF 2025、PMC11300403、Sujato討論、NTU臺灣史與UC Press Madsen；技術CSS#162–166僅作前端實作參考	VERIFIED
+CH01	inputs/buddhist_history_original.txt	L12-48	CHAPTER_PROSE	沒有任何宗派能證明完整逐字保存全部佛說；歷史等級非宗教價值評分，不給虛構偽造機率；口傳保守與改寫並存（Allon 2022）	KEEP	C09-001,C22-001	#transmission	#oral-transmission	E14,E31	保留方法論總綱並於站09、22及研究頁完整展開	SEMANTIC_VERIFIED
+CH02	inputs/buddhist_history_original.txt	L49-109	CHAPTER_PROSE	近代學術約略年代取代宗派佛曆；地域發展不同步（劍橋世界史、考古史）	KEEP	C10-002	#history	#chronology	E15,E26	納入站10時間軸與地圖並區分地區年代	ACCESS_LIMITED
+CH03	inputs/buddhist_history_original.txt	L110-166	CHAPTER_PROSE	歷史喬達摩活動於前5世紀（約前405說無共識）；沙門環境早有輪迴業力禪定；阿育王藍毘尼石柱與犍陀羅寫本晚於佛陀數十年至數百年（實物年代勘誤修正）	CORRECT	C10-001,C08-001,C08-002,C08-006,C08-007	#history	#historical-buddha	E15,E11,E12	已修正第一輪摘要「早於佛陀數百年」年代倒置誤寫，確切標為晚於歷史佛陀數十年至數百年並納入站08與站10	ACCESS_LIMITED
+CH04	inputs/buddhist_history_original.txt	L167-205	CHAPTER_PROSE	佛滅至阿育王約一個半世紀史料斷層；第一次結集爭議與集體口傳機制；臺灣期刊巴漢定型句編輯研究（整齊≠最原始）	CORRECT	C10-003,C09-001	#history	#councils	E16,E14	補齊Prebish(1974)、Wynne(2004)與越建東(2007)／溫宗堃(2010)具體出處	ACCESS_LIMITED
+CH05	inputs/buddhist_history_original.txt	L206-246	CHAPTER_PROSE	巴利尼柯耶與漢譯阿含平行比較；無我相經跨五語線索；古老共同存在≠科學證實輪迴	CORRECT	C11-002,C11-003	#branches	#early-core	E17,E14	補齊SN 22.59、SA 34、RS 22與梵藏平行實際性質與殘卷限制	SEMANTIC_VERIFIED
+CH06	inputs/buddhist_history_original.txt	L247-275	CHAPTER_PROSE	阿育王前268–232統治，公共倫理含跨宗教尊重；有能力干預不等於已全面重寫佛經	KEEP	C08-001,C18-001	#evidence	#ashoka-inscriptions	E11	於站08、站18保留政治介入與未過推論界線	SEMANTIC_VERIFIED
+CH07	inputs/buddhist_history_original.txt	L276-306	CHAPTER_PROSE	十八/二十部派名單矛盾；今上座部≠古上座系；大乘非大眾部單一直系；消失部派僅見於對手批評	KEEP	C11-001	#branches	#school-schism	E16	於站11補齊根本分裂三種史書與Nattier/Prebish(1977)	ACCESS_LIMITED
+CH08	inputs/buddhist_history_original.txt	L307-346	CHAPTER_PROSE	經典保存與現行宗派制度分開；斯里蘭卡三寺、覺音《清淨道論》、12世紀波羅迦羅摩跋訶一世統合、1753暹羅傳戒與1902泰國僧團法	CORRECT	C12-001	#south	#theravada-history	E18	補齊Max Deeg(2024)、1764種姓、阿摩羅補羅派與固都陶729碑校勘	ACCESS_LIMITED
+CH09	inputs/buddhist_history_original.txt	L347-396	CHAPTER_PROSE	大乘約西元前後形成於印度；Falk & Karashima 2012西元1世紀般若寫本；區分歷史佛說與宗教佛說；反對單純居士反抗或賺錢單因論	CORRECT	C13-001	#mahayana	#mahayana-origins	E19,E13	補齊Split C14測年、Harrison/Schopen/Drewes僧尼起源研究	ACCESS_LIMITED
+CH10	inputs/buddhist_history_original.txt	L397-482	CHAPTER_PROSE	16筆經典評估；心經Nattier 1992與22點研究及日本學者不同解讀；楞嚴經2022研究爭議；道安僧祐疑經錄與CBETA收錄非認證	CORRECT	C14-001,C14-002,C14-002B,C14-003	#texts	#text-attribution	E20,E21	補齊Attwood(2021)摘要核實界線、T945≠T642、Jia(2022)、T1666 OUP 2019及Mair格義考證	SEMANTIC_VERIFIED
+CH11	inputs/buddhist_history_original.txt	L483-525	CHAPTER_PROSE	中國孝道重組與盂蘭盆節（印度已有亡者功德觀）；三淨肉與梁武帝6世紀推行全面素食	CORRECT	C15-001,C15-002	#china	#china-adaptation	E22,E23	補齊印度早經孝道(DN 31/DA 16)、Schopen/廣興、Kieschnick(2005)10世紀確立素食	SEMANTIC_VERIFIED
+CH12	inputs/buddhist_history_original.txt	L526-557	CHAPTER_PROSE	禪宗靈山拈花與二十八祖缺逐代證據；SEP與McRae研究、敦煌壇經；譜系制度功能不等於欺騙意圖	CORRECT	C16-001,C16-002	#chan	#flower-sermon	E24	補齊《寶林傳》801、《景德》1004、《天聖廣燈錄》1029/1036及釋惠敏(2013)	SEMANTIC_VERIFIED
+CH13	inputs/buddhist_history_original.txt	L558-609	CHAPTER_PROSE	成熟密續7世紀後發展；藏傳政治背景、苯教雙向互動（不全部歸苯教）；伏藏與轉世區分歷史與信仰	CORRECT	C17-001,C17-002	#tibet	#tibetan-lineages	E25	補齊Wedemeyer(2012)、桑傑喇嘛、薩迦班智達批判與1792金瓶掣籤	ACCESS_LIMITED
+CH14	inputs/buddhist_history_original.txt	L610-655	CHAPTER_PROSE	政治滅佛與戰亂造成存活者偏差；印度佛教衰退不可單歸因穆斯林入侵，須採Fogelin多因素分析	CORRECT	C18-001,C18-002	#politics	#india-decline	E26	補齊《開寶藏》(971–983)依《開元釋教錄》選擇性保存典籍論證	ACCESS_LIMITED
+CH15	inputs/buddhist_history_original.txt	L656-675	CHAPTER_PROSE	日本淨土真宗婚配先例、1872明治法令解除婚姻肉食禁制（非強制結婚）與寺院家族經營	KEEP	C19-001	#japan	#japan-institutions	E27	保留並明確對應親鸞(1173–1263)與Jaffe(2001)研究	ACCESS_LIMITED
+CH16	inputs/buddhist_history_original.txt	L676-699	CHAPTER_PROSE	早期女性出家解脫與八敬法跨部派律藏差異；各地比丘尼傳承中斷與當代跨傳承復戒	CORRECT	C20-001	#women	#bhikkhuni-history	E28	補齊Anālayo/Hüsken律藏比較、429/433南京傳戒、1996/1998及2022/2025不丹復戒	SEMANTIC_VERIFIED
+CH17	inputs/buddhist_history_original.txt	L700-725	CHAPTER_PROSE	19世紀殖民與科學衝擊下之佛教現代主義；內觀與西方正念抽離原有倫理涅槃目標	CORRECT	C21-001	#modern	#buddhist-modernism	E29	補齊McMahan(2008)、Braun(2013)亞洲改革者與Salguero(2026)/PMC11300403禪修風險	ACCESS_LIMITED
+CH18	inputs/buddhist_history_original.txt	L726-769	CHAPTER_PROSE	臺灣清代、日治、戰後、20世紀後期人間佛教四期形成（太虛、印順、佛光山、慈濟、法鼓山）	KEEP	C21-002	#modern	#taiwan-history	E30	保留四期並補Jones(1999)、Bingenheimer(2004)、Madsen(2007)、林佩瑩(2020)入口	ACCESS_LIMITED
+CH19	inputs/buddhist_history_original.txt	L770-786	CHAPTER_PROSE	三大傳統交叉校正而非選定單一派為絕對正確	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	完整保留10項比較並補宗派內部差異說明	ACCESS_LIMITED
+CH20	inputs/buddhist_history_original.txt	L787-818	CHAPTER_PROSE	六類需提高舉證負擔之宗教主張（唯一正統、神通免查、秘密親授、捐款消業、棄倫理法律、禁止質疑）	KEEP	C22-001	#lab	#evidence-risk	E31	保留六類警覺並於站22以質性證據負擔呈現	SEMANTIC_VERIFIED
+CH21	inputs/buddhist_history_original.txt	L819-845	CHAPTER_PROSE	十大資料庫入口與本報告證據限制（未全讀專著、未逐字校勘、無虛構真偽機率）	KEEP	C22-001,C22-002	#library	#method	E31	擴充為31組分級研究證據庫與公開檢索限制紀錄	SEMANTIC_VERIFIED
+CH22	inputs/buddhist_history_original.txt	L846-871	CHAPTER_PROSE	五層佛教歷史模型結論：不混同歷史事實、宗教信仰、哲學推論、祖師權威與超自然主張	KEEP	C22-002	#lab	#five-layers	E31,E14	保留總結並深化為可展開互動五層模型	SEMANTIC_VERIFIED
+T01-R01	inputs/buddhist_history_original.txt	L18	TABLE_ROW	可信度分級：極高 — 可靠年代考古遺跡、碑銘、實物及相互印證	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	SEMANTIC_VERIFIED
+T01-R02	inputs/buddhist_history_original.txt	L19	TABLE_ROW	可信度分級：高 — 不同語言、不同傳承早期文獻相互印證	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	SEMANTIC_VERIFIED
+T01-R03	inputs/buddhist_history_original.txt	L20	TABLE_ROW	可信度分級：中 — 有歷史文獻與合理推論，缺乏同時代直接證據	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	SEMANTIC_VERIFIED
+T01-R04	inputs/buddhist_history_original.txt	L21	TABLE_ROW	可信度分級：低 — 主要依賴數百年後宗教傳記、宗派自述或單一傳承	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	SEMANTIC_VERIFIED
+T01-R05	inputs/buddhist_history_original.txt	L22	TABLE_ROW	可信度分級：極低 — 缺乏獨立證據的神話、神蹟、秘密傳承與神聖身分主張	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	SEMANTIC_VERIFIED
+T01-R06	inputs/buddhist_history_original.txt	L23	TABLE_ROW	可信度分級：無法判定 — 現有歷史研究方法無法證實或證偽	REPLACE	C22-001	#library	#method	E31	保留六級評估邏輯並依規格§4.2分離為材料型態、證據強度與取得狀態三軸	SEMANTIC_VERIFIED
+T02-R01	inputs/buddhist_history_original.txt	L31	TABLE_ROW	影響因素：長期口耳相傳 → 遺漏、記憶偏差、內容擴寫	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R02	inputs/buddhist_history_original.txt	L32	TABLE_ROW	影響因素：語言與文字轉換 → 原始概念被重新解釋	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R03	inputs/buddhist_history_original.txt	L33	TABLE_ROW	影響因素：宗派競爭 → 新增支持自身立場的教義	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R04	inputs/buddhist_history_original.txt	L34	TABLE_ROW	影響因素：政治權力介入 → 選擇性保存、禁止或改造經典	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R05	inputs/buddhist_history_original.txt	L35	TABLE_ROW	影響因素：戰爭與宗教迫害 → 寺院、文獻與傳承者消失	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R06	inputs/buddhist_history_original.txt	L36	TABLE_ROW	影響因素：經濟與生存需求 → 宗教儀式、祈福與喪葬服務增加	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R07	inputs/buddhist_history_original.txt	L37	TABLE_ROW	影響因素：地方文化融合 → 吸收當地神祇、習俗與價值觀	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R08	inputs/buddhist_history_original.txt	L38	TABLE_ROW	影響因素：性別與社會階級 → 教義及出家制度受到社會結構影響	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R09	inputs/buddhist_history_original.txt	L39	TABLE_ROW	影響因素：祖師權威與正統競爭 → 建構祖師世系、追溯神聖來源	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R10	inputs/buddhist_history_original.txt	L40	TABLE_ROW	影響因素：後世抄寫與編輯 → 註解混入正文、不同版本合併	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T02-R11	inputs/buddhist_history_original.txt	L41	TABLE_ROW	影響因素：殖民與現代化 → 佛教被重新包裝成哲學、科學或民族文化	KEEP	C09-001	#transmission	#oral-transmission	E14	全部11列完整收錄於站09表格並對應研究頁	SEMANTIC_VERIFIED
+T03-R01	inputs/buddhist_history_original.txt	L53	TABLE_ROW	時間軸1：西元前600–400年 — 古印度沙門運動興起與歷史釋迦牟尼（生平細節較低）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R02	inputs/buddhist_history_original.txt	L54	TABLE_ROW	時間軸2：西元前400–300年 — 佛滅後口傳、戒律爭議與早期分化（中）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R03	inputs/buddhist_history_original.txt	L55	TABLE_ROW	時間軸3：西元前268–232年左右 — 阿育王統治與強力政治支持（極高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R04	inputs/buddhist_history_original.txt	L56	TABLE_ROW	時間軸4：西元前300–100年 — 部派佛教發展與各自傳承經律（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R05	inputs/buddhist_history_original.txt	L57	TABLE_ROW	時間軸5：西元前100–西元200年 — 早期佛教手稿與大乘經典逐漸出現（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R06	inputs/buddhist_history_original.txt	L58	TABLE_ROW	時間軸6：西元100–500年 — 大乘、般若、中觀、瑜伽行派發展（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R07	inputs/buddhist_history_original.txt	L59	TABLE_ROW	時間軸7：西元100–600年 — 傳入中國、中亞、朝鮮、日本（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R08	inputs/buddhist_history_original.txt	L60	TABLE_ROW	時間軸8：西元500–1000年 — 印度密教發展，漢地宗派與藏傳形成（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R09	inputs/buddhist_history_original.txt	L61	TABLE_ROW	時間軸9：西元1000–1300年 — 印度大寺衰退；斯里蘭卡僧團重整（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R10	inputs/buddhist_history_original.txt	L62	TABLE_ROW	時間軸10：西元1200–1600年 — 東南亞上座部確立主流地位（高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R11	inputs/buddhist_history_original.txt	L63	TABLE_ROW	時間軸11：西元1600–1900年 — 國家宗教制度、殖民統治、宗派改革（極高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T03-R12	inputs/buddhist_history_original.txt	L64	TABLE_ROW	時間軸12：西元1900年至今 — 現代化、人間佛教、全球禪修與心理學化（極高）	KEEP	C10-002	#history	#chronology	E15,E26	全部12時期完整收錄於站10互動時間軸、地圖與靜態全表	ACCESS_LIMITED
+T04-R01	inputs/buddhist_history_original.txt	L118	TABLE_ROW	佛陀生平說法：曾有一位稱為喬達摩的修行導師（高）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T04-R02	inputs/buddhist_history_original.txt	L119	TABLE_ROW	佛陀生平說法：活動於古印度北部及今尼泊爾南部一帶（高）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T04-R03	inputs/buddhist_history_original.txt	L120	TABLE_ROW	佛陀生平說法：建立修行者團體並傳授解脫方法（高）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T04-R04	inputs/buddhist_history_original.txt	L121	TABLE_ROW	佛陀生平說法：出身具有一定社會地位的釋迦族（中高）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T04-R05	inputs/buddhist_history_original.txt	L122	TABLE_ROW	佛陀生平說法：是現代人理解的王國王子（中低（後世王室化描寫））	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T04-R06	inputs/buddhist_history_original.txt	L123	TABLE_ROW	佛陀生平說法：29歲出家、35歲成道、80歲入滅（傳統記載，精確年齡未獨立證實）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T04-R07	inputs/buddhist_history_original.txt	L124	TABLE_ROW	佛陀生平說法：出生時走七步並宣告天上天下唯我獨尊（無獨立歷史證據）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T04-R08	inputs/buddhist_history_original.txt	L125	TABLE_ROW	佛陀生平說法：菩提樹下遭遇魔王及超自然事件（歷史方法無法驗證）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T04-R09	inputs/buddhist_history_original.txt	L126	TABLE_ROW	佛陀生平說法：具有宿命通、天眼通等神通（歷史方法無法驗證）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T04-R10	inputs/buddhist_history_original.txt	L127	TABLE_ROW	佛陀生平說法：後世佛傳的全部對話及事件（不可直接當成逐字史實）	KEEP	C10-001	#history	#historical-buddha	E15	補入站10完整十列評估表，補齊v1.1僅以一段文字概括之細節	SEMANTIC_VERIFIED
+T05-R01	inputs/buddhist_history_original.txt	L173	TABLE_ROW	第一次結集：佛滅後500阿羅漢誦經律；細節與完整經藏形成爭議大	CORRECT	C10-003	#history	#councils	E16,E11	完整保留4列並標明第三次結集「主要據南傳史書記載」與Prebish(1974)研究	ACCESS_LIMITED
+T05-R02	inputs/buddhist_history_original.txt	L174	TABLE_ROW	第二次結集：約百年後戒律會議；具較強歷史基礎但與首次分裂關係未定	CORRECT	C10-003	#history	#councils	E16,E11	完整保留4列並標明第三次結集「主要據南傳史書記載」與Prebish(1974)研究	ACCESS_LIMITED
+T05-R03	inputs/buddhist_history_original.txt	L175	TABLE_ROW	第三次結集：阿育王支持清理僧團；政治介入有碑銘，會議細節欠獨立佐證	CORRECT	C10-003	#history	#councils	E16,E11	完整保留4列並標明第三次結集「主要據南傳史書記載」與Prebish(1974)研究	ACCESS_LIMITED
+T05-R04	inputs/buddhist_history_original.txt	L176	TABLE_ROW	第四次結集：寫經或整理論藏；不同傳承指涉不同事件，不可混談	CORRECT	C10-003	#history	#councils	E16,E11	完整保留4列並標明第三次結集「主要據南傳史書記載」與Prebish(1974)研究	ACCESS_LIMITED
+T06-R01	inputs/buddhist_history_original.txt	L214	TABLE_ROW	早期教義：苦、集、滅、道（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R02	inputs/buddhist_history_original.txt	L215	TABLE_ROW	早期教義：八正道（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R03	inputs/buddhist_history_original.txt	L216	TABLE_ROW	早期教義：無常（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R04	inputs/buddhist_history_original.txt	L217	TABLE_ROW	早期教義：無我（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R05	inputs/buddhist_history_original.txt	L218	TABLE_ROW	早期教義：緣起（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R06	inputs/buddhist_history_original.txt	L219	TABLE_ROW	早期教義：五蘊（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R07	inputs/buddhist_history_original.txt	L220	TABLE_ROW	早期教義：戒律與倫理（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R08	inputs/buddhist_history_original.txt	L221	TABLE_ROW	早期教義：禪定與正念（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R09	inputs/buddhist_history_original.txt	L222	TABLE_ROW	早期教義：貪、瞋、癡（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R10	inputs/buddhist_history_original.txt	L223	TABLE_ROW	早期教義：業力、輪迴（高（超越死亡實存非史學能驗證））	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R11	inputs/buddhist_history_original.txt	L224	TABLE_ROW	早期教義：涅槃與解脫（高）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T06-R12	inputs/buddhist_history_original.txt	L225	TABLE_ROW	早期教義：完整阿毘達磨理論體系（較晚形成）	KEEP	C11-002	#branches	#early-core	E17	12列完整收錄於站11表格，並與研究頁逐項對照	SEMANTIC_VERIFIED
+T07-R01	inputs/buddhist_history_original.txt	L253	TABLE_ROW	阿育王碑銘：藍毘尼石柱 — 王權支持佛教聖地與紀念活動	KEEP	C08-001,C05-003	#evidence	#ashoka-inscriptions	E11	補齊四筆碑銘實物圖版／照片與Hultzsch 1925文獻定位於站08	SEMANTIC_VERIFIED
+T07-R02	inputs/buddhist_history_original.txt	L254	TABLE_ROW	阿育王碑銘：拜拉特（Bhabra）碑銘 — 國王推薦七項佛教教導供僧俗學習	KEEP	C08-001,C05-003	#evidence	#ashoka-inscriptions	E11	補齊四筆碑銘實物圖版／照片與Hultzsch 1925文獻定位於站08	SEMANTIC_VERIFIED
+T07-R03	inputs/buddhist_history_original.txt	L255	TABLE_ROW	阿育王碑銘：僧團分裂相關詔令 — 王權介入僧團秩序與分裂問題	KEEP	C08-001,C05-003	#evidence	#ashoka-inscriptions	E11	補齊四筆碑銘實物圖版／照片與Hultzsch 1925文獻定位於站08	SEMANTIC_VERIFIED
+T07-R04	inputs/buddhist_history_original.txt	L256	TABLE_ROW	阿育王碑銘：尼迦利薩格爾石柱 — 當時已存在過去佛信仰及佛塔崇拜	KEEP	C08-001,C05-003	#evidence	#ashoka-inscriptions	E11	補齊四筆碑銘實物圖版／照片與Hultzsch 1925文獻定位於站08	SEMANTIC_VERIFIED
+T08-R01	inputs/buddhist_history_original.txt	L291	TABLE_ROW	古部派：大眾部 — 部分支系發展較超越人間的佛陀觀	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	ACCESS_LIMITED
+T08-R02	inputs/buddhist_history_original.txt	L292	TABLE_ROW	古部派：說一切有部 — 對時間、存在及現象分類提出高度系統化理論	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	ACCESS_LIMITED
+T08-R03	inputs/buddhist_history_original.txt	L293	TABLE_ROW	古部派：經量部 — 重視經典，相對批判部分論藏理論	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	ACCESS_LIMITED
+T08-R04	inputs/buddhist_history_original.txt	L294	TABLE_ROW	古部派：犢子部及相關部派 — 探討無我與人格延續間的哲學問題	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	ACCESS_LIMITED
+T08-R05	inputs/buddhist_history_original.txt	L295	TABLE_ROW	古部派：法藏部 — 戒律傳承對今日漢傳佛教具重要影響	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	ACCESS_LIMITED
+T08-R06	inputs/buddhist_history_original.txt	L296	TABLE_ROW	古部派：南傳上座部 — 保存完整巴利三藏及自身註釋傳統	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	ACCESS_LIMITED
+T08-R07	inputs/buddhist_history_original.txt	L297	TABLE_ROW	古部派：根本說一切有部 — 其戒律成為藏傳佛教重要制度基礎	KEEP	C11-001	#branches	#school-schism	E16	7列完整收錄於站11並連至部派分裂研究	ACCESS_LIMITED
+T09-R01	inputs/buddhist_history_original.txt	L319	TABLE_ROW	斯里蘭卡僧團：大寺派 — 後來成為現代上座部主要制度與文獻來源	KEEP	C12-001	#south	#theravada-history	E18	站12完整呈現三寺對比表格、遺址照片與Max Deeg(2024)研究	ACCESS_LIMITED
+T09-R02	inputs/buddhist_history_original.txt	L320	TABLE_ROW	斯里蘭卡僧團：無畏山寺派 — 曾接觸與接受較多不同佛教思想與修行傳統	KEEP	C12-001	#south	#theravada-history	E18	站12完整呈現三寺對比表格、遺址照片與Max Deeg(2024)研究	ACCESS_LIMITED
+T09-R03	inputs/buddhist_history_original.txt	L321	TABLE_ROW	斯里蘭卡僧團：祇陀林寺派 — 具有自身僧團及思想傳承	KEEP	C12-001	#south	#theravada-history	E18	站12完整呈現三寺對比表格、遺址照片與Max Deeg(2024)研究	ACCESS_LIMITED
+T10-R01	inputs/buddhist_history_original.txt	L359	TABLE_ROW	大乘思想：慈悲 — 早期佛教已存在	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	ACCESS_LIMITED
+T10-R02	inputs/buddhist_history_original.txt	L360	TABLE_ROW	大乘思想：菩薩概念 — 早期已有，大乘發展成普遍修行道路	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	ACCESS_LIMITED
+T10-R03	inputs/buddhist_history_original.txt	L361	TABLE_ROW	大乘思想：般若與空性 — 與無我緣起相關，後成完整哲學體系	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	ACCESS_LIMITED
+T10-R04	inputs/buddhist_history_original.txt	L362	TABLE_ROW	大乘思想：六波羅蜜 — 具有早期基礎，完整體系後世發展	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	ACCESS_LIMITED
+T10-R05	inputs/buddhist_history_original.txt	L363	TABLE_ROW	大乘思想：無量佛及佛國 — 具有較早基礎，後世大幅擴充	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	ACCESS_LIMITED
+T10-R06	inputs/buddhist_history_original.txt	L364	TABLE_ROW	大乘思想：阿彌陀佛與西方極樂世界 — 後來發展的淨土信仰系統	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	ACCESS_LIMITED
+T10-R07	inputs/buddhist_history_original.txt	L365	TABLE_ROW	大乘思想：如來藏、佛性 — 後期印度大乘重要思想發展	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	ACCESS_LIMITED
+T10-R08	inputs/buddhist_history_original.txt	L366	TABLE_ROW	大乘思想：唯識學 — 約西元4–5世紀形成高度系統化理論	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	ACCESS_LIMITED
+T10-R09	inputs/buddhist_history_original.txt	L367	TABLE_ROW	大乘思想：完整三身佛理論 — 後世對佛陀身分與存在形式之哲學發展	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	9列完整收錄於站13河道探索與靜態表	ACCESS_LIMITED
+T11-R01	inputs/buddhist_history_original.txt	L401	TABLE_ROW	經典鑑定：巴利四部尼柯耶 — 保存大量早期內容；相對較強非逐字證實	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R02	inputs/buddhist_history_original.txt	L402	TABLE_ROW	經典鑑定：漢譯四阿含經 — 不同印度部派早期經文；須逐篇比對	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R03	inputs/buddhist_history_original.txt	L403	TABLE_ROW	經典鑑定：《法句經》 — 不同傳承保存古老偈頌；部分具較強早期證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R04	inputs/buddhist_history_original.txt	L404	TABLE_ROW	經典鑑定：《經集》 — 部分篇章具古老特徵；內部仍有年代差異	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R05	inputs/buddhist_history_original.txt	L405	TABLE_ROW	經典鑑定：《金剛經》 — 印度大乘般若經典；缺乏直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R06	inputs/buddhist_history_original.txt	L406	TABLE_ROW	經典鑑定：《法華經》 — 早期印度大乘經典，具不同形成層次；缺直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R07	inputs/buddhist_history_original.txt	L407	TABLE_ROW	經典鑑定：《華嚴經》 — 多個印度大乘文獻逐步集合；缺直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R08	inputs/buddhist_history_original.txt	L408	TABLE_ROW	經典鑑定：《阿彌陀經》 — 印度及中亞淨土思想傳統；缺直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R09	inputs/buddhist_history_original.txt	L409	TABLE_ROW	經典鑑定：《無量壽經》 — 不同語言及版本的淨土經典；缺直接證據	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R10	inputs/buddhist_history_original.txt	L410	TABLE_ROW	經典鑑定：《心經》 — 具強有力漢地編纂研究證據；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R11	inputs/buddhist_history_original.txt	L411	TABLE_ROW	經典鑑定：《楞嚴經》 — 印度來源、漢地編集及翻譯長期爭議；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R12	inputs/buddhist_history_original.txt	L412	TABLE_ROW	經典鑑定：《大乘起信論》 — 作者與翻譯歸屬高度質疑；論書非佛陀直接教導	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R13	inputs/buddhist_history_original.txt	L413	TABLE_ROW	經典鑑定：《盂蘭盆經》 — 具漢地宗教文化編集高度疑慮；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R14	inputs/buddhist_history_original.txt	L414	TABLE_ROW	經典鑑定：《父母恩重經》 — 明顯漢地孝道文化與本土撰述特徵；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R15	inputs/buddhist_history_original.txt	L415	TABLE_ROW	經典鑑定：《六祖壇經》 — 中國禪宗祖師文獻，多版本；非釋迦牟尼教導	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T11-R16	inputs/buddhist_history_original.txt	L416	TABLE_ROW	經典鑑定：佛教密續 — 主要於西元7世紀後成熟；極弱	KEEP	C14-001,C14-002,C14-003	#texts	#text-attribution	E20,E21	完整拆分為16類獨立文獻列於站14鑑定桌及研究頁（修正v1.1整併列）	SEMANTIC_VERIFIED
+T12-R01	inputs/buddhist_history_original.txt	L489	TABLE_ROW	中國適應：離家出家 vs 不奉養父母 → 強調出家也是報答父母恩情	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	SEMANTIC_VERIFIED
+T12-R02	inputs/buddhist_history_original.txt	L490	TABLE_ROW	中國適應：不婚不育 vs 無後為大 → 發展超度祖先與功德迴向	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	SEMANTIC_VERIFIED
+T12-R03	inputs/buddhist_history_original.txt	L491	TABLE_ROW	中國適應：托缽受供 vs 不從事生產批評 → 發展寺院經濟、農業及勞作傳統	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	SEMANTIC_VERIFIED
+T12-R04	inputs/buddhist_history_original.txt	L492	TABLE_ROW	中國適應：解脫輪迴 vs 現實生活需求 → 發展祈福、消災、治病儀式	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	SEMANTIC_VERIFIED
+T12-R05	inputs/buddhist_history_original.txt	L493	TABLE_ROW	中國適應：印度宇宙觀 vs 本土鬼神祖先 → 地獄、亡者與地方神祇融合	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	SEMANTIC_VERIFIED
+T12-R06	inputs/buddhist_history_original.txt	L494	TABLE_ROW	中國適應：外來宗教 vs 儒道王權競爭 → 發展護國佛教與本土化思想	KEEP	C15-001	#china	#china-adaptation	E22	6列完整收錄於站15表格與情境互動	SEMANTIC_VERIFIED
+T13-R01	inputs/buddhist_history_original.txt	L516	TABLE_ROW	素食主張：佛陀反對殺生 — 有很強早期文獻基礎	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	SEMANTIC_VERIFIED
+T13-R02	inputs/buddhist_history_original.txt	L517	TABLE_ROW	素食主張：佛陀要求所有佛教徒終生吃素 — 缺乏充分早期文獻支持	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	SEMANTIC_VERIFIED
+T13-R03	inputs/buddhist_history_original.txt	L518	TABLE_ROW	素食主張：大乘佛教發展出強烈素食倫理 — 有文獻證據	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	SEMANTIC_VERIFIED
+T13-R04	inputs/buddhist_history_original.txt	L519	TABLE_ROW	素食主張：中國皇帝推動僧團素食制度 — 有歷史證據	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	SEMANTIC_VERIFIED
+T13-R05	inputs/buddhist_history_original.txt	L520	TABLE_ROW	素食主張：所有吃肉南傳僧侶都違反戒律 — 不符合不同早期律藏記載	KEEP	C15-002	#china	#food-vinaya	E23	補入站15完整五列素食歷史評估表（補足v1.1缺表問題）	SEMANTIC_VERIFIED
+T14-R01	inputs/buddhist_history_original.txt	L538	TABLE_ROW	禪宗主張：佛陀本人曾修習及教導禪定（高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	SEMANTIC_VERIFIED
+T14-R02	inputs/buddhist_history_original.txt	L539	TABLE_ROW	禪宗主張：印度存在長期佛教禪修傳統（高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	SEMANTIC_VERIFIED
+T14-R03	inputs/buddhist_history_original.txt	L540	TABLE_ROW	禪宗主張：達摩具有歷史人物基礎（中高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	SEMANTIC_VERIFIED
+T14-R04	inputs/buddhist_history_original.txt	L541	TABLE_ROW	禪宗主張：達摩所有神異傳說（低）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	SEMANTIC_VERIFIED
+T14-R05	inputs/buddhist_history_original.txt	L542	TABLE_ROW	禪宗主張：靈山拈花、迦葉微笑（高度可能為後世傳承敘事）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	SEMANTIC_VERIFIED
+T14-R06	inputs/buddhist_history_original.txt	L543	TABLE_ROW	禪宗主張：印度二十八祖完整逐代傳承（缺乏可靠逐代證據）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	SEMANTIC_VERIFIED
+T14-R07	inputs/buddhist_history_original.txt	L544	TABLE_ROW	禪宗主張：禪宗祖師傳承譜系經後世整理（高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	SEMANTIC_VERIFIED
+T14-R08	inputs/buddhist_history_original.txt	L545	TABLE_ROW	禪宗主張：六祖慧能所有故事均為史實（不能成立）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	SEMANTIC_VERIFIED
+T14-R09	inputs/buddhist_history_original.txt	L546	TABLE_ROW	禪宗主張：唐宋禪宗的形成與發展（高）	KEEP	C16-001,C16-002	#chan	#chan-lineages	E24	補入站16完整九列評估表（補足v1.1僅以散文概括之缺失）	SEMANTIC_VERIFIED
+T15-R01	inputs/buddhist_history_original.txt	L570	TABLE_ROW	藏傳時期：7–9世紀 — 吐蕃王室引進支持佛教	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	ACCESS_LIMITED
+T15-R02	inputs/buddhist_history_original.txt	L571	TABLE_ROW	藏傳時期：約779年 — 赤松德贊支持桑耶寺與僧團制度	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	ACCESS_LIMITED
+T15-R03	inputs/buddhist_history_original.txt	L572	TABLE_ROW	藏傳時期：9–10世紀 — 政治動盪，制度與傳承受影響	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	ACCESS_LIMITED
+T15-R04	inputs/buddhist_history_original.txt	L573	TABLE_ROW	藏傳時期：10–12世紀 — 後弘期再度興盛，大量引入印度文獻	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	ACCESS_LIMITED
+T15-R05	inputs/buddhist_history_original.txt	L574	TABLE_ROW	藏傳時期：11–15世紀 — 不同藏傳宗派逐漸形成	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	ACCESS_LIMITED
+T15-R06	inputs/buddhist_history_original.txt	L575	TABLE_ROW	藏傳時期：15世紀 — 格魯派形成	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	ACCESS_LIMITED
+T15-R07	inputs/buddhist_history_original.txt	L576	TABLE_ROW	藏傳時期：17世紀 — 格魯派與蒙古軍政支持形成新政教秩序	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	ACCESS_LIMITED
+T15-R08	inputs/buddhist_history_original.txt	L577	TABLE_ROW	藏傳時期：20世紀 — 政治衝突、制度破壞及海外流亡傳承	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補齊v1.1漏掉的「約779桑耶寺」獨立列，完整8列收錄於站17	ACCESS_LIMITED
+T16-R01	inputs/buddhist_history_original.txt	L595	TABLE_ROW	藏傳主張：印度密教文獻傳入西藏 — 高	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	ACCESS_LIMITED
+T16-R02	inputs/buddhist_history_original.txt	L596	TABLE_ROW	藏傳主張：西藏保存大量印度失傳文獻 — 高	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	ACCESS_LIMITED
+T16-R03	inputs/buddhist_history_original.txt	L597	TABLE_ROW	藏傳主張：蓮花生具歷史人物基礎 — 有一定支持，生平傳說需區分	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	ACCESS_LIMITED
+T16-R04	inputs/buddhist_history_original.txt	L598	TABLE_ROW	藏傳主張：蓮花生所有神異事蹟 — 無法獨立驗證	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	ACCESS_LIMITED
+T16-R05	inputs/buddhist_history_original.txt	L599	TABLE_ROW	藏傳主張：伏藏經典預先隱藏待發現 — 須逐份檢驗，秘密來源難證實	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	ACCESS_LIMITED
+T16-R06	inputs/buddhist_history_original.txt	L600	TABLE_ROW	藏傳主張：透過精神感應取得古代經典 — 無法以一般歷史方法確認	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	ACCESS_LIMITED
+T16-R07	inputs/buddhist_history_original.txt	L601	TABLE_ROW	藏傳主張：活佛轉世者確為前世人物再生 — 宗教信仰主張，歷史方法無法驗證	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	ACCESS_LIMITED
+T16-R08	inputs/buddhist_history_original.txt	L602	TABLE_ROW	藏傳主張：密宗傳承可追溯至佛陀秘密教法 — 缺乏充分直接證據	KEEP	C17-002	#tibet	#tibetan-lineages	E25	補入站17完整8列傳承主張分類表與來源盒互動	ACCESS_LIMITED
+T17-R01	inputs/buddhist_history_original.txt	L614	TABLE_ROW	政治戰亂事件：阿育王支持佛教（前3世紀） — 提高傳播能力及制度化程度	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R02	inputs/buddhist_history_original.txt	L615	TABLE_ROW	政治戰亂事件：北魏滅佛（446年） — 寺院與僧團受到破壞	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R03	inputs/buddhist_history_original.txt	L616	TABLE_ROW	政治戰亂事件：北周滅佛（574年起） — 宗教資產與僧團制度受限制	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R04	inputs/buddhist_history_original.txt	L617	TABLE_ROW	政治戰亂事件：唐武宗會昌滅佛（845年） — 寺院裁撤、資產沒收、僧尼還俗	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R05	inputs/buddhist_history_original.txt	L618	TABLE_ROW	政治戰亂事件：斯里蘭卡僧團整合（12世紀） — 大寺派取得主導地位	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R06	inputs/buddhist_history_original.txt	L619	TABLE_ROW	政治戰亂事件：印度北部寺院衰退（11–13世紀） — 教育、文獻與師承網絡萎縮	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R07	inputs/buddhist_history_original.txt	L620	TABLE_ROW	政治戰亂事件：日本明治神佛分離（1868年起） — 神佛融合制度受衝擊	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R08	inputs/buddhist_history_original.txt	L621	TABLE_ROW	政治戰亂事件：中國太平天國戰爭（1850–1864） — 大量宗教設施破壞與戰後重建	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R09	inputs/buddhist_history_original.txt	L622	TABLE_ROW	政治戰亂事件：英國殖民斯里蘭卡、緬甸（19世紀） — 教育、民族認同與宗教改革	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R10	inputs/buddhist_history_original.txt	L623	TABLE_ROW	政治戰亂事件：泰國僧團法（1902年起） — 中央集權國家制度管理	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T17-R11	inputs/buddhist_history_original.txt	L624	TABLE_ROW	政治戰亂事件：中國文化大革命（1966–1976） — 寺院、文物與傳承活動嚴重破壞	KEEP	C18-001	#politics	#politics-preservation	E26,E18,E27	修正v1.1將北魏北周合併為一列之問題，完整11列獨立呈現於站18	ACCESS_LIMITED
+T18-R01	inputs/buddhist_history_original.txt	L644	TABLE_ROW	印度衰退因素：軍事入侵與寺院破壞 — 重要直接因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	ACCESS_LIMITED
+T18-R02	inputs/buddhist_history_original.txt	L645	TABLE_ROW	印度衰退因素：王室轉移宗教資源 — 重要制度因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	ACCESS_LIMITED
+T18-R03	inputs/buddhist_history_original.txt	L646	TABLE_ROW	印度衰退因素：寺院過度集中土地與資源 — 部分研究認為是結構性問題	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	ACCESS_LIMITED
+T18-R04	inputs/buddhist_history_original.txt	L647	TABLE_ROW	印度衰退因素：與印度教傳統競爭及融合 — 長期因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	ACCESS_LIMITED
+T18-R05	inputs/buddhist_history_original.txt	L648	TABLE_ROW	印度衰退因素：商業活動及城市結構改變 — 地區性經濟因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	ACCESS_LIMITED
+T18-R06	inputs/buddhist_history_original.txt	L649	TABLE_ROW	印度衰退因素：僧團與普通百姓關係改變 — 部分學者重要解釋	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	ACCESS_LIMITED
+T18-R07	inputs/buddhist_history_original.txt	L650	TABLE_ROW	印度衰退因素：師承、教育及抄經網絡瓦解 — 傳承中斷重要因素	KEEP	C18-002	#politics	#india-decline	E26	補入站18完整7列印度衰退結構因素表	ACCESS_LIMITED
+T19-R01	inputs/buddhist_history_original.txt	L664	TABLE_ROW	日本制度對照：出家離開家庭 vs 僧侶可結婚生子	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	ACCESS_LIMITED
+T19-R02	inputs/buddhist_history_original.txt	L665	TABLE_ROW	日本制度對照：依法共同生活 vs 部分寺院家族經營	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	ACCESS_LIMITED
+T19-R03	inputs/buddhist_history_original.txt	L666	TABLE_ROW	日本制度對照：以修行解脫為核心 vs 兼供喪葬祖先祭祀	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	ACCESS_LIMITED
+T19-R04	inputs/buddhist_history_original.txt	L667	TABLE_ROW	日本制度對照：不以血緣世襲 vs 部分寺院由家族成員接任	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	ACCESS_LIMITED
+T19-R05	inputs/buddhist_history_original.txt	L668	TABLE_ROW	日本制度對照：與國家保持自主 vs 德川時期承擔人口登記行政	KEEP	C19-001	#japan	#japan-institutions	E27	於站19以完整五列對照表與時代切換呈現（補足v1.1缺表問題）	ACCESS_LIMITED
+T20-R01	inputs/buddhist_history_original.txt	L688	TABLE_ROW	女性受戒傳承：古印度比丘尼 — 曾存在完整僧團，後隨印度佛教衰退消失	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	SEMANTIC_VERIFIED
+T20-R02	inputs/buddhist_history_original.txt	L689	TABLE_ROW	女性受戒傳承：斯里蘭卡比丘尼 — 古代有完整傳承，後因動盪中斷	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	SEMANTIC_VERIFIED
+T20-R03	inputs/buddhist_history_original.txt	L690	TABLE_ROW	女性受戒傳承：漢傳比丘尼 — 5世紀獲斯里蘭卡協助傳戒，保存法藏部傳統	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	SEMANTIC_VERIFIED
+T20-R04	inputs/buddhist_history_original.txt	L691	TABLE_ROW	女性受戒傳承：藏傳佛教 — 完整受戒制度建立與傳承具歷史及制度爭議	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	SEMANTIC_VERIFIED
+T20-R05	inputs/buddhist_history_original.txt	L692	TABLE_ROW	女性受戒傳承：現代南傳佛教 — 部分地區跨傳承合作恢復比丘尼受戒	KEEP	C20-001	#women	#bhikkhuni-history	E28	5列完整保留於站20並補齊429/433南京與2022/2025不丹事件	SEMANTIC_VERIFIED
+T21-R01	inputs/buddhist_history_original.txt	L712	TABLE_ROW	現代流行說法：佛教只是哲學，不是宗教 — 近代常見重新詮釋	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	ACCESS_LIMITED
+T21-R02	inputs/buddhist_history_original.txt	L713	TABLE_ROW	現代流行說法：佛教就是心理學 — 現代化詮釋，不能概括全部歷史	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	ACCESS_LIMITED
+T21-R03	inputs/buddhist_history_original.txt	L714	TABLE_ROW	現代流行說法：佛教完全沒有神祇與超自然思想 — 不符合早期佛教文獻	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	ACCESS_LIMITED
+T21-R04	inputs/buddhist_history_original.txt	L715	TABLE_ROW	現代流行說法：佛教所有教義符合現代科學 — 缺乏充分證據	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	ACCESS_LIMITED
+T21-R05	inputs/buddhist_history_original.txt	L716	TABLE_ROW	現代流行說法：正念就是完整的八正道 — 過度簡化	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	ACCESS_LIMITED
+T21-R06	inputs/buddhist_history_original.txt	L717	TABLE_ROW	現代流行說法：現代內觀方法完全等同佛陀教法 — 無法證明	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	ACCESS_LIMITED
+T21-R07	inputs/buddhist_history_original.txt	L718	TABLE_ROW	現代流行說法：慈善服務就是佛教唯一核心 — 現代宗教實踐特定強調方式	KEEP	C21-001	#modern	#buddhist-modernism	E29	修正v1.1將哲學與心理學合併為一列，恢復完整7列於站21	ACCESS_LIMITED
+T22-R01	inputs/buddhist_history_original.txt	L772	TABLE_ROW	三大傳承比較：早期經典保存（完整巴利經藏／阿含經及其他早期文獻／部分經律及其他印度文獻）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T22-R02	inputs/buddhist_history_original.txt	L773	TABLE_ROW	三大傳承比較：主要戒律來源（上座部律藏／法藏部四分律／根本說一切有部律）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T22-R03	inputs/buddhist_history_original.txt	L774	TABLE_ROW	三大傳承比較：後世哲學發展（阿毘達磨及義註／中觀唯識天台華嚴／中觀唯識密教論辯）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T22-R04	inputs/buddhist_history_original.txt	L775	TABLE_ROW	三大傳承比較：地方文化融合（南亞東南亞／儒道地方信仰／西藏喜馬拉雅）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T22-R05	inputs/buddhist_history_original.txt	L776	TABLE_ROW	三大傳承比較：政治干預（王室改革殖民／皇帝支持滅佛國家管理／王室政教制度）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T22-R06	inputs/buddhist_history_original.txt	L777	TABLE_ROW	三大傳承比較：傳承中斷及重建（有／有／有）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T22-R07	inputs/buddhist_history_original.txt	L778	TABLE_ROW	三大傳承比較：後世編纂與註釋（有／有／有）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T22-R08	inputs/buddhist_history_original.txt	L779	TABLE_ROW	三大傳承比較：祖師權威與傳承敘事（有／有／有）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T22-R09	inputs/buddhist_history_original.txt	L780	TABLE_ROW	三大傳承比較：宗教儀式與民間信仰（有／有／有）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T22-R10	inputs/buddhist_history_original.txt	L781	TABLE_ROW	三大傳承比較：能證明完整保存佛陀原始教導（無法／無法／無法）	KEEP	C11-002	#branches	#traditions-comparison	E17,E18,E25	展開v1.1整併的4列為完整10列，並註明宗派內部差異	ACCESS_LIMITED
+T23-R01	inputs/buddhist_history_original.txt	L823	TABLE_ROW	研究來源：悉尼大學犍陀羅佛典研究計畫 — 古代手稿、文字學及平行經典	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+T23-R02	inputs/buddhist_history_original.txt	L824	TABLE_ROW	研究來源：美國國會圖書館犍陀羅手稿 — 可直接查閱古代手稿數位影像	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+T23-R03	inputs/buddhist_history_original.txt	L825	TABLE_ROW	研究來源：SuttaCentral — 巴利、漢譯及其他早期經律平行比對	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+T23-R04	inputs/buddhist_history_original.txt	L826	TABLE_ROW	研究來源：CBETA 中華電子佛典 — 漢文佛典及歷代註釋資料	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+T23-R05	inputs/buddhist_history_original.txt	L827	TABLE_ROW	研究來源：漢文佛典歸屬研究資料庫 CBC@ — 作者、翻譯者及經典來源爭議	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+T23-R06	inputs/buddhist_history_original.txt	L828	TABLE_ROW	研究來源：臺灣大學佛學數位圖書館 — 國際佛學研究與中文學術資源	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+T23-R07	inputs/buddhist_history_original.txt	L829	TABLE_ROW	研究來源：史丹佛哲學百科全書：佛陀 — 歷史佛陀與哲學思想	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+T23-R08	inputs/buddhist_history_original.txt	L830	TABLE_ROW	研究來源：史丹佛哲學百科全書：禪宗 — 禪宗思想及傳承史研究	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+T23-R09	inputs/buddhist_history_original.txt	L831	TABLE_ROW	研究來源：牛津大學出版社印度佛教考古史 — 物質文化、經濟及制度變遷	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+T23-R10	inputs/buddhist_history_original.txt	L832	TABLE_ROW	研究來源：劍橋世界史：佛教的傳播 — 跨地區傳播與歷史發展	KEEP	C22-001	#lab	#method	E31	10項學術資料庫完整收錄於站22表格及研究頁證據庫	SEMANTIC_VERIFIED
+IMG01	inputs/buddhist_history_original.txt	L140	IMAGE_TOPIC	藍毘尼阿育王石柱（舊 image ref）	KEEP	C08-001	#evidence	#ashoka-inscriptions	E11	嵌入Public Domain ASI 1896石柱照與Rummindei婆羅米文近照（另增拜拉特、尼迦利薩格爾、鹿野苑圖版）	SEMANTIC_VERIFIED
+IMG02	inputs/buddhist_history_original.txt	L151	IMAGE_TOPIC	犍陀羅樺皮卷（舊 image ref）	REPLACE	C08-006,C08-007	#evidence	#gandhara-manuscripts	E12	LOC JSON回傳403僅供官方館藏連結；改嵌入CC0大英圖書館Or.14915樺皮手稿實照	ACCESS_LIMITED
+IMG03	inputs/buddhist_history_original.txt	L315	IMAGE_TOPIC	無畏山寺遺址（group query 1）	KEEP	C12-001	#south	#theravada-history	E18	嵌入CC BY 4.0無畏山寺大塔考古實景並標示近代修復差異	ACCESS_LIMITED
+IMG04	inputs/buddhist_history_original.txt	L315	IMAGE_TOPIC	祇陀林寺遺址（group query 2）	KEEP	C12-001	#south	#theravada-history	E18	嵌入CC BY-SA 4.0祇陀林寺遺址照片	ACCESS_LIMITED
+IMG05	inputs/buddhist_history_original.txt	L530	IMAGE_TOPIC	敦煌《六祖壇經》寫本（group query 1）	ACCESS_BLOCKED	C16-002	#chan	#chan-lineages	E24	IDP(idp.bl.uk)設有反爬蟲挑戰（ACCESS_BLOCKED，技術阻擋非版權禁止）不繞過；提供Or.8210/S.5475官方館藏連結，並附Public Domain 1310年高麗版《壇經》明標絕非敦煌寫本替代件	ACCESS_LIMITED
+IMG06	inputs/buddhist_history_original.txt	L530	IMAGE_TOPIC	達摩後世藝術（group query 2）	KEEP	C16-002	#chan	#chan-lineages	E24	嵌入CC0大都會博物館藏雲谷等顏達摩像（16–17世紀），明標千年後藝術想像非真人肖像	SEMANTIC_VERIFIED
+IMG07	inputs/buddhist_history_original.txt	L636	IMAGE_TOPIC	那爛陀寺考古遺址（group query 1）	KEEP	C18-002	#politics	#india-decline	E26	嵌入CC BY-SA 4.0那爛陀第五僧院遺址照片	ACCESS_LIMITED
+IMG08	inputs/buddhist_history_original.txt	L636	IMAGE_TOPIC	超戒寺考古遺址（group query 2）	KEEP	C18-002	#politics	#india-decline	E26	嵌入CC BY-SA 4.0超戒寺遺址與倒伏石柱照片	ACCESS_LIMITED
+IMG09	inputs/buddhist_history_original.txt	L731	IMAGE_TOPIC	臺灣傳統佛教與民間信仰（龍山寺）	KEEP	C21-002	#modern	#taiwan-history	E30	嵌入Public Domain 1895–1922艋舺龍山寺歷史照片	ACCESS_LIMITED
+IMG10	inputs/buddhist_history_original.txt	L740	IMAGE_TOPIC	日治時期臺灣佛教歷史照片	KEEP	C21-002	#modern	#taiwan-history	E30	嵌入Public Domain 約1932年臺北西本願寺臺灣別院歷史照片	ACCESS_LIMITED
+IMG11	inputs/buddhist_history_original.txt	L749	IMAGE_TOPIC	戰後臺灣佛教組織材料（佛光山）	KEEP	C21-002	#modern	#taiwan-history	E30	嵌入CC0佛光山當代實景，明確標註組織創於1967年而照片為當代實景非早年檔案	ACCESS_LIMITED
+IMG12	inputs/buddhist_history_original.txt	L758	IMAGE_TOPIC	現代臺灣佛教社會服務影像（慈濟）	REPLACE	C21-002	#modern	#taiwan-history	E30	為尊重個人肖像隱私，不採無授權志工臉部群眾照（NOT_EMBEDDED_PRIVACY），改嵌入CC0臺北慈濟醫院建築實景	RIGHTS_EXCEPTION
+V01	inputs/buddhist_history_original.txt	L70-109	DIAGRAM	佛教傳承的簡化發展關係圖	REPLACE	C11-001	#branches	#school-schism	E16	改為交織河道與虛線不確定圖例＋文字表，避免單線族譜誤導	ACCESS_LIMITED
+V02	inputs/buddhist_history_original.txt	L192-205	DIAGRAM	經典可能的形成過程圖	REPLACE	C09-001	#transmission	#oral-transmission	E14	改為可操作雙向過程圖，平衡集體校對保守性與異文擴編	SEMANTIC_VERIFIED
+V03	inputs/buddhist_history_original.txt	L428-449	DIAGRAM	兩種《心經》來源假說圖	KEEP	C14-002	#texts	#heart-sutra-origin	E20	並列傳統與Nattier/Attwood假說並加入日本學者替代解讀及漢梵關鍵片段對比	SEMANTIC_VERIFIED
+V04	inputs/buddhist_history_original.txt	L789-806	DIAGRAM	歷史主張審查優先程度（九項）	REPLACE	C22-001	#lab	#evidence-risk	E31	移除可能暗示百分比量化之五格條，改採純質性證據負擔等級與舉證理由	SEMANTIC_VERIFIED
+V05	inputs/buddhist_history_original.txt	L850-862	DIAGRAM	五層佛教歷史模型（非占比）	KEEP	C22-002	#lab	#five-layers	E31	升級為可展開互動五層模型，標明交互影響、非內容占比與非高低價值	SEMANTIC_VERIFIED
+PDF-P01	inputs/history_audit_20p.pdf	Page 1	PDF_AUDIT_PAGE	v1.0稽核總覽與P0–P2優先矩陣（公網讀回、深淺主題、LINE OG、28px行寬、Safari、校勘）	KEEP	C22-002	#top	#method	E31	與現行v1.1比較：雙主題、OG、四幕、28px收邊多已於v1.1實作，餘缺與22站互動升級併入v2.0	SEMANTIC_VERIFIED
+PDF-P02	inputs/history_audit_20p.pdf	Page 2	PDF_AUDIT_PAGE	GitHub Pages五大404根因排查、相對路徑與verify-live讀回閘門	KEEP	C22-002	#top	#method	E31	已於pages.yml實作並擴充至v2.0四HTML＋assets清單讀回	SEMANTIC_VERIFIED
+PDF-P03	inputs/history_audit_20p.pdf	Page 3	PDF_AUDIT_PAGE	LINE/FB OG標籤、App WebView localStorage隔離、正負極性人因實證（Piepenbrock 2013/2014、Dobres 2017、Sethi & Ziat 2023）	KEEP	C22-002	#top	#method	E31	保留雙主題預設暖紙淺色與try/catch localStorage保護並維持於v2.0	SEMANTIC_VERIFIED
+PDF-P04	inputs/history_audit_20p.pdf	Page 4	PDF_AUDIT_PAGE	雙主題對比（#14171A與≥3:1邊框）、大字級邊距收斂、≤56px頂部列與max-width:36em	CORRECT	C22-002	#top	#method	E31	檢視v1.1色票並確保深色模式邊框與非文字UI對比均≥3:1	SEMANTIC_VERIFIED
+PDF-P05	inputs/history_audit_20p.pdf	Page 5	PDF_AUDIT_PAGE	高齡認知負荷模型（61–126分）、四幕導引、非自動消失續讀、WCAG 2.2表與四大互動精進	KEEP	C01-001,C02-001	#menu	#method	E01,E05	v2.0更進一步把22站全數擴充為各自獨立實作之探索模組	SEMANTIC_VERIFIED
+PDF-P06	inputs/history_audit_20p.pdf	Page 6	PDF_AUDIT_PAGE	七步與圖書館精進、iPhone Safari地雷1–3（input≥16px、overflow-x:clip、100svh）	KEEP	C22-001	#lab	#method	E31	全部防雷CSS於v2.0歷史頁與研究頁全面落實並由Chromium/WebKit測試檢查	SEMANTIC_VERIFIED
+PDF-P07	inputs/history_audit_20p.pdf	Page 7	PDF_AUDIT_PAGE	Safari地雷4–6（safe-area、取消orientation欄數、hover媒體查詢、reduced-motion）與四道CI閘門	KEEP	C22-001	#top	#method	E31	落實於CSS並保留merit-qa.yml雙引擎與axe-core掃描	SEMANTIC_VERIFIED
+PDF-P08	inputs/history_audit_20p.pdf	Page 8	PDF_AUDIT_PAGE	實體iPhone長者15分鐘6項SOP（尚待真人測試）與第一幕S01四大教法校勘開始	UNKNOWN	C01-001,C01-003	#four	#four-authority	E01,E02,E03	真人實測標NOT_RUN等待人類招募；S01文本校勘全數納入v2.0	INSUFFICIENT_DATA
+PDF-P09	inputs/history_audit_20p.pdf	Page 9	PDF_AUDIT_PAGE	第一幕S01–S04校勘（EA 28.5、SF 245、Sujato/Lamotte、古鼓雙版、MN 47、Bodhi 1988）	KEEP	C01-001,C02-001,C03-001,C04-001	#four	#four-authority	E01,E03,E04,E05,E06,E07	全部已讀原文核實並於v2.0落實	SEMANTIC_VERIFIED
+PDF-P10	inputs/history_audit_20p.pdf	Page 10	PDF_AUDIT_PAGE	第一幕S04四安穩、S05拜拉特交叉、S06 AN 8.53/Cv 10.5、S07 MN 95三階梯	KEEP	C04-001,C05-003,C06-001,C07-001	#kalama	#kalama-context	E07,E08,E09,E10,E11	全部於v2.0互動與研究頁對讀區落實	SEMANTIC_VERIFIED
+PDF-P11	inputs/history_audit_20p.pdf	Page 11	PDF_AUDIT_PAGE	第二幕S08–S12校勘（Wynne 2004、Split C14 75 CE、阿盧寺vs實物、Bechert、Nattier/Prebish 1977、1753戒脈）	KEEP	C08-006,C09-001,C10-001,C11-001,C12-001	#evidence	#gandhara-manuscripts	E12,E13,E14,E15,E16,E18	全部納入站08–12及研究頁	ACCESS_LIMITED
+PDF-P12	inputs/history_audit_20p.pdf	Page 12	PDF_AUDIT_PAGE	第三幕S12(730碑數線索)與S13–S17校勘（Harrison/Schopen、T1666、T945≠T642、Mair格義、孝道、Kieschnick、拈花斷層、Wedemeyer、伏藏轉世）	CORRECT	C12-001,C13-001,C14-001,C15-001,C16-001,C17-001	#mahayana	#mahayana-origins	E18,E19,E21,E22,E23,E24,E25	固都陶經文碑校為729塊(1868刻成/1871結集)，其餘校勘全數納入S13–S17	ACCESS_LIMITED
+PDF-P13	inputs/history_audit_20p.pdf	Page 13	PDF_AUDIT_PAGE	S17–S18（金瓶掣籤、Fogelin 2015、開寶藏）與第四幕S19–S21（Jaffe、429南京、不丹2022/2025、McMahan/Braun/Salguero、臺灣四線）	CORRECT	C17-002,C18-002,C19-001,C20-001,C21-001,C21-002	#women	#bhikkhuni-history	E25,E26,E27,E28,E29,E30	不丹2025人數註明265位／報導亦作近270位之統計口徑差異；其餘全數納入	ACCESS_LIMITED
+PDF-P14	inputs/history_audit_20p.pdf	Page 14	PDF_AUDIT_PAGE	舊v1.1三階段時程及引用著作#1–15（無障礙極性、iOS測試、古鼓討論、Bodhi、不丹、Mair Scribd）	MERGE	C02-001,C04-001,C14-001,C20-001	#texts	#text-attribution	E05,E07,E21,E28	舊PR#9三階段已被v2.0取代；書目#4,#15 Scribd轉載改追原始論文DOI (Piepenbrock/Mair/Bodhi/BNF)	SEMANTIC_VERIFIED
+PDF-P15	inputs/history_audit_20p.pdf	Page 15	PDF_AUDIT_PAGE	引用著作#16–43（釋惠敏2013 PDF、GitHub工程範例#17–20、UX/排版文章#21–43）	EXCLUDE	C16-001	#chan	#flower-sermon	E24	保留#16釋惠敏(2013)；#17–20(setu/Getman/minthep/Tutorloop)屬無關工程範本及#21–43一般網誌不列學術佛學證據	SEMANTIC_VERIFIED
+PDF-P16	inputs/history_audit_20p.pdf	Page 16	PDF_AUDIT_PAGE	引用著作#44–70（Playwright測試文章#44–53、Wynne 2004、犍陀羅OAPEN/Austriaca、Aluvihāra、Bechert、Fogelin、維基大眾部）	MERGE	C08-006,C09-001,C10-001,C11-001,C18-002	#evidence	#oral-transmission	E13,E14,E15,E16,E26	採用Wynne 2004、OAPEN、Austriaca與Bechert/Fogelin正式出版品；排除一般網誌與百科條目作為主要確證	ACCESS_LIMITED
+PDF-P17	inputs/history_audit_20p.pdf	Page 17	PDF_AUDIT_PAGE	引用著作#71–100（Mahāsāṃghika、Siam Nikāya、Harrison、Wedemeyer Scribd、Buswell JIABS/Fairfield、T1666/T945、Jia 2022、Mair、孝道）	MERGE	C12-001,C13-001,C14-003,C15-001,C17-001	#texts	#surangama-origin	E18,E19,E21,E22,E25	採Jia(2022) MDPI、Buswell Fairfield、Cambridge孝道與Mair；Scribd/dokumen.pub盜轉連結改為正式出版社/DOI書目	ACCESS_LIMITED
+PDF-P18	inputs/history_audit_20p.pdf	Page 18	PDF_AUDIT_PAGE	引用著作#101–124（Schopen、Kieschnick、Welter、釋惠敏靈山禪寺、薩迦班智達Cam repo、Karmapa、Fogelin OUP）	MERGE	C15-002,C16-001,C17-002,C18-002	#china	#food-vinaya	E23,E24,E25,E26	採用Cambridge/Nanzan/Cam Repo/OUP正式來源；排除Scribd/dokumen.pub/個人部落格#113及無關條目#123	ACCESS_LIMITED
+PDF-P19	inputs/history_audit_20p.pdf	Page 19	PDF_AUDIT_PAGE	引用著作#125–150（CBETA/CHIBS、開寶藏、Jaffe PUP、Anālayo Hamburg PDF、8 Garudhammas、Sakyadhita、Virginia/Columbia不丹演講）	MERGE	C18-001,C19-001,C20-001	#women	#bhikkhuni-history	E26,E27,E28	採用CHIBS、Hamburg University Anālayo PDF、PUP Jaffe與大學活動紀錄；排除論壇貼文#134與部落格轉載	ACCESS_LIMITED
+PDF-P20	inputs/history_audit_20p.pdf	Page 20	PDF_AUDIT_PAGE	引用著作#151–166（Bhutan Nuns 2025、McMahan、Salguero/Cheetah House、PMC11300403、Sujato #156、臺灣史Jones/Clart/Madsen、技術CSS#162–166）	MERGE	C01-001,C20-001,C21-001,C21-002	#modern	#buddhist-modernism	E04,E28,E29,E30	採用BNF 2025、PMC11300403、Sujato討論、NTU臺灣史與UC Press Madsen；技術CSS#162–166僅作前端實作參考	ACCESS_LIMITED
+CH00-P01	inputs/buddhist_history_original.txt	L6-11	PROSE_CLAIM	世上無任何宗派能證明自己100%完整逐字保存全部佛說，但不同傳承共同內容支持重建部分早期思想	KEEP	C11-002,C22-002	#branches	#traditions-comparison	E17,E14	將跨宗派非獨占原則作為全館總論與站11十項比較核心	SEMANTIC_VERIFIED
+CH01-P01	inputs/buddhist_history_original.txt	L27	PROSE_CLAIM	可信程度評級針對歷史證據強度非宗教價值評分，亦不杜撰「80%或95%造假機率」	KEEP	C22-001	#lab	#evidence-risk	E31	站22取消五格分數條並明示無偽造機率統計	SEMANTIC_VERIFIED
+CH01-P02	inputs/buddhist_history_original.txt	L45-47	PROSE_CLAIM	Allon (2022) 跨語言比對證實早期經文兼具「增刪改寫」與「群體保守性」，既非錄音機亦非純造假	KEEP	C09-001	#transmission	#oral-transmission	E14	站09雙向沙盒與全文實證摘要並重	SEMANTIC_VERIFIED
+CH02-P01	inputs/buddhist_history_original.txt	L51,L68	PROSE_CLAIM	時間軸採現代學術約略斷代而非單一宗派佛曆，且各地發展年代不同步（劍橋世界史／考古史）	KEEP	C10-002	#history	#chronology	E15,E26	站10時間軸與地圖呈現區域時間差（OUP/Cam 屬摘要核對）	ACCESS_LIMITED
+CH03-P01	inputs/buddhist_history_original.txt	L114-116	PROSE_CLAIM	喬達摩存在於前5世紀（部分學者推約前405年入滅但無精確共識）	KEEP	C10-001	#history	#historical-buddha	E15	站10與研究頁完整呈現SEP與Bechert紀年爭議	SEMANTIC_VERIFIED
+CH03-P02	inputs/buddhist_history_original.txt	L131-135	PROSE_CLAIM	輪迴、業力、禪定、出家與解脫先存在於沙門競爭環境，並非全由佛陀首次發明	KEEP	C10-001	#history	#historical-buddha	E15	納入站10沙門背景與歷史局限討論	SEMANTIC_VERIFIED
+CH03-P03	inputs/buddhist_history_original.txt	L161-165	PROSE_CLAIM	阿育王碑銘與犍陀羅寫本晚於歷史佛陀數十年至數百年，尚無佛陀親筆或同時代紀錄	CORRECT	C08-001,C08-006	#evidence	#ashoka-inscriptions	E11,E12	與CH03勘誤對齊，明確校正任何倒置寫法	ACCESS_LIMITED
+CH04-P01	inputs/buddhist_history_original.txt	L169,L180-182	PROSE_CLAIM	佛滅後至阿育王之間約一個半世紀史料最薄弱；1974 JAS對第一次結集存疑 vs 律藏記憶派	KEEP	C10-003	#history	#councils	E16	Prebish 1974屬付費摘要，並列兩派說法誠實限度	ACCESS_LIMITED
+CH04-P02	inputs/buddhist_history_original.txt	L186-190,L202-204	PROSE_CLAIM	集體背誦可降隨機錯誤但不能排除群體共同修改；臺灣研究指出文字整齊亦可能源自後期編輯	KEEP	C09-001	#transmission	#oral-transmission	E14,E14B	納入越建東2007/溫宗堃2010書目摘要（待閱兩篇PDF全文）	ACCESS_LIMITED
+CH05-P01	inputs/buddhist_history_original.txt	L208-212,L229-245	PROSE_CLAIM	巴利尼柯耶與漢譯阿含出於不同印度古部派；《無我相經》等跨五語平行不支持直接把輪迴說成科學已證	KEEP	C11-002,C11-003	#branches	#early-core	E17,E17B	拆分E17(已核實)與E17B(Senior22/藏譯待全校)	PRIMARY_PENDING
+CH06-P01	inputs/buddhist_history_original.txt	L260-275	PROSE_CLAIM	阿育王政治支持與推薦七經不等於「有能力干預即已竄改偽造全部佛經」	KEEP	C08-001,C08-005	#evidence	#ashoka-inscriptions	E11	站08強調王權支持與全盤竄改之證據邊界	SEMANTIC_VERIFIED
+CH07-P01	inputs/buddhist_history_original.txt	L282-288,L301-305	PROSE_CLAIM	現代上座部≠古代全體上座系；大乘≠大眾部單線分支；消失宗派常只剩對手負面描述	KEEP	C11-001	#branches	#school-schism	E16	納入V01交織河道圖解與消失宗派存活者偏見說明	ACCESS_LIMITED
+CH08-P01	inputs/buddhist_history_original.txt	L325-338	PROSE_CLAIM	《清淨道論》係5世紀覺音後世義註非佛世原典；12世紀王權統合後大寺派掩蓋無畏山寺多樣性（Deeg 2024）	KEEP	C12-001	#south	#theravada-history	E18	呈現覺音5世紀斷代與Deeg 2024無畏山寺史實	ACCESS_LIMITED
+CH08-P02	inputs/buddhist_history_original.txt	L341-345	PROSE_CLAIM	斯里蘭卡1753自暹羅復戒、19世紀赴緬重受及1902泰國僧團法展現制度斷續重整	KEEP	C12-001,C12-004	#south	#theravada-history	E18,E18B	納入固都陶729碑(Kuthodaw)與Amarapura派實證入口	ACCESS_LIMITED
+CH09-P01	inputs/buddhist_history_original.txt	L349-355,L373-383	PROSE_CLAIM	Split般若寫本(約75 CE)證實大乘印度早出；須區分「歷史學釋迦牟尼親口」與「宗教傳統認同的佛說」雙定義	KEEP	C13-001	#mahayana	#mahayana-origins	E19,E13	站13設置雙重「佛說」切換控制器並嚴分定義	ACCESS_LIMITED
+CH09-P02	inputs/buddhist_history_original.txt	L387-395	PROSE_CLAIM	早期大乘修行者常本身即出家苦行禪修僧侶，推翻過時之「純為平民抗議／降低門檻」單一論	KEEP	C13-001	#mahayana	#mahayana-origins	E19	引用Drewes/Harrison/Schopen交織僧團模型	ACCESS_LIMITED
+CH10-P01	inputs/buddhist_history_original.txt	L426-458	PROSE_CLAIM	Nattier(1992)與Attwood(2021)《心經》漢編回譯假說 vs 福井文雅等日本學者陀羅尼/正統反方抗辯	CORRECT	C14-002,C14-002B	#texts	#heart-sutra-origin	E20,E20B,E20C	依T223/T250/T251實讀修正重疊句，並列福井1987/1994/2000反方論述並誠標未讀全文限度	ACCESS_LIMITED
+CH10-P02	inputs/buddhist_history_original.txt	L462-481	PROSE_CLAIM	《楞嚴經》T945須區分T642及2022房融潤色新論；道安／僧祐疑經錄早已自辨疑偽，CBETA收錄非真偽認證	KEEP	C14-001,C14-003	#texts	#surangama-origin	E21,E21B	恢復T0945與T0642直連及Buswell/Jia/Mair研究分級	ACCESS_LIMITED
+CH11-P01	inputs/buddhist_history_original.txt	L500-505	PROSE_CLAIM	中國孝道超度（盂蘭盆等）屬文化重組強化，不能反推古印度全無亡者與孝親概念	KEEP	C15-001	#china	#china-adaptation	E22	實讀DN 31/DA 16《善生經》證成早期印度孝親基礎	SEMANTIC_VERIFIED
+CH11-P02	inputs/buddhist_history_original.txt	L508-524	PROSE_CLAIM	漢地全面素食確立於梁武帝推行及數百年演變（約10世紀），不可反斥依早律持三淨肉者違戒	KEEP	C15-002	#china	#food-vinaya	E23	實讀MN 55並引Kieschnick 2005／Religions 2025	SEMANTIC_VERIFIED
+CH12-P01	inputs/buddhist_history_original.txt	L534-556	PROSE_CLAIM	靈山拈花、二十八祖世系具唐宋認同建構與宗教隱喻功能，敦煌寫本顯著不同於後世燈錄統整	KEEP	C16-001,C16-002	#chan	#flower-sermon	E24	核實801寶林／1004景德／1029-1036天聖廣燈錄斷層	SEMANTIC_VERIFIED
+CH13-P01	inputs/buddhist_history_original.txt	L562-566,L585-608	PROSE_CLAIM	成熟密續7世紀後成形；藏傳與苯教雙向互動不可全推苯教；部分伏藏晚出受內部爭議但不全等同詐欺	KEEP	C17-001,C17-002	#tibet	#tantric-history	E25	結合Wedemeyer符號學與薩迦班智達批判（專書屬摘要）	ACCESS_LIMITED
+CH14-P01	inputs/buddhist_history_original.txt	L612,L628-642	PROSE_CLAIM	戰爭滅佛帶來知識存活者偏差；印度北部佛教衰退不能單一歸罪外來穆斯林軍隊（Fogelin多重因素）	KEEP	C18-001,C18-002	#politics	#india-decline	E26	站18古圖書館沙盒＋Fogelin 7因素＋《開寶藏》	ACCESS_LIMITED
+CH15-P01	inputs/buddhist_history_original.txt	L660-674	PROSE_CLAIM	淨土真宗早已妻帶；1872明治法令係撤除刑罰禁制而非強制所有日本僧侶結婚或世襲	KEEP	C19-001	#japan	#japan-institutions	E27	引Jaffe (2001) 明確區分宗派內部多樣性	ACCESS_LIMITED
+CH16-P01	inputs/buddhist_history_original.txt	L680-684,L696-698	PROSE_CLAIM	早經許女性出家證果；八敬法跨部派律藏不一致，當代女性限制不可未經研究全歸佛陀本人	KEEP	C20-001	#women	#bhikkhuni-history	E28	實讀Anālayo Hamburg兩份PDF＋429/433南京與2022/2025不丹	SEMANTIC_VERIFIED
+CH17-P01	inputs/buddhist_history_original.txt	L706-710,L722-724	PROSE_CLAIM	近代內觀復興與西方世俗正念受殖民改革脈絡塑形，且世俗正念抽離倫理涅槃並具禪修風險	KEEP	C21-001	#modern	#buddhist-modernism	E29	PMC11300403全文已讀，McMahan/Braun/Salguero標摘要限制	ACCESS_LIMITED
+CH18-P01	inputs/buddhist_history_original.txt	L766-768	PROSE_CLAIM	太虛印順人間佛教思想與佛光山、慈濟、法鼓山實踐須置於近現代華人社會史中理解，不等同古印僧團	KEEP	C21-002,C21-004,C21-005	#modern	#taiwan-history	E30	結合Jones/Madsen/Lin及四期實景檔案（Jones/Madsen專著待全校）	ACCESS_LIMITED
+CH19-P01	inputs/buddhist_history_original.txt	L785	PROSE_CLAIM	欲接近早期佛教最有價值的是跨傳承文獻互相校正，而非認定某一派絕對正確	KEEP	C11-002,C11-003	#branches	#traditions-comparison	E17,E18,E25	站11十項交叉表與SN 56.11/22.59/SA 34/379交叉展現	SEMANTIC_VERIFIED
+CH20-P01	inputs/buddhist_history_original.txt	L808-817	PROSE_CLAIM	六類高舉證負擔宗教主張清單（含唯一正統、秘密傳承、神通免疑、付費消業、放棄倫理法律、禁止查證）	KEEP	C22-001	#lab	#evidence-risk	E31	站22明列六紅旗主張並維持非惡意假定之公平舉證	SEMANTIC_VERIFIED
+CH21-P01	inputs/buddhist_history_original.txt	L838-842	PROSE_CLAIM	本研究之部分專書只見摘要、未盡全版本逐句校勘、不給假偽造率與唯一正統判決等總體限制	KEEP	C22-002	#lab	#five-layers	E31	站22與研究頁頂部勘誤／限制區完整公開	SEMANTIC_VERIFIED
+CH22-P01	inputs/buddhist_history_original.txt	L861-871	PROSE_CLAIM	核心思想最近早層；嚴謹態度是分開歷史事實、信仰、哲學、權威與超自然；尊重宗教不必放棄查證	KEEP	C22-002	#lab	#five-layers	E31,E14	站22終點結論與首頁導覽SVG核心準則一致	SEMANTIC_VERIFIED
+PDF-P08-S01	inputs/history_audit_20p.pdf	Page 8 (Human SOP)	PDF_AUDIT_SUBITEM	實體 iPhone 與長者 15 分鐘 6 項操作實測（AC-17/18：尚待人類招募執行）	UNKNOWN	C22-002	#lab	#method	E31	未招募真實人類與真機測試，依規嚴守誠實標註 NOT_RUN / INSUFFICIENT_DATA	INSUFFICIENT_DATA
+PDF-P09-S01	inputs/history_audit_20p.pdf	Page 9 (S01 EA 28.5/SF 245)	PDF_AUDIT_SUBITEM	EA 28.5 須獨立核對四方來僧及阿毘曇分類，勿混為 DN 16 四位權威轉述者	KEEP	C01-003	#four	#four-authority	E03	第二輪已重讀 SuttaCentral EA 28.5 全文並補入獨立命題 C01-003	SEMANTIC_VERIFIED

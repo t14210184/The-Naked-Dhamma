@@ -1,0 +1,96 @@
+legacy_url	disposition	evidence_id	v2_target_url	http_check_20261128	rationale
+https://t14210184.github.io/The-Naked-Dhamma/history.html	KEPT	SITE	https://t14210184.github.io/The-Naked-Dhamma/history.html	LIVE	本頁 canonical
+https://t14210184.github.io/The-Naked-Dhamma/social-history.png	KEPT	SITE	https://t14210184.github.io/The-Naked-Dhamma/social-history.png	LIVE	OG 分享圖
+https://agama.buddhason.org/DA/DA02.htm	EXCLUDED_MIRROR_OR_REDUNDANT	E02	https://suttacentral.net/da2/lzh/taisho	200	漢譯《長阿含》2鏡像站改以 SuttaCentral & CBETA T0001 大正藏權威版並列替代
+https://suttacentral.net/dn16	KEPT	E01	https://suttacentral.net/dn16	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://suttacentral.net/an4.180	KEPT	E01	https://suttacentral.net/an4.180	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://cbetaonline.dila.edu.tw/zh/T0001	KEPT	E02	https://cbetaonline.dila.edu.tw/zh/T0001	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.mahabodhi.org/files/yinshun/33/yinshun33-02.html	REPLACED_EQUIVALENT	E04B	https://discourse.suttacentral.net/t/the-more-i-look-at-the-mahapadesas-the-less-i-am-convinced-that-the-obvious-reading-is-the-right-one/28178	200	保留印順《原始佛教聖典之集成》章節書目定位並以 SuttaCentral 四大教法討論及原典平行互補
+https://cbetaonline.dila.edu.tw/zh/T0006	RESTORED	E02	https://cbetaonline.dila.edu.tw/zh/T0006	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://cbetaonline.dila.edu.tw/zh/T0007	RESTORED	E02	https://cbetaonline.dila.edu.tw/zh/T0007	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://cbetaonline.dila.edu.tw/zh/T0125	RESTORED	E03	https://cbetaonline.dila.edu.tw/zh/T0125	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/pli-tv-kd6	KEPT	E04B	https://suttacentral.net/pli-tv-kd6	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://suttacentral.net/ea28.5	KEPT	E03	https://suttacentral.net/ea28.5	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口（補對齊 EA 28.5 四方來僧檢驗研究 E03）
+https://suttacentral.net/sf245	KEPT	E04	https://suttacentral.net/sf245	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://suttacentral.net/sn20.7	KEPT	E05	https://suttacentral.net/sn20.7	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://buddhaspace.org/agama/sub/1258.html	EXCLUDED_MIRROR_OR_REDUNDANT	E05	https://suttacentral.net/sa1258	200	莊春江鏡像站改以 SuttaCentral 大正藏 T99 SA 1258 權威原典替代
+https://discourse.suttacentral.net/t/on-drums-and-pegs/2914	RESTORED	E05	https://discourse.suttacentral.net/t/on-drums-and-pegs/2914	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/mn47	KEPT	E06	https://suttacentral.net/mn47	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://agama.buddhason.org/MA/MA186.htm	EXCLUDED_MIRROR_OR_REDUNDANT	E06	https://suttacentral.net/ma186	200	漢譯中阿含鏡像改以 SuttaCentral MA 186 原典替代
+https://suttacentral.net/MN47/en/bodhi	RESTORED	E06	https://suttacentral.net/MN47/en/bodhi	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/an3.65	KEPT	E07	https://suttacentral.net/an3.65	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://agama.buddhason.org/MA/MA016.htm	EXCLUDED_MIRROR_OR_REDUNDANT	E07	https://suttacentral.net/ma16	200	漢譯中阿含鏡像改以 SuttaCentral MA 16 原典替代
+https://accesstoinsight.org/tipitaka/an/an03/an03.065.than.html	RESTORED	E07	https://accesstoinsight.org/tipitaka/an/an03/an03.065.than.html	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://buddhadust.net/dhammatalk/bhk_bodhi/kalama.essay.bodhi.htm	RESTORED	E07B	https://buddhadust.net/dhammatalk/bhk_bodhi/kalama.essay.bodhi.htm	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/mn61	KEPT	E08	https://suttacentral.net/mn61	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://agama.buddhason.org/MA/MA014.htm	EXCLUDED_MIRROR_OR_REDUNDANT	E08	https://suttacentral.net/ma14	200	漢譯中阿含鏡像改以 SuttaCentral MA 14 原典替代
+https://suttacentral.net/an8.53	KEPT	E09	https://suttacentral.net/an8.53	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://suttacentral.net/an7.83	KEPT	E09	https://suttacentral.net/an7.83	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://suttacentral.net/pli-tv-kd20	RESTORED	E09	https://suttacentral.net/pli-tv-kd20	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/mn95	KEPT	E10	https://suttacentral.net/mn95	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.dhammatalks.net/suttacentral/sc2016/sc/en/mn95.html	REPLACED_EQUIVALENT	E10	https://suttacentral.net/mn95/en/sujato	200	過時 sc2016 快照替換為現行 SuttaCentral MN 95/en/sujato
+https://suttacentral.net/sn56.11	RESTORED	E17	https://suttacentral.net/sn56.11	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/sa379	RESTORED	E17	https://suttacentral.net/sa379	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/sn22.59	KEPT	E17	https://suttacentral.net/sn22.59	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://suttacentral.net/sa34	RESTORED	E17	https://suttacentral.net/sa34	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/sn12	RESTORED	E17	https://suttacentral.net/sn12	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/mn55	KEPT	E23	https://suttacentral.net/mn55	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://theosislibrary.com/library/verified-ashoka-edicts-calcutta-bairat	REPLACED_EQUIVALENT	E11	https://archive.org/details/InscriptionsOfAsoka.NewEditionByE.Hultzsch	200	個人二手網誌頁改由 Hultzsch (1925) CII Vol. I 正式考古拓本與拜拉特圖版替代
+https://whc.unesco.org/en/list/666/	KEPT	E11	https://whc.unesco.org/en/list/666/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://archive.org/details/InscriptionsOfAsoka.NewEditionByE.Hultzsch	KEPT	E11	https://archive.org/details/InscriptionsOfAsoka.NewEditionByE.Hultzsch	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.loc.gov/item/2018305008/	KEPT	E12	https://www.loc.gov/item/2018305008/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.loc.gov/item/prn-19-073/	RESTORED	E12	https://www.loc.gov/item/prn-19-073/	403_WAF_OR_PAYWALL_ACCESS_LIMITED	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://doi.org/10.1007/s10781-021-09499-6	RESTORED	E14	https://doi.org/10.1007/s10781-021-09499-6	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://pmc.ncbi.nlm.nih.gov/articles/PMC8789374/	KEPT	E14	https://pmc.ncbi.nlm.nih.gov/articles/PMC8789374/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://wiswo.org/books/_resources/book-reference-pdfs/Wynne-2004-The%20Oral%20Transmission%20of%20Early%20Buddhist%20Literature.pdf	KEPT	E14	https://wiswo.org/books/_resources/book-reference-pdfs/Wynne-2004-The%20Oral%20Transmission%20of%20Early%20Buddhist%20Literature.pdf	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://doi.org/10.1093/acrefore/9780199340378.013.588	KEPT	E13	https://doi.org/10.1093/acrefore/9780199340378.013.588	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.gandhara.indologie.uni-muenchen.de/publications/index.html	RESTORED	E13	https://www.gandhara.indologie.uni-muenchen.de/publications/index.html	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://iriab.soka.ac.jp/content/pdf/karashima/Falk-Karashima2012-Split%201.pdf	KEPT	E13	https://iriab.soka.ac.jp/content/pdf/karashima/Falk-Karashima2012-Split%201.pdf	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://doi.org/10.1111/j.1749-8171.2009.00195.x	KEPT	E19	https://doi.org/10.1111/j.1749-8171.2009.00195.x	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://plato.stanford.edu/entries/buddha/	KEPT	E15	https://plato.stanford.edu/entries/buddha/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://journal.kabs.re.kr/articles/article/KGxZ/	RESTORED	E16	https://journal.kabs.re.kr/articles/article/KGxZ/	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://doi.org/10.1086/462767	KEPT	E16	https://doi.org/10.1086/462767	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://cbetaonline.dila.edu.tw/zh/T1465	KEPT	E16	https://cbetaonline.dila.edu.tw/zh/T1465	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://academic.oup.com/book/7301	KEPT	E26	https://academic.oup.com/book/7301	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.cambridge.org/core/books/cambridge-world-history/spread-of-buddhism/3FDC0DD76C76AF2CFA056ACD9E620C66	KEPT	E26	https://www.cambridge.org/core/books/cambridge-world-history/spread-of-buddhism/3FDC0DD76C76AF2CFA056ACD9E620C66	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://obo.genaud.net/resources/pdf/gethin/foundations_of_buddhism.pdf	KEPT	E18	https://obo.genaud.net/resources/pdf/gethin/foundations_of_buddhism.pdf	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://academic.oup.com/icon/article/15/3/705/4582628	KEPT	E18	https://academic.oup.com/icon/article/15/3/705/4582628	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://dlbs.liberal.ntu.edu.tw/search/search_detail.jsp?seq=679842	RESTORED	E18B	https://dlbs.liberal.ntu.edu.tw/search/search_detail.jsp?seq=679842	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://www.unescoicdh.org/eng/print.php?listCnt=10&menukey=289&mod=view&no=37728&page=19&scode=00000005	RESTORED	E18B	https://www.unescoicdh.org/eng/print.php?listCnt=10&menukey=289&mod=view&no=37728&page=19&scode=00000005	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://kuthodaw-texts.net/s/pali-texts/page/collection	RESTORED	E18B	https://kuthodaw-texts.net/s/pali-texts/page/collection	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://www.silkqin.com/02qnpu/40tyxs/ty28skj/ty28nattier.pdf	EXCLUDED_MIRROR_OR_REDUNDANT	E20B	https://doi.org/10.2143/JIABS.15.2.3286001	200	非官方個人網站轉載 PDF 不作為權威權利依賴，改維持 Nattier (1992) JIABS 官方 DOI 及 CBETA T223/T250/T251 原典逐句比對
+https://doi.org/10.2143/JIABS.15.2.3286001	KEPT	E20B	https://doi.org/10.2143/JIABS.15.2.3286001	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://doi.org/10.2143/JIABS.44.0.3290289	KEPT	E20B	https://doi.org/10.2143/JIABS.44.0.3290289	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://cbc.dila.edu.tw/cbc/	KEPT	E21	https://cbc.dila.edu.tw/cbc/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://cbetaonline.dila.edu.tw/	KEPT	E31	https://cbetaonline.dila.edu.tw/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://doi.org/10.1177/000944551104800203	RESTORED	E21B	https://doi.org/10.1177/000944551104800203	403_WAF_OR_PAYWALL_ACCESS_LIMITED	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://cbetaonline.dila.edu.tw/zh/T0642	RESTORED	E21	https://cbetaonline.dila.edu.tw/zh/T0642	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://cbetaonline.dila.edu.tw/zh/T0945	RESTORED	E21	https://cbetaonline.dila.edu.tw/zh/T0945	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://www.chibs.edu.tw/ch_html/chbj/18/chbj1808.htm	KEPT	E26	https://www.chibs.edu.tw/ch_html/chbj/18/chbj1808.htm	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://academic.oup.com/edited-volume/62249/chapter-abstract/551404488	RESTORED	E22	https://academic.oup.com/edited-volume/62249/chapter-abstract/551404488	403_WAF_OR_PAYWALL_ACCESS_LIMITED	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/dn31	KEPT	E22	https://suttacentral.net/dn31	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://suttacentral.net/da16	KEPT	E22	https://suttacentral.net/da16	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.mdpi.com/2077-1444/16/2/164	KEPT	E23	https://www.mdpi.com/2077-1444/16/2/164	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://plato.stanford.edu/entries/buddhism-chan/	KEPT	E24	https://plato.stanford.edu/entries/buddhism-chan/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://dlbs.liberal.ntu.edu.tw/DLMBS/search/search_detail.jsp?comefrom=periodical&seq=390273	KEPT	E24	https://dlbs.liberal.ntu.edu.tw/DLMBS/search/search_detail.jsp?comefrom=periodical&seq=390273	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://academic.oup.com/edited-volume/61799/chapter-abstract/546327410	RESTORED	E25	https://academic.oup.com/edited-volume/61799/chapter-abstract/546327410	403_WAF_OR_PAYWALL_ACCESS_LIMITED	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://www.cambridge.org/core/books/buddhism-and-comparative-constitutional-law/himalayan-asia/10146D1BD089C99893970DAAB4EDD31A	KEPT	E25	https://www.cambridge.org/core/books/buddhism-and-comparative-constitutional-law/himalayan-asia/10146D1BD089C99893970DAAB4EDD31A	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.samyeinstitute.org/wiki/terma/	KEPT	E25	https://www.samyeinstitute.org/wiki/terma/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.jstor.org/stable/j.ctt6wqgk1	KEPT	E27	https://www.jstor.org/stable/j.ctt6wqgk1	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.buddhismuskunde.uni-hamburg.de/pdf/5-personen/analayo/validity.pdf	RESTORED	E28	https://www.buddhismuskunde.uni-hamburg.de/pdf/5-personen/analayo/validity.pdf	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/an8.51	RESTORED	E28	https://suttacentral.net/an8.51	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://www.buddhistdoor.net/features/reflections-from-the-historic-gelongma-ordination-in-bhutan/	RESTORED	E28	https://www.buddhistdoor.net/features/reflections-from-the-historic-gelongma-ordination-in-bhutan/	403_WAF_OR_PAYWALL_ACCESS_LIMITED	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://tricycle.org/article/bhikshuni-lineage-restored-in-bhutan/	RESTORED	E28	https://tricycle.org/article/bhikshuni-lineage-restored-in-bhutan/	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://sakyadhita.org/ordination-issue/	RESTORED	E28	https://sakyadhita.org/ordination-issue/	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://academic.oup.com/book/36354	KEPT	E29	https://academic.oup.com/book/36354	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://doi.org/10.1093/obo/9780195393521-0041	RESTORED	E29	https://doi.org/10.1093/obo/9780195393521-0041	403_WAF_OR_PAYWALL_ACCESS_LIMITED	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11300403/	KEPT	E29	https://pmc.ncbi.nlm.nih.gov/articles/PMC11300403/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://buddhism.lib.ntu.edu.tw/	KEPT	E14B	https://buddhism.lib.ntu.edu.tw/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://dlbs.liberal.ntu.edu.tw/DLMBS/en/search/search_detail.jsp?seq=130480	RESTORED	E30	https://dlbs.liberal.ntu.edu.tw/DLMBS/en/search/search_detail.jsp?seq=130480	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://doi.org/10.3390/rel11020061	KEPT	E30	https://doi.org/10.3390/rel11020061	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://www.ucpress.edu/books/democracys-dharma/paper	RESTORED	E30	https://www.ucpress.edu/books/democracys-dharma/paper	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://dlbs.liberal.ntu.edu.tw/museum/TAIWAN/md/bit/bit.htm	RESTORED	E31	https://dlbs.liberal.ntu.edu.tw/museum/TAIWAN/md/bit/bit.htm	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://suttacentral.net/	KEPT	E31	https://suttacentral.net/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://gandhari-texts.sydney.edu.au/	KEPT	E17B	https://gandhari-texts.sydney.edu.au/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
+https://github.com/t14210184/The-Naked-Dhamma/issues	RESTORED	E31	https://github.com/t14210184/The-Naked-Dhamma/issues	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
+https://github.com/t14210184/The-Naked-Dhamma	RESTORED	E31	https://github.com/t14210184/The-Naked-Dhamma	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
