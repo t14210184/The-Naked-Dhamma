@@ -8,6 +8,7 @@ on:
       - "index.html"
       - "merit.html"
       - "history.html"
+      - "scripts/render-social.py"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -38,6 +39,11 @@ jobs:
           cp merit.html _site/merit.html
           cp history.html _site/history.html
           touch _site/.nojekyll
+      - name: Generate three independent share images
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq python3-pil fonts-noto-cjk
+          /usr/bin/python3 scripts/render-social.py _site
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
@@ -45,3 +51,19 @@ jobs:
       - name: Deploy Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify exact deployed bytes over public HTTPS
+        env:
+          SITE: https://t14210184.github.io/The-Naked-Dhamma
+        run: |
+          set -euo pipefail
+          for file in index.html merit.html history.html social-index.png social-merit.png social-history.png; do
+            matched=0
+            for attempt in {1..8}; do
+              if curl --fail --silent --show-error --location --max-time 20 -H 'Cache-Control: no-cache' "$SITE/$file?rev=$GITHUB_SHA" -o /tmp/dhamma-live && cmp -s "_site/$file" /tmp/dhamma-live; then
+                matched=1; break
+              fi
+              sleep 5
+            done
+            test "$matched" = 1 || { echo "LIVE mismatch or unavailable: $file"; exit 1; }
+            echo "LIVE exact bytes $file $(sha256sum "_site/$file")"
+          done

@@ -1,74 +1,116 @@
-#!/usr/bin/env node
-import {readFileSync,writeFileSync,existsSync,mkdtempSync,mkdirSync,rmSync} from 'node:fs';
-import {spawn} from 'node:child_process';
-import {tmpdir} from 'node:os';
-import {join,resolve} from 'node:path';
-import {pathToFileURL} from 'node:url';
-const file=resolve('history.html'),html=readFileSync(file,'utf8');
-let failures=0;
-function check(ok,msg){console.log((ok?'PASS ':'FAIL ')+msg);if(!ok)failures++;}
-const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
-check(ids.length===new Set(ids).size,'Unique IDs');
-check([...html.matchAll(/href="#([^"]+)"/g)].every(x=>ids.includes(x[1])),'All internal anchors resolve');
-check((html.match(/<section id="[^"]+" class="chapter">/g)||[]).length===23,'22 stations plus source library');
-check((html.match(/<article class="evidence" id="s-[^"]+" data-source>/g)||[]).length===30,'30 evidence groups');
-const js=[...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map(x=>x[1]);
-check(js.length===1,'Single inline script');
-for(const s of js){try{new Function(s);check(true,'JavaScript syntax')}catch(e){check(false,'JavaScript syntax '+e.message)}}
-const chrome=process.env.CHROME_BIN||['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(existsSync);
-if(!chrome)throw Error('No Chrome binary; browser checks remain UNKNOWN');
-const dir=mkdtempSync(join(tmpdir(),'history-test-')),imgs=resolve('qa-screenshots/history');mkdirSync(imgs,{recursive:true});
-const proc=spawn(chrome,['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--remote-debugging-port=0','--remote-allow-origins=*','--user-data-dir='+dir,'about:blank'],{stdio:'ignore'});
-const sleep=n=>new Promise(r=>setTimeout(r,n));
-let ws;
-async function run(){
- let port=0;for(let i=0;i<100;i++){const p=join(dir,'DevToolsActivePort');if(existsSync(p)){port=Number(readFileSync(p,'utf8').split('\n')[0]);break;}await sleep(100);}if(!port)throw Error('Chrome CDP did not start');
- const list=await(await fetch('http://127.0.0.1:'+port+'/json/list')).json(),page=list.find(x=>x.type==='page');if(!page)throw Error('No page');
- ws=new WebSocket(page.webSocketDebuggerUrl);
- await new Promise((ok,fail)=>{ws.addEventListener('open',ok,{once:true});ws.addEventListener('error',fail,{once:true});});
- let seq=0;const jobs=new Map(),exceptions=[];
- ws.addEventListener('message',e=>{let msg=JSON.parse(e.data);if(msg.method==='Runtime.exceptionThrown')exceptions.push(msg.params?.exceptionDetails?.text);if(msg.id&&jobs.has(msg.id)){const j=jobs.get(msg.id);jobs.delete(msg.id);msg.error?j.reject(Error(msg.error.message)):j.resolve(msg.result);}});
- function send(method,params={}){return new Promise((resolve,reject)=>{const id=++seq;jobs.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}));});}
- async function evaluate(expression){const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error('Runtime '+JSON.stringify(r.exceptionDetails));return r.result.value;}
- await send('Page.enable');await send('Runtime.enable');
- for(const w of [320,375,390,430,768,1440]){
- await send('Emulation.setDeviceMetricsOverride',{width:w,height:900,deviceScaleFactor:1,mobile:w<=430});
- await send('Page.navigate',{url:pathToFileURL(file).href});await sleep(600);
- const layout=await evaluate('(()=>{const d=document.documentElement;return {client:d.clientWidth,scroll:d.scrollWidth,body:document.body.scrollWidth,sections:document.querySelectorAll("main section").length,words:document.querySelector("main").innerText.length}})()');
- check(layout.client>0&&layout.scroll<=layout.client+2&&layout.body<=layout.client+2&&layout.sections===24&&layout.words>7000,'Responsive '+w+'px '+JSON.stringify(layout));
- if(w===320||w===390){
- await evaluate('(()=>{for(let i=0;i<4;i++)document.querySelector("#fontUp").click()})()');
- const big=await evaluate('(()=>({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,font:getComputedStyle(document.body).fontSize}))()');
- check(big.scroll<=big.client+2&&big.font==="28px",'Large reader text '+w+'px '+JSON.stringify(big));
- await evaluate('(()=>{for(let i=0;i<4;i++)document.querySelector("#fontDown").click()})()');
- }
- if(w===390){
- const interactions=await evaluate('(()=>{const result={};for(const id of ["q-four","q-teacher","q-kalama","q-rahula","q-evidence"]){const b=[...document.querySelectorAll("[aria-controls="+id+"]")];result[id]=b.length===3&&b.every(x=>{x.click();return document.getElementById(id).textContent===x.dataset.feedback&&x.getAttribute("aria-pressed")==="true"&&b.filter(y=>y.getAttribute("aria-pressed")==="true").length===1})}const patch=document.querySelector("#patch");for(let i=0;i<5;i++)patch.click();result.drum=patch.disabled&&document.querySelectorAll(".drum-patch.visible").length===5;document.querySelector("#reset-drum").click();result.reset=!patch.disabled&&document.querySelectorAll(".drum-patch.visible").length===0;document.querySelectorAll(".audit-check").forEach(c=>c.click());result.audit=document.querySelector("#audit-status").textContent.includes("7／7");const input=document.querySelector("#source-search");input.value="1258";input.dispatchEvent(new Event("input"));result.search=[...document.querySelectorAll("[data-source]")].filter(c=>!c.hidden).length>0&&[...document.querySelectorAll("[data-source]")].filter(c=>!c.hidden).length<30;input.value="";input.dispatchEvent(new Event("input"));result.clear=document.querySelectorAll("[data-source]:not([hidden])").length===30;return result})()');
- check(Object.values(interactions).every(Boolean),'All quiz options, drum, audit and source search '+JSON.stringify(interactions));
- for(const [id,name] of [['top','mobile'],['drum','drum-mobile'],['lab','audit-mobile']]){
- await evaluate('document.getElementById('+JSON.stringify(id)+').scrollIntoView({behavior:"instant"})');await sleep(250);
- const shot=await send('Page.captureScreenshot',{format:'jpeg',quality:75,captureBeyondViewport:false});writeFileSync(join(imgs,name+'.jpg'),Buffer.from(shot.data,'base64'));
- }
- }
- if(w===1440){
- await send('Page.bringToFront');await send('Emulation.setFocusEmulationEnabled',{enabled:true});
- check(await evaluate('(()=>{document.querySelector("#fontUp").focus();return document.activeElement.id==="fontUp"})()'),'Native button accepts keyboard focus');
- await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,nativeVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,nativeVirtualKeyCode:13});
- await sleep(100);
- check(await evaluate('parseFloat(getComputedStyle(document.body).fontSize)')===22,'Desktop native Enter activates font control');
- await send('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space',windowsVirtualKeyCode:32,nativeVirtualKeyCode:32,text:' ',unmodifiedText:' '});await send('Input.dispatchKeyEvent',{type:'keyUp',key:' ',code:'Space',windowsVirtualKeyCode:32,nativeVirtualKeyCode:32});
- await sleep(100);
- check(await evaluate('parseFloat(getComputedStyle(document.body).fontSize)')===24,'Desktop native Space activates font control');
- await evaluate('(()=>{document.querySelector("#fontDown").click();document.querySelector("#fontDown").click()})()');
- const shot=await send('Page.captureScreenshot',{format:'jpeg',quality:75,captureBeyondViewport:false});writeFileSync(join(imgs,'desktop.jpg'),Buffer.from(shot.data,'base64'));}
+import assert from "node:assert/strict";
+import { readFileSync, mkdirSync } from "node:fs";
+import { createServer } from "node:http";
+import { chromium, webkit } from "playwright";
+import AxeBuilder from "@axe-core/playwright";
 
- }
- check(exceptions.length===0,'No browser exceptions '+JSON.stringify(exceptions));
- const noJs=join(dir,'nojs.html');writeFileSync(noJs,html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,''),'utf8');
- await send('Page.navigate',{url:pathToFileURL(noJs).href});await sleep(500);
- const fallback=await evaluate('(()=>({words:document.querySelector("main").innerText.length,links:document.querySelectorAll("#library a[href^=https]").length,sections:document.querySelectorAll("main section").length}))()');
- check(fallback.words>7000&&fallback.links>=30&&fallback.sections===24,'Complete content without JavaScript '+JSON.stringify(fallback));
- console.log('HISTORY_QA_SUMMARY '+JSON.stringify({failures}));
+const html=readFileSync("history.html","utf8");
+const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
+assert.equal(ids.length,new Set(ids).size,"duplicate IDs");
+assert([...html.matchAll(/href="#([^"]+)"/g)].every(x=>ids.includes(x[1])),"broken internal anchors");
+assert.equal((html.match(/data-station="/g)||[]).length,22);
+assert.equal((html.match(/data-source>/g)||[]).length,30);
+const engine=process.env.ENGINE||"chromium";
+const output="qa-screenshots/history-"+engine;
+mkdirSync(output,{recursive:true});
+const server=createServer((req,res)=>{const path=req.url.split("?")[0];if(["/history.html","/index.html","/merit.html"].includes(path)){res.setHeader("content-type","text/html; charset=utf-8");res.end(readFileSync(path.slice(1)));}else{res.writeHead(404);res.end()}});
+await new Promise(r=>server.listen(0,"127.0.0.1",r));
+const base="http://127.0.0.1:"+server.address().port+"/history.html";
+const browser=await ({chromium,webkit}[engine]).launch({headless:true});
+let context;
+const errors=[];
+const check=async (p,desc)=>{assert(await p,desc);console.log("PASS "+desc)};
+const shots=async(page,name)=>page.screenshot({path:output+"/"+name+".png",fullPage:false});
+async function inspect(page,label){
+ const a=await page.evaluate(()=>({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,visible:[...document.querySelectorAll("main section")].filter(x=>!x.hidden).map(x=>x.id),header:document.querySelector(".header").getBoundingClientRect().height,body:document.body.scrollHeight,theme:document.documentElement.dataset.theme}));
+ assert(a.scroll<=a.client+2,label+" horizontal overflow "+JSON.stringify(a));
+ assert(a.header<=64,label+" header exceeds target "+JSON.stringify(a));
+ console.log("PASS "+label+" "+JSON.stringify(a));return a;
 }
-try{await run()}catch(e){console.error('BROWSER_QA_FATAL '+e.stack);failures++;}finally{ws?.close();proc.kill('SIGKILL');await sleep(300);try{rmSync(dir,{recursive:true,force:true,maxRetries:10,retryDelay:200});}catch(e){console.warn('Temp Chrome profile cleanup deferred: '+e.message);}}
-if(failures)process.exitCode=1;
+async function go(page,id){
+ await page.goto(base+"#"+id);
+ await page.waitForFunction(id=>{const target=document.getElementById(id);return document.documentElement.classList.contains("enhanced")&&!!target&&!target.closest("[hidden]")},id);
+}
+async function axe(page,label){
+ const result=await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21a","wcag21aa","wcag22aa"]).analyze();
+ if(result.violations.length)console.error(label,JSON.stringify(result.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))));
+ assert.equal(result.violations.length,0,label+" axe violations");console.log("PASS axe "+label);
+}
+try {
+ context=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,hasTouch:true,locale:"zh-TW"});
+ await context.tracing.start({screenshots:true,snapshots:true,sources:true});
+ const page=await context.newPage();page.on("pageerror",e=>errors.push(String(e)));
+ await page.goto(base);
+ await page.waitForFunction(()=>document.documentElement.classList.contains("enhanced")&&document.querySelector("#four").hidden);
+ const landing=await inspect(page,"initial landing");
+ assert.deepEqual(landing.visible,["top"]);assert(landing.body<6500,"landing unexpectedly long "+landing.body);
+ assert.equal(await page.locator(".act").count(),4);assert.equal(await page.locator(".act[open]").count(),0);
+ await shots(page,"landing-light");
+ await axe(page,"light landing");
+ await page.locator("#act-1 summary").click();
+ await page.locator("#act-1 a[href='#four']").click();
+ await page.waitForFunction(()=>!document.querySelector("#four").hidden);
+ assert.deepEqual((await inspect(page,"station one")).visible,["four"]);
+ for(const q of ["four","teacher","kalama","rahula","evidence"]){
+  await go(page,q);
+  const buttons=page.locator("[aria-controls=q-"+q+"]");assert.equal(await buttons.count(),3);
+  for(let i=0;i<3;i++){const b=buttons.nth(i);await b.click();assert.equal(await b.getAttribute("aria-pressed"),"true");assert.equal(await page.locator("#q-"+q).textContent(),await b.getAttribute("data-feedback"));}
+ }
+ await go(page,"four");
+ await shots(page,"station-light");
+ await axe(page,"light quiz answered");
+ await go(page,"drum");
+ for(let i=0;i<5;i++)await page.locator("#patch").click();
+ assert.equal(await page.locator(".drum-patch.visible").count(),5);assert(await page.locator("#patch").isDisabled());
+ await page.locator("#mode-han").click();await page.locator("#patch").click();assert.equal(await page.locator("#leather").getAttribute("opacity"),"1");await shots(page,"drum-han");
+ await page.locator("#reset-drum").click();assert.equal(await page.locator("#leather").getAttribute("opacity"),"0");
+ await page.locator("#mode-pali").click();assert.equal(await page.locator(".drum-patch.visible").count(),0);
+ await go(page,"lab");await page.locator("#audit-case").selectOption({label:"拈花微笑是否有早期文獻？"});await page.locator("#load-case").click();
+ for(const c of await page.locator(".audit-check").all())await c.check();
+ assert((await page.locator("#audit-status").textContent()).includes("7／7"));
+ await page.reload();assert.equal(await page.locator(".audit-check:checked").count(),7);
+ await page.locator("#copy-notes").click();
+ await page.waitForFunction(()=>document.querySelector("#copy-status").textContent.length>0);
+ assert((await page.locator("#notes-output").inputValue()).includes("並非真偽判定"));
+ await page.locator("#reset-audit").click();assert.equal(await page.locator(".audit-check:checked").count(),0);
+ await shots(page,"toolbox");
+ await go(page,"library");
+ await page.locator("#source-search").fill("ＡＮ ３.６５");
+ assert(await page.locator("[data-source]:not([hidden])").count()>0);assert(await page.locator("[data-source]:not([hidden])").count()<30);
+ await page.locator("[data-filter='阿育王']").click();assert(await page.locator("[data-source]:not([hidden])").count()>0);
+ await page.locator("#clear-search").click();assert.equal(await page.locator("[data-source]:not([hidden])").count(),30);
+ await shots(page,"library");
+ await axe(page,"light source library");
+ await go(page,"four");
+ await page.locator("#four a[href='#s-four']").first().click();await page.waitForFunction(()=>!document.querySelector("#library").hidden);
+ assert.equal(await page.locator("#source-back").getAttribute("href"),"#four");
+ await page.locator("#source-back").click();await page.waitForFunction(()=>!document.querySelector("#four").hidden);
+ await page.locator(".settings summary").click();await page.locator("#theme").click();
+ assert.equal(await page.locator("html").getAttribute("data-theme"),"dark");
+ await page.locator("#fontUp").focus();await page.keyboard.press("Enter");await page.keyboard.press("Space");
+ assert.equal(await page.locator("#font-status").textContent(),"字級 24px");
+ await page.locator("#fontUp").click();await page.locator("#fontUp").click();assert.equal(await page.locator("#font-status").textContent(),"字級 28px");
+ await page.locator(".settings summary").click();
+ await shots(page,"station-dark-large");
+ await axe(page,"dark large quiz");
+ for(const w of [320,375,390,430,768,1440]){
+  await page.setViewportSize({width:w,height:900});
+  for(const id of ["four","kalama","direction","branches","history","lab","library"]){await go(page,id);await inspect(page,id+" "+w+"px 28px dark");}
+ }
+ await page.setViewportSize({width:390,height:844});
+ await go(page,"library");await axe(page,"dark library");
+ await go(page,"china");
+ await page.goto(base);await page.waitForFunction(()=>!document.querySelector("#resume").hidden);
+ assert.equal(await page.locator("#resume-link").getAttribute("href"),"#china");
+ await page.locator("#resume-link").click();await page.waitForFunction(()=>!document.querySelector("#china").hidden);
+ await go(page,"all");assert.equal(await page.locator("[data-station]:not([hidden])").count(),22);
+ await page.emulateMedia({media:"print"});await go(page,"four");assert.equal(await page.locator("#china").evaluate(e=>getComputedStyle(e).display),"block");
+ await page.emulateMedia({media:"screen"});
+ assert.deepEqual(errors,[],"uncaught page errors");
+ const no=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
+ const np=await no.newPage();await np.goto(base);assert.equal(await np.locator("[data-station]").count(),22);assert.equal(await np.locator("[data-source]").count(),30);assert.equal(await np.locator("[data-station][hidden]").count(),0);await np.locator("#act-3 summary").click();assert(await np.locator("#act-3 a[href='#china']").isVisible());await no.close();
+ console.log("HISTORY_QA_SUMMARY "+JSON.stringify({engine,failures:0,stations:22,sourceGroups:30}));
+} finally {
+ if(context){await context.tracing.stop({path:output+"/trace.zip"}).catch(()=>{});await context.close();}
+ await browser.close();server.close();
+}

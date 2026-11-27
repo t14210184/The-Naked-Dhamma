@@ -4,6 +4,8 @@ on:
     paths:
       - "merit.html"
       - "history.html"
+      - "index.html"
+      - "scripts/render-social.py"
       - "scripts/verify-history.mjs"
       - "scripts/verify-merit.mjs"
       - ".github/workflows/merit-qa.yml"
@@ -26,12 +28,41 @@ jobs:
         env:
           QA_PRINT_PREVIEW: '1'
         run: node scripts/verify-merit.mjs
-      - name: Check history page in Chrome
-        run: node scripts/verify-history.mjs
       - name: Upload responsive screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: responsive-story-screenshots
+          name: merit-responsive-screenshots
           path: qa-screenshots/
           if-no-files-found: ignore
+
+  history-browser:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, webkit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chinese fonts and preview generator dependency
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk python3-pil
+      - name: Install pinned test-only tools
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.57.0 @axe-core/playwright@4.10.2
+      - name: Install test browser
+        run: npx playwright install --with-deps ${{ matrix.engine }}
+      - name: Verify all three share preview images
+        run: /usr/bin/python3 scripts/render-social.py qa-screenshots/social
+      - name: Verify history in native test browser and axe
+        env:
+          ENGINE: ${{ matrix.engine }}
+        run: node scripts/verify-history.mjs
+      - name: Upload screenshots and trace
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: history-${{ matrix.engine }}-evidence
+          path: qa-screenshots/
+          if-no-files-found: warn
