@@ -50,7 +50,8 @@ def preview(name, num, lines, sub, art):
 preview("social-index.png","一",["你看見的，","就是全部嗎？"],["從觀察開始","分辨所見、推論與未知"],"index")
 preview("social-merit.png","二",["功德不是","價目表"],["不花錢能有功德嗎？","布施、慈心與智慧的原典故事"],"merit")
 preview("social-history.png","三",["這真的是","佛陀說的嗎？"],["四位來客、一面古鼓、古代石刻","22 站佛法歷史偵探"],"history")
-for name in ("social-index.png","social-merit.png","social-history.png"):
+preview("social-history-research.png","三",["命題證據與","研究方法詳頁"],["多語原典對讀、考古碑銘與寫本權利","36 項命題 · 31 組可驗書目"],"history")
+for name in ("social-index.png","social-merit.png","social-history.png","social-history-research.png"):
     with Image.open(out/name) as im:
         assert im.size==(1200,630) and im.format=="PNG"
         print(name,im.size,(out/name).stat().st_size)
