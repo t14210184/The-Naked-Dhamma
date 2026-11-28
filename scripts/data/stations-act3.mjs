@@ -75,15 +75,34 @@ export const ACT3_STATIONS = [
       </div>
       <div id="s14-desk-out" class="result" role="status" aria-live="polite">選擇上方文獻並點按「打開下一條線索」。</div>
     </div>
+    <div class="play" id="s14-parallel-box">
+      <span class="kicker">跨版本《心經》原典實文對照（CBETA T0223／T0250／T0251 × 梵本差異）</span>
+      <h3>切換四個關鍵段落，直接比對漢文與梵本異同</h3>
+      <div class="tab-row js-only" role="group" aria-label="切換心經段落比較">
+        <button type="button" data-heartseg="seg1" aria-pressed="true">1. 開首「度一切苦厄」差異</button>
+        <button type="button" data-heartseg="seg2" aria-pressed="false">2.「非色異空／色即是空」核心</button>
+        <button type="button" data-heartseg="seg3" aria-pressed="false">3.「以無所得故」漢梵異常</button>
+        <button type="button" data-heartseg="seg4" aria-pressed="false">4. 咒語稱歎與「陀羅尼」脈絡</button>
+      </div>
+      <div class="parallel-grid" role="region" aria-live="polite" aria-label="跨版本原文平行對照欄">
+        <article class="parallel-card"><h4>《大品般若經》T0223 j1（羅什譯）</h4><p id="s14-p-t223" class="small">（〈習應品〉T08, 0223a13 前後）<strong>無對應句</strong>——未見「觀自在菩薩行深…度一切苦厄」開首語。</p></article>
+        <article class="parallel-card"><h4>《大明咒經》T0250（題羅什譯）</h4><p id="s14-p-t250" class="small">「觀世音菩薩行深般若波羅蜜時，照見五陰空，<span class="parallel-diff">度一切苦厄</span>。」（Attwood 2020 推論此本或反係晚起偽托）</p></article>
+        <article class="parallel-card"><h4>《心經》T0251（玄奘譯本）</h4><p id="s14-p-t251" class="small">「觀自在菩薩行深般若波羅蜜多時，照見五蘊皆空，<span class="parallel-diff">度一切苦厄</span>。」（T08, 0848c06–07）</p></article>
+        <article class="parallel-card"><h4>通行梵本 / 學者比對重點</h4><p id="s14-p-skt" class="small"><strong>通行梵本無「度一切苦厄」對應句</strong>（Attwood 2020, p.178；僅見於北涼《大方廣十輪經》T410 等漢譯文本），顯示非直接逐字自現存梵本直譯。</p></article>
+      </div>
+      <noscript>
+        <p class="small"><strong>無 JS 靜態摘要：</strong>① T223 j1〈習應品〉(223a13–21) 載「非色異空、色即是空…是諸法空相…無苦集滅道、無智無得」而<strong>不含</strong>「度一切苦厄」；②「以無所得故」(anupalambhayogena) 於標準《心經》梵本誤轉為 aprāptitvāt；③ T251 末「大神咒／大明咒」與神咒收尾屬福井文雅強調之陀羅尼修持重點，亦見唐代窺基 T1710「別出此經」與圓測 T1711「於諸般若簡集綱要」。</p>
+      </noscript>
+    </div>
     <div class="play">
-      <span class="kicker">《心經》來源對讀示意（V03 升級：並列假說＋日本學者替代解釋）</span>
-      <h3>切換三種學術假說</h3>
+      <span class="kicker">《心經》來源與學術爭議對讀（V03 升級：區分語文學實證、個人偽作推論與反論書誌）</span>
+      <h3>切換三種學術立場（無單一全學界共識）</h3>
       <div class="tab-row js-only" role="group" aria-label="心經來源假說">
         <button type="button" data-heart="trad" aria-pressed="false">傳統說法（印→漢）</button>
-        <button type="button" data-heart="nattier" aria-pressed="true">Nattier (1992)／Attwood (2021)（漢編回譯）</button>
-        <button type="button" data-heart="alt" aria-pressed="false">福井文雅等替代解釋（漢印重組／陀羅尼）</button>
+        <button type="button" data-heart="nattier" aria-pressed="true">漢編回譯假說（Nattier／Attwood）</button>
+        <button type="button" data-heart="alt" aria-pressed="false">反對意見與福井文雅書誌脈絡</button>
       </div>
-      <p id="s14-heart-out" class="result" role="status" aria-live="polite">【Nattier (1992) &amp; Attwood (2021)：印度般若經 → 羅什漢譯 → 漢地摘編《心經》→ 回譯梵文】比對出《大品般若經》（T0223 卷1〈習應品〉）核心句「非色異空、非空異色，色即是空、空即是色…是諸法空相…無苦集滅道，亦無智亦無得」與《心經》（T0250／T0251）重疊，且「度一切苦厄」見於 T0250／T0251 而未見於 T0223〈習應品〉對應段；Attwood (2021) 另分析 22 點（付費全文未逐點查證，不虛構細節），此假說仍不證成作者有意欺騙。</p>
+      <p id="s14-heart-out" class="result" role="status" aria-live="polite">【漢編回譯假說（須區分兩層推論）】(1) 語文學證據：CBETA T0223〈習應品〉(223a13–21) 與 T250／T251 核心段高度重疊，Attwood (2020 Pacific World 全文，pp.159–176) 亦指出「以無所得故→aprāptitvāt」與窺基 T1710／圓測 T1711 的「抄經（chao jing）」線索（註：Attwood 2021 22點與 Nattier 1992 原論文受 403／PoW 阻擋未核對全數細節）。(2) 動機爭議：Tokuno／紀贇視抄經非詐騙；Attwood (2020 pp.157,181–182) 則另主張 T250 與梵本似屬「明知而為之假前史偽作」，此點屬學者個人推論，非全學界共識。</p>
       <div class="grid">
         <article class="card"><h3>《楞嚴經》T945 ≠ T642</h3><p>唐代《大佛頂首楞嚴經》（T945）與鳩摩羅什譯自印度原本的《首楞嚴三昧經》（T642）是兩部不同經典，不可藉經名相似混同來源；Jia（2022）重新考察房融參與翻譯潤色的跨文化互動。</p></article>
         <article class="card"><h3>「格義（geyi）」考證</h3><p>Victor Mair（2012）指出教科書常說「魏晉廣泛用老莊語彙譯經叫格義」係近代建構；史料中原意僅短暫用於對應印度名數清單（numbered lists）的講經分類法。</p></article>
@@ -243,7 +262,19 @@ export const ACT3_STATIONS = [
     <p>寺院需要土地、糧食、保護與抄經網絡。政權滅佛、殖民改造、戰火與官修大藏經（如北宋 971–983 年依《開元釋教錄》雕印首部木刻大藏經《開寶藏》），共同決定了後人讀得到什麼。至於印度北部大型寺院在11–13世紀的衰退，考古學家 Lars Fogelin（2015）強調不能單一歸咎突厥入侵，而必須看多重結構因素交織。<a class="src" href="./history-research.html#c18-001">政治與開寶藏（C18-001）</a> <a class="src" href="./history-research.html#c18-002">Fogelin 印度衰退（C18-002）</a></p>
     <div class="play">
       <span class="kicker">古圖書館保存沙盒（玩具教學模擬，非古代真實統計數字）</span>
-      <h3>勾選不同歷史力量，看看文獻如何被選擇性保留或遺失</h3>
+      <h3>勾選不同歷史力量，直接看四處藏書地點如何保存或失傳</h3>
+      <div class="scene" style="margin:8px 0">
+        <svg id="s18-archives-svg" viewBox="0 0 460 155" role="img" aria-labelledby="s18-svg-t s18-svg-d">
+          <title id="s18-svg-t">四處歷史藏書地點與典籍材料保存狀態模擬看板</title>
+          <desc id="s18-svg-d">顯示北印大寺寫本、斯里蘭卡貝葉、中原《開寶藏》與石經、敦煌與高麗跨區副本四個地點，隨下方條件變化呈現保存與散佚差異。</desc>
+          <rect width="460" height="155" rx="12" fill="#173832"/>
+          <g id="s18-repo-india"><rect id="s18-box-india" x="12" y="16" width="102" height="106" rx="8" fill="#224a42" stroke="#f0a89b" stroke-width="2"/><text x="63" y="36" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">北印那爛陀等</text><text x="63" y="54" fill="#d7dfd4" font-size="9.5" text-anchor="middle">樺皮・貝葉寫本</text><rect x="20" y="72" width="86" height="36" rx="6" fill="#102924"/><text id="s18-st-india" x="63" y="94" fill="#f0a89b" font-size="10" font-weight="700" text-anchor="middle">戰亂毀壞風險</text></g>
+          <g id="s18-repo-sl"><rect id="s18-box-sl" x="123" y="16" width="102" height="106" rx="8" fill="#224a42" stroke="#7a9186" stroke-width="1.5"/><text x="174" y="36" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">斯里蘭卡僧團</text><text x="174" y="54" fill="#d7dfd4" font-size="9.5" text-anchor="middle">巴利貝葉與統合</text><rect x="131" y="72" width="86" height="36" rx="6" fill="#102924"/><text id="s18-st-sl" x="174" y="94" fill="#cfe8dc" font-size="10" font-weight="700" text-anchor="middle">待條件觀察</text></g>
+          <g id="s18-repo-china"><rect id="s18-box-china" x="234" y="16" width="102" height="106" rx="8" fill="#224a42" stroke="#9fe0bd" stroke-width="2"/><text x="285" y="36" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">中原開寶／石經</text><text x="285" y="54" fill="#d7dfd4" font-size="9.5" text-anchor="middle">木刻雕版・石刻</text><rect x="242" y="72" width="86" height="36" rx="6" fill="#102924"/><text id="s18-st-china" x="285" y="94" fill="#9fe0bd" font-size="10" font-weight="700" text-anchor="middle">入錄本篩選存</text></g>
+          <g id="s18-repo-dunhuang"><rect id="s18-box-dunhuang" x="345" y="16" width="102" height="106" rx="8" fill="#224a42" stroke="#7a9186" stroke-width="1.5"/><text x="396" y="36" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">敦煌・藏・高麗</text><text x="396" y="54" fill="#d7dfd4" font-size="9.5" text-anchor="middle">跨區封洞與轉譯</text><rect x="353" y="72" width="86" height="36" rx="6" fill="#102924"/><text id="s18-st-dunhuang" x="396" y="94" fill="#cfe8dc" font-size="10" font-weight="700" text-anchor="middle">待條件觀察</text></g>
+          <text x="230" y="142" text-anchor="middle" fill="#b7e3ca" font-size="10">教學視覺示意：不同材料（貝葉/石經/刻藏）與地域決定了我們今天讀到什麼</text>
+        </svg>
+      </div>
       <div class="checks js-only">
         <label><input type="checkbox" data-pol="war" checked><span>戰亂與政治滅佛（如北魏 446、北周 574、會昌 845、突厥入侵）</span></label>
         <label><input type="checkbox" data-pol="elite"><span>寺院過度集中田產並疏離居士日常（Fogelin 結構脆弱性）</span></label>

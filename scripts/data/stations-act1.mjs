@@ -5,31 +5,30 @@ export const ACT1_STATIONS = [
   `<section id="four" class="chapter" data-station="1" tabindex="-1"><div class="container">
     <div class="kicker">第 01 站 · 佛陀最後一段旅程</div>
     <h2>誰說的都要查</h2>
-    <p>假設今天有個人跑來對你說：「我親耳聽過佛陀這樣講！」你該不該馬上點頭？早期《大般涅槃經》（DN 16）與漢譯《長阿含》第2經《遊行經》（DA 2）描寫佛陀最後旅途，主動教弟子怎麼面對四種不同「權威來源」的轉述。<a class="src" href="./history-research.html#c01-001">命題 C01-001（DN 16；DA 2）</a> <a class="src" href="#s-four">來源索引</a></p>
+    <p>假設今天有個人跑來對你說：「我親耳聽過佛陀這樣講！」你該不該馬上點頭？早期《大般涅槃經》（DN 16／SF 245）、《增支部》AN 4.180 與《長阿含》第2經《遊行經》（DA 2）共同教導弟子如何面對四種「權威來源」的轉述：無論對方搬出誰，都須送交同一套經律核對；至於《增壹阿含》28.5〈聲聞品〉雖也名為「四大」，則採不同的東南西北四方來僧與「經本／義／味／戒行」審查架構（詳見下表與 C01-003）。<a class="src" href="./history-research.html#c01-001">命題 C01-001（DN 16／DA 2／SF 245）</a> <a class="src" href="./history-research.html#c01-003">命題 C01-003（EA 28.5）</a> <a class="src" href="#s-four">來源索引</a></p>
     <div class="scene">
-      <svg viewBox="0 0 460 190" role="img" aria-labelledby="s01-svg-t s01-svg-d">
-        <title id="s01-svg-t">四位前來轉述的訪客與同一張查證桌</title>
-        <desc id="s01-svg-d">四位聲稱不同權威來源的訪客站在左側，右側為放置經與律卷軸的查證桌（現代原創示意）。</desc>
-        <rect width="460" height="190" rx="14" fill="#173832"/>
-        <g fill="#e8d6b9" stroke="#f7e6cc" stroke-width="2">
-          <circle cx="52" cy="56" r="14"/><path d="M36 96q16-24 32 0z"/>
-          <circle cx="116" cy="56" r="14"/><path d="M100 96q16-24 32 0z"/>
-          <circle cx="180" cy="56" r="14"/><path d="M164 96q16-24 32 0z"/>
-          <circle cx="244" cy="56" r="14"/><path d="M228 96q16-24 32 0z"/>
-        </g>
-        <rect x="296" y="72" width="136" height="66" rx="10" fill="#9a6b3f" stroke="#f1d09a" stroke-width="3"/>
-        <rect x="314" y="54" width="44" height="24" rx="5" fill="#fffdf7" stroke="#79521e" stroke-width="2"/>
-        <rect x="368" y="54" width="44" height="24" rx="5" fill="#fffdf7" stroke="#79521e" stroke-width="2"/>
-        <g fill="#f8f5ee" font-size="11.5" text-anchor="middle" font-weight="700">
-          <text x="52" y="122">1.稱親聞</text>
-          <text x="116" y="122">2.某僧團</text>
-          <text x="180" y="122">3.多長老</text>
-          <text x="244" y="122">4.一長老</text>
-          <text x="336" y="71" fill="#243330">經</text>
-          <text x="390" y="71" fill="#243330">律</text>
-          <text x="364" y="114">同一張查證桌</text>
-        </g>
-        <text x="230" y="170" text-anchor="middle" fill="#b7e3ca" font-size="12">現代原創示意：四種權威轉述均須經過同一程序</text>
+      <svg id="s01-stage-svg" viewBox="0 0 460 225" role="img" aria-labelledby="s01-svg-t s01-svg-d">
+        <title id="s01-svg-t">四位前來轉述的訪客、交付路線與經律查證桌（互動更新）</title>
+        <desc id="s01-svg-d">左側為四位聲稱不同權威的來客圖卡，中央箭頭顯示把宣稱的教說送往右側「經」與「律」查證桌審查；底下註記 EA 28.5 四方來僧為不同異文架構。</desc>
+        <rect width="460" height="225" rx="14" fill="#173832"/>
+        <g id="s01-v-v1"><rect x="14" y="18" width="112" height="36" rx="8" fill="#224a42" stroke="#ecc98e" stroke-width="2.5"/><text x="64" y="40" fill="#f8f5ee" font-size="11.5" font-weight="700" text-anchor="middle">1.稱親聞佛陀</text><text id="s01-chk-v1" x="114" y="40" fill="#9fe0bd" font-size="11" font-weight="800" text-anchor="middle">○</text></g>
+        <g id="s01-v-v2"><rect x="14" y="60" width="112" height="36" rx="8" fill="#224a42" stroke="#7a9186" stroke-width="1.5"/><text x="64" y="82" fill="#f8f5ee" font-size="11.5" font-weight="700" text-anchor="middle">2.稱和合僧團</text><text id="s01-chk-v2" x="114" y="82" fill="#9fe0bd" font-size="11" font-weight="800" text-anchor="middle">○</text></g>
+        <g id="s01-v-v3"><rect x="14" y="102" width="112" height="36" rx="8" fill="#224a42" stroke="#7a9186" stroke-width="1.5"/><text x="64" y="124" fill="#f8f5ee" font-size="11.5" font-weight="700" text-anchor="middle">3.稱多位長老</text><text id="s01-chk-v3" x="114" y="124" fill="#9fe0bd" font-size="11" font-weight="800" text-anchor="middle">○</text></g>
+        <g id="s01-v-v4"><rect x="14" y="144" width="112" height="36" rx="8" fill="#224a42" stroke="#7a9186" stroke-width="1.5"/><text x="64" y="166" fill="#f8f5ee" font-size="11.5" font-weight="700" text-anchor="middle">4.稱一位長老</text><text id="s01-chk-v4" x="114" y="166" fill="#9fe0bd" font-size="11" font-weight="800" text-anchor="middle">○</text></g>
+        <path id="s01-flow-path" d="M130 36 C185 36 195 96 254 96" fill="none" stroke="#ecc98e" stroke-width="3" stroke-dasharray="6 3"/>
+        <polygon points="252,90 264,96 252,102" fill="#ecc98e"/>
+        <rect x="144" y="72" width="102" height="24" rx="12" fill="#102924" stroke="#ecc98e" stroke-width="1.5"/>
+        <text id="s01-flow-txt" x="195" y="88" fill="#ffd48b" font-size="10.5" font-weight="700" text-anchor="middle">遞交文句待核</text>
+        <rect x="268" y="48" width="176" height="98" rx="10" fill="#8b5e35" stroke="#f1d09a" stroke-width="2.5"/>
+        <rect x="284" y="28" width="66" height="28" rx="6" fill="#fffdf7" stroke="#79521e" stroke-width="2"/>
+        <rect x="362" y="28" width="66" height="28" rx="6" fill="#fffdf7" stroke="#79521e" stroke-width="2"/>
+        <text x="317" y="46" fill="#243330" font-size="11.5" font-weight="800" text-anchor="middle">經 Sutta</text>
+        <text x="395" y="46" fill="#243330" font-size="11.5" font-weight="800" text-anchor="middle">律 Vinaya</text>
+        <text x="356" y="79" fill="#f8f5ee" font-size="12" font-weight="700" text-anchor="middle">同一張經律查證桌</text>
+        <rect id="s01-desk-badge" x="282" y="92" width="148" height="36" rx="8" fill="#102924" stroke="#9fe0bd" stroke-width="2"/>
+        <text id="s01-desk-txt" x="356" y="114" fill="#9fe0bd" font-size="11" font-weight="700" text-anchor="middle">待操作：選來客與回應</text>
+        <rect x="14" y="190" width="430" height="24" rx="6" fill="#102924" stroke="#7a9186" stroke-width="1"/>
+        <text x="229" y="206" text-anchor="middle" fill="#b7e3ca" font-size="9.5">DN 16／DA 2／SF 245 四權威轉述；《增壹阿含》28.5 採四方來僧（異文別構）</text>
       </svg>
     </div>
     <ol class="steps">
@@ -236,25 +235,62 @@ export const ACT1_STATIONS = [
     <div class="play">
       <span class="kicker">動手倒水盆 · 對應 MN 61 與 MA 14 原文順序</span>
       <h3>點點看洗腳盆的五個狀態</h3>
-      <div class="scene" style="max-width:340px;margin:10px auto">
-        <svg viewBox="0 0 240 130" role="img" aria-labelledby="s05-basin-t s05-basin-d">
-          <title id="s05-basin-t">羅睺羅洗腳盆與戰象側面示意</title>
-          <desc id="s05-basin-d">左側為可翻轉與調水位的洗腳盆，右側為具長鼻、象牙與四肢的正常比例側面大象示意。</desc>
-          <rect width="240" height="130" rx="12" fill="#173832"/>
+      <div class="scene" style="margin:10px auto">
+        <svg viewBox="0 0 440 195" role="img" aria-labelledby="s05-basin-t s05-basin-d">
+          <title id="s05-basin-t">羅睺羅洗腳盆倒水翻覆、鏡子三時自照與戰象護鼻側面圖（互動更新）</title>
+          <desc id="s05-basin-d">左區為隨按鈕改變水位、水滴、地上水窪及翻蓋狀態的洗腳盆；中區為隨三時省察切換提示的鏡子；右區為具穹頂額骨、皺摺大耳、彎曲象牙、四肢與護護長鼻的戰象側面圖。</desc>
+          <rect width="440" height="195" rx="14" fill="#173832"/>
+          <!-- Left: Water Basin + Drops + Spill Puddle -->
+          <rect x="10" y="12" width="136" height="170" rx="10" fill="#102924" stroke="#7a9186" stroke-width="1.5"/>
+          <text x="78" y="29" text-anchor="middle" fill="#ecc98e" font-size="11" font-weight="700">① 洗腳盆喻</text>
+          <ellipse id="basin-puddle" cx="78" cy="140" rx="44" ry="8" fill="#5cb8b2" opacity="0"/>
+          <g id="basin-drops" fill="#82dbd2" opacity="0">
+            <circle cx="54" cy="116" r="3"/><circle cx="78" cy="122" r="3.5"/><circle cx="100" cy="116" r="3"/>
+          </g>
           <g id="basin-bowl">
-            <path d="M35 45 L105 45 L94 94 L46 94 Z" fill="#c7a37d" stroke="#f7e6cc" stroke-width="3"/>
-            <clipPath id="bclip"><path d="M38 47 L102 47 L92 92 L48 92 Z"/></clipPath>
-            <rect id="basin-water" x="35" y="48" width="70" height="42" fill="#70c2b4" clip-path="url(#bclip)"/>
+            <path d="M36 52 L120 52 L106 112 L50 112 Z" fill="#b88d61" stroke="#f7e6cc" stroke-width="3"/>
+            <ellipse cx="78" cy="52" rx="42" ry="7" fill="#d7b084" stroke="#f7e6cc" stroke-width="2"/>
+            <clipPath id="bclip"><path d="M39 54 L117 54 L104 109 L52 109 Z"/></clipPath>
+            <rect id="basin-water" x="36" y="58" width="84" height="51" fill="#68c3b8" clip-path="url(#bclip)"/>
           </g>
-          <!-- Anatomically recognizable side-profile elephant (trunk, ears, tusks, 4 legs, tail) -->
-          <g fill="#9ba7a5" stroke="#e6e3dc" stroke-width="2">
-            <path d="M148 82 C142 62 152 46 174 46 C192 46 205 56 207 72 L207 104 L197 104 L197 86 L184 86 L184 104 L174 104 L174 86 L160 86 L160 104 L151 104 Z"/>
-            <path d="M198 52 C214 48 225 58 224 72 C223 82 228 89 231 85" fill="none" stroke="#e6e3dc" stroke-width="5" stroke-linecap="round"/>
-            <ellipse cx="198" cy="60" rx="8" ry="12" fill="#7c8a88"/>
-            <path d="M210 68 Q220 71 223 64" fill="none" stroke="#fffdf7" stroke-width="3" stroke-linecap="round"/>
-            <path d="M148 64 Q139 74 142 84" fill="none" stroke="#e6e3dc" stroke-width="2.5" stroke-linecap="round"/>
+          <text id="basin-svg-label" x="78" y="168" text-anchor="middle" fill="#9fe0bd" font-size="11" font-weight="700">盛滿水（未動）</text>
+
+          <!-- Center: Three-Time Self-Reflection Mirror -->
+          <rect x="154" y="12" width="114" height="170" rx="10" fill="#102924" stroke="#7a9186" stroke-width="1.5"/>
+          <text x="211" y="29" text-anchor="middle" fill="#ecc98e" font-size="11" font-weight="700">② 鏡子省察</text>
+          <g id="s05-mirror-svg">
+            <rect x="196" y="114" width="30" height="14" rx="4" fill="#9a6b3f" stroke="#f1d09a" stroke-width="1.5"/>
+            <line x1="211" y1="104" x2="211" y2="114" stroke="#f1d09a" stroke-width="4"/>
+            <ellipse id="s05-mirror-rim" cx="211" cy="70" rx="34" ry="38" fill="#274e46" stroke="#9fe0bd" stroke-width="3.5"/>
+            <ellipse cx="211" cy="70" rx="28" ry="32" fill="#1b3a34" stroke="#cfe8dc" stroke-width="1.2"/>
+            <path d="M196 52 L208 42 M194 64 L216 45" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round"/>
+            <text id="s05-mirror-phase" x="211" y="68" text-anchor="middle" fill="#f8f5ee" font-size="11" font-weight="800">做之前</text>
+            <text id="s05-mirror-sub" x="211" y="84" text-anchor="middle" fill="#b7e3ca" font-size="9.5">先照是否害人</text>
           </g>
-          <text x="184" y="120" text-anchor="middle" fill="#b7e3ca" font-size="10">王象唯護長鼻（現代示意）</text>
+          <text x="211" y="168" text-anchor="middle" fill="#cfe8dc" font-size="10">照臉知淨・照心省行</text>
+
+          <!-- Right: Anatomically Recognizable War Elephant -->
+          <rect x="276" y="12" width="154" height="170" rx="10" fill="#102924" stroke="#7a9186" stroke-width="1.5"/>
+          <text x="353" y="29" text-anchor="middle" fill="#ecc98e" font-size="11" font-weight="700">③ 王象喻：不惜鼻</text>
+          <g fill="#8c9997" stroke="#e6e3dc" stroke-width="2" stroke-linejoin="round">
+            <!-- Hind & Front 4 legs -->
+            <path d="M294 102 L292 146 L304 146 L306 112 L314 112 L313 146 L325 146 L326 112 L344 112 L344 146 L356 146 L357 110 L364 110 L365 146 L376 146 L377 100 C377 74 366 56 342 54 C314 52 296 68 294 102 Z"/>
+            <!-- Cranium dome -->
+            <path d="M352 60 C356 46 376 44 388 54 C397 62 396 78 390 88"/>
+            <!-- Detailed ear -->
+            <path d="M348 60 C338 56 335 76 340 90 C346 98 358 94 360 78 Z" fill="#738280"/>
+            <!-- Tail with tuft -->
+            <path d="M294 82 Q284 96 286 112" fill="none" stroke="#e6e3dc" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="286" cy="114" rx="2.5" ry="4" fill="#e6e3dc"/>
+            <!-- Eye -->
+            <circle cx="378" cy="63" r="2.2" fill="#14171a" stroke="none"/>
+            <!-- Dual curved ivory tusks -->
+            <path d="M385 83 Q402 90 409 78 Q401 94 383 89 Z" fill="#fffdf7" stroke="#e8d6b9" stroke-width="1"/>
+            <!-- Highlighted Protective Muscular Trunk -->
+            <path d="M391 68 C406 68 416 79 415 95 C414 106 422 111 426 104" fill="none" stroke="#ecc98e" stroke-width="6.5" stroke-linecap="round"/>
+            <path d="M391 68 C406 68 416 79 415 95 C414 106 422 111 426 104" fill="none" stroke="#8c9997" stroke-width="3.5" stroke-linecap="round"/>
+          </g>
+          <text x="353" y="168" text-anchor="middle" fill="#ffd48b" font-size="10" font-weight="700">身手牙尾皆戰，唯護長鼻</text>
         </svg>
       </div>
       <div class="controls js-only" role="group" aria-label="洗腳盆動作">

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { Script } from "node:vm";
 import { readFileSync, mkdirSync, existsSync, statSync } from "node:fs";
 import { createHash } from "node:crypto";
+import { gzipSync } from "node:zlib";
 import { createServer } from "node:http";
 import { extname, resolve } from "node:path";
 import { chromium, webkit } from "playwright";
@@ -59,7 +60,18 @@ function validateHtmlStatic(label, html) {
   return idSet;
 }
 
-function validateCoverageStatic(covText, hIds, rIds, claimSet, evIdSet, minRows = 244, minDistinctStates = 3) {
+const TABLE_ROW_COUNTS = [6, 11, 12, 10, 4, 12, 4, 7, 3, 9, 16, 6, 5, 9, 8, 8, 11, 7, 5, 5, 7, 10, 10]; // sum = 185
+const EXPECTED_BASELINE_IDS = [
+  ...Array.from({ length: 22 }, (_, i) => `CH${String(i + 1).padStart(2, "0")}`),
+  ...TABLE_ROW_COUNTS.flatMap((n, tIdx) =>
+    Array.from({ length: n }, (_, rIdx) => `T${String(tIdx + 1).padStart(2, "0")}-R${String(rIdx + 1).padStart(2, "0")}`)
+  ),
+  ...Array.from({ length: 12 }, (_, i) => `IMG${String(i + 1).padStart(2, "0")}`),
+  ...Array.from({ length: 5 }, (_, i) => `V${String(i + 1).padStart(2, "0")}`),
+  ...Array.from({ length: 20 }, (_, i) => `PDF-P${String(i + 1).padStart(2, "0")}`)
+]; // exact 244 baseline denominator IDs from SOURCE_BASELINE.md
+
+function validateCoverageStatic(covText, hIds, rIds, claimSet, evAccessMap, minRows = 244, minDistinctStates = 3, requireBaseline = true) {
   const lines = covText.trim().split(/\r?\n/);
   const headers = lines[0].split("\t");
   for (const req of ["input_id", "public_anchor", "research_anchor", "claim_ids", "evidence_ids", "verification_state"]) {
@@ -90,12 +102,21 @@ function validateCoverageStatic(covText, hIds, rIds, claimSet, evIdSet, minRows 
       assert(claimSet.has(cid.trim()), `coverage ${iid}: unknown claim_id ${cid}`);
     }
     assert(eids.length > 0, `coverage ${iid}: empty evidence_ids`);
-    for (const eid of eids.split(",")) {
-      assert(evIdSet.has(eid.trim()), `coverage ${iid}: unknown evidence_id ${eid}`);
+    const parsedEids = eids.split(",").map(s => s.trim()).filter(Boolean);
+    for (const eid of parsedEids) {
+      assert(evAccessMap.has(eid), `coverage ${iid}: unknown evidence_id ${eid}`);
+    }
+    if (vstate === "SEMANTIC_VERIFIED") {
+      const nonFull = parsedEids.filter(eid => !["PRIMARY_CHECKED", "FULLTEXT_CHECKED"].includes(evAccessMap.get(eid)));
+      assert.equal(nonFull.length, 0, `coverage ${iid}: SEMANTIC_VERIFIED cannot rely on non-primary/non-fulltext evidence (${nonFull.join(",")})`);
     }
   }
+  if (requireBaseline) {
+    const missingBase = EXPECTED_BASELINE_IDS.filter(id => !seenIds.has(id));
+    assert.equal(missingBase.length, 0, `coverage missing baseline IDs: ${missingBase.join(",")}`);
+  }
   assert(seenStates.size >= minDistinctStates, `coverage states insufficiently varied: ${[...seenStates].join(",")}`);
-  return { totalRows: lines.length - 1, stateCounts };
+  return { totalRows: lines.length - 1, baselineIdsVerified: requireBaseline ? EXPECTED_BASELINE_IDS.length : 0, stateCounts };
 }
 
 function validateRightsStatic(rightsText, claimSet) {
@@ -126,22 +147,27 @@ function validateRightsStatic(rightsText, claimSet) {
   return lines.length - 1;
 }
 
-function validateLegacyUrlsStatic(legacyText, evIdSet, exactRows = 95) {
+function validateLegacyUrlsStatic(legacyText, evIdSet, exactRows = 95, htmlBundle = null) {
   const lines = legacyText.trim().split(/\r?\n/);
   const headers = lines[0].split("\t");
   const idx = name => headers.indexOf(name);
   assert.equal(lines.length - 1, exactRows, `legacy URLs expected ${exactRows} rows, got ${lines.length - 1}`);
   const seen = new Set();
   const counts = {};
+  const normalizedBundle = htmlBundle ? htmlBundle.replace(/&amp;/g, "&") : null;
   for (let i = 1; i < lines.length; i++) {
     const cols = lines[i].split("\t");
     const url = (cols[idx("legacy_url")] || "").trim();
     const disp = (cols[idx("disposition")] || "").trim();
     const eid = (cols[idx("evidence_id")] || "").trim();
+    const tgt = idx("v2_target_url") >= 0 ? (cols[idx("v2_target_url")] || "").trim() : "";
     assert(url && !seen.has(url), `legacy URL empty/duplicate: ${url}`);
     seen.add(url);
     assert(ALLOWED_URL_DISPOSITIONS.has(disp), `legacy URL ${url}: invalid disposition ${disp}`);
     assert(eid === "SITE" || evIdSet.has(eid), `legacy URL ${url}: unknown evidence_id ${eid}`);
+    if (normalizedBundle && ["KEPT", "RESTORED", "REPLACED_EQUIVALENT"].includes(disp)) {
+      assert(tgt && normalizedBundle.includes(tgt), `legacy URL ${url} target missing in HTML bundle: ${tgt}`);
+    }
     counts[disp] = (counts[disp] || 0) + 1;
   }
   return { total: lines.length - 1, counts };
@@ -157,9 +183,24 @@ const hIds = validateHtmlStatic("history.html", historyHtml);
 const rIds = validateHtmlStatic("history-research.html", researchHtml);
 
 const claimSet = new Set(CLAIMS.map(c => c.id));
-const evIdSet = new Set(EVIDENCE_ITEMS.map(e => e.id));
+const evAccessMap = new Map(EVIDENCE_ITEMS.map(e => [e.id, e.access]));
+const evIdSet = new Set(evAccessMap.keys());
 const expectedSources = EVIDENCE_ITEMS.length;
 const expectedClaims = CLAIMS.length;
+const htmlBundle = historyHtml + "\n" + researchHtml;
+
+const landingColdCompressedBytes =
+  gzipSync(readFileSync("history.html")).length +
+  gzipSync(readFileSync("assets/history/history.css")).length +
+  gzipSync(readFileSync("assets/history/history.js")).length;
+assert(landingColdCompressedBytes <= 512000, `cold compressed bundle exceeds 500 KiB: ${landingColdCompressedBytes}`);
+
+let inputHashCheck = "SKIPPED_INPUTS_NOT_COMMITTED";
+if (existsSync("inputs/buddhist_history_original.txt")) {
+  const txtSha = createHash("sha256").update(readFileSync("inputs/buddhist_history_original.txt")).digest("hex");
+  assert.equal(txtSha, "2916c64e045f427b7959e5aa79ffedb888803a96d1e8c0e325adff4044f86f27", "buddhist_history_original.txt SHA256 mismatch");
+  inputHashCheck = "TXT_SHA256_MATCHED";
+}
 
 assert.equal((historyHtml.match(/data-station="/g) || []).length, 22, "expected 22 stations");
 assert.equal((historyHtml.match(/data-source\b/g) || []).length, expectedSources, `expected ${expectedSources} source cards`);
@@ -181,35 +222,46 @@ for (const m of researchHtml.matchAll(/href="\.\/history\.html#([^"]+)"/g)) {
   assert(hIds.has(m[1]), `broken cross link ./history.html#${m[1]}`);
 }
 
-const covResult = validateCoverageStatic(readFileSync("docs/HISTORY_COVERAGE.tsv", "utf8"), hIds, rIds, claimSet, evIdSet);
+const covResult = validateCoverageStatic(readFileSync("docs/HISTORY_COVERAGE.tsv", "utf8"), hIds, rIds, claimSet, evAccessMap, 244, 3, true);
 const rightsCount = validateRightsStatic(readFileSync("docs/HISTORY_IMAGES_RIGHTS.tsv", "utf8"), claimSet);
-const legacyResult = validateLegacyUrlsStatic(readFileSync("docs/HISTORY_LEGACY_URLS.tsv", "utf8"), evIdSet);
+const legacyResult = validateLegacyUrlsStatic(readFileSync("docs/HISTORY_LEGACY_URLS.tsv", "utf8"), evIdSet, 95, htmlBundle);
 
-// 2. Negative self-tests (ensure verifier catches broken HTML/TSV/states/URLs)
+// 2. Negative self-tests (ensure verifier catches broken HTML/TSV/states/URLs/baseline)
 assert.throws(() => validateHtmlStatic("neg-dup", '<div id="x"></div><div id="x"></div>'), /duplicate IDs/);
 assert.throws(() => validateHtmlStatic("neg-anchor", '<div id="x"><a href="#missing"></a></div>'), /broken internal anchors/);
 assert.throws(() => validateCoverageStatic(
   "input_id\tpublic_anchor\tresearch_anchor\tclaim_ids\tevidence_ids\tverification_state\nX1\t#four\t#method\tC01-001\tE01\tSEMANTIC_VERIFIED",
-  hIds, rIds, claimSet, evIdSet, 244, 1
+  hIds, rIds, claimSet, evAccessMap, 244, 1, false
 ), /coverage matrix rows/);
 assert.throws(() => validateCoverageStatic(
   "input_id\tpublic_anchor\tresearch_anchor\tclaim_ids\tevidence_ids\tverification_state\nX1\t#bad\t#method\tC01-001\tE01\tSEMANTIC_VERIFIED",
-  hIds, rIds, claimSet, evIdSet, 1, 1
+  hIds, rIds, claimSet, evAccessMap, 1, 1, false
 ), /invalid public_anchor/);
 assert.throws(() => validateCoverageStatic(
   "input_id\tpublic_anchor\tresearch_anchor\tclaim_ids\tevidence_ids\tverification_state\nX1\t#four\t#method\tC01-001\tE01\tUNKNOWN",
-  hIds, rIds, claimSet, evIdSet, 1, 1
+  hIds, rIds, claimSet, evAccessMap, 1, 1, false
 ), /invalid verification_state/);
 assert.throws(() => validateCoverageStatic(
   "input_id\tpublic_anchor\tresearch_anchor\tclaim_ids\tevidence_ids\tverification_state\nX1\t#four\t#method\tC01-001\tE01\tSEMANTIC_VERIFIED\nX2\t#four\t#method\tC01-001\tE01\tSEMANTIC_VERIFIED",
-  hIds, rIds, claimSet, evIdSet, 1, 3
+  hIds, rIds, claimSet, evAccessMap, 1, 3, false
 ), /insufficiently varied/);
-assert.throws(() => validateLegacyUrlsStatic("legacy_url\tdisposition\tevidence_id\nhttps://example.com\tBAD\tE01", evIdSet, 1), /invalid disposition/);
+assert.throws(() => validateCoverageStatic(
+  "input_id\tpublic_anchor\tresearch_anchor\tclaim_ids\tevidence_ids\tverification_state\nX1\t#texts\t#heart-sutra-origin\tC14-002B\tE20C\tSEMANTIC_VERIFIED",
+  hIds, rIds, claimSet, evAccessMap, 1, 1, false
+), /cannot rely on non-primary\/non-fulltext evidence/);
+assert.throws(() => validateCoverageStatic(
+  "input_id\tpublic_anchor\tresearch_anchor\tclaim_ids\tevidence_ids\tverification_state\nX1\t#four\t#method\tC01-001\tE01\tSEMANTIC_VERIFIED\nX2\t#four\t#method\tC01-001\tE04B\tACCESS_LIMITED\nX3\t#four\t#method\tC01-001\tE20C\tINSUFFICIENT_DATA",
+  hIds, rIds, claimSet, evAccessMap, 1, 3, true
+), /coverage missing baseline IDs/);
+assert.throws(() => validateLegacyUrlsStatic("legacy_url\tdisposition\tevidence_id\tv2_target_url\nhttps://example.com\tBAD\tE01\thttps://example.com", evIdSet, 1), /invalid disposition/);
+assert.throws(() => validateLegacyUrlsStatic("legacy_url\tdisposition\tevidence_id\tv2_target_url\nhttps://example.com\tKEPT\tE01\thttps://not-in-built-html.invalid/x", evIdSet, 1, htmlBundle), /target missing in HTML bundle/);
 
-console.log("PASS static + 7 negative self-tests", JSON.stringify({
+console.log("PASS static + 10 negative self-tests", JSON.stringify({
   sources: expectedSources,
   claims: expectedClaims,
   rightsRows: rightsCount,
+  landingColdCompressedBytes,
+  inputHashCheck,
   coverage: covResult,
   legacyUrls: legacyResult
 }));
@@ -229,6 +281,7 @@ const runFullInteractiveAndShots = batchEnv === "all" || batchEnv === "0";
 const engine = process.env.ENGINE || "chromium";
 const output = "qa-screenshots/history-" + engine;
 mkdirSync(output, { recursive: true });
+mkdirSync(output + "/visual-audit", { recursive: true });
 
 const rootDir = resolve(".");
 const server = createServer((req, res) => {
@@ -391,8 +444,12 @@ try {
       validLcpCount: validLcps.length,
       invalidLcpCount: perfRuns.length - validLcps.length,
       lcpMedianMs: validLcps.length ? validLcps[Math.floor(validLcps.length / 2)] : null,
-      maxCls: Math.max(...perfRuns.map(x => x.cls))
+      maxCls: Math.max(...perfRuns.map(x => x.cls)),
+      landingColdCompressedBytes
     };
+    assert(perfSummary.validLcpCount >= 4, `too few valid LCP samples: ${perfSummary.validLcpCount}`);
+    assert(perfSummary.lcpMedianMs !== null && perfSummary.lcpMedianMs <= 2500, `LCP median > 2500ms: ${perfSummary.lcpMedianMs}`);
+    assert(perfSummary.maxCls <= 0.1, `CLS > 0.1: ${perfSummary.maxCls}`);
     console.log("PERF_COLD_5_RUNS", JSON.stringify({ perfSummary, perfRuns }));
   }
 
@@ -442,15 +499,19 @@ try {
       }
     }
 
-    // S01 Visitors + synthetic click latency check
+    // S01 Visitors + SVG verification + synthetic click latency check
     await go(page, "four");
     const tS01 = Date.now();
     await page.locator("[data-visitor='v2']").click();
     await page.locator("[data-vaction='believe']").click();
     assert((await page.locator("#s01-result").textContent()).includes("不能直接相信"));
+    assert.equal(await page.locator("#s01-chk-v2").textContent(), "✓");
+    assert((await page.locator("#s01-desk-txt").textContent()).includes("不得免查"));
     interactionLatencies.s01Ms = Date.now() - tS01;
+    await shots(page, "visual-audit/s01-mobile-after");
     await page.locator("#s01-reset").click();
     assert((await page.locator("#s01-progress").textContent()).includes("0／4"));
+    assert.equal(await page.locator("#s01-chk-v2").textContent(), "○");
     await shots(page, "s01-light");
     await axe(page, "light s01");
 
@@ -482,12 +543,16 @@ try {
     assert((await page.locator("#s04-assasa-out").textContent()).includes("第二安穩"));
     await shots(page, "s04-light");
 
-    // S05 Rahula
+    // S05 Rahula (SVG + Mirror + Elephant)
     await go(page, "rahula");
     await page.locator("[data-basin='flipped']").click();
-    assert.equal(await page.locator("#basin-bowl").getAttribute("transform"), "rotate(180 120 75)");
+    assert.equal(await page.locator("#basin-bowl").getAttribute("transform"), "rotate(180 78 82)");
+    assert.equal(await page.locator("#basin-puddle").getAttribute("opacity"), "0.9");
+    assert.equal(await page.locator("#basin-svg-label").textContent(), "覆盆著地（翻覆）");
     await page.locator("[data-mirror='after']").click();
+    assert.equal(await page.locator("#s05-mirror-phase").textContent(), "做之後");
     await shots(page, "s05-light");
+    await shots(page, "visual-audit/s05-mobile-after");
 
     // S06 Direction
     await go(page, "direction");
@@ -503,8 +568,9 @@ try {
     await shots(page, "s07-light");
     await page.locator("#s07-reset").click();
 
-    // S08 Evidence Magnifier: ALL 5 artifacts dynamically verified
+    // S08 Evidence Magnifier: ALL 5 artifacts dynamically verified (UI timing separated from img decode)
     await go(page, "evidence");
+    let totalS08DecodeMs = 0;
     for (const [artKey, expectedFrag] of [
       ["lumbini", "Budha"],
       ["bhabra", "Lāghulovāde"],
@@ -512,20 +578,25 @@ try {
       ["sarnath", "分裂"],
       ["gandhara", "ACCESS_BLOCKED"]
     ]) {
-      const tArt = Date.now();
+      const tUi = Date.now();
       await page.locator(`[data-artifact='${artKey}']`).click();
-      await checkVisibleImgs(page, `S08 ${artKey}`);
       const fullCap = (await page.locator("#viewer-obs").textContent())
+        + " " + (await page.locator("#viewer-cue").textContent())
         + " " + (await page.locator("#viewer-trans").textContent())
         + " " + (await page.locator("#viewer-limit").textContent());
       assert(fullCap.includes(expectedFrag), `S08 ${artKey} caption missing '${expectedFrag}'`);
-      if (artKey === "gandhara") interactionLatencies.s08ArtifactSwitchMs = Date.now() - tArt;
+      if (artKey === "gandhara") interactionLatencies.s08UiSwitchMs = Date.now() - tUi;
+      const tDec = Date.now();
+      await checkVisibleImgs(page, `S08 ${artKey}`);
+      totalS08DecodeMs += Date.now() - tDec;
     }
+    interactionLatencies.s08ImgDecodeMs = totalS08DecodeMs;
     await page.locator("[data-artifact='bhabra']").click();
     await page.locator("#viewer-zoom-in").click();
     assert((await page.locator("#viewer-zoom-status").textContent()).includes("140%"));
     await page.locator("#viewer-toggle-trans").click();
     assert(!(await page.locator("#viewer-trans").isHidden()));
+    await shots(page, "visual-audit/s08-mobile-after");
     await page.locator("#viewer-reset").click();
     await shots(page, "s08-light");
 
@@ -533,16 +604,23 @@ try {
     await go(page, "transmission");
     await page.locator("[data-txmode='chorus']").click();
     assert((await page.locator("#s09-out").textContent()).includes("Wynne"));
+    assert((await page.locator("#s09-n2-txt").textContent()).includes("定期合誦"));
+    assert((await page.locator("#s09-svg-badge").textContent()).includes("模式 2"));
     await shots(page, "s09-light");
+    await shots(page, "visual-audit/s09-mobile-after");
     await page.locator("#s09-reset").click();
+    assert((await page.locator("#s09-svg-badge").textContent()).includes("初始狀態"));
 
     // S10 History Timeline & Map
     await go(page, "history");
     await page.locator("[data-era='2']").click();
     assert((await page.locator("#s10-time").textContent()).includes("前268–232"));
+    assert.equal(await page.locator("#s10-map-dot2").getAttribute("opacity"), "1");
     await page.locator("#s10-next").click();
     assert((await page.locator("#s10-time").textContent()).includes("前300–100"));
+    assert.equal(await page.locator("#s10-map-dot").getAttribute("cx"), "148");
     await shots(page, "s10-light");
+    await shots(page, "visual-audit/s10-mobile-after");
 
     // S11 Branches & 5-Language
     await go(page, "branches");
@@ -565,19 +643,24 @@ try {
     await page.locator("[data-bvacana='trad']").click();
     await shots(page, "s13-light");
 
-    // S14 Texts (16 options + T223 vs T250/T251 + Fukui)
+    // S14 Texts (16 options + parallel T223/T250/T251 segments + Attwood 2020 + Fukui chronology)
     await go(page, "texts");
     assert.equal(await page.locator("#s14-text-select option").count(), 16);
     await page.locator("#s14-text-select").selectOption("surangama");
     await page.locator("#s14-next-clue").click();
     assert((await page.locator("#s14-desk-out").textContent()).includes("T945"));
     await page.locator("#s14-all-clues").click();
-    assert((await page.locator("#s14-heart-out").textContent()).includes("T0223"));
+    assert((await page.locator("#s14-heart-out").textContent()).includes("Attwood (2020"));
+    await page.locator("[data-heartseg='seg3']").click();
+    assert((await page.locator("#s14-p-skt").textContent()).includes("aprāptitvāt"));
+    assert((await page.locator("#s14-p-t223").textContent()).includes("0223a21"));
     const tS14 = Date.now();
     await page.locator("[data-heart='alt']").click();
-    assert((await page.locator("#s14-heart-out").textContent()).includes("福井文雅"));
+    const s14AltTxt = await page.locator("#s14-heart-out").textContent();
+    assert(s14AltTxt.includes("1987年早於 Nattier 1992") && s14AltTxt.includes("CATALOG_ONLY"));
     interactionLatencies.s14HeartSwitchMs = Date.now() - tS14;
     await shots(page, "s14-light");
+    await shots(page, "visual-audit/s14-mobile-after");
 
     // S15 China
     await go(page, "china");
@@ -600,14 +683,18 @@ try {
     assert((await page.locator("#s17-result").textContent()).includes("✓ 分類合宜"));
     await shots(page, "s17-light");
 
-    // S18 Politics
+    // S18 Politics & Archives SVG
     await go(page, "politics");
     await checkVisibleImgs(page, "S18 india");
     await page.locator("[data-pol='war']").check();
+    await page.locator("[data-pol='elite']").check();
     await page.locator("[data-pol='canon']").check();
     assert((await page.locator("#s18-out").textContent()).includes("存活者偏差"));
+    assert.equal(await page.locator("#s18-st-india").textContent(), "戰火＋斷援重創");
     await shots(page, "s18-light");
+    await shots(page, "visual-audit/s18-mobile-after");
     await page.locator("#s18-reset").click();
+    assert.equal(await page.locator("#s18-st-india").textContent(), "局部仍暫留存");
 
     // S19 Japan
     await go(page, "japan");
@@ -755,13 +842,16 @@ try {
 
   if (runFullInteractiveAndShots) {
     // Browser Zoom & Reflow Checks:
-    // 1) CSS Reflow at 720px viewport (WCAG 1.4.10 Reflow proxy, explicitly distinguished from CDP zoom)
+    // 1) CSS Reflow at 640px (1280px@200% equivalent) & 720px viewport (explicitly separated from CDP zoom)
+    await page.setViewportSize({ width: 640, height: 900 });
+    await go(page, "texts");
+    await inspect(page, "css-reflow-640px-proxy texts", 64);
     await page.setViewportSize({ width: 720, height: 900 });
     await go(page, "lab");
     await inspect(page, "css-reflow-720px-proxy lab", 64);
 
     // 2) Real Chromium CDP 200% browser scale zoom (separate from viewport reflow)
-    let cdpZoomStatus = "NOT_SUPPORTED_ON_ENGINE";
+    let pageScaleFactor2xCdp = "NOT_APPLICABLE_NO_CDP_ON_WEBKIT";
     if (engine === "chromium") {
       await page.setViewportSize({ width: 1280, height: 900 });
       const cdp = await context.newCDPSession(page);
@@ -770,10 +860,45 @@ try {
       await inspect(page, "real-cdp-200pct-zoom evidence", 64);
       await cdp.send("Emulation.setPageScaleFactor", { pageScaleFactor: 1 });
       await cdp.detach();
-      cdpZoomStatus = "PASS_CDP_SCALE_2X";
+      pageScaleFactor2xCdp = "PASS_CDP_PAGE_SCALE_2X_ONLY";
     }
+
+    // 3) Dedicated §7 visual captures across all 7 priority upgraded stations (Desktop 1280 before/after + 28px dark)
+    await page.setViewportSize({ width: 1280, height: 900 });
+    for (const [stId, fnBefore, fnAfter] of [
+      ["four", async () => {}, async () => { await page.locator("[data-visitor='v3']").click(); await page.locator("[data-vaction='check']").click(); }],
+      ["rahula", async () => { await page.locator("[data-basin='full']").click(); }, async () => { await page.locator("[data-basin='flipped']").click(); await page.locator("[data-mirror='during']").click(); }],
+      ["evidence", async () => { await page.locator("[data-artifact='lumbini']").click(); }, async () => { await page.locator("[data-artifact='gandhara']").click(); await page.locator("#viewer-zoom-in").click(); await page.locator("#viewer-toggle-trans").click(); await checkVisibleImgs(page, "visual gandhara"); }],
+      ["transmission", async () => { await page.locator("#s09-reset").click(); }, async () => { await page.locator("[data-txmode='whisper']").click(); }],
+      ["history", async () => { await page.locator("[data-era='0']").click(); }, async () => { await page.locator("[data-era='7']").click(); }],
+      ["texts", async () => { await page.locator("[data-heartseg='seg1']").click(); }, async () => { await page.locator("[data-heartseg='seg3']").click(); await page.locator("[data-heart='nattier']").click(); }],
+      ["politics", async () => { await page.locator("#s18-reset").click(); }, async () => { await page.locator("[data-pol='war']").check(); await page.locator("[data-pol='copy']").check(); }]
+    ]) {
+      await go(page, stId);
+      await fnBefore();
+      await inspect(page, `desktop-1280-before ${stId}`, 64);
+      await page.screenshot({ path: `${output}/visual-audit/${stId}-desktop-before.png`, fullPage: false });
+      await fnAfter();
+      await inspect(page, `desktop-1280-after ${stId}`, 64);
+      await page.screenshot({ path: `${output}/visual-audit/${stId}-desktop-after.png`, fullPage: false });
+    }
+    // Dark + 28px spot captures on key upgraded stations
     await page.setViewportSize({ width: 390, height: 844 });
-    console.log("ZOOM_CHECK_STATUS", JSON.stringify({ engine, cssReflow720px: "PASS", realCdpZoom: cdpZoomStatus }));
+    await page.locator(".settings summary").click();
+    await page.locator("#theme").click();
+    for (let k = 0; k < 4; k++) await page.locator("#fontUp").click();
+    await page.locator(".settings summary").click();
+    for (const stId of ["four", "rahula", "texts", "politics"]) {
+      await go(page, stId);
+      await inspect(page, `dark-28px-390 ${stId}`, 56);
+      await page.screenshot({ path: `${output}/visual-audit/${stId}-dark-28px.png`, fullPage: false });
+    }
+    // Restore light 20px
+    await page.locator(".settings summary").click();
+    await page.locator("#theme").click();
+    for (let k = 0; k < 4; k++) await page.locator("#fontDown").click();
+    await page.locator(".settings summary").click();
+    console.log("ZOOM_CHECK_STATUS", JSON.stringify({ engine, cssReflow640px_1280at200pct: "PASS", cssReflow720px: "PASS", pageScaleFactor2x_CDP: pageScaleFactor2xCdp }));
 
     // Resume bookmark
     await go(page, "china");

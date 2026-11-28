@@ -559,6 +559,7 @@ function buildResearchHtml(rightsRows, legacyRows, covRows) {
               <option value="PRIMARY_CHECKED">PRIMARY_CHECKED</option>
               <option value="FULLTEXT_CHECKED">FULLTEXT_CHECKED</option>
               <option value="ABSTRACT_ONLY">ABSTRACT_ONLY</option>
+              <option value="CATALOG_ONLY">CATALOG_ONLY</option>
             </select>
           </label>
           <button type="button" id="res-clear">重設篩選</button>

@@ -29,6 +29,7 @@ export const ACT2_STATIONS = [
         </div>
         <figcaption>
           <p id="viewer-obs">先看實物：石柱表面刻有五行垂直整齊的古代幾何筆畫字母（婆羅米文），第2行右段可見「Budha Sakyamunī」字跡。</p>
+          <p id="viewer-cue" class="small"><strong>放大與行次對照：</strong>第 2 行右側刻「Budha Sakyamunī」；建議放大至 140%–180% 並搭配下方「顯示轉寫與譯意」對讀原刻位置。</p>
           <p id="viewer-trans" class="note" hidden>轉寫與譯意：天愛喜見王登基第20年親自參訪禮敬，因『釋迦牟尼佛（Budha Sakyamunī）』生於此地而立石柱，減免藍毘尼村稅賦為八分之一。</p>
           <p id="viewer-limit" class="small">權利與限制：Public Domain（ASI 1896）。證明前3世紀聖地認定；不證明出生走七步或出生年分。</p>
         </figcaption>
@@ -87,26 +88,18 @@ export const ACT2_STATIONS = [
       <span class="kicker">雙向口傳形成沙盒（教學玩具模型，非歷史統計機率）</span>
       <h3>經典形成是「集體校對保守性」與「異文擴編」並存</h3>
       <div class="scene" style="margin:10px 0">
-        <svg viewBox="0 0 460 175" role="img" aria-labelledby="s09-diag-t s09-diag-d">
-          <title id="s09-diag-t">經典形成與集體校對雙向流程示意（V02）</title>
-          <desc id="s09-diag-d">顯示早期教導經集體合誦校對保存核心，同時在跨區域流傳、翻譯、爭議編輯與書寫中產生異文的雙向過程。</desc>
-          <rect width="460" height="175" rx="14" fill="#173832"/>
-          <g fill="#224a42" stroke="#9fe0bd" stroke-width="2">
-            <rect x="14" y="24" width="124" height="44" rx="8"/>
-            <rect x="168" y="24" width="124" height="44" rx="8"/>
-            <rect x="322" y="24" width="124" height="44" rx="8"/>
-            <rect x="88" y="102" width="132" height="44" rx="8"/>
-            <rect x="242" y="102" width="132" height="44" rx="8"/>
-          </g>
-          <path d="M138 46 H168 M292 46 H322 M230 68 V102 M220 124 H242" stroke="#ecc98e" stroke-width="2.5"/>
-          <g fill="#f8f5ee" font-size="12" text-anchor="middle" font-weight="700">
-            <text x="76" y="50">早期教導／定型句</text>
-            <text x="230" y="50">集體合誦校對(保守)</text>
-            <text x="384" y="50">書寫、翻譯與註解</text>
-            <text x="154" y="128">區域異文與增補</text>
-            <text x="308" y="128">交叉校對重整</text>
-            <text x="230" y="164" fill="#b7e3ca" font-size="11">雙向互動流程：整齊完整不等於更原始，集體校對也可維持穩定</text>
-          </g>
+        <svg id="s09-flow-svg" viewBox="0 0 460 205" role="img" aria-labelledby="s09-diag-t s09-diag-d">
+          <title id="s09-diag-t">經典傳遞與變遷三節點互動流程圖（V02 升級）</title>
+          <desc id="s09-diag-d">依所選口傳機制（耳語、集體合誦、跨語翻譯、爭議編整）即時呈現三節點文本如何保留或偏移。</desc>
+          <rect width="460" height="205" rx="14" fill="#173832"/>
+          <g id="s09-node-1"><rect x="14" y="22" width="128" height="72" rx="10" fill="#224a42" stroke="#9fe0bd" stroke-width="2"/><text x="78" y="42" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">節點 1｜初期傳述</text><text id="s09-n1-txt" x="78" y="64" fill="#f8f5ee" font-size="11" font-weight="700" text-anchor="middle">早期教導／定型句</text><text id="s09-n1-sub" x="78" y="82" fill="#b7e3ca" font-size="9.5" text-anchor="middle">共同起點</text></g>
+          <g id="s09-node-2"><rect id="s09-n2-box" x="166" y="22" width="128" height="72" rx="10" fill="#224a42" stroke="#9fe0bd" stroke-width="2"/><text x="230" y="42" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">節點 2｜傳遞機制</text><text id="s09-n2-txt" x="230" y="64" fill="#f8f5ee" font-size="11" font-weight="700" text-anchor="middle">集體合誦或語際轉譯</text><text id="s09-n2-sub" x="230" y="82" fill="#b7e3ca" font-size="9.5" text-anchor="middle">請點選下方情境</text></g>
+          <g id="s09-node-3"><rect id="s09-n3-box" x="318" y="22" width="128" height="72" rx="10" fill="#224a42" stroke="#9fe0bd" stroke-width="2"/><text x="382" y="42" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">節點 3｜現存文本</text><text id="s09-n3-txt" x="382" y="64" fill="#f8f5ee" font-size="11" font-weight="700" text-anchor="middle">平行核心與異文並存</text><text id="s09-n3-sub" x="382" y="82" fill="#b7e3ca" font-size="9.5" text-anchor="middle">非全真亦非全假</text></g>
+          <path id="s09-arrow1" d="M142 58 H166" stroke="#ecc98e" stroke-width="3"/><polygon points="160,53 166,58 160,63" fill="#ecc98e"/>
+          <path id="s09-arrow2" d="M294 58 H318" stroke="#ecc98e" stroke-width="3"/><polygon points="312,53 318,58 312,63" fill="#ecc98e"/>
+          <rect x="24" y="114" width="412" height="44" rx="10" fill="#102924" stroke="#7a9186" stroke-width="1.5"/>
+          <text id="s09-svg-badge" x="230" y="140" fill="#ffd48b" font-size="11.5" font-weight="700" text-anchor="middle">初始狀態：點按四個按鈕，看文句如何經各節點穩定保存或漂移</text>
+          <text x="230" y="185" text-anchor="middle" fill="#b7e3ca" font-size="10.5">雙向互動模型：整齊完整不等於更原始（臺灣佛學定型句研究 × Allon 2022 × Wynne 2004）</text>
         </svg>
       </div>
       <div class="controls js-only" role="group" aria-label="模擬不同傳承情境">
@@ -144,30 +137,39 @@ export const ACT2_STATIONS = [
       <span class="kicker">互動歷史地圖與 12 時期時間滑桿（示意地理定位，不代表現代或古代精確國界）</span>
       <h3>拖動或點按切換 12 個歷史時期</h3>
       <div class="map-box">
-        <svg viewBox="0 0 460 260" role="img" aria-labelledby="s10-map-t s10-map-d">
-          <title id="s10-map-t">佛教跨區域歷史發展示意定位圖</title>
-          <desc id="s10-map-d">簡化亞洲地理輪廓標示大犍陀羅、北印度、斯里蘭卡、東南亞、西藏、中國內地及日韓臺灣相對定位，僅供教學定位，非精確政治疆界。</desc>
-          <rect width="460" height="260" rx="14" fill="#173832"/>
-          <!-- Simplified landmass shapes (India, Himalayas/Tibet, East Asia, Mainland SE Asia, Sri Lanka, Japan, Taiwan) -->
-          <path d="M80 70 Q135 55 185 85 L220 120 L195 190 L165 215 L140 165 L100 125 Z" fill="#2c5950" stroke="#7a9186" stroke-width="1.5"/>
-          <path d="M185 85 Q245 70 300 80 L365 95 L355 160 L300 170 L250 140 Z" fill="#274e46" stroke="#7a9186" stroke-width="1.5"/>
-          <path d="M245 145 L295 165 L290 218 L255 210 L240 175 Z" fill="#2c5950" stroke="#7a9186" stroke-width="1.5"/>
-          <ellipse cx="195" cy="216" rx="10" ry="12" fill="#3b6e63" stroke="#9fe0bd" stroke-width="1.5"/>
-          <path d="M385 110 Q398 115 392 140" fill="none" stroke="#3b6e63" stroke-width="6" stroke-linecap="round"/>
-          <ellipse cx="366" cy="166" rx="6" ry="11" fill="#3b6e63" stroke="#9fe0bd" stroke-width="1.5"/>
-          <g fill="#c6cec3" font-size="10">
-            <text x="115" y="106">犍陀羅</text>
-            <text x="172" y="138">北印/摩揭陀</text>
-            <text x="232" y="220" text-anchor="middle">斯里蘭卡</text>
-            <text x="248" y="118">西藏/喜馬拉雅</text>
-            <text x="322" y="122">漢地</text>
-            <text x="268" y="198">東南亞</text>
-            <text x="415" y="128">日本</text>
-            <text x="385" y="170">臺灣</text>
+        <svg viewBox="0 0 480 280" role="img" aria-labelledby="s10-map-t s10-map-d">
+          <title id="s10-map-t">佛教跨區域多點發展與不確定路線圖（教學示意，非單線血統圖）</title>
+          <desc id="s10-map-d">簡化亞洲地圖標示恒河中游、大犍陀羅、斯里蘭卡、中亞絲路、西藏喜馬拉雅、東南亞、漢地、日本及臺灣，並以虛線弧標示非單線且具史料不確定性的區域傳播走廊。</desc>
+          <rect width="480" height="280" rx="14" fill="#173832"/>
+          <!-- Stylized regional geographic basins -->
+          <path d="M88 68 Q145 50 198 86 L224 128 L194 198 L166 218 L142 162 L100 122 Z" fill="#2c5950" stroke="#7a9186" stroke-width="1.5"/>
+          <path d="M126 50 Q210 30 296 64 L276 86 L186 76 Z" fill="#21463e" stroke="#7a9186" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <path d="M196 86 Q254 72 308 82 L378 96 L368 166 L312 172 L254 142 Z" fill="#274e46" stroke="#7a9186" stroke-width="1.5"/>
+          <path d="M250 152 L302 168 L296 226 L260 218 L244 182 Z" fill="#2c5950" stroke="#7a9186" stroke-width="1.5"/>
+          <ellipse cx="192" cy="226" rx="11" ry="13" fill="#3b6e63" stroke="#9fe0bd" stroke-width="1.5"/>
+          <path d="M406 106 Q422 116 414 144" fill="none" stroke="#3b6e63" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="382" cy="168" rx="7" ry="12" fill="#3b6e63" stroke="#9fe0bd" stroke-width="1.5"/>
+          <!-- Dashed multi-corridor routes (uncertainty marked) -->
+          <path id="s10-route-nw" d="M178 140 Q145 120 124 96 Q180 46 322 104" fill="none" stroke="#b7e3ca" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="5 4"/>
+          <path id="s10-route-sea" d="M178 145 Q172 192 192 222 Q232 228 272 194 Q326 172 342 146" fill="none" stroke="#b7e3ca" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="5 4"/>
+          <path id="s10-route-himalaya" d="M186 132 Q220 116 250 110 Q296 108 326 116" fill="none" stroke="#ecc98e" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="3 4"/>
+          <g fill="#d7dfd4" font-size="9.5" font-weight="600">
+            <text x="116" y="88">大犍陀羅</text>
+            <text x="196" y="46">中亞絲路走廊（虛線＝多分支）</text>
+            <text x="164" y="138">北印／摩揭陀</text>
+            <text x="228" y="230">斯里蘭卡</text>
+            <text x="242" y="114">西藏／喜馬拉雅</text>
+            <text x="328" y="116">漢地（長安・建康）</text>
+            <text x="272" y="200">東南亞</text>
+            <text x="424" y="128">日本</text>
+            <text x="395" y="172">臺灣</text>
           </g>
-          <circle id="s10-map-dot" cx="185" cy="145" r="10" fill="#ecc98e" stroke="#14171a" stroke-width="3"/>
-          <text id="s10-map-label" x="185" y="130" text-anchor="middle" fill="#ffd48b" font-size="12" font-weight="800">前600–400</text>
-          <text x="230" y="252" text-anchor="middle" fill="#9fe0bd" font-size="10">示意定位點，不表示確切國界或單線傳播箭頭</text>
+          <circle id="s10-map-ring" cx="185" cy="145" r="18" fill="none" stroke="#ffd48b" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="3 3"/>
+          <circle id="s10-map-dot" cx="185" cy="145" r="9.5" fill="#ecc98e" stroke="#14171a" stroke-width="2.5"/>
+          <circle id="s10-map-dot2" cx="185" cy="145" r="6" fill="#9fe0bd" stroke="#14171a" stroke-width="2" opacity="0"/>
+          <text id="s10-map-label" x="185" y="123" text-anchor="middle" fill="#ffd48b" font-size="11.5" font-weight="800">前600–400</text>
+          <rect x="12" y="248" width="456" height="24" rx="6" fill="#102924" stroke="#7a9186" stroke-width="1"/>
+          <text id="s10-era-note-svg" x="240" y="264" text-anchor="middle" fill="#9fe0bd" font-size="9.8">實點＝主要活躍定位；虛線走廊＝跨區非單線互動（各地發展並不同步，不確定路徑不畫成直系箭頭）</text>
         </svg>
       </div>
       <label class="js-only" for="s10-slider"><b>選擇時期滑桿（第 1 至 12 期）</b></label>

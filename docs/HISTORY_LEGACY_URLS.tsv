@@ -5,7 +5,7 @@ https://agama.buddhason.org/DA/DA02.htm	EXCLUDED_MIRROR_OR_REDUNDANT	E02	https:/
 https://suttacentral.net/dn16	KEPT	E01	https://suttacentral.net/dn16	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
 https://suttacentral.net/an4.180	KEPT	E01	https://suttacentral.net/an4.180	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
 https://cbetaonline.dila.edu.tw/zh/T0001	KEPT	E02	https://cbetaonline.dila.edu.tw/zh/T0001	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
-https://www.mahabodhi.org/files/yinshun/33/yinshun33-02.html	REPLACED_EQUIVALENT	E04B	https://discourse.suttacentral.net/t/the-more-i-look-at-the-mahapadesas-the-less-i-am-convinced-that-the-obvious-reading-is-the-right-one/28178	200	保留印順《原始佛教聖典之集成》章節書目定位並以 SuttaCentral 四大教法討論及原典平行互補
+https://www.mahabodhi.org/files/yinshun/33/yinshun33-02.html	KEPT	E04C	https://www.mahabodhi.org/files/yinshun/33/yinshun33-02.html	200	保留印順法師《原始佛教聖典之集成》原著可用網址（200 OK）並於 E04C 並列 CBETA Y0033 官方典藏；不再將 SuttaCentral 討論區文章充當印順原著之等效替代
 https://cbetaonline.dila.edu.tw/zh/T0006	RESTORED	E02	https://cbetaonline.dila.edu.tw/zh/T0006	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
 https://cbetaonline.dila.edu.tw/zh/T0007	RESTORED	E02	https://cbetaonline.dila.edu.tw/zh/T0007	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
 https://cbetaonline.dila.edu.tw/zh/T0125	RESTORED	E03	https://cbetaonline.dila.edu.tw/zh/T0125	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
@@ -58,7 +58,7 @@ https://academic.oup.com/icon/article/15/3/705/4582628	KEPT	E18	https://academic
 https://dlbs.liberal.ntu.edu.tw/search/search_detail.jsp?seq=679842	RESTORED	E18B	https://dlbs.liberal.ntu.edu.tw/search/search_detail.jsp?seq=679842	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
 https://www.unescoicdh.org/eng/print.php?listCnt=10&menukey=289&mod=view&no=37728&page=19&scode=00000005	RESTORED	E18B	https://www.unescoicdh.org/eng/print.php?listCnt=10&menukey=289&mod=view&no=37728&page=19&scode=00000005	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
 https://kuthodaw-texts.net/s/pali-texts/page/collection	RESTORED	E18B	https://kuthodaw-texts.net/s/pali-texts/page/collection	200	第二輪逐一檢核後完整恢復為可追蹤原始／研究連結（受 403/付費者標明取得限制）
-https://www.silkqin.com/02qnpu/40tyxs/ty28skj/ty28nattier.pdf	EXCLUDED_MIRROR_OR_REDUNDANT	E20B	https://doi.org/10.2143/JIABS.15.2.3286001	200	非官方個人網站轉載 PDF 不作為權威權利依賴，改維持 Nattier (1992) JIABS 官方 DOI 及 CBETA T223/T250/T251 原典逐句比對
+https://www.silkqin.com/02qnpu/40tyxs/ty28skj/ty28nattier.pdf	EXCLUDED_MIRROR_OR_REDUNDANT	E20D	https://www.shin-ibs.edu/documents/pwj4/1/4-9-Attwood.pdf	200	非官方個人網站轉載 PDF 不作為權威權利依賴，改維持 Nattier (1992) JIABS 官方 DOI（海德堡 Anubis PoW 標記 ACCESS_BLOCKED），並以授權公開之 Attwood (2020) Pacific World PDF 全文與 CBETA T223/T250/T251 互補
 https://doi.org/10.2143/JIABS.15.2.3286001	KEPT	E20B	https://doi.org/10.2143/JIABS.15.2.3286001	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
 https://doi.org/10.2143/JIABS.44.0.3290289	KEPT	E20B	https://doi.org/10.2143/JIABS.44.0.3290289	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口
 https://cbc.dila.edu.tw/cbc/	KEPT	E21	https://cbc.dila.edu.tw/cbc/	VERIFIED_IN_V2	自 v1.1 直接保留之原典或核心研究入口

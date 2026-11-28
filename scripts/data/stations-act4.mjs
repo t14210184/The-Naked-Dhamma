@@ -273,6 +273,6 @@ export const ACT4_STATIONS = [
       <p class="small">本網站多數原典已在公開平台逐條查核，但部分付費專書與論文目前僅依據公開摘要與目錄驗證，尚未完成全部寫本的獨立全書校勘；任何讀者發現可核對之勘誤，請依研究頁書目提出查證修正。</p>
     </div>
 
-    <nav class="station-nav" aria-label="站點 22 導覽"><p class="small">目前第 22／22 站 · 探索館終點</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#modern">← 上一站</a><a class="button secondary" href="./history-research.html">研究與完整書目頁</a><a class="button" href="#library">查看 39 組來源庫 →</a></div></nav>
+    <nav class="station-nav" aria-label="站點 22 導覽"><p class="small">目前第 22／22 站 · 探索館終點</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#modern">← 上一站</a><a class="button secondary" href="./history-research.html">研究與完整書目頁</a><a class="button" href="#library">查看 42 組來源庫 →</a></div></nav>
   </div></section>`
 ];
