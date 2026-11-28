@@ -1,374 +1,368 @@
-// Act 2 (Stations 08–12): Historical Detective Work & Early Schools
+// Act 2 (Stations 08–12): Real Museum Archaeology + Natural Earth Historical Geography
+import { ASIA_LAND_PATH, ASIA_LAKES_PATH, ASIA_PLACES } from "./asia-map-data.mjs";
+
+const p = ASIA_PLACES;
 
 export const ACT2_STATIONS = [
-  // S08
-  `<section id="evidence" class="chapter" data-station="8" tabindex="-1"><div class="container">
-    <div class="kicker">第 08 站 · 石刻、手稿與不同版本</div>
-    <h2>當歷史偵探</h2>
-    <p>傳世佛經歷經數百年口耳相傳與抄寫，有沒有不靠宗教傳說、能用物質材料獨立查證年代的線索？有！最重要的是西元前3世紀孔雀王朝阿育王石刻，以及西元前1至後4世紀的犍陀羅樺樹皮手稿。<a class="src" href="./history-research.html#c08-001">藍毘尼柱（C08-001）</a> <a class="src" href="./history-research.html#c08-002">銘文轉寫（C08-002）</a> <a class="src" href="./history-research.html#c08-003">拜拉特七經（C08-003）</a> <a class="src" href="./history-research.html#c08-004">拘那含柱（C08-004）</a> <a class="src" href="./history-research.html#c08-005">僧團詔令（C08-005）</a> <a class="src" href="./history-research.html#c08-006">犍陀羅寫本（C08-006）</a> <a class="src" href="./history-research.html#c08-007">LOC 2018305008（C08-007）</a></p>
+  // S08: Archaeological Artifact Magnifier
+  `<section id="evidence" class="chapter theme-archive" data-station="8" tabindex="-1"><div class="container">
+    <div class="kicker">第 08 關 · 真實古物放大尋寶</div>
+    <h2>不靠傳說，石柱和樹皮講什麼？</h2>
+    <p class="story-lead">如果不要只靠後人說的故事，世界上到底找不找得到真的摸得著、能測年代的佛教古董？有！兩件最重要的寶貝是兩千兩百多年前阿育王刻在石頭上的字，還有約兩千年前寫在樹皮上的古卷。</p>
+
     <div class="play">
-      <span class="kicker">真實史料放大鏡 · 先觀察實物，再開啟轉寫與限制</span>
-      <h3>切換五件可查證實物照片，使用放大與標註圖層</h3>
-      <div class="tab-row js-only" role="group" aria-label="選擇館藏實物">
-        <button type="button" data-artifact="lumbini" aria-pressed="true">IMG01 藍毘尼石柱銘文</button>
-        <button type="button" data-artifact="bhabra" aria-pressed="false">拜拉特石刻（提羅睺羅）</button>
-        <button type="button" data-artifact="nigali" aria-pressed="false">尼迦利薩格爾石柱</button>
-        <button type="button" data-artifact="sarnath" aria-pressed="false">鹿野苑分裂詔令</button>
-        <button type="button" data-artifact="gandhara" aria-pressed="false">IMG02 犍陀羅樺皮卷</button>
+      <span class="kicker">博物館放大尋寶台 · 自己放大照片找刻字，再點開看翻譯</span>
+      <div class="tab-row js-only" role="group" aria-label="選擇五張博物館真跡照片">
+        <button type="button" data-artifact="lumbini" aria-pressed="true">1. 誕生地石柱刻字</button>
+        <button type="button" data-artifact="bhabra" aria-pressed="false">2. 點名推薦七部經石刻</button>
+        <button type="button" data-artifact="nigali" aria-pressed="false">3. 紀念更早佛陀石柱</button>
+        <button type="button" data-artifact="sarnath" aria-pressed="false">4. 不准分裂僧團告示</button>
+        <button type="button" data-artifact="gandhara" aria-pressed="false">5. 寫在樺樹皮上的古經</button>
       </div>
+
       <figure class="artifact-fig">
-        <div class="artifact-stage" id="viewer-stage" tabindex="0" aria-label="史料影像檢視區，可用按鈕或鍵盤加號減號零及左右方向鍵縮放移動">
-          <img id="viewer-img" data-fallback src="assets/history/evidence/img01-rummindei-inscription.jpg" width="1000" height="662" loading="lazy" alt="1896年印度考古調查局拍攝的藍毘尼阿育王石柱五行婆羅米文石刻銘文近照">
+        <div class="artifact-stage" id="viewer-stage" tabindex="0" aria-label="博物館照片放大區，可用按鈕或鍵盤加減與方向鍵移動">
+          <img id="viewer-img" data-fallback src="assets/history/evidence/img01-rummindei-inscription.jpg" width="1000" height="662" loading="lazy" alt="1896年印度考古調查局拍攝的藍毘尼阿育王石柱五行古代石刻文字近照">
           <div class="img-fallback" id="viewer-fallback" hidden>
-            <p><strong>影像暫時無法載入（離線或網路受限）。</strong></p>
-            <p>您仍可透過官方館藏查閱：藍毘尼（UNESCO 666）、Hultzsch 1925 CII Vol. I（Archive.org）、犍陀羅 BL Or. 14915（Wikimedia Commons CC0）與 LOC 2018305008。</p>
+            <p><strong>照片暫時載入不到（可能是目前沒有連網）。</strong></p>
+            <p>您可以回到有網路時重開，或點下方來源連結直接看各地博物館官方收藏。</p>
           </div>
           <div class="artifact-overlay" id="viewer-overlay">
-            <span class="overlay-pill">藍毘尼（倫明代）阿育王石柱銘文（約前249年）（可關閉圖層，原圖像素未經AI修改）</span>
+            <span class="overlay-pill">藍毘尼石柱上的刻字（約兩千兩百多年前，真實古物照片未修圖）</span>
           </div>
         </div>
         <figcaption>
-          <p id="viewer-obs">先看實物：石柱表面刻有五行垂直整齊的古代幾何筆畫字母（婆羅米文），第2行右段可見「Budha Sakyamunī」字跡。</p>
-          <p id="viewer-cue" class="small"><strong>放大與行次對照：</strong>第 2 行右側刻「Budha Sakyamunī」；建議放大至 140%–180% 並搭配下方「顯示轉寫與譯意」對讀原刻位置。</p>
-          <p id="viewer-trans" class="note" hidden>轉寫與譯意：天愛喜見王登基第20年親自參訪禮敬，因『釋迦牟尼佛（Budha Sakyamunī）』生於此地而立石柱，減免藍毘尼村稅賦為八分之一。</p>
-          <p id="viewer-limit" class="small">權利與限制：Public Domain（ASI 1896）。證明前3世紀聖地認定；不證明出生走七步或出生年分。</p>
+          <p id="viewer-obs"><strong>先自己看圖找線索：</strong>石頭表面刻了五排整齊的古代文字，從上往下數第二排右邊，看得出「釋迦牟尼佛」的古老寫法。</p>
+          <p id="viewer-cue" class="small">放大提示：點下面「放大細節 ＋」到 140%–180%，看第二排右半段的石刻筆畫。</p>
+          <p id="viewer-trans" class="note" hidden>上面刻了什麼意思？國王登基第二十年親自來這裡禮敬，寫說因為「釋迦牟尼佛生在這個村子」，所以立柱紀念，並減免村裡稅金剩八分之一。</p>
+          <p id="viewer-limit" class="small">來源與限度：1896 年老檔案照片（已無版權限制）。證明公元前三世紀人們已認定這裡是佛陀誕生地，但沒有證明生在哪一年或出生走七步的神話。</p>
         </figcaption>
       </figure>
-      <div class="controls js-only" role="group" aria-label="影像放大與圖層控制">
-        <button type="button" id="viewer-zoom-in">放大 ＋</button>
+
+      <div class="controls js-only" role="group" aria-label="照片放大與掀開答案控制">
+        <button type="button" id="viewer-zoom-in">放大細節 ＋</button>
         <button type="button" id="viewer-zoom-out">縮小 −</button>
-        <button type="button" id="viewer-pan-left">← 左移</button>
-        <button type="button" id="viewer-pan-right">右移 →</button>
-        <button type="button" id="viewer-toggle-overlay" aria-pressed="true">顯示／隱藏標註圖層</button>
-        <button type="button" id="viewer-toggle-trans" aria-pressed="false">顯示轉寫與譯意</button>
-        <button type="button" id="viewer-reset">重設視圖</button>
+        <button type="button" id="viewer-pan-left">← 往左看</button>
+        <button type="button" id="viewer-pan-right">往右看 →</button>
+        <button type="button" id="viewer-toggle-overlay" aria-pressed="true">開關小標籤</button>
+        <button type="button" id="viewer-toggle-trans" aria-pressed="false">揭曉石頭上寫什麼</button>
+        <button type="button" id="viewer-reset">回到原本大小</button>
       </div>
-      <p id="viewer-zoom-status" class="small" role="status" aria-live="polite">目前縮放：100%</p>
+      <p id="viewer-zoom-status" class="small" role="status" aria-live="polite">目前大小：100%</p>
     </div>
+
     <div class="grid">
       <article class="card-box">
-        <span class="tag">A 考古實物 · IMG01</span>
-        <h3>藍毘尼阿育王石柱（約前249年）</h3>
-        <img src="assets/history/evidence/img01-lumbini-pillar.jpg" width="800" height="961" loading="lazy" alt="1896年印度考古調查局拍攝的藍毘尼阿育王石柱及其周圍遺跡黑白歷史照片" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small">館藏／來源：ASI 1896（Public Domain via Wikimedia Commons）；UNESCO 666。證明西元前3世紀已紀念釋迦牟尼誕生地，但未證實出生年份或走七步神話。<a href="#s-ashoka">見來源</a></p>
+        <span class="tag">真實歷史老照片</span>
+        <h3>藍毘尼的石柱現場</h3>
+        <img src="assets/history/evidence/img01-lumbini-pillar.jpg" width="800" height="961" loading="lazy" alt="1896年拍攝的藍毘尼石柱整根外觀與石刻位置全景老照片" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
+        <p class="small">1896 年考古隊拍到的石柱全景。它證實國王特地來立柱紀念釋迦牟尼出生地；至於這根柱子為什麼被後世埋進土裡又挖出來，那又是另一段考古大發現。</p>
       </article>
       <article class="card-box">
-        <span class="tag">A 考古實物 · IMG02</span>
-        <h3>犍陀羅樺樹皮手稿（西元前1–後1世紀）</h3>
-        <img src="assets/history/evidence/img02-gandhara-bl-or14915.jpg" width="1000" height="667" loading="lazy" alt="大英圖書館Or. 14915號西元1世紀犍陀羅語佉盧文樺樹皮手稿殘片實物影像" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small">館藏／來源：大英圖書館 BL Or. 14915（CC0）；另見 <a href="https://www.loc.gov/item/2018305008/" target="_blank" rel="noopener noreferrer">美國國會圖書館 2018305008（Public Domain Mark 1.0，官網對自動請求回傳 HTTP 403 屬技術存取受阻 ACCESS_BLOCKED，非版權禁止）</a>。Split 藏本《八千頌般若》C14 測年約 75 CE（2σ 47–147 CE）。<a href="./history-research.html#c08-007">見寫本命題</a> · <a href="#s-scroll">見來源</a></p>
+        <span class="tag">兩千歲樺樹皮真跡</span>
+        <h3>大犍陀羅的樹皮古經</h3>
+        <img src="assets/history/evidence/img02-gandhara-bl-or14915.jpg" width="1000" height="667" loading="lazy" alt="大英圖書館收藏的一世紀犍陀羅語樺樹皮古寫本六片殘卷" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
+        <p class="small">大英圖書館收藏的樹皮捲軸（約西元一世紀），寫著很早期的經典；美國國會圖書館也有類似藏品（網站防機器人擋住自動連線，想看高清原圖請直接到 <a href="https://www.loc.gov/item/2018305008/" target="_blank" rel="noopener noreferrer">國會圖書館官方頁面 ↗</a>）。</p>
       </article>
     </div>
-    <div class="table-wrap"><table role="table"><caption>阿育王四項核心碑銘證據與可確認範圍（對應原表 T07）</caption><thead><tr><th>碑銘證據</th><th>可以確認的歷史事實</th><th>不可自動推論的範圍</th></tr></thead><tbody>
-      <tr><th data-label="碑銘證據">藍毘尼石柱</th><td data-label="可以確認的歷史事實">王權支持佛教聖地與紀念活動</td><td data-label="不可自動推論的範圍">不證明佛陀出生走七步或全部佛傳生平</td></tr>
-      <tr><th data-label="碑銘證據">拜拉特（Bhabra）碑銘</th><td data-label="可以確認的歷史事實">國王推薦七項佛教教導供僧俗信眾學習（含羅睺羅妄語教誡）</td><td data-label="不可自動推論的範圍">不證明今日整部尼柯耶／阿含已於前3世紀逐字定本</td></tr>
-      <tr><th data-label="碑銘證據">僧團分裂相關詔令</th><td data-label="可以確認的歷史事實">王權以行政介入僧團秩序與分裂問題</td><td data-label="不可自動推論的範圍">不獨立證實南傳編年史第三次結集的全部細節</td></tr>
-      <tr><th data-label="碑銘證據">尼迦利薩格爾石柱</th><td data-label="可以確認的歷史事實">當時已存在過去佛（拘那含佛）信仰及佛塔崇拜</td><td data-label="不可自動推論的範圍">不證明過去佛神話傳記為歷史事實</td></tr>
-    </tbody></table></div>
-    <h3>實物寫本與編年史寫經年代必須切開</h3>
-    <p>大犍陀羅地區出土的樺樹皮卷（BL Or.14915、Senior、Bajaur 與 Split 藏本）整體跨越公元前1世紀至公元4世紀，是實存至今且可測年的物質手稿；相較之下，斯里蘭卡阿盧寺於前1世紀寫定巴利三藏的說法出於《大史》等數百年後的編年史記載，該批前1世紀原始貝葉早已散佚不存（較晚期藏經樓亦於1848年焚毀）。<a class="src" href="./history-research.html#gandhara-manuscripts">寫本與編年史對比</a></p>
-    <div class="play"><span class="kicker">情境挑戰 5／5 · 現代情境</span><h3>石柱記載此地是佛陀出生地，最有力的結論？</h3>
-      <div class="choices" role="group" aria-label="石柱記載此地是佛陀出生地，最有力的結論？">
-        <button type="button" data-feedback="碑文沒有記載也不可能證明走七步的神話故事。" aria-controls="q-evidence" aria-pressed="false">A．佛陀出生就走七步</button>
-        <button type="button" data-feedback="正確：這是實物碑銘直接支持的範圍（前3世紀聖地認定）。" aria-controls="q-evidence" aria-pressed="false">B．當時已有此聖地認定</button>
-        <button type="button" data-feedback="碑文未收錄全套佛經，亦不證明全部經典已定稿。" aria-controls="q-evidence" aria-pressed="false">C．全部佛經都已定稿</button>
-      </div>
-      <p class="result" id="q-evidence" role="status" aria-live="polite">點選答案，這裡會顯示理由。</p>
-      <p class="small"><strong>不按也能讀：</strong>B。一件實物只能支持與它性質相符的具體命題。</p>
+
+    <div class="source-door">
+      <p>📖 <strong>這些古物研究從哪裡來？</strong>來自孔雀王朝阿育王石刻實物報告與大英圖書館／雪梨大學犍陀羅寫本測年計畫。</p>
+      <a class="button secondary" href="./history-research.html#ashoka-inscriptions">看四座石刻＋古寫本完整考證 →</a>
     </div>
-    <nav class="station-nav" aria-label="站點 8 導覽"><p class="small">目前第 8／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#truth">← 上一站</a><a class="button secondary" href="./history-research.html#ashoka-inscriptions">研究詳頁</a><a class="button" href="#transmission">下一站 →</a></div></nav>
+
+    <details class="story-more">
+      <summary>想再多看一點：石柱和傳說寫經時間差在哪？</summary>
+      <p class="small">提醒一件事：斯里蘭卡流傳故事說前 1 世紀就用棕櫚葉寫下了全部巴利三藏，但那批前 1 世紀的原本早已不見，這件事也是幾百年後的編年史寫的。目前人類真的拿得到手裡測年、還看得到字的實物，最早就是這些比阿育王更晚一兩百年左右的樺樹皮古卷！</p>
+      <div class="table-wrap"><table role="table"><caption>阿育王四處石刻能證明什麼、又不能亂猜什麼</caption><thead><tr><th>石頭刻字</th><th>這塊石頭真的有講的事</th><th>不能多猜的範圍</th></tr></thead><tbody>
+        <tr><th data-label="石刻">藍毘尼石柱</th><td data-label="能證">西元前三世紀國王認定這裡是佛陀誕生聖地。</td><td data-label="限制">沒寫誕生那年是哪一年，也沒有寫走七步神話。</td></tr>
+        <tr><th data-label="石刻">拜拉特石刻</th><td data-label="能證">國王挑了七段教導推薦大家多讀（包含第 05 關對羅睺羅的故事）。</td><td data-label="限制">不證明當時整本巴利大藏經已一字不改定案。</td></tr>
+        <tr><th data-label="石刻">禁止分裂石柱</th><td data-label="能證">當時國王親自下令管理出家人的團體秩序。</td><td data-label="限制">不能單獨證明後代歷史書記載的第三次結集所有開會細節。</td></tr>
+        <tr><th data-label="石刻">尼迦利石柱</th><td data-label="能證">當時人們已經在拜過去出現過的佛陀（拘那含佛）與佛塔。</td><td data-label="限制">不證明過去幾位古佛的神話傳記當真在歷史上發生過。</td></tr>
+      </tbody></table></div>
+    </details>
+
+    <nav class="station-nav" aria-label="第 8 關導覽"><p class="small">目前第 8／22 關</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#truth">← 上一關</a><a class="button" href="#transmission">下一關：兩千年的傳話遊戲 →</a></div></nav>
   </div></section>`,
 
-  // S09
-  `<section id="transmission" class="chapter" data-station="9" tabindex="-1"><div class="container">
-    <div class="kicker">第 09 站 · 口傳不是錄音，也不是隨便亂編</div>
-    <h2>二千多年的傳話遊戲</h2>
-    <p>佛滅後數百年間，僧團靠口耳相傳保存教法。這是不是就像派對裡的「傳話遊戲」一傳就全走樣？Alexander Wynne（2004）研究指出，早期僧團對戒本與定型句採行高度紀律化的集體背誦與校對；但 Mark Allon（2022）與臺灣佛學期刊（越建東 2007；溫宗堃 2010）對比巴利與漢譯阿含，也確認經文確實經歷增刪、模板化編輯與改寫。<a class="src" href="./history-research.html#c09-001">口傳張力研究（C09-001）</a> <a class="src" href="#s-allon">來源索引</a></p>
+  // S09: Oral Transmission Circle Lab
+  `<section id="transmission" class="chapter theme-storybook" data-station="9" tabindex="-1"><div class="container">
+    <div class="kicker">第 09 關 · 沒錄音機的時代怎麼背兩百年？</div>
+    <h2>榕樹下的古代傳話實驗室</h2>
+    <p class="story-lead">佛陀過世後好幾百年都沒有寫成書，全靠一屆一屆用嘴巴背給下一屆聽！這是不是像派對上「耳語傳話」一樣越傳越歪？點進來看看四種完全不一樣的傳法結果！</p>
+
     <div class="play">
-      <span class="kicker">雙向口傳形成沙盒（教學玩具模型，非歷史統計機率）</span>
-      <h3>經典形成是「集體校對保守性」與「異文擴編」並存</h3>
-      <div class="scene" style="margin:10px 0">
-        <svg id="s09-flow-svg" viewBox="0 0 460 205" role="img" aria-labelledby="s09-diag-t s09-diag-d">
-          <title id="s09-diag-t">經典傳遞與變遷三節點互動流程圖（V02 升級）</title>
-          <desc id="s09-diag-d">依所選口傳機制（耳語、集體合誦、跨語翻譯、爭議編整）即時呈現三節點文本如何保留或偏移。</desc>
-          <rect width="460" height="205" rx="14" fill="#173832"/>
-          <g id="s09-node-1"><rect x="14" y="22" width="128" height="72" rx="10" fill="#224a42" stroke="#9fe0bd" stroke-width="2"/><text x="78" y="42" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">節點 1｜初期傳述</text><text id="s09-n1-txt" x="78" y="64" fill="#f8f5ee" font-size="11" font-weight="700" text-anchor="middle">早期教導／定型句</text><text id="s09-n1-sub" x="78" y="82" fill="#b7e3ca" font-size="9.5" text-anchor="middle">共同起點</text></g>
-          <g id="s09-node-2"><rect id="s09-n2-box" x="166" y="22" width="128" height="72" rx="10" fill="#224a42" stroke="#9fe0bd" stroke-width="2"/><text x="230" y="42" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">節點 2｜傳遞機制</text><text id="s09-n2-txt" x="230" y="64" fill="#f8f5ee" font-size="11" font-weight="700" text-anchor="middle">集體合誦或語際轉譯</text><text id="s09-n2-sub" x="230" y="82" fill="#b7e3ca" font-size="9.5" text-anchor="middle">請點選下方情境</text></g>
-          <g id="s09-node-3"><rect id="s09-n3-box" x="318" y="22" width="128" height="72" rx="10" fill="#224a42" stroke="#9fe0bd" stroke-width="2"/><text x="382" y="42" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">節點 3｜現存文本</text><text id="s09-n3-txt" x="382" y="64" fill="#f8f5ee" font-size="11" font-weight="700" text-anchor="middle">平行核心與異文並存</text><text id="s09-n3-sub" x="382" y="82" fill="#b7e3ca" font-size="9.5" text-anchor="middle">非全真亦非全假</text></g>
-          <path id="s09-arrow1" d="M142 58 H166" stroke="#ecc98e" stroke-width="3"/><polygon points="160,53 166,58 160,63" fill="#ecc98e"/>
-          <path id="s09-arrow2" d="M294 58 H318" stroke="#ecc98e" stroke-width="3"/><polygon points="312,53 318,58 312,63" fill="#ecc98e"/>
-          <rect x="24" y="114" width="412" height="44" rx="10" fill="#102924" stroke="#7a9186" stroke-width="1.5"/>
-          <text id="s09-svg-badge" x="230" y="140" fill="#ffd48b" font-size="11.5" font-weight="700" text-anchor="middle">初始狀態：點按四個按鈕，看文句如何經各節點穩定保存或漂移</text>
-          <text x="230" y="185" text-anchor="middle" fill="#b7e3ca" font-size="10.5">雙向互動模型：整齊完整不等於更原始（臺灣佛學定型句研究 × Allon 2022 × Wynne 2004）</text>
-        </svg>
+      <span class="kicker">傳話圈實驗 · 選一種傳法方式，看話繞一圈變成什麼樣子</span>
+      <div class="story-stage">
+        <img class="stage-art" src="assets/history/illustrations/s09-village-circle.webp" width="1200" height="675" loading="lazy" alt="陽光透進大榕樹林，五位僧侶與村民圍坐草蓆上把一捲古書輕輕往下傳遞（現代繪本插畫）">
+        <div class="stage-overlay-row">
+          <span class="badge ok" id="s09-mode-pill">目前測試：還沒有開始傳話</span>
+        </div>
+        <div class="three" style="padding:10px 12px">
+          <div class="node" id="s09-card-1"><span class="actor-badge">起點的話</span><p id="s09-n1-txt" style="margin:4px 0;font-weight:700">「這句教導很重要」</p></div>
+          <div class="node" id="s09-card-2"><span class="actor-badge">怎麼傳？</span><p id="s09-n2-txt" style="margin:4px 0;font-weight:700">點下方選傳遞方式</p></div>
+          <div class="node" id="s09-card-3"><span class="actor-badge">繞一圈之後</span><p id="s09-n3-txt" style="margin:4px 0;font-weight:700">結果會出現在這裡</p></div>
+        </div>
       </div>
-      <div class="controls js-only" role="group" aria-label="模擬不同傳承情境">
-        <button type="button" data-txmode="whisper" aria-pressed="false">1. 單人耳語傳話</button>
-        <button type="button" data-txmode="chorus" aria-pressed="false">2. 集體合誦校對</button>
-        <button type="button" data-txmode="translate" aria-pressed="false">3. 跨語言翻譯轉換</button>
-        <button type="button" data-txmode="expand" aria-pressed="false">4. 因應爭議編輯增補</button>
-        <button type="button" id="s09-reset">重設沙盒</button>
+
+      <div class="controls js-only" role="group" aria-label="測試四種口傳方式">
+        <button type="button" data-txmode="whisper" aria-pressed="false">1. 悄悄說給下一個人聽</button>
+        <button type="button" data-txmode="chorus" aria-pressed="false">2. 一大群人定期一起大聲念</button>
+        <button type="button" data-txmode="translate" aria-pressed="false">3. 翻譯成外國語言</button>
+        <button type="button" data-txmode="expand" aria-pressed="false">4. 遇到新問題時補進新條文</button>
+        <button type="button" id="s09-reset">再玩一次</button>
       </div>
-      <p id="s09-out" class="result" role="status" aria-live="polite">請選擇上方情境，比較「集體穩定保存」與「邊緣異文增刪」（示範模擬，非歷史機率）。</p>
+      <p id="s09-out" class="result" role="status" aria-live="polite">點選上面四個按鈕，就能看出「集體背書很穩」和「細節還是會慢慢多出來」為什麼會同時發生！</p>
     </div>
-    <div class="table-wrap"><table role="table"><caption>影響佛教傳承真實性的十一個主要因素（對應原表 T02）</caption><thead><tr><th>影響因素</th><th>可能造成的結果</th></tr></thead><tbody>
-      <tr><th data-label="影響因素">長期口耳相傳</th><td data-label="可能造成的結果">遺漏、記憶偏差、內容擴寫（整齊亦可能源於後期模板化編集）</td></tr>
-      <tr><th data-label="影響因素">語言與文字轉換</th><td data-label="可能造成的結果">原始概念被重新解釋</td></tr>
-      <tr><th data-label="影響因素">宗派競爭</th><td data-label="可能造成的結果">新增支持自身立場的教義；消失派別僅剩對手描述</td></tr>
-      <tr><th data-label="影響因素">政治權力介入</th><td data-label="可能造成的結果">選擇性保存、禁止或改造經典</td></tr>
-      <tr><th data-label="影響因素">戰爭與宗教迫害</th><td data-label="可能造成的結果">寺院、文獻與傳承者消失</td></tr>
-      <tr><th data-label="影響因素">經濟與生存需求</th><td data-label="可能造成的結果">宗教儀式、祈福與喪葬服務增加</td></tr>
-      <tr><th data-label="影響因素">地方文化融合</th><td data-label="可能造成的結果">吸收當地神祇、習俗與價值觀</td></tr>
-      <tr><th data-label="影響因素">性別與社會階級</th><td data-label="可能造成的結果">教義及出家制度受到社會結構影響</td></tr>
-      <tr><th data-label="影響因素">祖師權威與正統競爭</th><td data-label="可能造成的結果">建構祖師世系、追溯神聖來源</td></tr>
-      <tr><th data-label="影響因素">後世抄寫與編輯</th><td data-label="可能造成的結果">註解混入正文、不同版本合併</td></tr>
-      <tr><th data-label="影響因素">殖民與現代化</th><td data-label="可能造成的結果">佛教被重新包裝成哲學、科學或民族文化</td></tr>
-    </tbody></table></div>
-    <aside class="note"><b>存活者偏差</b><p>假設十個傳承中只有兩個經歷戰亂和淘汰存活下來，後人不能反推「原來只有這兩派」。這是歷史推論原則，無法給出具體淘汰比例。</p></aside>
-    <nav class="station-nav" aria-label="站點 9 導覽"><p class="small">目前第 9／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#evidence">← 上一站</a><a class="button secondary" href="./history-research.html#oral-transmission">研究詳頁</a><a class="button" href="#history">下一站 →</a></div></nav>
+
+    <div class="story-takeaway">
+      <h3>兩句話記住：既不會隨便全改掉，也不是一字不差</h3>
+      <p>一方面，研究口傳的學者（如 Alexander Wynne）發現，古代出家人其實很像音樂合唱團一樣定期集體對詞、互相盯著有沒有背漏，所以核心骨幹滿穩的。另一方面，比較巴利文跟中文版本的學者也發現，很多重複的排比句型、翻譯改寫和後來補充的分類還是默默加了進去——所以<strong>背得整整齊齊，不等於那段就是最早的原本！</strong></p>
+    </div>
+
+    <div class="source-door">
+      <p>📖 <strong>這段研究從哪裡來？</strong>整合古代佛教口傳記憶機制與巴利漢譯對讀研究。</p>
+      <a class="button secondary" href="./history-research.html#oral-transmission">看口傳研究論文與對讀細節 →</a>
+    </div>
+
+    <details class="story-more">
+      <summary>想再多看一點：還有哪 11 種生活現實會悄悄改變流傳下來的書？</summary>
+      <p class="small">另外記住一個道理：如果古代十個流派裡有八個在戰爭裡消失了，只剩兩個活到今天，我們不能因為今天只看到這兩個，就以為兩千年前原本只有這兩家（學者稱這種看不見死角叫「存活者偏差」）。</p>
+      <div class="table-wrap"><table role="table"><caption>讓古代文獻慢慢產生變化的十一種力量</caption><thead><tr><th>影響原因</th><th>可能讓後來的人看到什麼變化</th></tr></thead><tbody>
+        <tr><th data-label="原因">口耳傳很久</th><td data-label="變化">容易掉字、記錯，或是用好背的固定模板越補越長</td></tr>
+        <tr><th data-label="原因">換成別的語言文字</th><td data-label="變化">原本的意思被借用新語言的習慣來理解</td></tr>
+        <tr><th data-label="原因">不同派別彼此競爭</th><td data-label="變化">各自加上支持自己的故事；輸掉或消失的派別，只剩別人在罵他的紀錄</td></tr>
+        <tr><th data-label="原因">國王跟官府介入</th><td data-label="變化">挑自己喜歡的保存，把不喜歡的刪掉或改寫</td></tr>
+        <tr><th data-label="原因">打仗與災禍</th><td data-label="變化">廟宇被燒，住那裡的人跟書一起不見</td></tr>
+        <tr><th data-label="原因">寺廟要吃飯活下去</th><td data-label="變化">祈福、超度與喪禮儀式越加越多</td></tr>
+        <tr><th data-label="原因">入境隨俗當地文化</th><td data-label="變化">吸收當地的神明、家庭觀念與過節習慣</td></tr>
+        <tr><th data-label="原因">男女與階級觀念</th><td data-label="變化">規矩受到當地社會風俗影響</td></tr>
+        <tr><th data-label="原因">立祖師品牌講正統</th><td data-label="變化">替早年歷史補寫清楚的「第一代傳到第幾代」名單</td></tr>
+        <tr><th data-label="原因">後人抄寫不小心或熱心</th><td data-label="變化">旁邊的讀書筆記不小心被下個抄書人抄進正文裡</td></tr>
+        <tr><th data-label="原因">近代碰上科學跟殖民</th><td data-label="變化">被重新包裝成「心靈科學」或「減壓生活哲學」</td></tr>
+      </tbody></table></div>
+    </details>
+
+    <nav class="station-nav" aria-label="第 9 關導覽"><p class="small">目前第 9／22 關</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#evidence">← 上一關</a><a class="button" href="#history">下一關：兩千五百年的地圖旅行 →</a></div></nav>
   </div></section>`,
 
-  // S10
-  `<section id="history" class="chapter" data-station="10" tabindex="-1"><div class="container">
-    <div class="kicker">第 10 站 · 從印度到世界各地</div>
-    <h2>把時間拉到兩千多年</h2>
-    <p>歷史上的喬達摩大約活動於西元前5世紀，但從佛陀入滅到阿育王石刻（前3世紀中葉）之間相隔約一個半世紀，是史料最薄弱的斷層。這裡整合現代學術約略年代（不採單一宗派佛曆，且各地區發展不同步）、佛陀生平證據評估，以及歷次結集的不同記載。<a class="src" href="./history-research.html#c10-001">歷史佛陀（C10-001）</a> <a class="src" href="./history-research.html#c10-002">十二時期（C10-002）</a> <a class="src" href="./history-research.html#c10-003">結集分析（C10-003）</a></p>
+  // S10: TEMPLATE FLAGSHIP 2 — Real Natural Earth Asia Coastline Map + Stepped Historical Explorer
+  `<section id="history" class="chapter theme-atlas" data-station="10" tabindex="-1"><div class="container">
+    <div class="kicker">第 10 關 · 帶著真實亞洲地圖去時光旅行</div>
+    <h2>兩千五百年的亞洲探索之旅</h2>
+    <p class="story-lead">佛教從北印度出發後，並沒有像一條直線那樣照順序慢慢傳開，而是同一時期在不同地方各自長出不一樣的樣子！拉動時間軸或按播放，看這張真實亞洲海岸線地圖上的各個城市怎麼依時代一一亮起來。</p>
+
     <div class="play">
-      <span class="kicker">互動歷史地圖與 12 時期時間滑桿（示意地理定位，不代表現代或古代精確國界）</span>
-      <h3>拖動或點按切換 12 個歷史時期</h3>
-      <div class="map-box">
-        <svg viewBox="0 0 480 280" role="img" aria-labelledby="s10-map-t s10-map-d">
-          <title id="s10-map-t">佛教跨區域多點發展與不確定路線圖（教學示意，非單線血統圖）</title>
-          <desc id="s10-map-d">簡化亞洲地圖標示恒河中游、大犍陀羅、斯里蘭卡、中亞絲路、西藏喜馬拉雅、東南亞、漢地、日本及臺灣，並以虛線弧標示非單線且具史料不確定性的區域傳播走廊。</desc>
-          <rect width="480" height="280" rx="14" fill="#173832"/>
-          <!-- Stylized regional geographic basins -->
-          <path d="M88 68 Q145 50 198 86 L224 128 L194 198 L166 218 L142 162 L100 122 Z" fill="#2c5950" stroke="#7a9186" stroke-width="1.5"/>
-          <path d="M126 50 Q210 30 296 64 L276 86 L186 76 Z" fill="#21463e" stroke="#7a9186" stroke-width="1.2" stroke-dasharray="4 3"/>
-          <path d="M196 86 Q254 72 308 82 L378 96 L368 166 L312 172 L254 142 Z" fill="#274e46" stroke="#7a9186" stroke-width="1.5"/>
-          <path d="M250 152 L302 168 L296 226 L260 218 L244 182 Z" fill="#2c5950" stroke="#7a9186" stroke-width="1.5"/>
-          <ellipse cx="192" cy="226" rx="11" ry="13" fill="#3b6e63" stroke="#9fe0bd" stroke-width="1.5"/>
-          <path d="M406 106 Q422 116 414 144" fill="none" stroke="#3b6e63" stroke-width="6" stroke-linecap="round"/>
-          <ellipse cx="382" cy="168" rx="7" ry="12" fill="#3b6e63" stroke="#9fe0bd" stroke-width="1.5"/>
-          <!-- Dashed multi-corridor routes (uncertainty marked) -->
-          <path id="s10-route-nw" d="M178 140 Q145 120 124 96 Q180 46 322 104" fill="none" stroke="#b7e3ca" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="5 4"/>
-          <path id="s10-route-sea" d="M178 145 Q172 192 192 222 Q232 228 272 194 Q326 172 342 146" fill="none" stroke="#b7e3ca" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="5 4"/>
-          <path id="s10-route-himalaya" d="M186 132 Q220 116 250 110 Q296 108 326 116" fill="none" stroke="#ecc98e" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="3 4"/>
-          <g fill="#d7dfd4" font-size="9.5" font-weight="600">
-            <text x="116" y="88">大犍陀羅</text>
-            <text x="196" y="46">中亞絲路走廊（虛線＝多分支）</text>
-            <text x="164" y="138">北印／摩揭陀</text>
-            <text x="228" y="230">斯里蘭卡</text>
-            <text x="242" y="114">西藏／喜馬拉雅</text>
-            <text x="328" y="116">漢地（長安・建康）</text>
-            <text x="272" y="200">東南亞</text>
-            <text x="424" y="128">日本</text>
-            <text x="395" y="172">臺灣</text>
+      <span class="kicker">真實地理地圖 × 12 段時光旅行（Natural Earth 1:50m 公版地理底圖，非古代國界）</span>
+      <div class="atlas-stage">
+        <svg id="s10-atlas-svg" viewBox="0 0 800 500" role="img" aria-labelledby="s10-map-t s10-map-d">
+          <title id="s10-map-t">佛教兩千五百年亞洲真實海岸線互動歷史地圖</title>
+          <desc id="s10-map-d">採用 Natural Earth 1:50m 公版陸地與湖泊資料繪製的印度、斯里蘭卡、東南亞、西藏、中國、日本與臺灣地理底圖，隨時代切換顯示各地城市、手稿與歷史傳播走廊。</desc>
+          <rect class="atlas-sea" width="800" height="500" rx="12"/>
+          <path class="atlas-land" d="${ASIA_LAND_PATH}"/>
+          <path class="atlas-lake" d="${ASIA_LAKES_PATH}"/>
+
+          <!-- Uncertain / Dashed Multiple Historical Corridors (no false straight arrows) -->
+          <path id="s10-route-nw" class="atlas-route" d="M${p.magadha[0]} ${p.magadha[1]} Q135 160 ${p.gandhara[0]} ${p.gandhara[1]} Q195 62 ${p.dunhuang[0]} ${p.dunhuang[1]} Q370 92 ${p.changan[0]} ${p.changan[1]} L${p.nanjing[0]} ${p.nanjing[1]}" fill="none" stroke="#9e5a1f" stroke-opacity="0.25" stroke-width="3" stroke-dasharray="8 6"/>
+          <path id="s10-route-sea" class="atlas-route" d="M${p.magadha[0]} ${p.magadha[1]} Q182 325 ${p.anuradhapura[0]} ${p.anuradhapura[1]} Q272 425 ${p.ayutthaya[0]} ${p.ayutthaya[1]} Q465 365 ${p.nanjing[0]} ${p.nanjing[1]}" fill="none" stroke="#18594b" stroke-opacity="0.25" stroke-width="3" stroke-dasharray="8 6"/>
+          <path id="s10-route-him" class="atlas-route" d="M${p.magadha[0]} ${p.magadha[1]} Q246 196 ${p.samye[0]} ${p.samye[1]} Q360 155 ${p.changan[0]} ${p.changan[1]}" fill="none" stroke="#7d4a82" stroke-opacity="0.22" stroke-width="2.5" stroke-dasharray="5 6"/>
+
+          <!-- Real Latitude/Longitude Pin Landmarks -->
+          <g font-size="11.5" font-weight="750" fill="#243330">
+            <g class="map-pin" id="pin-lumbini"><circle cx="${p.lumbini[0]}" cy="${p.lumbini[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.lumbini[0]-12}" y="${p.lumbini[1]-8}" text-anchor="end">藍毘尼</text></g>
+            <g class="map-pin" id="pin-magadha"><circle cx="${p.magadha[0]}" cy="${p.magadha[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.magadha[0]+8}" y="${p.magadha[1]+14}">摩揭陀・那爛陀</text></g>
+            <g class="map-pin" id="pin-gandhara"><circle cx="${p.gandhara[0]}" cy="${p.gandhara[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.gandhara[0]+8}" y="${p.gandhara[1]+4}">大犍陀羅</text></g>
+            <g class="map-pin" id="pin-anuradhapura"><circle cx="${p.anuradhapura[0]}" cy="${p.anuradhapura[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.anuradhapura[0]+8}" y="${p.anuradhapura[1]+4}">斯里蘭卡</text></g>
+            <g class="map-pin" id="pin-samye"><circle cx="${p.samye[0]}" cy="${p.samye[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.samye[0]+8}" y="${p.samye[1]-4}">桑耶寺</text></g>
+            <g class="map-pin" id="pin-dunhuang"><circle cx="${p.dunhuang[0]}" cy="${p.dunhuang[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.dunhuang[0]+8}" y="${p.dunhuang[1]+4}">敦煌</text></g>
+            <g class="map-pin" id="pin-mandalay"><circle cx="${p.mandalay[0]}" cy="${p.mandalay[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.mandalay[0]+8}" y="${p.mandalay[1]+4}">緬甸</text></g>
+            <g class="map-pin" id="pin-ayutthaya"><circle cx="${p.ayutthaya[0]}" cy="${p.ayutthaya[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.ayutthaya[0]+8}" y="${p.ayutthaya[1]+4}">泰國東南亞</text></g>
+            <g class="map-pin" id="pin-changan"><circle cx="${p.changan[0]}" cy="${p.changan[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.changan[0]-8}" y="${p.changan[1]-8}" text-anchor="end">長安</text></g>
+            <g class="map-pin" id="pin-nanjing"><circle cx="${p.nanjing[0]}" cy="${p.nanjing[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.nanjing[0]+8}" y="${p.nanjing[1]-4}">建康(南京)</text></g>
+            <g class="map-pin" id="pin-taipei"><circle cx="${p.taipei[0]}" cy="${p.taipei[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.taipei[0]+8}" y="${p.taipei[1]+4}">臺灣</text></g>
+            <g class="map-pin" id="pin-kyoto"><circle cx="${p.kyoto[0]}" cy="${p.kyoto[1]}" r="4.5" fill="#fffdf7" stroke="#243330" stroke-width="1.8"/><text x="${p.kyoto[0]+8}" y="${p.kyoto[1]+4}">日本</text></g>
           </g>
-          <circle id="s10-map-ring" cx="185" cy="145" r="18" fill="none" stroke="#ffd48b" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="3 3"/>
-          <circle id="s10-map-dot" cx="185" cy="145" r="9.5" fill="#ecc98e" stroke="#14171a" stroke-width="2.5"/>
-          <circle id="s10-map-dot2" cx="185" cy="145" r="6" fill="#9fe0bd" stroke="#14171a" stroke-width="2" opacity="0"/>
-          <text id="s10-map-label" x="185" y="123" text-anchor="middle" fill="#ffd48b" font-size="11.5" font-weight="800">前600–400</text>
-          <rect x="12" y="248" width="456" height="24" rx="6" fill="#102924" stroke="#7a9186" stroke-width="1"/>
-          <text id="s10-era-note-svg" x="240" y="264" text-anchor="middle" fill="#9fe0bd" font-size="9.8">實點＝主要活躍定位；虛線走廊＝跨區非單線互動（各地發展並不同步，不確定路徑不畫成直系箭頭）</text>
+
+          <!-- Primary & Secondary Active Era Highlight Pins -->
+          <circle id="s10-map-ring" cx="${p.lumbini[0]}" cy="${p.lumbini[1]}" r="22" fill="#e6a23c" fill-opacity="0.22" stroke="#b36500" stroke-width="2.5" stroke-dasharray="4 3"/>
+          <circle id="s10-map-dot" cx="${p.lumbini[0]}" cy="${p.lumbini[1]}" r="10.5" fill="#d97706" stroke="#fffdf7" stroke-width="2.5"/>
+          <circle id="s10-map-dot2" cx="${p.magadha[0]}" cy="${p.magadha[1]}" r="7.5" fill="#15803d" stroke="#fffdf7" stroke-width="2" opacity="0"/>
+          <rect x="14" y="454" width="772" height="32" rx="8" fill="#182b27" fill-opacity="0.9"/>
+          <text id="s10-era-note-svg" x="400" y="475" text-anchor="middle" fill="#fffdf7" font-size="12.5" font-weight="700">現代真實海岸底圖（非古代國界）；虛線代表多條可能路徑與未定史實</text>
         </svg>
+        <div class="stage-overlay-row">
+          <span class="badge ok" id="s10-time">西元前 600–400 年（第 1／12 站）</span>
+          <button type="button" id="s10-autoplay" class="js-only" aria-pressed="false">▶ 沿時間軸播放</button>
+        </div>
       </div>
-      <label class="js-only" for="s10-slider"><b>選擇時期滑桿（第 1 至 12 期）</b></label>
+
+      <label class="js-only" for="s10-slider"><b>拉動這條時光軸，看各地事件接連亮起：</b></label>
       <input class="js-only" id="s10-slider" type="range" min="0" max="11" value="0">
       <div class="controls js-only">
-        <button type="button" id="s10-prev">← 上一時期</button>
-        <button type="button" id="s10-next">下一時期 →</button>
+        <button type="button" id="s10-prev">← 上一個時代</button>
+        <button type="button" id="s10-next">下一個時代 →</button>
       </div>
-      <div class="tab-row js-only" role="group" aria-label="快速選取時期">
-        <button type="button" data-era="0" aria-pressed="true">前600–400</button>
-        <button type="button" data-era="2" aria-pressed="false">前268–232阿育王</button>
-        <button type="button" data-era="4" aria-pressed="false">前100–後200手稿</button>
-        <button type="button" data-era="7" aria-pressed="false">500–1000密教唐宋</button>
-        <button type="button" data-era="11" aria-pressed="false">1900至今</button>
+      <div class="tab-row js-only" role="group" aria-label="直接跳到重要時代">
+        <button type="button" data-era="0" aria-pressed="true">前5世紀｜沙門與佛陀</button>
+        <button type="button" data-era="2" aria-pressed="false">前3世紀｜阿育王石刻</button>
+        <button type="button" data-era="4" aria-pressed="false">1世紀｜最早樹皮書卷</button>
+        <button type="button" data-era="7" aria-pressed="false">6–10世紀｜漢地吐蕃並行</button>
+        <button type="button" data-era="11" aria-pressed="false">近現代｜臺灣與全世界</button>
       </div>
       <div class="result" role="status" aria-live="polite">
-        <strong id="s10-time">前600–400（第 1／12 期）</strong>
-        <p id="s10-title" style="margin:4px 0">沙門運動與歷史佛陀｜地區：恒河中游（今北印／尼泊爾南）</p>
-        <p id="s10-info" class="small" style="margin:0">史料可信：高；生平細節未定 — 喬達摩在多元沙門競爭環境中教導；佛滅確切年份仍有約前5世紀區間爭議。</p>
+        <strong id="s10-title">沙門運動與歷史上的佛陀｜活躍地帶：恒河中游（今北印／尼泊爾南）</strong>
+        <p id="s10-info" style="margin:6px 0 0">真找得到什麼？確定有位喬達摩在北印度教導大家離苦的方法；但具體生平細節跟過世那一年，現在還是只能抓個大約範圍。</p>
       </div>
     </div>
-    <h3>一、歷史上的釋迦牟尼：究竟知道多少？（對應原表 T04）</h3>
-    <div class="table-wrap"><table role="table"><caption>流傳說法 · 歷史證據評估（Bechert / Gombrich 等指出佛滅約在西元前5世紀，約前405說尚無單一共識）</caption><thead><tr><th>流傳說法</th><th>歷史證據評估</th></tr></thead><tbody>
-      <tr><th data-label="流傳說法">曾有一位稱為喬達摩的修行導師</th><td data-label="歷史證據評估">高</td></tr>
-      <tr><th data-label="流傳說法">活動於古印度北部及今尼泊爾南部一帶</th><td data-label="歷史證據評估">高</td></tr>
-      <tr><th data-label="流傳說法">建立修行者團體並傳授解脫方法</th><td data-label="歷史證據評估">高</td></tr>
-      <tr><th data-label="流傳說法">出身具有一定社會地位的釋迦族</th><td data-label="歷史證據評估">中高</td></tr>
-      <tr><th data-label="流傳說法">是現代人理解的王國王子</th><td data-label="歷史證據評估">中低（可能有後世王室化描寫）</td></tr>
-      <tr><th data-label="流傳說法">29歲出家、35歲成道、80歲入滅</th><td data-label="歷史證據評估">傳統記載，精確年齡未獲獨立證實</td></tr>
-      <tr><th data-label="流傳說法">出生時走七步並宣告天上天下唯我獨尊</th><td data-label="歷史證據評估">無獨立歷史證據</td></tr>
-      <tr><th data-label="流傳說法">菩提樹下遭遇魔王及超自然事件</th><td data-label="歷史證據評估">歷史方法無法驗證</td></tr>
-      <tr><th data-label="流傳說法">具有宿命通、天眼通等神通</th><td data-label="歷史證據評估">歷史方法無法驗證</td></tr>
-      <tr><th data-label="流傳說法">後世佛傳的全部對話及事件</th><td data-label="歷史證據評估">不可直接當成逐字史實</td></tr>
-    </tbody></table></div>
-    <h3>二、佛教歷史十二時期全表（對應原表 T03）</h3>
-    <div class="table-wrap"><table role="table"><caption>時期 · 主要歷史發展 · 史料可信程度</caption><thead><tr><th>時期</th><th>主要歷史發展</th><th>史料可信程度</th></tr></thead><tbody>
-      <tr><th data-label="時期">西元前600～400年</th><td data-label="主要歷史發展">古印度沙門運動興起，釋迦牟尼活動於此環境</td><td data-label="史料可信程度">高；個人生平細節較低</td></tr>
-      <tr><th data-label="時期">西元前400～300年</th><td data-label="主要歷史發展">佛陀入滅後，僧團口傳、戒律爭議與早期分化</td><td data-label="史料可信程度">中</td></tr>
-      <tr><th data-label="時期">西元前268～232年左右</th><td data-label="主要歷史發展">阿育王統治，佛教獲得強大政治支持</td><td data-label="史料可信程度">極高</td></tr>
-      <tr><th data-label="時期">西元前300～100年</th><td data-label="主要歷史發展">部派佛教逐漸發展，各自傳承經律</td><td data-label="史料可信程度">高</td></tr>
-      <tr><th data-label="時期">西元前100～西元200年</th><td data-label="主要歷史發展">早期佛教手稿、大乘經典逐漸出現</td><td data-label="史料可信程度">高</td></tr>
-      <tr><th data-label="時期">西元100～500年</th><td data-label="主要歷史發展">大乘思想、般若、中觀、瑜伽行派逐漸發展</td><td data-label="史料可信程度">高</td></tr>
-      <tr><th data-label="時期">西元100～600年</th><td data-label="主要歷史發展">佛教廣泛進入中國、中亞、朝鮮、日本</td><td data-label="史料可信程度">高</td></tr>
-      <tr><th data-label="時期">西元500～1000年</th><td data-label="主要歷史發展">印度密教發展，漢地宗派與藏傳佛教成形</td><td data-label="史料可信程度">高</td></tr>
-      <tr><th data-label="時期">西元1000～1300年</th><td data-label="主要歷史發展">印度大型寺院衰退；斯里蘭卡僧團重整</td><td data-label="史料可信程度">高</td></tr>
-      <tr><th data-label="時期">西元1200～1600年</th><td data-label="主要歷史發展">上座部佛教在東南亞多地確立主流地位</td><td data-label="史料可信程度">高</td></tr>
-      <tr><th data-label="時期">西元1600～1900年</th><td data-label="主要歷史發展">國家宗教制度、殖民統治、宗派改革</td><td data-label="史料可信程度">極高</td></tr>
-      <tr><th data-label="時期">西元1900年至今</th><td data-label="主要歷史發展">佛教現代化、人間佛教、全球禪修與心理學化</td><td data-label="史料可信程度">極高</td></tr>
-    </tbody></table></div>
-    <h3>三、歷次佛教結集可靠嗎？（對應原表 T05）</h3>
-    <div class="table-wrap"><table role="table"><caption>結集 · 傳統敘述 · 歷史學評估</caption><thead><tr><th>結集</th><th>傳統敘述</th><th>歷史學評估</th></tr></thead><tbody>
-      <tr><th data-label="結集">第一次結集</th><td data-label="傳統敘述">佛滅後500阿羅漢共同背誦經律</td><td data-label="歷史學評估">多部律藏共有集體傳誦記憶，但1974年結集史研究等對會議細節與完整經藏當時完成之說高度存疑</td></tr>
-      <tr><th data-label="結集">第二次結集</th><td data-label="傳統敘述">約百年後因戒律問題召開會議</td><td data-label="歷史學評估">具較強歷史基礎，但是否直接造成第一次部派分裂仍有爭議</td></tr>
-      <tr><th data-label="結集">第三次結集</th><td data-label="傳統敘述">阿育王支持僧團清除異端（主要據南傳史書記載）</td><td data-label="歷史學評估">王權介入僧團秩序有碑銘支持；南傳《善見律》會議細節非所有部派共認，欠獨立佐證</td></tr>
-      <tr><th data-label="結集">第四次結集</th><td data-label="傳統敘述">完成經典書寫或論藏整理</td><td data-label="歷史學評估">南傳斯里蘭卡與北傳迦膩色伽王所稱第四次結集實屬不同事件，不可混談</td></tr>
-    </tbody></table></div>
-    <nav class="station-nav" aria-label="站點 10 導覽"><p class="small">目前第 10／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#transmission">← 上一站</a><a class="button secondary" href="./history-research.html#chronology">研究詳頁</a><a class="button" href="#branches">下一站 →</a></div></nav>
+
+    <div class="story-takeaway">
+      <h3>兩點地圖誠實提醒（別被漂亮底圖騙了！）</h3>
+      <p>第一，這張底圖用的是現代全球真實海岸線資料（Natural Earth），<strong>不代表兩千年前古代的國界或海岸完全長這樣</strong>；第二，地圖上那幾條虛線走廊，代表的是考古與史料看得到的多方交流方向，並不表示每一小段路程都有寫進死板的時間表。</p>
+    </div>
+
+    <div class="source-door">
+      <p>📖 <strong>這份年代與歷史評估從哪裡來？</strong>整合歷史佛陀研究與十二個時期、四次大集會的史料比對。</p>
+      <a class="button secondary" href="./history-research.html#chronology">看歷史佛陀生平證據與結集考證 →</a>
+    </div>
+
+    <details class="story-more">
+      <summary>想再多查詳細資料：佛陀生平十項傳說可信嗎？十二時代跟四次大會全表</summary>
+      <div class="table-wrap"><table role="table"><caption>關於釋迦牟尼生平，哪些比較穩、哪些沒證據？</caption><thead><tr><th>常聽到的說法</th><th>現在找到的證據夠嗎</th></tr></thead><tbody>
+        <tr><th data-label="說法">確實有位叫喬達摩的修行老師</th><td data-label="證據">高</td></tr>
+        <tr><th data-label="說法">活動在北印度和今天尼泊爾南邊</th><td data-label="證據">高</td></tr>
+        <tr><th data-label="說法">建立出家人團體教大家脫離痛苦</th><td data-label="證據">高</td></tr>
+        <tr><th data-label="說法">出身有一定地位的釋迦族</th><td data-label="證據">中高</td></tr>
+        <tr><th data-label="說法">像現代想像的豪華王國王子</th><td data-label="證據">中低（可能有後人寫得更戲劇化）</td></tr>
+        <tr><th data-label="說法">29歲出家、35歲覺悟、80歲過世</th><td data-label="證據">傳統說法，沒辦法找到當年官方出生證明</td></tr>
+        <tr><th data-label="說法">出生馬上走七步講話</th><td data-label="證據">找不到歷史證據</td></tr>
+        <tr><th data-label="說法">樹下遇到魔王與各種神通奇蹟</th><td data-label="證據">歷史研究沒辦法檢驗這種故事</td></tr>
+        <tr><th data-label="說法">後代佛陀傳記寫的每句對白都是真錄音</th><td data-label="證據">不能當成一字不差的錄音記錄</td></tr>
+      </tbody></table></div>
+    </details>
+
+    <nav class="station-nav" aria-label="第 10 關導覽"><p class="small">目前第 10／22 關</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#transmission">← 上一關</a><a class="button" href="#branches">下一關：三條大河的共同拼圖 →</a></div></nav>
   </div></section>`,
 
-  // S11
-  `<section id="branches" class="chapter" data-station="11" tabindex="-1"><div class="container">
-    <div class="kicker">第 11 站 · 部派、核心思想與三大傳承</div>
-    <h2>不同傳承保存了什麼？</h2>
-    <p>佛教不是從一開始就「一分為二或分成十八個整齊分支」。南傳《島史》把根本分裂歸因於毘舍離十事非法、說一切有部歸因於「大天五事」、《舍利弗問經》歸因於戒律增廣；Nattier 與 Prebish（1977）指出根本分裂早於阿育王（約佛滅116年前後）且偏重戒律實務分歧。更重要的是：今天的上座部不等於古代全部上座系，大乘也不是由大眾部單線分出的單一宗派。<a class="src" href="./history-research.html#c11-001">部派分裂（C11-001）</a> <a class="src" href="./history-research.html#c11-002">早期核心與無我（C11-002）</a> <a class="src" href="./history-research.html#c11-003">轉法輪／緣起對讀（C11-003）</a></p>
+  // S11: Shared Puzzle & Diverging Branches
+  `<section id="branches" class="chapter theme-atlas" data-station="11" tabindex="-1"><div class="container">
+    <div class="kicker">第 11 關 · 為什麼分出這麼多派別？</div>
+    <h2>把各派擺在一起，拼出共同的拼圖</h2>
+    <p class="story-lead">大家常問：到底南傳、漢傳還是藏傳才是最原味的那一家？其實早期很多條河流本來就有來往分流——試著點按把不同傳承的資料放進拼圖盤，看哪些拼得起來、哪些就是各走各的！</p>
+
     <div class="play">
-      <span class="kicker">交織河道網絡示意（V01 升級，非單一血統樹狀分家）</span>
-      <h3>點按不同分支，看它們各自保存了什麼與面臨的限制</h3>
-      <div class="scene" style="margin:10px 0">
-        <svg viewBox="0 0 460 220" role="img" aria-labelledby="s11-v01-t s11-v01-d">
-          <title id="s11-v01-t">佛教傳承交織河道關係示意</title>
-          <desc id="s11-v01-d">顯示歷史佛陀與早期僧團分化為上座系、大眾系及其他部派，再以實線與虛線交互演變為南傳、東亞與藏傳佛教，虛線表示歷史不確定或跨區交流。</desc>
-          <rect width="460" height="220" rx="14" fill="#173832"/>
-          <g fill="#224a42" stroke="#9fe0bd" stroke-width="2">
-            <rect x="145" y="10" width="170" height="34" rx="8"/>
-            <rect x="20" y="68" width="124" height="34" rx="7"/>
-            <rect x="168" y="68" width="124" height="34" rx="7"/>
-            <rect x="316" y="68" width="124" height="34" rx="7"/>
-            <rect x="20" y="148" width="124" height="40" rx="8" stroke="#ecc98e"/>
-            <rect x="168" y="148" width="124" height="40" rx="8" stroke="#ecc98e"/>
-            <rect x="316" y="148" width="124" height="40" rx="8" stroke="#ecc98e"/>
+      <span class="kicker">共同核心拼圖桌 · 點選地區傳承，看「拼合的核心」跟「不同的生活規矩」</span>
+      <div class="story-stage" style="padding:12px">
+        <div class="puzzle-board" id="s11-puzzle-board">
+          <div class="puzzle-piece snapped" id="s11-pz-core"><strong>🧩 中央共同拼圖（跨語言找得到的）</strong><p class="small" id="s11-pz-core-txt">苦與脫苦方法・無常會變・沒有不變的真我・減輕貪瞋癡</p></div>
+          <div class="puzzle-piece" id="s11-pz-vinaya"><strong>📜 各自帶走的戒律本</strong><p class="small" id="s11-pz-vinaya-txt">點下面切換南傳、漢傳或藏傳，看這格怎麼變！</p></div>
+          <div class="puzzle-piece" id="s11-pz-dev"><strong>🌿 當地後來長出的大系統</strong><p class="small" id="s11-pz-dev-txt">每條河流都有自己數百年的文化融合</p></div>
+        </div>
+      </div>
+
+      <div class="tab-row js-only" role="group" aria-label="選擇不同地區傳承">
+        <button type="button" data-trad="south" aria-pressed="true">東南亞與斯里蘭卡（南傳）</button>
+        <button type="button" data-trad="east" aria-pressed="false">中韓日臺漢字圈（漢傳）</button>
+        <button type="button" data-trad="tibet" aria-pressed="false">西藏與喜馬拉雅（藏傳）</button>
+        <button type="button" data-trad="lost" aria-pressed="false">已經消失的古代派別</button>
+      </div>
+      <p id="s11-trad-out" class="result" role="status" aria-live="polite">南傳保存了一整套完整的巴利語早期經律，但中間也經歷過十二世紀國王整理、十八世紀從外國請僧人重新傳戒，並不是兩千多年一動也不動。</p>
+
+      <h3 style="margin-top:16px">摸摸同一段早年經文的五種語言線索：</h3>
+      <div class="tab-row js-only" role="group" aria-label="五種古老語言版本對比">
+        <button type="button" data-lang5="pli" aria-pressed="true">巴利語古本</button>
+        <button type="button" data-lang5="lzh" aria-pressed="false">古代漢語譯本</button>
+        <button type="button" data-lang5="pgd" aria-pressed="false">大犍陀羅語殘卷</button>
+        <button type="button" data-lang5="san" aria-pressed="false">古印度梵語線索</button>
+        <button type="button" data-lang5="xct" aria-pressed="false">古藏語保存狀況</button>
+      </div>
+      <p id="s11-lang5-out" class="note" role="status" aria-live="polite">【巴利語本（完整對讀）】講身體不是永遠不變的我：「這不是我的，這不是我，這不是我的真我。」</p>
+    </div>
+
+    <div class="story-takeaway">
+      <h3>沒有哪一派能包辦「100% 佛陀原裝版」</h3>
+      <p>每一個活到今天的佛教傳統都既保存了一部分很早期的核心想法，也都經歷過中斷、王室整理、當地習俗融合跟後世註解。最聰明的讀法，是拿幾種版本互相對照，而不是盲目喊哪一派唯一正統！</p>
+    </div>
+
+    <div class="source-door">
+      <p>📖 <strong>這段跨派別比較從哪裡來？</strong>取材自跨語文早期《無我相經》《轉法輪經》比對及近代部派歷史研究。</p>
+      <a class="button secondary" href="./history-research.html#traditions-comparison">看七大古部派與十大交叉比較表 →</a>
+    </div>
+
+    <details class="story-more">
+      <summary>展開完整比較：十二項早年核心思想清單 &amp; 三大傳統十項對比</summary>
+      <div class="table-wrap"><table role="table"><caption>三大佛教傳承在歷史上的十項真實狀況</caption><thead><tr><th>比較項目</th><th>南傳上座部</th><th>漢傳佛教</th><th>藏傳佛教</th></tr></thead><tbody>
+        <tr><th data-label="項目">早年經典保存</th><td data-label="南傳">完整巴利經藏</td><td data-label="漢傳">保存重要阿含經等早年翻譯</td><td data-label="藏傳">保存部分早年經律與印度古籍</td></tr>
+        <tr><th data-label="項目">出家戒規來源</th><td data-label="南傳">上座部律</td><td data-label="漢傳">法藏部《四分律》</td><td data-label="藏傳">根本說一切有部律</td></tr>
+        <tr><th data-label="項目">後來哲學開展</th><td data-label="南傳">論典與義註系統</td><td data-label="漢傳">中觀、唯識、天台、華嚴、禪宗</td><td data-label="藏傳">中觀、因明、密教論辯系統</td></tr>
+        <tr><th data-label="項目">融合當地文化</th><td data-label="南傳">南亞與東南亞習俗</td><td data-label="漢傳">儒家孝道、道家等</td><td data-label="藏傳">西藏及喜馬拉雅文化</td></tr>
+        <tr><th data-label="項目">經歷政治插手</th><td data-label="南傳">王權整理、殖民改革</td><td data-label="漢傳">皇帝支持或滅佛</td><td data-label="藏傳">王室支持與政教制度</td></tr>
+        <tr><th data-label="項目">傳承曾中斷重建</th><td data-label="南傳">有</td><td data-label="漢傳">有</td><td data-label="藏傳">有</td></tr>
+        <tr><th data-label="項目">能單獨證明「全數原汁原味」？</th><td data-label="南傳">沒辦法</td><td data-label="南傳漢傳">沒辦法</td><td data-label="藏傳">沒辦法</td></tr>
+      </tbody></table></div>
+    </details>
+
+    <nav class="station-nav" aria-label="第 11 關導覽"><p class="small">目前第 11／22 關</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#history">← 上一關</a><a class="button" href="#south">下一關：海島古寺的傳承接力 →</a></div></nav>
+  </div></section>`,
+
+  // S12: Sri Lanka Three Monasteries, Maritime Relay & Kuthodaw 729 Slabs
+  `<section id="south" class="chapter theme-atlas" data-station="12" tabindex="-1"><div class="container">
+    <div class="kicker">第 12 關 · 保存最完整經典的地方也換過接棒手</div>
+    <h2>斯里蘭卡三座古寺與海上傳戒接力</h2>
+    <p class="story-lead">今天說起南傳佛教，大家都想到斯里蘭卡跟緬甸、泰國。但在古代斯里蘭卡，其實曾同時住著三大彼此不同的寺院中心；到了十八世紀，島上的比丘傳承一度快要斷光，甚至要靠船隻從泰國接送法師來重新接棒！</p>
+
+    <div class="play">
+      <span class="kicker">南亞海洋接力地圖 · 點選時代站點，看南傳教團怎麼重整與接棒</span>
+      <div class="atlas-stage">
+        <svg viewBox="0 0 800 380" role="img" aria-labelledby="s12-map-t s12-map-d">
+          <title id="s12-map-t">斯里蘭卡至東南亞海上求戒接力真實地理圖</title>
+          <desc id="s12-map-d">基於 Natural Earth 地理輪廓標示斯里蘭卡、緬甸曼德勒與泰國阿瑜陀耶，呈現 1753 年跨海重立出家戒脈路線（虛線表示歷史航線研究）。</desc>
+          <rect class="atlas-sea" width="800" height="380" rx="12"/>
+          <g transform="translate(80,-115) scale(1.02)">
+            <path class="atlas-land" d="${ASIA_LAND_PATH}"/>
+            <path class="atlas-lake" d="${ASIA_LAKES_PATH}"/>
           </g>
-          <path d="M230 44 V56 M82 56 H378 M82 56 V68 M230 56 V68 M378 56 V68" stroke="#9fe0bd" stroke-width="2" fill="none"/>
-          <path d="M82 102 V148 M230 102 V148 M378 102 V148" stroke="#ecc98e" stroke-width="2" stroke-dasharray="5 3" fill="none"/>
-          <path d="M82 125 H378" stroke="#c6cec3" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
-          <g fill="#f8f5ee" font-size="11.5" text-anchor="middle" font-weight="700">
-            <text x="230" y="31">歷史佛陀與早期口傳僧團</text>
-            <text x="82" y="89">上座系諸部派</text>
-            <text x="230" y="89">法藏/有部等其他部派</text>
-            <text x="378" y="89">大眾系諸部派</text>
-            <text x="82" y="172">南傳上座部</text>
-            <text x="230" y="172">東亞佛教（大乘）</text>
-            <text x="378" y="172">藏傳與密教</text>
-            <text x="230" y="208" fill="#b7e3ca" font-size="10.5">實線＝制度傳承延續；虛線＝多派交織、跨傳承交流與未定史實（非逐代血統圖）</text>
+          <path id="s12-sea-arc" d="M446 244 Q360 322 254 312" fill="none" stroke="#18594b" stroke-opacity="0.35" stroke-width="3.5" stroke-dasharray="8 5"/>
+          <circle id="s12-pin-sl" cx="254" cy="312" r="10" fill="#d97706" stroke="#fffdf7" stroke-width="2.5"/>
+          <circle id="s12-pin-mm" cx="403" cy="157" r="7" fill="#fffdf7" stroke="#243330" stroke-width="2"/>
+          <circle id="s12-pin-th" cx="446" cy="244" r="7" fill="#fffdf7" stroke="#243330" stroke-width="2"/>
+          <g font-size="12" font-weight="750" fill="#243330">
+            <text x="270" y="317">斯里蘭卡三座大寺（5–12世紀統合）</text>
+            <text x="418" y="155">緬甸曼德勒（729塊經碑）</text>
+            <text x="462" y="248">泰國（1753年搭船支援接棒）</text>
           </g>
         </svg>
       </div>
-      <div class="tab-row js-only" role="group" aria-label="傳統分支說明">
-        <button type="button" data-trad="south" aria-pressed="true">南傳上座部</button>
-        <button type="button" data-trad="east" aria-pressed="false">漢傳／東亞佛教</button>
-        <button type="button" data-trad="tibet" aria-pressed="false">藏傳佛教</button>
-        <button type="button" data-trad="lost" aria-pressed="false">已消失古部派</button>
-      </div>
-      <p id="s11-trad-out" class="result" role="status" aria-live="polite">南傳上座部：保存巴利尼柯耶與上座部律，但經12世紀統合與18世紀傳戒重建，非完全等同古代全體上座系。</p>
-    </div>
-    <h3>一、七大古部派歷史特色（對應原表 T08）</h3>
-    <div class="table-wrap"><table role="table"><caption>古部派 · 主要歷史特色</caption><thead><tr><th>部派</th><th>主要歷史特色</th></tr></thead><tbody>
-      <tr><th data-label="部派">大眾部</th><td data-label="主要歷史特色">部分支系發展出較超越人間的佛陀觀</td></tr>
-      <tr><th data-label="部派">說一切有部</th><td data-label="主要歷史特色">對時間、存在及現象分類提出高度系統化的理論</td></tr>
-      <tr><th data-label="部派">經量部</th><td data-label="主要歷史特色">重視經典，相對批判部分論藏理論</td></tr>
-      <tr><th data-label="部派">犢子部及相關部派</th><td data-label="主要歷史特色">探討無我與人格延續之間的哲學問題</td></tr>
-      <tr><th data-label="部派">法藏部</th><td data-label="主要歷史特色">其戒律傳承對今日漢傳佛教具有重要影響（四分律）</td></tr>
-      <tr><th data-label="部派">南傳上座部</th><td data-label="主要歷史特色">保存完整巴利三藏及自身的註釋傳統</td></tr>
-      <tr><th data-label="部派">根本說一切有部</th><td data-label="主要歷史特色">其戒律成為藏傳佛教的重要制度基礎</td></tr>
-    </tbody></table></div>
-    <h3>二、跨語文檢驗：十二項早期核心思想與《無我相經》（對應原表 T06）</h3>
-    <div class="play">
-      <span class="kicker">五語無我材料切換（實證邊界誠實標示，不以AI翻譯充數）</span>
-      <div class="tab-row js-only" role="group" aria-label="選擇無我相經語本">
-        <button type="button" data-lang5="pli" aria-pressed="true">巴利 SN 22.59</button>
-        <button type="button" data-lang5="lzh" aria-pressed="false">漢譯 SA 34</button>
-        <button type="button" data-lang5="pgd" aria-pressed="false">犍陀羅 Senior 22</button>
-        <button type="button" data-lang5="san" aria-pressed="false">梵文平行線索</button>
-        <button type="button" data-lang5="xct" aria-pressed="false">藏文平行狀況</button>
-      </div>
-      <p id="s11-lang5-out" class="result" role="status" aria-live="polite">【巴利文 SN 22.59（已完整核對）】Rūpaṁ, bhikkhave, anattā... ‘netaṁ mama, nesohamasmi, na meso attā’ti（色非我…這不是我、非我所）。</p>
-    </div>
-    <div class="table-wrap"><table role="table"><caption>十二項早期思想可信度與白話解釋（原表 T06；古老共同記載不證明科學證實來世）</caption><thead><tr><th>教義或修行內容</th><th>屬於早期佛教可信程度</th><th>白話解釋</th></tr></thead><tbody>
-      <tr><th data-label="教義或修行內容">苦、集、滅、道（四諦）</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">認識痛苦、找出成因、理解解除痛苦的可能與方法</td></tr>
-      <tr><th data-label="教義或修行內容">八正道</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">從認知、言行、生活方式及精神訓練著手</td></tr>
-      <tr><th data-label="教義或修行內容">無常</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">一切有條件形成的事物都在變化</td></tr>
-      <tr><th data-label="教義或修行內容">無我</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">不將身心經驗執著為永恆、不變且可完全控制的自我</td></tr>
-      <tr><th data-label="教義或修行內容">緣起</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">現象依賴條件形成，而非完全獨立存在</td></tr>
-      <tr><th data-label="教義或修行內容">五蘊</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">透過身體、感受、辨識、心理活動與識分析經驗</td></tr>
-      <tr><th data-label="教義或修行內容">戒律與倫理</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">約束傷害他人的行為及不善的生活方式</td></tr>
-      <tr><th data-label="教義或修行內容">禪定與正念</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">訓練注意力、覺察與心的穩定</td></tr>
-      <tr><th data-label="教義或修行內容">貪、瞋、癡</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">欲望執著、敵意與錯誤認知是重要痛苦來源</td></tr>
-      <tr><th data-label="教義或修行內容">業力、輪迴</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">早期教義已存在，但超越死亡的真實性非歷史學或現代科學能驗證</td></tr>
-      <tr><th data-label="教義或修行內容">涅槃與解脫</th><td data-label="屬於早期佛教可信程度">高</td><td data-label="白話解釋">佛教早期的核心修行目標</td></tr>
-      <tr><th data-label="教義或修行內容">完整阿毘達磨理論體系</th><td data-label="屬於早期佛教可信程度">較晚形成</td><td data-label="白話解釋">對早期思想進一步分類、系統化與哲學分析</td></tr>
-    </tbody></table></div>
-    <h3>三、三大佛教傳承十項交叉比較（對應原表 T22，逐列完整）</h3>
-    <div class="table-wrap"><table role="table"><caption>比較項目 · 南傳上座部 · 漢傳佛教 · 藏傳佛教（各傳承內部仍有差異）</caption><thead><tr><th>比較項目</th><th>南傳上座部</th><th>漢傳佛教</th><th>藏傳佛教</th></tr></thead><tbody>
-      <tr><th data-label="比較項目">早期經典保存</th><td data-label="南傳上座部">完整巴利經藏</td><td data-label="漢傳佛教">保存重要阿含經及其他早期文獻</td><td data-label="藏傳佛教">保存部分早期經律及其他印度文獻</td></tr>
-      <tr><th data-label="比較項目">主要戒律來源</th><td data-label="南傳上座部">上座部律藏</td><td data-label="漢傳佛教">法藏部四分律</td><td data-label="藏傳佛教">根本說一切有部律</td></tr>
-      <tr><th data-label="比較項目">後世哲學發展</th><td data-label="南傳上座部">阿毘達磨及註釋傳統</td><td data-label="漢傳佛教">中觀、唯識、天台、華嚴等</td><td data-label="藏傳佛教">中觀、唯識、密教及論辯傳統</td></tr>
-      <tr><th data-label="比較項目">地方文化融合</th><td data-label="南傳上座部">南亞及東南亞文化</td><td data-label="漢傳佛教">儒家、道教與地方信仰</td><td data-label="藏傳佛教">西藏及喜馬拉雅地區文化</td></tr>
-      <tr><th data-label="比較項目">政治干預</th><td data-label="南傳上座部">王室僧團改革、殖民與國家制度</td><td data-label="漢傳佛教">皇帝支持、滅佛、國家管理</td><td data-label="藏傳佛教">王室支持、宗派政治及政教制度</td></tr>
-      <tr><th data-label="比較項目">傳承中斷及重建</th><td data-label="南傳上座部">有</td><td data-label="漢傳佛教">有</td><td data-label="藏傳佛教">有</td></tr>
-      <tr><th data-label="比較項目">後世編纂與註釋</th><td data-label="南傳上座部">有</td><td data-label="漢傳佛教">有</td><td data-label="藏傳佛教">有</td></tr>
-      <tr><th data-label="比較項目">祖師權威與傳承敘事</th><td data-label="南傳上座部">有</td><td data-label="漢傳佛教">有</td><td data-label="藏傳佛教">有</td></tr>
-      <tr><th data-label="比較項目">宗教儀式與民間信仰</th><td data-label="南傳上座部">有</td><td data-label="漢傳佛教">有</td><td data-label="藏傳佛教">有</td></tr>
-      <tr><th data-label="比較項目">能證明完整保存佛陀原始教導</th><td data-label="南傳上座部">無法</td><td data-label="漢傳佛教">無法</td><td data-label="藏傳佛教">無法</td></tr>
-    </tbody></table></div>
-    <nav class="station-nav" aria-label="站點 11 導覽"><p class="small">目前第 11／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#history">← 上一站</a><a class="button secondary" href="./history-research.html#traditions-comparison">研究詳頁</a><a class="button" href="#south">下一站 →</a></div></nav>
-  </div></section>`,
 
-  // S12
-  `<section id="south" class="chapter" data-station="12" tabindex="-1"><div class="container">
-    <div class="kicker">第 12 站 · 斯里蘭卡三座大寺與近代戒脈</div>
-    <h2>南傳也經過重整</h2>
-    <p>許多人以為南傳上座部兩千五百年來完全沒有改變，但「經典早年保存」與「現行宗派制度」必須分開。古代斯里蘭卡至少並存大寺、無畏山寺與祇陀林寺三大僧團中心；12世紀王權統合後大寺派才取得主導；18世紀中期斯里蘭卡具足戒更曾斷絕，須迎請暹羅與緬甸重新傳戒。<a class="src" href="./history-research.html#c12-001">南傳制度重整（C12-001）</a> <a class="src" href="./history-research.html#c12-004">固都陶 729 碑（C12-004）</a> <a class="src" href="#s-gethin">來源索引</a></p>
+      <div class="tab-row js-only" role="group" aria-label="點按南傳關鍵歷史轉折">
+        <button type="button" data-south="maha" aria-pressed="true">1. 5世紀大寺與整理註解</button>
+        <button type="button" data-south="abhaya" aria-pressed="false">2. 無畏山寺（曾經包容多種思想）</button>
+        <button type="button" data-south="jeta" aria-pressed="false">3. 祇陀林寺（12世紀王權統合）</button>
+        <button type="button" data-south="relay1753" aria-pressed="false">4. 1753 泰國跨海重新傳戒</button>
+        <button type="button" data-south="kuthodaw" aria-pressed="false">5. 緬甸 729 塊大石碑刻經</button>
+      </div>
+      <p id="s12-out" class="result" role="status" aria-live="polite">【大寺派】五世紀時在這裡把古老巴利三藏跟詳細註解整理下來；十二世紀國王下令把三座大寺院統一起來，才定出今天南傳的主要系統。</p>
+    </div>
+
     <div class="grid">
       <article class="card-box">
-        <span class="tag">考古遺址實景 · IMG03</span>
-        <h3>無畏山寺大塔（Abhayagiri）</h3>
-        <img src="assets/history/evidence/img03-abhayagiri.jpg" width="900" height="496" loading="lazy" alt="斯里蘭卡阿努拉德普勒無畏山寺磚造大塔與石柱遺址照片" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small">攝於2016（Nicolas Chadeville, CC BY 4.0）。曾接納大乘與多元思想，12世紀統合後失去獨立機構地位（當代外觀含近代修復）。</p>
+        <span class="tag">斯里蘭卡遺址真實照片</span>
+        <h3>無畏山寺大塔</h3>
+        <img src="assets/history/evidence/img03-abhayagiri.jpg" width="900" height="496" loading="lazy" alt="斯里蘭卡阿努拉德普勒無畏山寺磚造大塔與遺址照片" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
+        <p class="small">當年規模龐大、也願意接納大乘思想，十二世紀整合後獨立系統消失（今天看到的磚塔含近代修復）。</p>
       </article>
       <article class="card-box">
-        <span class="tag">考古遺址實景 · IMG04</span>
-        <h3>祇陀林寺大塔（Jetavanaramaya）</h3>
-        <img src="assets/history/evidence/img04-jetavanaramaya.jpg" width="900" height="602" loading="lazy" alt="夜間燈光映照下的斯里蘭卡祇陀林寺大型磚造佛塔與前方遺址石柱" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small">攝於2018（Nipuna Gamage, CC BY-SA 4.0）。反映古代斯里蘭卡僧團多元並立格局。</p>
+        <span class="tag">緬甸真實世界遺產照片</span>
+        <h3>曼德勒 729 塊三藏石碑</h3>
+        <img src="assets/history/evidence/extra-kuthodaw-slab.jpg" width="800" height="1067" loading="lazy" alt="緬甸固都陶碑林白塔裡直立刻滿經文的白色大理石碑照片" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
+        <p class="small">十九世紀緬甸國王為保存佛經免遭殖民戰亂失傳，刻成整整 <strong>729 塊</strong>大理石經碑（另外還有 1 塊記錄建碑經過的紀念碑）。</p>
       </article>
     </div>
-    <div class="table-wrap"><table role="table"><caption>古代斯里蘭卡三重要僧團中心（對應原表 T09）</caption><thead><tr><th>僧團</th><th>歷史特色</th></tr></thead><tbody>
-      <tr><th data-label="僧團">大寺派（Mahāvihāra）</th><td data-label="歷史特色">5世紀覺音整理義註《清淨道論》，12世紀波羅迦羅摩跋訶一世統合後成為現代上座部主要制度與文獻來源</td></tr>
-      <tr><th data-label="僧團">無畏山寺派（Abhayagiri）</th><td data-label="歷史特色">曾經接觸及接受較多不同佛教思想與修行傳統；Max Deeg (2024) 指出其歷史常被大寺編年史遮蔽</td></tr>
-      <tr><th data-label="僧團">祇陀林寺派（Jetavana）</th><td data-label="歷史特色">具有自身的僧團及思想傳承，12世紀統合後不再獨立</td></tr>
-    </tbody></table></div>
-    <div class="play">
-      <span class="kicker">制度重整與傳戒接力探索</span>
-      <h3>點按觀察南傳近代歷史關鍵轉折</h3>
-      <div class="tab-row js-only" role="group" aria-label="南傳重整節點">
-        <button type="button" data-south="maha" aria-pressed="true">大寺與覺音（5–12世紀）</button>
-        <button type="button" data-south="abhaya" aria-pressed="false">無畏山寺史料</button>
-        <button type="button" data-south="jeta" aria-pressed="false">祇陀林寺派</button>
-        <button type="button" data-south="relay1753" aria-pressed="false">1753 暹羅傳戒與種姓</button>
-        <button type="button" data-south="kuthodaw" aria-pressed="false">固都陶 729 碑與泰國 1902 法</button>
-      </div>
-      <p id="s12-out" class="result" role="status" aria-live="polite">【大寺派（Mahāvihāra）】保存巴利三藏與覺音（約5世紀）《清淨道論》義註傳統，12世紀（約1165）在王權支持下取得主導。</p>
+
+    <div class="source-door">
+      <p>📖 <strong>這段歷史從哪裡來？</strong>取材自斯里蘭卡寺院考古與十八、十九世紀南傳教團重組史料。</p>
+      <a class="button secondary" href="./history-research.html#theravada-history">看南傳三寺與 729 碑完整研究 →</a>
     </div>
-    <div class="card-box" style="margin-top:14px">
-      <span class="tag">歷史實物 · 緬甸固都陶碑林</span>
-      <h3>敏東王 729 塊巴利三藏經文石碑（1860–1868 刻成、1871 第五次結集）</h3>
-      <img src="assets/history/evidence/extra-kuthodaw-slab.jpg" width="800" height="1067" loading="lazy" alt="緬甸固都陶碑林白色小塔內直立刻滿緬文拼寫巴利三藏經文的大理石碑" style="max-width:340px;width:100%;height:auto;border-radius:8px;margin:8px 0">
-      <p class="small">攝於2006（Wagaung, CC BY-SA 3.0）。UNESCO 世界記憶列 729 塊經文大理石碑（不含另有說明碑；勿誤作 730 塊經文碑）。<a class="src" href="./history-research.html#c12-004">見詳頁校勘（C12-004）</a></p>
-    </div>
-    <aside class="note"><b>不能否定巴利經藏價值</b><p>制度歷經統合、戒脈斷絕重建與近代王室法制化（如泰國 1833 法宗派與 1902 僧團法），並不等於推翻巴利經藏保存大量早期核心文獻的學術價值。</p></aside>
-    <nav class="station-nav" aria-label="站點 12 導覽"><p class="small">目前第 12／22 站 · 第二幕結束，可稍後繼續</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#branches">← 上一站</a><a class="button secondary" href="./history-research.html#theravada-history">研究詳頁</a><a class="button" href="#mahayana">進入第三幕 →</a></div></nav>
+
+    <nav class="station-nav" aria-label="第 12 關導覽"><p class="small">目前第 12／22 關 · 第二區結束</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#branches">← 上一關</a><a class="button" href="#mahayana">進入第三區：大乘、中國與雪山 →</a></div></nav>
   </div></section>`
 ];

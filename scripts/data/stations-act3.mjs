@@ -1,325 +1,339 @@
-// Act 3 (Stations 13–18): Mahāyāna, East Asia, Chan & Tibetan Developments
+// Act 3 (Stations 13–18): Mahāyāna, Text Detective, China Arrival, Chan Bookshelf, Tibet Map, Vanishing Libraries
+import { ASIA_LAND_PATH, ASIA_LAKES_PATH, ASIA_PLACES } from "./asia-map-data.mjs";
+
+const p = ASIA_PLACES;
 
 export const ACT3_STATIONS = [
-  // S13
-  `<section id="mahayana" class="chapter" data-station="13" tabindex="-1"><div class="container">
-    <div class="kicker">第 13 站 · 古印度的延伸及新發展</div>
-    <h2>大乘經典從哪裡來？</h2>
-    <p>大乘佛教約在西元前後於古印度文化圈逐步萌芽。Harry Falk 與辛嶋靜志（2012）公布 Split 藏本《八千頌般若》犍陀羅語樺皮殘卷，碳十四測年約西元75年（2σ 區間 47–147 CE），證明早期大乘經典確實出於印度文化圈，並非中國人憑空創造。同時 Paul Harrison、Gregory Schopen 與 David Drewes（2010）也已推翻「大乘是由反抗僧團的在家居士所創立」的過時舊說，改以出家僧尼在保守寺院中主導書寫與受持的「多條交織河道（braided stream）」解釋。<a class="src" href="./history-research.html#c13-001">Split 寫本與大乘起源（C13-001）</a> <a class="src" href="#s-baums">來源索引</a></p>
+  // S13: The Growing Tree of Ideas
+  `<section id="mahayana" class="chapter theme-atlas" data-station="13" tabindex="-1"><div class="container">
+    <div class="kicker">第 13 關 · 大乘經典是從哪裡長出來的？</div>
+    <h2>一棵不斷長出新枝葉的思想大樹</h2>
+    <p class="story-lead">很多人曾經好奇：大乘佛教到底是「在家人造反創出來的新宗派」，還是後來的人把早期已經有的種子慢慢澆水養大的？兩千年前的古寫本跟近代研究給了一個很不一樣的答案。</p>
+
     <div class="play">
-      <span class="kicker">大乘交織河道探索（九項思想演變 × 「佛說」雙重定義）</span>
-      <h3>點選九項大乘核心概念，分辨早期基礎與後世系統化</h3>
-      <div class="tab-row js-only" role="group" aria-label="九項大乘思想">
-        <button type="button" data-mahac="compassion" aria-pressed="true">1. 慈悲</button>
-        <button type="button" data-mahac="bodhisattva" aria-pressed="false">2. 菩薩</button>
-        <button type="button" data-mahac="sunyata" aria-pressed="false">3. 般若空性</button>
-        <button type="button" data-mahac="paramita" aria-pressed="false">4. 六波羅蜜</button>
-        <button type="button" data-mahac="fields" aria-pressed="false">5. 無量佛佛國</button>
-        <button type="button" data-mahac="amitabha" aria-pressed="false">6. 阿彌陀淨土</button>
-        <button type="button" data-mahac="tathagata" aria-pressed="false">7. 如來藏佛性</button>
-        <button type="button" data-mahac="yogacara" aria-pressed="false">8. 唯識學</button>
-        <button type="button" data-mahac="trikaya" aria-pressed="false">9. 三身佛</button>
+      <span class="kicker">思想發芽觀察器 · 點選九朵花，看它是早年就有種子，還是後來長大的枝葉</span>
+      <div class="story-stage" style="padding:12px">
+        <div class="drawer-bank">
+          <div class="drawer-box is-active" id="s13-seed-box"><strong>🌱 早年已經找得到的種子</strong><p class="small" id="s13-seed-txt">早在各派都有的古經裡，就能看到對一切眾生溫柔、想離苦的心。</p></div>
+          <div class="drawer-box" id="s13-bloom-box"><strong>🌸 後來慢慢展開的新枝葉</strong><p class="small" id="s13-bloom-txt">西元前後，在寺院裡寫作抄經的出家人把想法越發展越豐富（虛線＝很多條流派交錯，不是一條死板家譜）。</p></div>
+        </div>
+        <p id="s13-concept-out" class="speech-bubble">「對大家友善不害人（慈悲）」：這顆種子最早在跨傳承古書裡就已經有了！</p>
       </div>
-      <p id="s13-concept-out" class="result" role="status" aria-live="polite">慈悲：早期阿含／尼柯耶已有四無量心（慈悲喜捨），屬跨傳承共同基礎。</p>
-      <div class="controls js-only" role="group" aria-label="區分兩種佛說定義">
-        <button type="button" data-bvacana="hist" aria-pressed="true">定義一：歷史學「佛說」</button>
-        <button type="button" data-bvacana="trad" aria-pressed="false">定義二：宗教傳統「佛說」</button>
+
+      <div class="tab-row js-only" role="group" aria-label="點選九個常見大乘想法">
+        <button type="button" data-mahac="compassion" aria-pressed="true">1. 溫柔待人（慈悲）</button>
+        <button type="button" data-mahac="bodhisattva" aria-pressed="false">2. 想成佛幫大家（菩薩）</button>
+        <button type="button" data-mahac="sunyata" aria-pressed="false">3. 一切都在變、沒有固定本體（空性）</button>
+        <button type="button" data-mahac="paramita" aria-pressed="false">4. 六項日常修練</button>
+        <button type="button" data-mahac="fields" aria-pressed="false">5. 其他世界也有佛</button>
+        <button type="button" data-mahac="amitabha" aria-pressed="false">6. 阿彌陀佛淨土世界</button>
+        <button type="button" data-mahac="tathagata" aria-pressed="false">7. 人人都有成佛潛力</button>
+        <button type="button" data-mahac="yogacara" aria-pressed="false">8. 心如何認識世界</button>
+        <button type="button" data-mahac="trikaya" aria-pressed="false">9. 佛的三種呈現方式</button>
       </div>
-      <p id="s13-bvacana-out" class="note" role="status" aria-live="polite">定義一（歷史學）：指西元前5世紀歷史上的釋迦牟尼本人實際說出的言論。依此標準，成熟大乘經典缺乏足夠直接證據。</p>
+
+      <div class="controls js-only" role="group" aria-label="用哪一種角度問這是不是佛說">
+        <button type="button" data-bvacana="hist" aria-pressed="true">問法一：歷史上當場親口說的嗎？</button>
+        <button type="button" data-bvacana="trad" aria-pressed="false">問法二：信徒傳統裡認同的精神嗎？</button>
+      </div>
+      <p id="s13-bvacana-out" class="result" role="status" aria-live="polite">【歷史學問法】問的是公元前五世紀喬達摩有沒有親口說過這些成套理論。照歷史手邊看得到的證據，成熟的系統大多是數百年後才慢慢形成的。</p>
     </div>
-    <div class="table-wrap"><table role="table"><caption>大乘九項重要思想與早期佛教關係（對應原表 T10）</caption><thead><tr><th>思想</th><th>與早期佛教的關係</th></tr></thead><tbody>
-      <tr><th data-label="思想">慈悲</th><td data-label="與早期佛教的關係">早期佛教已存在</td></tr>
-      <tr><th data-label="思想">菩薩概念</th><td data-label="與早期佛教的關係">早期文獻已有相關概念（多指釋迦牟尼成道前），大乘發展成普遍修行道路</td></tr>
-      <tr><th data-label="思想">般若與空性</th><td data-label="與早期佛教的關係">與早期無我、緣起有思想關聯，後來形成更完整哲學體系</td></tr>
-      <tr><th data-label="思想">六波羅蜜</th><td data-label="與早期佛教的關係">相關修行精神具早期基礎，完整六度體系經後世發展</td></tr>
-      <tr><th data-label="思想">無量佛及佛國</th><td data-label="與早期佛教的關係">具有較早思想基礎，後世大幅擴充</td></tr>
-      <tr><th data-label="思想">阿彌陀佛與西方極樂世界</th><td data-label="與早期佛教的關係">屬於後來發展的淨土信仰系統</td></tr>
-      <tr><th data-label="思想">如來藏、佛性</th><td data-label="與早期佛教的關係">後期印度大乘重要思想發展</td></tr>
-      <tr><th data-label="思想">唯識學</th><td data-label="與早期佛教的關係">約西元4–5世紀逐漸形成高度系統化理論</td></tr>
-      <tr><th data-label="思想">完整三身佛理論</th><td data-label="與早期佛教的關係">後世佛教對佛陀身分及存在形式的哲學發展</td></tr>
-    </tbody></table></div>
-    <nav class="station-nav" aria-label="站點 13 導覽"><p class="small">目前第 13／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#south">← 上一站</a><a class="button secondary" href="./history-research.html#mahayana-origins">研究詳頁</a><a class="button" href="#texts">下一站 →</a></div></nav>
+
+    <div class="story-takeaway">
+      <h3>兩件常被誤會的事，一次講清楚</h3>
+      <p>第一，科學測年約西元 75 年左右的古樹皮經卷（在今天阿富汗／巴基斯坦北部一帶出土）證明，早期大乘經典確實在印度文化圈寫出來，<strong>不是</strong>中國人憑空編出來的。第二，近年研究也推翻了「大乘是普通在家信徒反抗出家人」的舊說——寫作跟保護這些早期經卷的，很多本身就是在傳統大寺院裡苦修打坐的出家人。</p>
+    </div>
+
+    <div class="source-door">
+      <p>📖 <strong>這段發現從哪裡來？</strong>取材自近年古寫本碳十四斷代與大乘起源學術研究。</p>
+      <a class="button secondary" href="./history-research.html#mahayana-origins">看寫本測年範圍與學者論文 →</a>
+    </div>
+
+    <details class="story-more">
+      <summary>想再多看一點：九項常見觀念跟早年想法的關係清單</summary>
+      <div class="table-wrap"><table role="table"><caption>九種後來大家熟知的概念，早年有沒有基礎？</caption><thead><tr><th>概念</th><th>跟早年古書的關係</th></tr></thead><tbody>
+        <tr><th data-label="概念">慈悲</th><td data-label="關係">早年古書本來就有</td></tr>
+        <tr><th data-label="概念">菩薩</th><td data-label="關係">早年主要指佛陀還沒覺悟前的稱呼；大乘把它擴展成每個人都可以發願走的路</td></tr>
+        <tr><th data-label="概念">空性</th><td data-label="關係">跟早年講的「無常、無我、彼此依賴而生」有關係，後來哲學分析變得很細</td></tr>
+        <tr><th data-label="概念">六波羅蜜</th><td data-label="關係">布施、守規矩、忍耐等早年都有，六項排成一套是以後的整理</td></tr>
+        <tr><th data-label="概念">十方有很多佛的世界</th><td data-label="關係">有早年線索，後來大大發揮想像與描寫</td></tr>
+        <tr><th data-label="概念">西方極樂淨土</th><td data-label="關係">屬於後來發展成熟的淨土信仰系統</td></tr>
+        <tr><th data-label="概念">人人都有佛性</th><td data-label="關係">較後期在印度開展的重要大乘思想</td></tr>
+        <tr><th data-label="概念">唯識哲學</th><td data-label="關係">約西元四、五世紀慢慢整理出來的細膩心理哲學</td></tr>
+        <tr><th data-label="概念">三身佛說法</th><td data-label="關係">後世哲學思考「佛陀到底是哪一種存在」的理論發展</td></tr>
+      </tbody></table></div>
+    </details>
+
+    <nav class="station-nav" aria-label="第 13 關導覽"><p class="small">目前第 13／22 關</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#south">← 上一關</a><a class="button" href="#texts">下一關：古經身分鑑定所 →</a></div></nav>
   </div></section>`,
 
-  // S14
-  `<section id="texts" class="chapter" data-station="14" tabindex="-1"><div class="container">
-    <div class="kicker">第 14 站 · 真假、晚出與翻譯爭議</div>
-    <h2>佛經也有身分證問題</h2>
-    <p>中國古代佛教界自己（東晉道安、南朝梁僧祐《出三藏記集》）早就編寫「疑經錄」辨別經典來源。中華電子佛典協會（CBETA）也明言收錄不等於真偽認證。面對本土撰述經典（Robert Buswell 稱 indigenous scriptures），更須區分「文本出自哪裡」與「作者是否蓄意詐欺」。<a class="src" href="./history-research.html#c14-001">疑經錄與本土經典</a> <a class="src" href="./history-research.html#c14-002">心經 T223／T250／T251 對讀</a> <a class="src" href="./history-research.html#c14-002b">福井文雅替代假說</a> <a class="src" href="./history-research.html#c14-003">楞嚴 T945 vs T642</a></p>
+  // S14: Ancient Scripture ID Lab & Heart Sutra Side-by-Side
+  `<section id="texts" class="chapter theme-archive" data-station="14" tabindex="-1"><div class="container">
+    <div class="kicker">第 14 關 · 為什麼古人自己也在查「這部經誰寫的？」</div>
+    <h2>古經身分證鑑定所</h2>
+    <p class="story-lead">挑一本流傳下來的佛經，抽一張檔案線索出來看看——連古代中國的出家學者自己也早就編過書，專門區分哪些確實來自印度、哪些是在中國文化裡寫成、哪些還要打問號！</p>
+
     <div class="play">
-      <span class="kicker">佛典身分鑑定桌 · 涵蓋原表全部 16 類經典／文獻</span>
-      <h3>選擇任一部經典，逐步打開線索與研究限制</h3>
-      <label class="js-only" for="s14-text-select"><b>選擇要鑑定的經典或文獻（16／16）</b></label>
+      <span class="kicker">檔案櫃 1｜挑選 16 部有名佛典，一格格打開查證線索</span>
+      <label class="js-only" for="s14-text-select"><b>想先查哪一部經典或書本？（共 16 部可選）</b></label>
       <select class="js-only" id="s14-text-select">
-        <option value="nikaya">1. 巴利四部尼柯耶</option>
-        <option value="agama">2. 漢譯四阿含經</option>
-        <option value="dhp">3. 《法句經》</option>
-        <option value="snp">4. 《經集》（Suttanipāta）</option>
-        <option value="diamond">5. 《金剛經》T235</option>
-        <option value="lotus">6. 《法華經》T262</option>
-        <option value="avatamsaka">7. 《華嚴經》T278／T279</option>
-        <option value="amitabha">8. 《阿彌陀經》T366</option>
-        <option value="sukh">9. 《無量壽經》T360</option>
-        <option value="heart">10. 《心經》T251</option>
-        <option value="surangama">11. 《楞嚴經》T945（勿混 T642）</option>
-        <option value="qixin">12. 《大乘起信論》T1666</option>
-        <option value="yulanpen">13. 《盂蘭盆經》T685</option>
-        <option value="fumu">14. 《父母恩重經》等</option>
-        <option value="platform">15. 《六祖壇經》T2008</option>
-        <option value="tantras">16. 佛教密續（Tantras）</option>
+        <option value="nikaya">1. 巴利文四部早期大經集</option>
+        <option value="agama">2. 中國保存的四阿含經</option>
+        <option value="dhp">3. 法句經（好記的小短詩）</option>
+        <option value="snp">4. 經集（早年偈頌集）</option>
+        <option value="diamond">5. 金剛經</option>
+        <option value="lotus">6. 法華經</option>
+        <option value="avatamsaka">7. 華嚴經</option>
+        <option value="amitabha">8. 阿彌陀經</option>
+        <option value="sukh">9. 無量壽經</option>
+        <option value="heart">10. 心經（只有兩百六十字卻爭議超大！）</option>
+        <option value="surangama">11. 楞嚴經（注意不要跟另一部同名經搞混）</option>
+        <option value="qixin">12. 大乘起信論</option>
+        <option value="yulanpen">13. 盂蘭盆經（目連救母的故事）</option>
+        <option value="fumu">14. 父母恩重難報經</option>
+        <option value="platform">15. 六祖壇經</option>
+        <option value="tantras">16. 密宗經典</option>
       </select>
       <div class="controls js-only">
-        <button type="button" id="s14-next-clue">打開下一條線索</button>
-        <button type="button" id="s14-all-clues">顯示全部線索</button>
-        <button type="button" id="s14-reset-desk">重設鑑定桌</button>
+        <button type="button" id="s14-next-clue">打開下一張線索卡</button>
+        <button type="button" id="s14-all-clues">一次看全部線索</button>
+        <button type="button" id="s14-reset-desk">換回第一張</button>
       </div>
-      <div id="s14-desk-out" class="result" role="status" aria-live="polite">選擇上方文獻並點按「打開下一條線索」。</div>
+      <div id="s14-desk-out" class="result" role="status" aria-live="polite">選好想看的書，點「打開下一張線索卡」！</div>
     </div>
+
     <div class="play" id="s14-parallel-box">
-      <span class="kicker">跨版本《心經》原典實文對照（CBETA T0223／T0250／T0251 × 梵本差異）</span>
-      <h3>切換四個關鍵段落，直接比對漢文與梵本異同</h3>
-      <div class="tab-row js-only" role="group" aria-label="切換心經段落比較">
-        <button type="button" data-heartseg="seg1" aria-pressed="true">1. 開首「度一切苦厄」差異</button>
-        <button type="button" data-heartseg="seg2" aria-pressed="false">2.「非色異空／色即是空」核心</button>
-        <button type="button" data-heartseg="seg3" aria-pressed="false">3.「以無所得故」漢梵異常</button>
-        <button type="button" data-heartseg="seg4" aria-pressed="false">4. 咒語稱歎與「陀羅尼」脈絡</button>
+      <span class="kicker">特別對比桌｜大家最熟的《心經》，到底是從印度翻譯來，還是先在中國整理再翻成古印度文？</span>
+      <h3>切換四段經文，直接看中國早年的《大品般若經》跟後來的《心經》有多像！</h3>
+      <div class="tab-row js-only" role="group" aria-label="切換心經四段對照">
+        <button type="button" data-heartseg="seg1" aria-pressed="true">1. 開頭「度一切苦厄」去哪了？</button>
+        <button type="button" data-heartseg="seg2" aria-pressed="false">2. 「色即是空」這幾句</button>
+        <button type="button" data-heartseg="seg3" aria-pressed="false">3. 「以無所得故」的小卡關</button>
+        <button type="button" data-heartseg="seg4" aria-pressed="false">4. 結尾的咒語段落</button>
       </div>
-      <div class="parallel-grid" role="region" aria-live="polite" aria-label="跨版本原文平行對照欄">
-        <article class="parallel-card"><h4>《大品般若經》T0223 j1（羅什譯）</h4><p id="s14-p-t223" class="small">（〈習應品〉T08, 0223a13 前後）<strong>無對應句</strong>——未見「觀自在菩薩行深…度一切苦厄」開首語。</p></article>
-        <article class="parallel-card"><h4>《大明咒經》T0250（題羅什譯）</h4><p id="s14-p-t250" class="small">「觀世音菩薩行深般若波羅蜜時，照見五陰空，<span class="parallel-diff">度一切苦厄</span>。」（Attwood 2020 推論此本或反係晚起偽托）</p></article>
-        <article class="parallel-card"><h4>《心經》T0251（玄奘譯本）</h4><p id="s14-p-t251" class="small">「觀自在菩薩行深般若波羅蜜多時，照見五蘊皆空，<span class="parallel-diff">度一切苦厄</span>。」（T08, 0848c06–07）</p></article>
-        <article class="parallel-card"><h4>通行梵本 / 學者比對重點</h4><p id="s14-p-skt" class="small"><strong>通行梵本無「度一切苦厄」對應句</strong>（Attwood 2020, p.178；僅見於北涼《大方廣十輪經》T410 等漢譯文本），顯示非直接逐字自現存梵本直譯。</p></article>
+      <div class="parallel-grid" role="region" aria-live="polite" aria-label="四個古本直接比對">
+        <article class="parallel-card"><h4>早年《大品般若經》（404年譯）</h4><p id="s14-p-t223" class="small">這一大段裡面<strong>找不到</strong>「觀自在菩薩行深…度一切苦厄」這幾句開頭。</p></article>
+        <article class="parallel-card"><h4>《摩訶般若大明咒經》（舊本）</h4><p id="s14-p-t250" class="small">寫作「觀世音菩薩…照見五陰空，<strong>度一切苦厄</strong>」（有學者懷疑這版其實較晚才寫上舊翻譯家的名字）。</p></article>
+        <article class="parallel-card"><h4>玄奘法師譯《心經》（通行版）</h4><p id="s14-p-t251" class="small">寫作「觀自在菩薩…照見五蘊皆空，<strong>度一切苦厄</strong>」。</p></article>
+        <article class="parallel-card"><h4>古印度梵文本怎麼寫？</h4><p id="s14-p-skt" class="small"><strong>通行梵文原本沒有「度一切苦厄」這一句！</strong>目前只有在另一部漢譯經典裡看得到類似話，表示《心經》開頭不像整段直接照現存梵文翻譯。</p></article>
       </div>
-      <noscript>
-        <p class="small"><strong>無 JS 靜態摘要：</strong>① T223 j1〈習應品〉(223a13–21) 載「非色異空、色即是空…是諸法空相…無苦集滅道、無智無得」而<strong>不含</strong>「度一切苦厄」；②「以無所得故」(anupalambhayogena) 於標準《心經》梵本誤轉為 aprāptitvāt；③ T251 末「大神咒／大明咒」與神咒收尾屬福井文雅強調之陀羅尼修持重點，亦見唐代窺基 T1710「別出此經」與圓測 T1711「於諸般若簡集綱要」。</p>
-      </noscript>
+
+      <h4 style="margin-top:14px">目前學者之間有哪三種主要看法？（目前學界還沒有單一最後定案！）</h4>
+      <div class="tab-row js-only" role="group" aria-label="心經來源的三種研究看法">
+        <button type="button" data-heart="trad" aria-pressed="false">看法一：一直都是從印度梵本翻譯來</button>
+        <button type="button" data-heart="nattier" aria-pressed="true">看法二：先在中國整理好，再翻成印度古文？</button>
+        <button type="button" data-heart="alt" aria-pressed="false">看法三：日本學者的不同反對意見</button>
+      </div>
+      <p id="s14-heart-out" class="result" role="status" aria-live="polite">【先在中國整理再回譯的看法】有研究者對字句發現《心經》中段跟早兩百多年翻譯的《大品般若經》幾乎一樣，連古文裡一處特別的詞「以無所得故」轉成梵文時也留下一樣的小疙瘩（Attwood 2020 完整論文看得出這些文字證據；另兩篇 1992 與 2021 詳細論文因網站防抓取或付費牆還沒拿到全本核對）。另外要分開：有些學者覺得這只是當時常見的重點摘錄，另一位學者個人則推論部分舊本可能屬故意托名——這點學者間還在吵，沒有定論！</p>
     </div>
-    <div class="play">
-      <span class="kicker">《心經》來源與學術爭議對讀（V03 升級：區分語文學實證、個人偽作推論與反論書誌）</span>
-      <h3>切換三種學術立場（無單一全學界共識）</h3>
-      <div class="tab-row js-only" role="group" aria-label="心經來源假說">
-        <button type="button" data-heart="trad" aria-pressed="false">傳統說法（印→漢）</button>
-        <button type="button" data-heart="nattier" aria-pressed="true">漢編回譯假說（Nattier／Attwood）</button>
-        <button type="button" data-heart="alt" aria-pressed="false">反對意見與福井文雅書誌脈絡</button>
-      </div>
-      <p id="s14-heart-out" class="result" role="status" aria-live="polite">【漢編回譯假說（須區分兩層推論）】(1) 語文學證據：CBETA T0223〈習應品〉(223a13–21) 與 T250／T251 核心段高度重疊，Attwood (2020 Pacific World 全文，pp.159–176) 亦指出「以無所得故→aprāptitvāt」與窺基 T1710／圓測 T1711 的「抄經（chao jing）」線索（註：Attwood 2021 22點與 Nattier 1992 原論文受 403／PoW 阻擋未核對全數細節）。(2) 動機爭議：Tokuno／紀贇視抄經非詐騙；Attwood (2020 pp.157,181–182) 則另主張 T250 與梵本似屬「明知而為之假前史偽作」，此點屬學者個人推論，非全學界共識。</p>
-      <div class="grid">
-        <article class="card"><h3>《楞嚴經》T945 ≠ T642</h3><p>唐代《大佛頂首楞嚴經》（T945）與鳩摩羅什譯自印度原本的《首楞嚴三昧經》（T642）是兩部不同經典，不可藉經名相似混同來源；Jia（2022）重新考察房融參與翻譯潤色的跨文化互動。</p></article>
-        <article class="card"><h3>「格義（geyi）」考證</h3><p>Victor Mair（2012）指出教科書常說「魏晉廣泛用老莊語彙譯經叫格義」係近代建構；史料中原意僅短暫用於對應印度名數清單（numbered lists）的講經分類法。</p></article>
-      </div>
+
+    <div class="story-takeaway">
+      <h3>兩個提醒：別把「不是最早原本」跟「壞人故意騙錢」畫上等號！</h3>
+      <p>第一，就算是在中國文化裡長出來的經典（像講孝順的《父母恩重經》或《大乘起信論》），很多也是為了在當地弘法而用心整理的哲學與宗教作品，不全是惡意詐騙；第二，中國正牌佛典大資料庫也有說明：「有收進資料庫，不等於替每部書保證它一定出於古代印度」！</p>
     </div>
-    <div class="table-wrap"><table role="table"><caption>十六部經典或文獻歷史來源評估全表（對應原表 T11）</caption><thead><tr><th>經典或文獻</th><th>歷史研究評估</th><th>直接出自釋迦牟尼的證據</th></tr></thead><tbody>
-      <tr><th data-label="經典或文獻">巴利四部尼柯耶</th><td data-label="歷史研究評估">保存大量早期佛教內容</td><td data-label="直接出自釋迦牟尼的證據">相對較強，但非逐字證實</td></tr>
-      <tr><th data-label="經典或文獻">漢譯四阿含經</th><td data-label="歷史研究評估">保存不同印度部派的早期經文</td><td data-label="直接出自釋迦牟尼的證據">相對較強，須逐篇比對</td></tr>
-      <tr><th data-label="經典或文獻">《法句經》</th><td data-label="歷史研究評估">不同傳承保存相關古老偈頌（故事義註較晚）</td><td data-label="直接出自釋迦牟尼的證據">部分內容具較強早期證據</td></tr>
-      <tr><th data-label="經典或文獻">《經集》</th><td data-label="歷史研究評估">部分篇章具古老語言與思想特徵</td><td data-label="直接出自釋迦牟尼的證據">相對較強，內部仍有年代差異</td></tr>
-      <tr><th data-label="經典或文獻">《金剛經》T235</th><td data-label="歷史研究評估">印度大乘般若經典</td><td data-label="直接出自釋迦牟尼的證據">缺乏直接證據</td></tr>
-      <tr><th data-label="經典或文獻">《法華經》T262</th><td data-label="歷史研究評估">早期印度大乘經典，具不同形成層次</td><td data-label="直接出自釋迦牟尼的證據">缺乏直接證據</td></tr>
-      <tr><th data-label="經典或文獻">《華嚴經》T278/T279</th><td data-label="歷史研究評估">多個印度大乘文獻逐漸集合形成</td><td data-label="直接出自釋迦牟尼的證據">缺乏直接證據</td></tr>
-      <tr><th data-label="經典或文獻">《阿彌陀經》T366</th><td data-label="歷史研究評估">印度及中亞淨土思想傳統</td><td data-label="直接出自釋迦牟尼的證據">缺乏直接證據</td></tr>
-      <tr><th data-label="經典或文獻">《無量壽經》T360</th><td data-label="歷史研究評估">具不同語言及版本的淨土經典</td><td data-label="直接出自釋迦牟尼的證據">缺乏直接證據</td></tr>
-      <tr><th data-label="經典或文獻">《心經》T251</th><td data-label="歷史研究評估">具強漢地編纂研究證據及不同學界解釋</td><td data-label="直接出自釋迦牟尼的證據">極弱</td></tr>
-      <tr><th data-label="經典或文獻">《楞嚴經》T945</th><td data-label="歷史研究評估">印度來源、漢地編集及翻譯長期爭議（勿混T642）</td><td data-label="直接出自釋迦牟尼的證據">極弱</td></tr>
-      <tr><th data-label="經典或文獻">《大乘起信論》T1666</th><td data-label="歷史研究評估">作者與翻譯歸屬高度質疑，多學者判為6世紀中國著作</td><td data-label="直接出自釋迦牟尼的證據">本身是論書，非佛陀直接教導</td></tr>
-      <tr><th data-label="經典或文獻">《盂蘭盆經》T685</th><td data-label="歷史研究評估">具有漢地宗教文化編集高度疑慮</td><td data-label="直接出自釋迦牟尼的證據">極弱</td></tr>
-      <tr><th data-label="經典或文獻">《父母恩重經》</th><td data-label="歷史研究評估">具明顯漢地孝道文化與本土撰述特徵</td><td data-label="直接出自釋迦牟尼的證據">極弱</td></tr>
-      <tr><th data-label="經典或文獻">《六祖壇經》T2008</th><td data-label="歷史研究評估">中國禪宗文獻，有不同歷史版本</td><td data-label="直接出自釋迦牟尼的證據">本身是祖師文獻，非釋迦牟尼教導</td></tr>
-      <tr><th data-label="經典或文獻">佛教密續</th><td data-label="歷史研究評估">主要在西元7世紀以後發展成熟</td><td data-label="直接出自釋迦牟尼的證據">極弱</td></tr>
-    </tbody></table></div>
-    <nav class="station-nav" aria-label="站點 14 導覽"><p class="small">目前第 14／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#mahayana">← 上一站</a><a class="button secondary" href="./history-research.html#text-attribution">研究詳頁</a><a class="button" href="#china">下一站 →</a></div></nav>
+
+    <div class="source-door">
+      <p>📖 <strong>想看原始古書位置與各家論文詳細清單？</strong>這裡有完整的經典編碼、頁數對讀及我們已讀與還沒拿到的文獻說明。</p>
+      <a class="button secondary" href="./history-research.html#heart-sutra-origin">看《心經》《楞嚴經》與十六部經典學術考證 →</a>
+    </div>
+
+    <nav class="station-nav" aria-label="第 14 關導覽"><p class="small">目前第 14／22 關</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#mahayana">← 上一關</a><a class="button" href="#china">下一關：印度僧人的中國之旅 →</a></div></nav>
   </div></section>`,
 
-  // S15
-  `<section id="china" class="chapter" data-station="15" tabindex="-1"><div class="container">
-    <div class="kicker">第 15 站 · 孝道、吃素、寺院生計</div>
-    <h2>到了中國，佛教怎麼生活？</h2>
-    <p>佛教進入重視家族宗法、孝道與王權的漢地社會後，經歷深刻調適。但務必避免「古印度不重視孝道、也不禁肉，全都是中國發明」的粗略對立！Gregory Schopen（1997）、John Strong（1983）與廣興（2005）指出早期印度佛經早已稱父母為「梵天」與「初師」（《善生經》DN 31／DA 16 亦明訂奉養父母）；而柯嘉豪（John Kieschnick, 2005）則追蹤早期三淨肉律規如何在《大般涅槃經》與梁武帝推行下，經歷數百年於公元10世紀左右確立為漢傳僧團普遍素食正統。<a class="src" href="./history-research.html#c15-001">孝道調適（C15-001）</a> <a class="src" href="./history-research.html#c15-002">MN 55 與素食史（C15-002）</a></p>
+  // S15: Indian Monk's Journey in China
+  `<section id="china" class="chapter theme-documentary" data-station="15" tabindex="-1"><div class="container">
+    <div class="kicker">第 15 關 · 當印度修行人走進重視家族的中國</div>
+    <h2>印度僧人的中國生活大適應</h2>
+    <p class="story-lead">早年印度的出家人不跟家裡同住、也不能自己種田、沿門托缽別人供養什麼就吃什麼。可是走進傳統中國鄉村後，大家突然問他：「你不結婚生小孩算不孝順吧？又不下田怎麼過日子？」看生活習慣怎麼一點一點變出今天的樣子！</p>
+
     <div class="play">
-      <span class="kicker">情境模擬 · 古代僧人面對漢地社會的三道現實課題（史實背景＋教學對比）</span>
-      <div class="tab-row js-only" role="group" aria-label="中國化情境">
-        <button type="button" data-cscene="filial" aria-pressed="true">1. 孝親與宗法張力</button>
-        <button type="button" data-cscene="work" aria-pressed="false">2. 托缽與寺院農作生計</button>
-        <button type="button" data-cscene="food" aria-pressed="false">3. 三淨肉與梁武帝斷酒肉</button>
+      <span class="kicker">文化碰面場景切換 · 點三個生活難題，看看怎麼改變</span>
+      <div class="story-stage">
+        <img class="stage-art" src="assets/history/illustrations/s15-china-arrival.webp" width="1200" height="675" loading="lazy" alt="穿黃袍的印度行腳僧微笑走進陽光中國木門院子，一旁有菜園、素食餐桌和合掌歡迎他的村民（現代繪本插畫）">
+        <div class="stage-overlay-row">
+          <span class="badge ok" id="s15-scene-badge">目前生活話題：1. 父母與家族怎麼辦？</span>
+        </div>
       </div>
-      <p id="s15-out" class="result" role="status" aria-live="polite">【孝親與家族張力（模擬比較）】早期印度經典（如 DN 31／DA 16《善生經》、AN 2.31）本已重視奉養父母，稱父母為「梵天、初師」；但中國宗法強調不婚無後之不孝，佛教遂發展出家大孝、四重恩、盂蘭盆超度等制度調適。</p>
+
+      <div class="tab-row js-only" role="group" aria-label="選擇三個中國生活適應主題">
+        <button type="button" data-cscene="filial" aria-pressed="true">1. 不婚生子是不是不孝？</button>
+        <button type="button" data-cscene="work" aria-pressed="false">2. 不靠托缽怎麼種菜吃飯？</button>
+        <button type="button" data-cscene="food" aria-pressed="false">3. 為什麼漢傳佛教全面吃全素？</button>
+      </div>
+      <p id="s15-out" class="result" role="status" aria-live="polite">【孝親與家族】其實最早的印度古經早就非常看重照顧爸爸媽媽；但面對中國「無後為大」的壓力，後來發展出了「出家修好幫助全家人」「盂蘭盆追思祖先」這些接地氣的說法與法會。</p>
     </div>
-    <div class="table-wrap"><table role="table"><caption>古印度出家佛教與中國社會的六項衝突及適應（對應原表 T12）</caption><thead><tr><th>古印度出家佛教特色</th><th>中國社會面臨的衝突</th><th>後來的適應方式</th></tr></thead><tbody>
-      <tr><th data-label="古印度出家佛教特色">離家出家</th><td data-label="中國社會面臨的衝突">不奉養父母、家族傳承問題</td><td data-label="後來的適應方式">強調出家也是報答父母恩情（如四重恩）</td></tr>
-      <tr><th data-label="古印度出家佛教特色">不婚、不生育</th><td data-label="中國社會面臨的衝突">不孝有三，無後為大</td><td data-label="後來的適應方式">發展超度祖先與功德迴向（如盂蘭盆）</td></tr>
-      <tr><th data-label="古印度出家佛教特色">托缽與接受供養</th><td data-label="中國社會面臨的衝突">被部分士大夫批評不從事生產</td><td data-label="後來的適應方式">發展寺院經濟、農業及勞作傳統</td></tr>
-      <tr><th data-label="古印度出家佛教特色">解脫輪迴</th><td data-label="中國社會面臨的衝突">一般百姓更關注現實生活</td><td data-label="後來的適應方式">發展祈福、消災、治病相關儀式</td></tr>
-      <tr><th data-label="古印度出家佛教特色">印度宗教宇宙觀</th><td data-label="中國社會面臨的衝突">中國已有鬼神與祖先信仰</td><td data-label="後來的適應方式">地獄、亡者及地方神祇信仰融合</td></tr>
-      <tr><th data-label="古印度出家佛教特色">外來宗教身分</th><td data-label="中國社會面臨的衝突">與儒家、道教及王權競爭</td><td data-label="後來的適應方式">發展護國佛教與本土化思想</td></tr>
-    </tbody></table></div>
-    <div class="table-wrap"><table role="table"><caption>為什麼中國佛教特別強調吃素？五項飲食主張評估（對應原表 T13）</caption><thead><tr><th>說法</th><th>歷史評估</th></tr></thead><tbody>
-      <tr><th data-label="說法">佛陀反對殺生</th><td data-label="歷史評估">有很強的早期文獻基礎</td></tr>
-      <tr><th data-label="說法">佛陀要求所有佛教徒終生吃素</th><td data-label="歷史評估">缺乏充分早期文獻支持（MN 55 許三淨肉；早律禁象馬犬蛇人肉等十種肉）</td></tr>
-      <tr><th data-label="說法">大乘佛教發展出強烈素食倫理</th><td data-label="歷史評估">有文獻證據（如《大般涅槃經》《楞伽經》等）</td></tr>
-      <tr><th data-label="說法">中國皇帝推動僧團素食制度</th><td data-label="歷史評估">有歷史證據（梁武帝6世紀斷酒肉，約10世紀確立為漢傳僧尼普遍規範）</td></tr>
-      <tr><th data-label="說法">所有吃肉的南傳僧侶都違反佛陀戒律</th><td data-label="歷史評估">不符合不同早期律藏的歷史記載（仍須守不見不聞不疑專為己殺三淨肉條件）</td></tr>
-    </tbody></table></div>
-    <nav class="station-nav" aria-label="站點 15 導覽"><p class="small">目前第 15／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#texts">← 上一站</a><a class="button secondary" href="./history-research.html#food-vinaya">研究詳頁</a><a class="button" href="#chan">下一站 →</a></div></nav>
+
+    <div class="story-takeaway">
+      <h3>所以吃素這件事，古印度跟漢地一樣嗎？</h3>
+      <p>早期印度戒律禁止吃人、象、馬、狗、蛇等十種特定動物的肉，但只要符合「<strong>沒看到為你殺、沒聽到為你殺、也不懷疑專門為你殺</strong>」的三個條件，托缽得到什麼就吃什麼。後來到了中國，大乘經典更強調完全不吃肉、加上六世紀梁武帝大力推行，經歷好幾百年到了大約十世紀，才定型成漢傳僧侶全面吃全素的規矩——所以<strong>不能因為南傳法師照古戒接受三淨肉，就罵人家破戒！</strong></p>
+    </div>
+
+    <div class="source-door">
+      <p>📖 <strong>這段生活史研究從哪裡來？</strong>取材自早期《善生經》《耆婆經》對照與中國佛教素食及寺院經濟史研究。</p>
+      <a class="button secondary" href="./history-research.html#food-vinaya">看古戒原文與素食演變研究 →</a>
+    </div>
+
+    <nav class="station-nav" aria-label="第 15 關導覽"><p class="small">目前第 15／22 關</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#texts">← 上一關</a><a class="button" href="#chan">下一關：一朵花的秘密書架 →</a></div></nav>
   </div></section>`,
 
-  // S16
-  `<section id="chan" class="chapter" data-station="16" tabindex="-1"><div class="container">
-    <div class="kicker">第 16 站 · 禪宗傳承能逐代查到嗎？</div>
-    <h2>一朵花和二十八位祖師</h2>
-    <p>傳統禪宗說釋迦牟尼在靈山拈花、只有迦葉微笑，經印度二十八祖傳至達摩來華。史丹佛哲學百科、John McRae、Albert Welter（2000）、石井修道（2000）與釋惠敏（2013）卻一步步在燈錄時間線上查出了「斷層」——這個故事是在北宋禪林逐漸結合定型的。<a class="src" href="./history-research.html#c16-001">拈花斷層考證（C16-001）</a> <a class="src" href="./history-research.html#c16-002">禪宗世系評估（C16-002）</a></p>
+  // S16: Secret of the Flower Sermon (Interactive Timeline Bookshelf)
+  `<section id="chan" class="chapter theme-archive" data-station="16" tabindex="-1"><div class="container">
+    <div class="kicker">第 16 關 · 靈山「拈花微笑」是什麼時候被寫進書裡的？</div>
+    <h2>一朵花的秘密時光書架</h2>
+    <p class="story-lead">大家最常聽到禪宗故事說：「佛陀在靈山大會拿起一朵花一句話也沒說，只有迦葉尊者看懂而微笑！」可是這段故事，在佛陀之後的前面一千多年間的古老經典裡，怎麼都翻不到……打開這排古代書籍一本本找找看！</p>
+
     <div class="play">
-      <span class="kicker">文獻偵探：一朵花出現在哪一本書、哪個年代？</span>
-      <div class="tab-row js-only" role="group" aria-label="逐冊開啟文獻時間線">
-        <button type="button" data-chan="early" aria-pressed="true">早期大藏經／敦煌壇經</button>
-        <button type="button" data-chan="baolin" aria-pressed="false">801《寶林傳》殘卷</button>
-        <button type="button" data-chan="jingde" aria-pressed="false">1004《景德傳燈錄》</button>
-        <button type="button" data-chan="tiansheng" aria-pressed="false">1029／1036《天聖廣燈錄》</button>
-        <button type="button" data-chan="dafan" aria-pressed="false">宋《大梵天王問佛決疑經》</button>
+      <span class="kicker">古代圖書館書架 · 從早到晚翻開五本書，看「花」在哪一本才第一次出現！</span>
+      <div class="story-stage">
+        <img class="stage-art" src="assets/history/illustrations/s16-song-library.webp" width="1200" height="675" loading="lazy" alt="木造宋代書院圖書館裡掛著暖光燈籠，整齊的木書架擺著線裝古書，前方木桌上供著一朵蓮花（現代繪本插畫）">
+        <div class="shelf-row" style="padding:10px 12px">
+          <button type="button" class="book-spine" data-chan="early" aria-pressed="true"><span class="actor-badge">8世紀前</span><strong>早年大藏經／敦煌本</strong><small>結果：還沒寫花 ❌</small></button>
+          <button type="button" class="book-spine" data-chan="baolin" aria-pressed="false"><span class="actor-badge">801年</span><strong>寶林傳（殘卷）</strong><small>結果：提付法沒寫花 ⏳</small></button>
+          <button type="button" class="book-spine" data-chan="jingde" aria-pressed="false"><span class="actor-badge">1004年</span><strong>景德傳燈錄</strong><small>結果：還未見完整 🌸❌</small></button>
+          <button type="button" class="book-spine" data-chan="tiansheng" aria-pressed="false"><span class="actor-badge">1029/1036</span><strong>天聖廣燈錄</strong><small>結果：首度完整登場！🌸✓</small></button>
+          <button type="button" class="book-spine" data-chan="dafan" aria-pressed="false"><span class="actor-badge">宋代</span><strong>大梵天王問佛決疑經</strong><small>結果：較晚本土著作 📚</small></button>
+        </div>
       </div>
-      <p id="s16-out" class="result" role="status" aria-live="polite">【早期大藏經與隋唐禪籍（含敦煌本《壇經》S.5475）】未載靈山拈花公案；敦煌本展現較早質樸面貌，與 1310 年高麗刻本字句增廣形成明顯對照。</p>
+      <p id="s16-out" class="result" role="status" aria-live="polite">【早年大藏經與唐代敦煌手抄本】沒有記「佛陀拿一朵花、迦葉微笑」的故事；這時期的寫本看得出文字比較單純，跟後來印刷的厚版書差很多。</p>
     </div>
+
     <div class="grid">
       <article class="card-box">
-        <span class="tag">版本對照 · IMG05（敦煌寫本官方連結＋1310刻本對比）</span>
-        <h3>《六祖壇經》敦煌本 vs 後世刊本</h3>
-        <img src="assets/history/evidence/img05-platform-sutra-1310.jpg" width="900" height="785" loading="lazy" alt="1310年高麗刻本六祖壇經對開木刻漢文頁面，記載風吹幡動等公案" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small"><strong>重要區分：</strong>上圖為<strong>1310年高麗木刻版（BnF Coréen 110, Public Domain）</strong>，屬後世增廣刊本，<strong>絕非敦煌唐寫本，亦不可當成敦煌寫本之替代件</strong>。大英圖書館敦煌寫本 <code>Or.8210/S.5475</code> 因官網反爬蟲機制對自動請求受阻（<code>ACCESS_BLOCKED</code>，非版權禁止），請讀者由官方館藏頁親自查閱：<a href="https://idp.bl.uk/collection/C4D4682ACF944CAF9378F5C5701576A0/" target="_blank" rel="noopener noreferrer">IDP S.5475 官方頁面 ↗</a></p>
+        <span class="tag">版本對照真跡照片</span>
+        <h3>1310年高麗木刻版《壇經》（絕非敦煌原本）</h3>
+        <img src="assets/history/evidence/img05-platform-sutra-1310.jpg" width="900" height="785" loading="lazy" alt="1310年高麗木刻板六祖壇經對開頁面，印著「風吹幡動」故事" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
+        <p class="small">這是法國國家圖書館收藏的<strong>1310年木刻版</strong>（已經經過後世好幾次加長改寫），<strong>不能當成唐朝敦煌手抄本替身</strong>！大英圖書館有真正的敦煌古卷，因網站防機器人無法直接放圖，請點此親自觀看：<a href="https://idp.bl.uk/collection/C4D4682ACF944CAF9378F5C5701576A0/" target="_blank" rel="noopener noreferrer">大英圖書館敦煌古卷網頁 ↗</a></p>
       </article>
       <article class="card-box">
-        <span class="tag">後世藝術想像 · IMG06</span>
-        <h3>達摩掛軸（雲谷等顏繪，16–17世紀）</h3>
-        <img src="assets/history/evidence/img06-bodhidharma-met.jpg" width="800" height="1067" loading="lazy" alt="日本桃山至江戶初年畫家雲谷等顏所繪達摩掛軸水墨畫" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small">大都會藝術博物館藏 MET 2015.300.71（CC0）。繪於達摩活動時代約一千年後，呈現後世宗教藝術形象，<strong>非達摩本人寫實肖像</strong>。</p>
+        <span class="tag">一千年後的藝術畫像</span>
+        <h3>雲谷等顏繪達摩水墨軸（16–17世紀）</h3>
+        <img src="assets/history/evidence/img06-bodhidharma-met.jpg" width="800" height="1067" loading="lazy" alt="十六至十七世紀日本畫家繪製的達摩祖師水墨畫掛軸" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
+        <p class="small">紐約大都會博物館收藏的水墨畫。它畫在達摩過世將近一千年之後，是藝術想像，<strong>不是達摩真人的長相照片！</strong></p>
       </article>
     </div>
-    <div class="table-wrap"><table role="table"><caption>禪宗傳承九項說法之歷史證據評估（對應原表 T14）</caption><thead><tr><th>禪宗傳承說法</th><th>歷史證據評估</th></tr></thead><tbody>
-      <tr><th data-label="禪宗傳承說法">佛陀本人曾經修習及教導禪定</th><td data-label="歷史證據評估">高</td></tr>
-      <tr><th data-label="禪宗傳承說法">印度存在長期佛教禪修傳統</th><td data-label="歷史證據評估">高</td></tr>
-      <tr><th data-label="禪宗傳承說法">達摩具有歷史人物基礎</th><td data-label="歷史證據評估">中高</td></tr>
-      <tr><th data-label="禪宗傳承說法">達摩所有神異傳說</th><td data-label="歷史證據評估">低</td></tr>
-      <tr><th data-label="禪宗傳承說法">靈山拈花、迦葉微笑</th><td data-label="歷史證據評估">高度可能為北宋後定型之傳承敘事</td></tr>
-      <tr><th data-label="禪宗傳承說法">印度二十八祖完整逐代傳承</th><td data-label="歷史證據評估">缺乏可靠的逐代證據</td></tr>
-      <tr><th data-label="禪宗傳承說法">禪宗祖師傳承譜系經過後世整理</th><td data-label="歷史證據評估">高</td></tr>
-      <tr><th data-label="禪宗傳承說法">六祖慧能所有故事均為史實</th><td data-label="歷史證據評估">不能成立</td></tr>
-      <tr><th data-label="禪宗傳承說法">唐宋禪宗的形成與發展</th><td data-label="歷史證據評估">高</td></tr>
-    </tbody></table></div>
-    <nav class="station-nav" aria-label="站點 16 導覽"><p class="small">目前第 16／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#china">← 上一站</a><a class="button secondary" href="./history-research.html#flower-sermon">研究詳頁</a><a class="button" href="#tibet">下一站 →</a></div></nav>
+
+    <div class="story-takeaway">
+      <h3>晚一點出現的故事，等於沒有價值嗎？不是的！</h3>
+      <p>雖然歷史學者發現「二十八位祖師一一交接」「拈花微笑」是唐宋時代才慢慢整理定型的傳承故事，不是佛陀當場的文字記錄；但作為一種「不需要靠講一大堆話、用心領會」的哲學比喻，它在中國跟東亞藝術與生活思考裡仍然很有力量。</p>
+    </div>
+
+    <div class="source-door">
+      <p>📖 <strong>這段文獻追查從哪裡來？</strong>取材自近現代禪學史對敦煌寫本與宋代燈錄成書年代的比對研究。</p>
+      <a class="button secondary" href="./history-research.html#flower-sermon">看燈錄年表、學者研究與限度說明 →</a>
+    </div>
+
+    <nav class="station-nav" aria-label="第 16 關導覽"><p class="small">目前第 16／22 關</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#china">← 上一關</a><a class="button" href="#tibet">下一關：翻過高山的藏傳書卷 →</a></div></nav>
   </div></section>`,
 
-  // S17
-  `<section id="tibet" class="chapter" data-station="17" tabindex="-1"><div class="container">
-    <div class="kicker">第 17 站 · 秘密、伏藏與轉世</div>
-    <h2>從印度密教到西藏</h2>
-    <p>早期佛教已有護持咒語等元素，但具備完整灌頂、本尊觀想與曼荼羅的成熟密續主要自西元7世紀起在印度發展。Christian Wedemeyer（2012）提醒我們勿將密教簡化為「墮落巫術」，而應放回中世紀印度大寺的知識體系與符號學中理解。傳入西藏後，既有大量印度失傳典籍的珍貴保存，也有苯教雙向互動、伏藏（11世紀起分地伏藏／意伏藏，曾受薩迦班智達批判）與轉世制度（13世紀噶瑪巴至1792清廷金瓶掣籤）。<a class="src" href="./history-research.html#c17-001">Wedemeyer 密教脈絡（C17-001）</a> <a class="src" href="./history-research.html#c17-002">西藏史實與主張（C17-002）</a></p>
-    <div class="play">
-      <span class="kicker">來源盒分類 · 分清「歷史檔案」「宗派自述」與「宗教信念」</span>
-      <div class="tab-row js-only" role="group" aria-label="選擇藏傳主張">
-        <button type="button" data-tibet-item="tb1" aria-pressed="true">1. 桑耶寺與吐蕃碑銘</button>
-        <button type="button" data-tibet-item="tb2" aria-pressed="false">2. 保存印度失傳文獻</button>
-        <button type="button" data-tibet-item="tb3" aria-pressed="false">3. 地伏藏與意伏藏</button>
-        <button type="button" data-tibet-item="tb4" aria-pressed="false">4. 活佛為前世再生</button>
-      </div>
-      <p id="s17-item-text" class="note">約779年赤松德贊建桑耶寺及吐蕃王室碑銘</p>
-      <div class="controls js-only" role="group" aria-label="放入哪個來源盒">
-        <button type="button" data-tbox="archive" aria-pressed="false">實物／歷史檔案盒</button>
-        <button type="button" data-tbox="lineage" aria-pressed="false">宗派傳統自述盒</button>
-        <button type="button" data-tbox="belief" aria-pressed="false">宗教信念（史學無法驗證）</button>
-      </div>
-      <p id="s17-result" class="result" role="status" aria-live="polite">請把這項說法放入對應的來源盒。</p>
-    </div>
-    <div class="card-box" style="margin:14px 0">
-      <span class="tag">歷史地理實景 · 桑耶寺現址</span>
-      <h3>桑耶寺庭院（約779年赤松德贊建寺脈絡；照片為2011年重修後實景）</h3>
-      <img src="assets/history/evidence/extra-samye.jpg" width="900" height="600" loading="lazy" alt="2011年拍攝的西藏桑耶寺建築與庭院內兩位行進中的藏傳僧侶遠景照片" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-      <p class="small">Lark Ascending (2011, Public Domain)。現存建築歷經多代毀建重修，非8世紀原構。</p>
-    </div>
-    <div class="table-wrap"><table role="table"><caption>西藏佛教八個歷史時期（對應原表 T15）</caption><thead><tr><th>時期</th><th>重要變化</th></tr></thead><tbody>
-      <tr><th data-label="時期">西元7～9世紀</th><td data-label="重要變化">吐蕃王室引進與支持佛教</td></tr>
-      <tr><th data-label="時期">約779年</th><td data-label="重要變化">赤松德贊支持桑耶寺與僧團制度</td></tr>
-      <tr><th data-label="時期">西元9～10世紀</th><td data-label="重要變化">政治動盪，佛教制度與傳承受影響</td></tr>
-      <tr><th data-label="時期">西元10～12世紀</th><td data-label="重要變化">後弘期再度興盛，大量引入印度佛教文獻</td></tr>
-      <tr><th data-label="時期">西元11～15世紀</th><td data-label="重要變化">不同藏傳宗派逐漸形成</td></tr>
-      <tr><th data-label="時期">西元15世紀</th><td data-label="重要變化">格魯派形成</td></tr>
-      <tr><th data-label="時期">西元17世紀</th><td data-label="重要變化">格魯派與蒙古政治軍事支持結合，形成新政教秩序</td></tr>
-      <tr><th data-label="時期">西元20世紀</th><td data-label="重要變化">政治衝突、宗教制度破壞及海外流亡傳承</td></tr>
-    </tbody></table></div>
-    <div class="table-wrap"><table role="table"><caption>藏傳與密教八類傳承主張之歷史評估（對應原表 T16）</caption><thead><tr><th>傳承主張</th><th>歷史評估</th></tr></thead><tbody>
-      <tr><th data-label="傳承主張">印度密教文獻確實傳入西藏</th><td data-label="歷史評估">高</td></tr>
-      <tr><th data-label="傳承主張">西藏保存大量已在印度失傳的佛教文獻</th><td data-label="歷史評估">高</td></tr>
-      <tr><th data-label="傳承主張">蓮花生具有歷史人物基礎</th><td data-label="歷史評估">有一定支持，生平傳說須區分</td></tr>
-      <tr><th data-label="傳承主張">蓮花生所有神異事蹟</th><td data-label="歷史評估">無法獨立驗證</td></tr>
-      <tr><th data-label="傳承主張">伏藏經典由古代祖師預先隱藏，等待指定人物發現</th><td data-label="歷史評估">須逐份檢驗（如桑傑喇嘛起分地／意伏藏，薩迦班智達曾系統批判），秘密來源難證實</td></tr>
-      <tr><th data-label="傳承主張">透過精神感應取得古代經典</th><td data-label="歷史評估">無法以一般歷史方法確認</td></tr>
-      <tr><th data-label="傳承主張">活佛轉世者確實是前世人物再生</th><td data-label="歷史評估">宗教信仰主張，歷史方法無法驗證（13世紀起形成制度、1792金瓶掣籤屬制度史實）</td></tr>
-      <tr><th data-label="傳承主張">密宗傳承可追溯至佛陀的完整秘密教法</th><td data-label="歷史評估">缺乏充分直接證據</td></tr>
-    </tbody></table></div>
-    <nav class="station-nav" aria-label="站點 17 導覽"><p class="small">目前第 17／22 站</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#chan">← 上一站</a><a class="button secondary" href="./history-research.html#tibetan-lineages">研究詳頁</a><a class="button" href="#politics">下一站 →</a></div></nav>
-  </div></section>`,
+  // S17: Crossing the Himalayas (Map + Three Wooden Boxes + Real Samye Photo)
+  `<section id="tibet" class="chapter theme-atlas" data-station="17" tabindex="-1"><div class="container">
+    <div class="kicker">第 17 關 · 雪域高原的三個故事箱</div>
+    <h2>翻越喜馬拉雅山的書卷</h2>
+    <p class="story-lead">佛教走過全世界海拔最高的雪山來到西藏，留下極多連印度本國都已經燒光失傳的寶貴大經！同時也流傳著「埋在土裡的古代書卷」「活佛轉世」等大家超好奇的說法。哪些在歷史檔案裡看得到、哪些屬於個人宗教信仰？放進三個木箱試試看！</p>
 
-  // S18
-  `<section id="politics" class="chapter" data-station="18" tabindex="-1"><div class="container">
-    <div class="kicker">第 18 站 · 戰爭、政治、經濟的選擇性保存</div>
-    <h2>誰留下書，誰沒能留下？</h2>
-    <p>寺院需要土地、糧食、保護與抄經網絡。政權滅佛、殖民改造、戰火與官修大藏經（如北宋 971–983 年依《開元釋教錄》雕印首部木刻大藏經《開寶藏》），共同決定了後人讀得到什麼。至於印度北部大型寺院在11–13世紀的衰退，考古學家 Lars Fogelin（2015）強調不能單一歸咎突厥入侵，而必須看多重結構因素交織。<a class="src" href="./history-research.html#c18-001">政治與開寶藏（C18-001）</a> <a class="src" href="./history-research.html#c18-002">Fogelin 印度衰退（C18-002）</a></p>
     <div class="play">
-      <span class="kicker">古圖書館保存沙盒（玩具教學模擬，非古代真實統計數字）</span>
-      <h3>勾選不同歷史力量，直接看四處藏書地點如何保存或失傳</h3>
-      <div class="scene" style="margin:8px 0">
-        <svg id="s18-archives-svg" viewBox="0 0 460 155" role="img" aria-labelledby="s18-svg-t s18-svg-d">
-          <title id="s18-svg-t">四處歷史藏書地點與典籍材料保存狀態模擬看板</title>
-          <desc id="s18-svg-d">顯示北印大寺寫本、斯里蘭卡貝葉、中原《開寶藏》與石經、敦煌與高麗跨區副本四個地點，隨下方條件變化呈現保存與散佚差異。</desc>
-          <rect width="460" height="155" rx="12" fill="#173832"/>
-          <g id="s18-repo-india"><rect id="s18-box-india" x="12" y="16" width="102" height="106" rx="8" fill="#224a42" stroke="#f0a89b" stroke-width="2"/><text x="63" y="36" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">北印那爛陀等</text><text x="63" y="54" fill="#d7dfd4" font-size="9.5" text-anchor="middle">樺皮・貝葉寫本</text><rect x="20" y="72" width="86" height="36" rx="6" fill="#102924"/><text id="s18-st-india" x="63" y="94" fill="#f0a89b" font-size="10" font-weight="700" text-anchor="middle">戰亂毀壞風險</text></g>
-          <g id="s18-repo-sl"><rect id="s18-box-sl" x="123" y="16" width="102" height="106" rx="8" fill="#224a42" stroke="#7a9186" stroke-width="1.5"/><text x="174" y="36" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">斯里蘭卡僧團</text><text x="174" y="54" fill="#d7dfd4" font-size="9.5" text-anchor="middle">巴利貝葉與統合</text><rect x="131" y="72" width="86" height="36" rx="6" fill="#102924"/><text id="s18-st-sl" x="174" y="94" fill="#cfe8dc" font-size="10" font-weight="700" text-anchor="middle">待條件觀察</text></g>
-          <g id="s18-repo-china"><rect id="s18-box-china" x="234" y="16" width="102" height="106" rx="8" fill="#224a42" stroke="#9fe0bd" stroke-width="2"/><text x="285" y="36" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">中原開寶／石經</text><text x="285" y="54" fill="#d7dfd4" font-size="9.5" text-anchor="middle">木刻雕版・石刻</text><rect x="242" y="72" width="86" height="36" rx="6" fill="#102924"/><text id="s18-st-china" x="285" y="94" fill="#9fe0bd" font-size="10" font-weight="700" text-anchor="middle">入錄本篩選存</text></g>
-          <g id="s18-repo-dunhuang"><rect id="s18-box-dunhuang" x="345" y="16" width="102" height="106" rx="8" fill="#224a42" stroke="#7a9186" stroke-width="1.5"/><text x="396" y="36" fill="#ecc98e" font-size="10.5" font-weight="700" text-anchor="middle">敦煌・藏・高麗</text><text x="396" y="54" fill="#d7dfd4" font-size="9.5" text-anchor="middle">跨區封洞與轉譯</text><rect x="353" y="72" width="86" height="36" rx="6" fill="#102924"/><text id="s18-st-dunhuang" x="396" y="94" fill="#cfe8dc" font-size="10" font-weight="700" text-anchor="middle">待條件觀察</text></g>
-          <text x="230" y="142" text-anchor="middle" fill="#b7e3ca" font-size="10">教學視覺示意：不同材料（貝葉/石經/刻藏）與地域決定了我們今天讀到什麼</text>
+      <span class="kicker">高山路徑＋三箱分類遊戲 · 把四件事放進最合適的箱子</span>
+      <div class="atlas-stage">
+        <svg viewBox="0 0 800 320" role="img" aria-labelledby="s17-map-t s17-map-d">
+          <title id="s17-map-t">印度至西藏喜馬拉雅傳播地理與三個證據箱</title>
+          <desc id="s17-map-d">以 Natural Earth 輪廓標示印度那爛陀與西藏桑耶寺位置，虛線標示跨喜馬拉雅多波往來與文化互動。</desc>
+          <rect class="atlas-sea" width="800" height="320" rx="12"/>
+          <g transform="translate(110,-65) scale(1.1)">
+            <path class="atlas-land" d="${ASIA_LAND_PATH}"/>
+            <path class="atlas-lake" d="${ASIA_LAKES_PATH}"/>
+          </g>
+          <path d="M346 186 Q380 158 412 138" fill="none" stroke="#7d4a82" stroke-width="3.5" stroke-dasharray="7 5"/>
+          <circle cx="346" cy="186" r="7.5" fill="#d97706" stroke="#fffdf7" stroke-width="2"/>
+          <circle cx="412" cy="138" r="9.5" fill="#7d4a82" stroke="#fffdf7" stroke-width="2.5"/>
+          <g font-size="12" font-weight="750" fill="#243330">
+            <text x="235" y="196">北印度（7世紀後密教成熟＋大寺翻譯）</text>
+            <text x="428" y="142">西藏桑耶寺（約779年王室建寺）</text>
+          </g>
         </svg>
+        <div class="drawer-bank" style="padding:8px 0 0">
+          <div class="drawer-box is-active" id="s17-box-archive"><strong>🏛️ 實物和歷史檔案箱</strong><p class="small">找得到同時期石碑或翻譯對照</p></div>
+          <div class="drawer-box" id="s17-box-lineage"><strong>📜 宗派自己的傳承說法箱</strong><p class="small">教內自有傳統講法，但外部還難確定</p></div>
+          <div class="drawer-box" id="s17-box-belief"><strong>🙏 宗教信仰箱（歷史方法查不到）</strong><p class="small">講前世今生心識延續，非科學或考古範圍</p></div>
+        </div>
       </div>
+
+      <div class="tab-row js-only" role="group" aria-label="選擇四件藏傳相關故事">
+        <button type="button" data-tibet-item="tb1" aria-pressed="true">1. 西元779年桑耶寺與石碑</button>
+        <button type="button" data-tibet-item="tb2" aria-pressed="false">2. 西藏保存了印度失傳古書</button>
+        <button type="button" data-tibet-item="tb3" aria-pressed="false">3. 從地裡或心中找出的古代秘密典籍</button>
+        <button type="button" data-tibet-item="tb4" aria-pressed="false">4. 活佛轉世者是不是前世同一人再生？</button>
+      </div>
+      <p id="s17-item-text" class="speech-bubble">「西元八世紀後期赤松德贊國王支持建立了桑耶寺，石碑也還留在現場。」</p>
+      <div class="controls js-only" role="group" aria-label="放入三個箱子">
+        <button type="button" data-tbox="archive" aria-pressed="false">放進「歷史檔案箱」</button>
+        <button type="button" data-tbox="lineage" aria-pressed="false">放進「宗派自述箱」</button>
+        <button type="button" data-tbox="belief" aria-pressed="false">放進「宗教信仰箱」</button>
+      </div>
+      <p id="s17-result" class="result" role="status" aria-live="polite">選一件事情再放進箱子裡看看結果！</p>
+    </div>
+
+    <div class="card-box">
+      <span class="tag">歷史現址實景照片</span>
+      <h3>西藏桑耶寺</h3>
+      <img src="assets/history/evidence/extra-samye.jpg" width="900" height="600" loading="lazy" alt="西藏桑耶寺當代庭院與兩位行進中的藏傳僧侶遠景照片" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
+      <p class="small">最早約在西元 779 年由吐蕃王室建立（現存建築經過歷代多次重建），見證密教與印度論書正式傳入西藏的歷史起點；注意研究密宗的學者也提醒大家，不能把中世紀繁複的宗教符號隨便看成「邪門巫術」，而要放回當年大學校寺院文化中去讀。</p>
+    </div>
+
+    <div class="source-door">
+      <p>📖 <strong>這段西藏歷史研究從哪裡來？</strong>取材自西藏史料與學者對密續符號及早期苯教互動的研究。</p>
+      <a class="button secondary" href="./history-research.html#tibetan-lineages">看桑耶寺史料、薩迦班智達討論與金瓶掣籤考證 →</a>
+    </div>
+
+    <nav class="station-nav" aria-label="第 17 關導覽"><p class="small">目前第 17／22 關</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#chan">← 上一關</a><a class="button" href="#politics">下一關：消失的古代圖書館 →</a></div></nav>
+  </div></section>`,
+
+  // S18: Vanishing Ancient Libraries Sandbox
+  `<section id="politics" class="chapter theme-workshop" data-station="18" tabindex="-1"><div class="container">
+    <div class="kicker">第 18 關 · 為什麼有些經書留下了，有些卻完全失傳？</div>
+    <h2>誰留下書，誰沒能留下？</h2>
+    <p class="story-lead">紙和樹皮很怕火、怕水、怕戰亂，大寺院又需要大量糧食、土地跟國王保護才能專心抄書。勾選下面的歷史事件，親自看看古代四個大藏書庫發生了什麼巨變！</p>
+
+    <div class="play">
+      <span class="kicker">藏書閣生存大挑戰 · 勾選不同歷史事件（幫助理解概念，非真實統計數字）</span>
+      <div class="story-stage" style="padding:12px">
+        <div class="repo-grid">
+          <div class="repo-card" id="s18-box-india"><strong>🏛️ 北印那爛陀等大寺</strong><p class="small">樹皮與棕櫚葉寫本</p><span class="badge warn" id="s18-st-india">戰火摧毀風險</span></div>
+          <div class="repo-card" id="s18-box-sl"><strong>🏝️ 斯里蘭卡海島寺院</strong><p class="small">椰葉書寫與整理</p><span class="badge" id="s18-st-sl">看條件變化</span></div>
+          <div class="repo-card" id="s18-box-china"><strong>📜 中原木刻《開寶藏》</strong><p class="small">皇帝挑出來木刻印刷＋石經</p><span class="badge ok" id="s18-st-china">挑進書目的留存</span></div>
+          <div class="repo-card" id="s18-box-dunhuang"><strong>🏜️ 敦煌洞窟・外國譯本</strong><p class="small">封進沙漠與帶到海外</p><span class="badge" id="s18-st-dunhuang">看條件變化</span></div>
+        </div>
+      </div>
+
       <div class="checks js-only">
-        <label><input type="checkbox" data-pol="war" checked><span>戰亂與政治滅佛（如北魏 446、北周 574、會昌 845、突厥入侵）</span></label>
-        <label><input type="checkbox" data-pol="elite"><span>寺院過度集中田產並疏離居士日常（Fogelin 結構脆弱性）</span></label>
-        <label><input type="checkbox" data-pol="canon" checked><span>《開寶藏》等官方正典雕印目錄選錄（未入錄典籍易散佚）</span></label>
-        <label><input type="checkbox" data-pol="copy"><span>跨區域抄寫、石經與海外轉譯保存</span></label>
+        <label><input type="checkbox" data-pol="war" checked><span>發生戰火、外敵攻打或皇帝下令拆廟（如中國幾次滅佛、中亞戰火）</span></label>
+        <label><input type="checkbox" data-pol="elite"><span>大寺院拿了太多國王田地、跟附近一般老百姓越來越疏遠</span></label>
+        <label><input type="checkbox" data-pol="canon" checked><span>朝廷編成《開寶藏》只挑特定書目刻進木板印刷（沒被挑中的就慢慢弄丟）</span></label>
+        <label><input type="checkbox" data-pol="copy"><span>大家努力多抄幾份，還刻在石頭上、或由船隊帶去外國翻譯保存</span></label>
       </div>
-      <div class="controls js-only" style="margin-top:8px"><button type="button" id="s18-reset">全部清除</button></div>
+      <div class="controls js-only" style="margin-top:8px"><button type="button" id="s18-reset">全部取消重看</button></div>
       <p id="s18-out" class="result" role="status" aria-live="polite"></p>
     </div>
+
     <div class="grid">
       <article class="card-box">
-        <span class="tag">考古遺址 · IMG07</span>
-        <h3>那爛陀大寺第五僧院遺址</h3>
-        <img src="assets/history/evidence/img07-nalanda.jpg" width="900" height="613" loading="lazy" alt="印度那爛陀大寺第五僧院磚砌階梯與僧房基址考古遺址照片" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small">Sumitsurai (2023, CC BY-SA 4.0)。見證古代北印度大型僧院教育中心的物質規模。</p>
+        <span class="tag">印度真實考古現場</span>
+        <h3>那爛陀大寺遺址</h3>
+        <img src="assets/history/evidence/img07-nalanda.jpg" width="900" height="613" loading="lazy" alt="印度那爛陀大寺磚造階梯與大片僧舍考古遺址" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
+        <p class="small">曾經容納數千名學者的古老大學寺。考古學家 Lars Fogelin 指出，北部佛教後來衰退並不只是「外來軍隊打進來」單一原因，還包含王室贊助換別家、大地主寺院跟平常百姓漸漸脫節等七種力量交織！</p>
       </article>
       <article class="card-box">
-        <span class="tag">考古遺址 · IMG08</span>
-        <h3>超戒寺遺址與斷裂石柱</h3>
-        <img src="assets/history/evidence/img08-vikramashila.jpg" width="900" height="600" loading="lazy" alt="印度比哈爾邦超戒寺考古遺址磚牆基座與地面斷裂石柱照片" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
-        <p class="small">Spotplayerx (2021, CC BY-SA 4.0)。部分東印度與邊緣佛教社群在大寺衰退後仍延續存在。</p>
+        <span class="tag">印度真實考古現場</span>
+        <h3>超戒寺遺址與倒下石柱</h3>
+        <img src="assets/history/evidence/img08-vikramashila.jpg" width="900" height="600" loading="lazy" alt="印度比哈爾邦超戒寺遺址與地面斷裂石柱" style="width:100%;height:auto;border-radius:8px;margin:8px 0">
+        <p class="small">即使在北印大寺院倒下之後，東印度與邊緣地區其實還有一些小社群繼續留下來一陣子，並沒有一夕之間全部歸零。</p>
       </article>
     </div>
-    <div class="table-wrap"><table role="table"><caption>十一個改變佛教歷史保存的關鍵事件（對應原表 T17）</caption><thead><tr><th>地區與事件</th><th>時間</th><th>歷史影響</th></tr></thead><tbody>
-      <tr><th data-label="地區與事件">阿育王支持佛教</th><td data-label="時間">西元前3世紀</td><td data-label="歷史影響">提高佛教傳播能力及制度化程度</td></tr>
-      <tr><th data-label="地區與事件">北魏滅佛</th><td data-label="時間">446年</td><td data-label="歷史影響">寺院與僧團受到破壞</td></tr>
-      <tr><th data-label="地區與事件">北周滅佛</th><td data-label="時間">574年起</td><td data-label="歷史影響">宗教資產與僧團制度受到限制</td></tr>
-      <tr><th data-label="地區與事件">唐武宗會昌滅佛</th><td data-label="時間">845年</td><td data-label="歷史影響">寺院裁撤、資產沒收、大量僧尼還俗</td></tr>
-      <tr><th data-label="地區與事件">斯里蘭卡僧團整合</th><td data-label="時間">12世紀</td><td data-label="歷史影響">大寺派取得主導地位</td></tr>
-      <tr><th data-label="地區與事件">印度北部佛教寺院衰退</th><td data-label="時間">11～13世紀</td><td data-label="歷史影響">寺院教育、文獻及師承網絡嚴重萎縮</td></tr>
-      <tr><th data-label="地區與事件">日本明治神佛分離</th><td data-label="時間">1868年起</td><td data-label="歷史影響">佛教寺院及神佛融合制度受到衝擊</td></tr>
-      <tr><th data-label="地區與事件">中國太平天國戰爭</th><td data-label="時間">1850～1864年</td><td data-label="歷史影響">大量宗教設施遭破壞，戰後重新建立</td></tr>
-      <tr><th data-label="地區與事件">英國殖民斯里蘭卡、緬甸</th><td data-label="時間">19世紀</td><td data-label="歷史影響">佛教教育、民族認同與宗教改革受影響</td></tr>
-      <tr><th data-label="地區與事件">泰國僧團法</th><td data-label="時間">1902年起</td><td data-label="歷史影響">地方僧團受更集中國家制度管理</td></tr>
-      <tr><th data-label="地區與事件">中國文化大革命</th><td data-label="時間">1966～1976年</td><td data-label="歷史影響">寺院、文物及傳承活動受嚴重破壞</td></tr>
-    </tbody></table></div>
-    <div class="table-wrap"><table role="table"><caption>印度佛教衰退的七項因素（對應原表 T18，Lars Fogelin 等研究）</caption><thead><tr><th>因素</th><th>歷史重要性</th></tr></thead><tbody>
-      <tr><th data-label="因素">軍事入侵與寺院破壞</th><td data-label="歷史重要性">重要直接因素</td></tr>
-      <tr><th data-label="因素">王室轉移宗教資源</th><td data-label="歷史重要性">重要制度因素</td></tr>
-      <tr><th data-label="因素">寺院過度集中土地與資源</th><td data-label="歷史重要性">部分研究認為是結構性問題（疏離居士日常）</td></tr>
-      <tr><th data-label="因素">與印度教傳統競爭及融合</th><td data-label="歷史重要性">長期因素（奉愛運動與哲學復興）</td></tr>
-      <tr><th data-label="因素">商業活動及城市結構改變</th><td data-label="歷史重要性">地區性經濟因素</td></tr>
-      <tr><th data-label="因素">僧團與普通百姓關係改變</th><td data-label="歷史重要性">部分學者的重要解釋</td></tr>
-      <tr><th data-label="因素">師承、教育及抄經網絡瓦解</th><td data-label="歷史重要性">傳承中斷的重要因素</td></tr>
-    </tbody></table></div>
-    <nav class="station-nav" aria-label="站點 18 導覽"><p class="small">目前第 18／22 站 · 第三幕結束，可稍後繼續</p><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#tibet">← 上一站</a><a class="button secondary" href="./history-research.html#india-decline">研究詳頁</a><a class="button" href="#japan">進入第四幕 →</a></div></nav>
+
+    <div class="source-door">
+      <p>📖 <strong>這段歷史研究從哪裡來？</strong>取材自北宋木刻大藏經印刷史與考古學者對北印佛教衰退的研究。</p>
+      <a class="button secondary" href="./history-research.html#india-decline">看十一個關鍵大事件＋七項衰退原因清單 →</a>
+    </div>
+
+    <nav class="station-nav" aria-label="第 18 關導覽"><p class="small">目前第 18／22 關 · 第三區結束</p><div class="button-row"><a class="button secondary" href="#menu">↑ 回到全館地圖</a><a class="button secondary" href="#tibet">← 上一關</a><a class="button" href="#japan">進入第四區：走進近代與臺灣 →</a></div></nav>
   </div></section>`
 ];

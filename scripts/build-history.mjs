@@ -32,28 +32,35 @@ function resolveSourceId(item, seenIds) {
 
 function buildLibraryArticles() {
   const seen = new Set();
+  const typeLabel = {
+    P1: "兩派都保存的古經",
+    P2: "單一派別的古經",
+    A: "真實石刻或古寫本",
+    R: "現代歷史學者研究",
+    E: "閱讀與認知研究"
+  };
   return EVIDENCE_ITEMS.map(item => {
     const id = resolveSourceId(item, seen);
     const extraAnchor = id === "s-meat"
       ? `<span id="s-veg"></span>`
       : (id === "s-fogelin" ? `<span id="s-sen"></span>` : "");
     const accessLabel = {
-      PRIMARY_CHECKED: "經文實證已讀",
-      FULLTEXT_CHECKED: "公開全文已讀",
-      ABSTRACT_ONLY: "摘要／書目已核",
-      CATALOG_ONLY: "館藏目錄定位"
-    }[item.access] || item.access;
+      PRIMARY_CHECKED: "我們直接看過古書或碑文原件",
+      FULLTEXT_CHECKED: "我們直接讀完公開的研究全文",
+      ABSTRACT_ONLY: "目前只看到出版商公開的摘要與目錄",
+      CATALOG_ONLY: "目前只看到圖書館書目，還沒讀到全書"
+    }[item.access] || "已記錄書目資料";
     return `<article class="evidence" id="${id}" data-source tabindex="-1">${extraAnchor}
-      <p><span class="tag">${esc(item.type)}</span> <span class="badge">${esc(item.id)}</span> <span class="badge">${esc(accessLabel)}</span></p>
+      <p><span class="tag">${esc(typeLabel[item.type] || "資料來源")}</span> <span class="badge">${esc(accessLabel)}</span></p>
       <h3>${esc(item.title)}</h3>
-      <p class="small"><strong>作者／編譯者：</strong>${esc(item.author)} · <strong>年代：</strong>${esc(item.year)} · <strong>卷頁：</strong>${esc(item.locator)}</p>
+      <p class="small"><strong>作者或編者：</strong>${esc(item.author)} · <strong>年代：</strong>${esc(item.year)} · <strong>出處位置：</strong>${esc(item.locator)}</p>
       <p>${esc(item.summary)}</p>
-      <p class="small"><strong>支持範圍：</strong>${esc(item.supports)} · <strong>不代表：</strong>${esc(item.doesNotSupport)}</p>
+      <p class="small"><strong>它能幫我們確認：</strong>${esc(item.supports)} · <strong>但不能多猜：</strong>${esc(item.doesNotSupport)}</p>
       <p class="small">關鍵詞：${esc(item.topics.join("、"))}</p>
       <div class="links">
-        <a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">主要來源連結</a>
-        ${item.altUrl ? `<a href="${esc(item.altUrl)}" target="_blank" rel="noopener noreferrer">平行／補充來源</a>` : ""}
-        <a href="./history-research.html#${esc(item.id.toLowerCase())}">在研究頁檢視書目與引文</a>
+        <a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">前往原始館藏或公開網站</a>
+        ${item.altUrl ? `<a href="${esc(item.altUrl)}" target="_blank" rel="noopener noreferrer">另一個參考網站</a>` : ""}
+        <a href="./history-research.html#${esc(item.id.toLowerCase())}">到專業研究頁看原文引文 →</a>
       </div>
     </article>`;
   }).join("\n");
@@ -69,14 +76,14 @@ function buildHistoryHtml() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f8f5ee">
-  <title>這真的是佛陀說的嗎？｜佛教歷史互動探索館 v2.0｜看見更多</title>
-  <meta name="description" content="以早期經律、阿育王碑銘、犍陀羅手稿、跨傳承比較與現代史料，用22站互動探索認識兩千五百年佛教如何形成與查證。">
+  <title>這真的是佛陀說的嗎？｜可以玩的佛教歷史故事館｜看見更多</title>
+  <meta name="description" content="用小朋友和阿公阿嬤都看得懂的白話與互動小遊戲，一起探索兩千五百年佛教經典、古老石刻、樹皮手稿與各地歷史是怎麼演變來的。">
   <link rel="canonical" href="https://t14210184.github.io/The-Naked-Dhamma/history.html">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:site_name" content="看見更多｜The Naked Dhamma">
-  <meta property="og:title" content="這真的是佛陀說的嗎？｜22站互動證據探索館">
-  <meta property="og:description" content="從古鼓、石柱碑銘、犍陀羅寫本到現代佛教與七步查證法：為兒童與長輩也能自在操作而重建的互動歷史探索館。">
+  <meta property="og:title" content="這真的是佛陀說的嗎？｜可以玩的佛教歷史故事館">
+  <meta property="og:description" content="修破鼓、當小鎮偵探、把水盆翻過來、用真實亞洲地圖時光旅行——用輕鬆遊戲認識佛教兩千五百年歷史的真實模樣。">
   <meta property="og:url" content="https://t14210184.github.io/The-Naked-Dhamma/history.html">
   <meta property="og:image" content="https://t14210184.github.io/The-Naked-Dhamma/social-history.png">
   <meta property="og:image:width" content="1200">
@@ -86,26 +93,26 @@ function buildHistoryHtml() {
   <script defer src="assets/history/history.js"></script>
 </head>
 <body>
-  <a class="skip" href="#main">跳到主要內容</a>
+  <a class="skip" href="#main">直接跳到主要內容</a>
   <header class="header">
     <div class="container">
       <div class="bar">
         <a class="logo" href="./index.html">看見更多</a>
-        <a class="top-link" href="#menu">目錄</a>
-        <a class="top-link" href="./history-research.html">研究</a>
+        <a class="top-link" href="#menu">地圖</a>
+        <a class="top-link" href="./history-research.html">專業研究</a>
         <details class="settings" id="settings">
-          <summary aria-label="設定字級、深淺配色與朗讀">設定</summary>
-          <div class="settings-panel" role="group" aria-label="閱讀顯示設定">
-            <p class="small">可調整字級大小，與切換暖紙淺色／柔光深色模式。</p>
+          <summary aria-label="設定字的大小、深淺配色與朗讀">設定</summary>
+          <div class="settings-panel" role="group" aria-label="畫面閱讀設定">
+            <p class="small">覺得字太小或太刺眼嗎？可以在這裡放大或換深色底。</p>
             <div class="controls">
-              <button type="button" id="fontDown" aria-label="縮小文字">字－</button>
-              <button type="button" id="fontUp" aria-label="放大文字">字＋</button>
-              <button type="button" id="theme" aria-pressed="false">切換柔光深色</button>
+              <button type="button" id="fontDown" aria-label="把字縮小">字變小 −</button>
+              <button type="button" id="fontUp" aria-label="把字放大">字變大 ＋</button>
+              <button type="button" id="theme" aria-pressed="false">換成柔光深色</button>
             </div>
-            <p id="font-status" class="small" role="status" aria-live="polite">字級 20px</p>
-            <p><button type="button" id="tts-toggle" aria-pressed="false" hidden>朗讀目前頁面</button></p>
+            <p id="font-status" class="small" role="status" aria-live="polite">現在字級 20px</p>
+            <p><button type="button" id="tts-toggle" aria-pressed="false" hidden>唸這頁給我聽</button></p>
             <p id="tts-status" class="small" role="status" aria-live="polite"></p>
-            <p class="small"><a href="./index.html">首頁</a> · <a href="./merit.html">第二篇</a> · <a href="./history-research.html">研究詳頁</a> · <a href="#library">來源庫</a></p>
+            <p class="small"><a href="./index.html">系列首頁</a> · <a href="./merit.html">第二篇</a> · <a href="./history-research.html">專業研究頁</a> · <a href="#library">資料來源</a></p>
           </div>
         </details>
       </div>
@@ -118,106 +125,81 @@ function buildHistoryHtml() {
       <div class="container">
         <div id="route-notice" class="note" role="status" aria-live="polite" hidden></div>
         <div id="resume" class="note" hidden>
-          <p><strong>上次看到：</strong><a id="resume-link" href="#four">繼續閱讀</a> <button type="button" id="resume-close" class="small">清除紀錄</button></p>
+          <p><strong>上次玩到這裡：</strong><a id="resume-link" href="#four">接著繼續</a> <button type="button" id="resume-close" class="small">清除紀錄</button></p>
         </div>
 
         <div class="hero-grid">
           <div class="hero-intro">
-            <span class="kicker">第三篇｜佛教史與文本證據探索館（v2.0）</span>
+            <span class="kicker">邊玩邊看懂｜佛教歷史互動故事館</span>
             <h1>這真的是<em>佛陀說的嗎？</em></h1>
-            <p class="lead">兩千五百年前沒有錄音機。今日各地流傳的經典、宗派與儀式，究竟哪些有跨傳承與古物佐證，哪些是歷代地方文化的演變與重新編寫？</p>
-            <p class="small">全部 22 站可依序探索、也可直接跳頁或無 JS 完整閱讀；每個白話結論都附原典依據並直連 <a href="./history-research.html">專業研究證據詳頁</a>。</p>
+            <p class="lead">兩千五百年前還沒有錄音機！今天聽到的經典、宗派和習俗，哪些真的找得到古石刻和古書證據，哪些是後來慢慢演變加進來的？挑一關進來動手玩玩看，不用懂佛學術語也看得出門道。</p>
+            <p class="small">每個故事都取材自真實古經與研究；想知道佛經原文跟學者詳細考證，隨時可點進 <a href="./history-research.html">專業研究與完整書目頁</a>。</p>
           </div>
           <div class="hero-action">
             <div class="button-row">
-              <a class="button" href="#four">從第 01 站開始</a>
-              <a class="button secondary" href="#quick">先看五分鐘總覽</a>
-              <a class="button secondary" href="#all">一次展開全館</a>
-              <a class="button secondary" href="./history-research.html">看研究與書目詳頁</a>
+              <a class="button" href="#four">從第 01 關開始玩</a>
+              <a class="button secondary" href="#kalama">直接去第 04 關小鎮偵探</a>
+              <a class="button secondary" href="#quick">五分鐘先看重點</a>
+              <a class="button secondary" href="#all">全部展開一起看</a>
             </div>
           </div>
-          <div class="art">
-            <svg viewBox="0 0 380 230" role="img" aria-labelledby="hero-art-t hero-art-d">
-              <title id="hero-art-t">從早期教法核對到兩千五百年歷史層次示意圖</title>
-              <desc id="hero-art-d">顯示四大教法查證桌、阿育王石柱與犍陀羅樺皮卷、以及五大歷史層次的探索路徑（現代原創插圖）。</desc>
-              <rect width="380" height="230" rx="16" fill="#173832"/>
-              <g fill="#224a42" stroke="#9fe0bd" stroke-width="2">
-                <rect x="20" y="28" width="102" height="58" rx="10"/>
-                <rect x="139" y="28" width="102" height="58" rx="10"/>
-                <rect x="258" y="28" width="102" height="58" rx="10"/>
-              </g>
-              <path d="M122 57 H139 M241 57 H258" stroke="#ecc98e" stroke-width="3"/>
-              <g fill="#f8f5ee" font-size="13" text-anchor="middle" font-weight="700">
-                <text x="71" y="53">第一步</text>
-                <text x="71" y="73" fill="#ecc98e">經律查證法</text>
-                <text x="190" y="53">第二步</text>
-                <text x="190" y="73" fill="#ecc98e">碑銘與古寫本</text>
-                <text x="309" y="53">第三步</text>
-                <text x="309" y="73" fill="#ecc98e">各傳承演變</text>
-              </g>
-              <rect x="20" y="106" width="340" height="96" rx="12" fill="#102924" stroke="#7a9186" stroke-width="1.5"/>
-              <g fill="#e6e3dc" font-size="12" text-anchor="middle">
-                <text x="190" y="130" font-weight="700" fill="#9fe0bd">不把歷史事實、哲學價值與宗教信仰混為一談</text>
-                <text x="190" y="153">古老 ≠ 佛陀逐字原音 · 晚出 ≠ 惡意造假</text>
-                <text x="190" y="174">跨傳承相同 ≠ 完全獨立 · 史料 ≠ 證明宗教或醫療真偽</text>
-                <text x="190" y="195" fill="#ecc98e" font-size="11">22 站獨立互動展區 × 雙主題大字級 × 完整書目可驗</text>
-              </g>
-            </svg>
-            <p>現代原創導覽示意：帶您一步步拆解經典背後的歷史證據層次。</p>
-          </div>
+          <figure class="art" style="margin:0">
+            <img src="assets/history/illustrations/hero-museum.webp" width="1200" height="675" alt="一位微笑的阿公和好奇的小孫女一起拿著放大鏡，查看木桌上的古代石柱模型、棕櫚葉書卷和小木鼓（現代繪本導覽插畫）" style="width:100%;height:auto;border-radius:14px;border:2px solid var(--line);display:block">
+            <figcaption><p>故事館導覽插畫（現代繪畫）：跟著放大鏡，一起分清故事、古物證據跟信仰的界線。</p></figcaption>
+          </figure>
         </div>
 
         <noscript>
-          <div class="note"><p><strong>您目前停用了 JavaScript：</strong>本頁面已自動展開全部 22 站全文、圖表與 ${EVIDENCE_ITEMS.length} 組來源庫，並隨附「不按也能讀」替代文字說明，您仍可順暢讀完全文與點擊站內導覽。</p></div>
+          <div class="note"><p><strong>目前瀏覽器沒有開啟互動腳本：</strong>沒關係！這座故事館已經把全部 22 關故事文字、對照表跟 ${EVIDENCE_ITEMS.length} 組資料來源全部展開好了，您直接往下滑就能順順讀完。</p></div>
         </noscript>
 
-        <section id="menu" class="menu" tabindex="-1" aria-label="四幕二十二站總目錄">
-          <h2>四幕展覽總目錄（22 站 · 點按任一幕展開）</h2>
-          <p class="small">預設收合以保持首頁清爽；您也可直接點擊「一次展開全館」瀏覽長文章。</p>
+        <section id="menu" class="menu" tabindex="-1" aria-label="全館四區二十二關地圖">
+          <h2>全館四區地圖（共 22 關 · 想玩哪一關就點進去）</h2>
+          <p class="small">先挑有興趣的一區打開，或者直接點上面的「從第 01 關開始玩」慢慢逛。</p>
           <div class="act-grid">
             <details class="act" id="act-1">
-              <summary><span class="act-num">第一幕 · S01–S07</span><strong>經典自己怎麼教我們查證？</strong><small>四大教法、古鼓譬喻、查驗導師與知識邊界</small></summary>
+              <summary><span class="act-num">第一區 · 第 01–07 關</span><strong>佛經自己怎麼教我們不要亂相信？</strong><small>門口四位客人、修破木鼓、觀察老師、小鎮傳聞跟洗腳盆</small></summary>
               <ol class="station-list">
-                <li><a href="#four"><span class="station-num">01</span><span>誰說的都要查</span><small>DN 16 與 DA 2 四大教法查證桌</small></a></li>
-                <li><a href="#drum"><span class="station-num">02</span><span>鼓還叫原來的鼓嗎？</span><small>巴利木楔鼓 vs 漢譯牛皮鼓</small></a></li>
-                <li><a href="#teacher"><span class="station-num">03</span><span>佛經允許我們查老師嗎？</span><small>MN 47 與 MA 186 三時點調查</small></a></li>
-                <li><a href="#kalama"><span class="station-num">04</span><span>《伽藍經》是不是「自己爽就好」？</span><small>AN 3.65 vs MA 16 與四安穩</small></a></li>
-                <li><a href="#rahula"><span class="station-num">05</span><span>跟孩子講實話的鏡子</span><small>MN 61／MA 14 洗腳盆與三時鏡</small></a></li>
-                <li><a href="#direction"><span class="station-num">06</span><span>怎麼分辨這方法把人帶去哪裡？</span><small>AN 8.53 八項方向羅盤</small></a></li>
-                <li><a href="#truth"><span class="station-num">07</span><span>「我覺得」和「我真的知道」差在哪？</span><small>MN 95 認識論三階梯</small></a></li>
+                <li><a href="#four"><span class="station-num">01</span><span>誰說的都要放上桌子查</span><small>就算來客搬出大人物，還是要一起比對</small></a></li>
+                <li><a href="#drum"><span class="station-num">02</span><span>這面鼓還是原本那面鼓嗎？</span><small>一直換木塊或貼牛皮之後發生什麼事</small></a></li>
+                <li><a href="#teacher"><span class="station-num">03</span><span>觀察老師的三頁筆記本</span><small>不會讀心術，怎麼看一位老師值不值得信？</small></a></li>
+                <li><a href="#kalama"><span class="station-num">04</span><span>小鎮傳聞偵探與四個假設世界</span><small>十個街坊理由跟不確定來世時怎麼選</small></a></li>
+                <li><a href="#rahula"><span class="station-num">05</span><span>一盆水、大象，和一面鏡子</span><small>倒水盆、保護長鼻的大象與鏡前自照</small></a></li>
+                <li><a href="#direction"><span class="station-num">06</span><span>把人帶去哪裡的兩條路</span><small>這套方法讓生活變輕鬆還是更緊繃？</small></a></li>
+                <li><a href="#truth"><span class="station-num">07</span><span>把故事放進三個不同的抽屜</span><small>分開「我自己信」「找得到證據」與「還不知道」</small></a></li>
               </ol>
             </details>
 
             <details class="act" id="act-2">
-              <summary><span class="act-num">第二幕 · S08–S12</span><strong>真實歷史、碑銘與早期流派</strong><small>阿育王石刻、犍陀羅手稿、口傳與部派分化</small></summary>
+              <summary><span class="act-num">第二區 · 第 08–12 關</span><strong>真的挖得到的古董，和兩千年的傳話</strong><small>阿育王石刻、樹皮手稿、真實世界地圖與海上求戒接力</small></summary>
               <ol class="station-list">
-                <li><a href="#evidence"><span class="station-num">08</span><span>當歷史偵探</span><small>藍毘尼石柱與犍陀羅樺皮實物放大鏡</small></a></li>
-                <li><a href="#transmission"><span class="station-num">09</span><span>二千多年的傳話遊戲</span><small>口傳保守性與異文擴編沙盒</small></a></li>
-                <li><a href="#history"><span class="station-num">10</span><span>兩千五百年的路</span><small>生平卡、十二時期時間軸與四次結集</small></a></li>
-                <li><a href="#branches"><span class="station-num">11</span><span>同一棵樹還是很多條河？</span><small>早期12共識、七部派與三大傳統</small></a></li>
-                <li><a href="#south"><span class="station-num">12</span><span>南傳上座部也是慢慢長成的</span><small>斯里蘭卡三寺、1753 戒脈與 729 經碑</small></a></li>
+                <li><a href="#evidence"><span class="station-num">08</span><span>真實古物放大尋寶</span><small>親手放大兩千多年前刻在石頭和樹皮上的字</small></a></li>
+                <li><a href="#transmission"><span class="station-num">09</span><span>榕樹下的古代傳話實驗室</span><small>沒錄音機的時代怎麼靠人背誦兩百年？</small></a></li>
+                <li><a href="#history"><span class="station-num">10</span><span>兩千五百年的亞洲探索之旅</span><small>拉動真實世界地圖，看各地故事一起亮起來</small></a></li>
+                <li><a href="#branches"><span class="station-num">11</span><span>把各派擺在一起，拼出共同拼圖</span><small>南傳、漢傳、藏傳哪些一樣、哪些不同？</small></a></li>
+                <li><a href="#south"><span class="station-num">12</span><span>斯里蘭卡三座古寺與海上接力</span><small>保存經典的地方也曾中斷、搭船重立傳承</small></a></li>
               </ol>
             </details>
 
             <details class="act" id="act-3">
-              <summary><span class="act-num">第三幕 · S13–S18</span><strong>大乘、東亞轉折、禪與藏傳</strong><small>古典起源、疑偽辨析、漢地調適與存活者偏差</small></summary>
+              <summary><span class="act-num">第三區 · 第 13–18 關</span><strong>走進中國、禪門與雪域高原之後</strong><small>大乘思想大樹、古經身分鑑定、《心經》、一朵花與藏書庫</small></summary>
               <ol class="station-list">
-                <li><a href="#mahayana"><span class="station-num">13</span><span>大乘經典從哪裡來？</span><small>Split C14 75 CE 與九項思想交織河道</small></a></li>
-                <li><a href="#texts"><span class="station-num">14</span><span>佛經也有身分證問題</span><small>16類文獻鑑定桌與《心經》《楞嚴》對讀</small></a></li>
-                <li><a href="#china"><span class="station-num">15</span><span>到了中國，佛教怎麼生活？</span><small>孝道、莊園與三淨肉到十世紀素食</small></a></li>
-                <li><a href="#chan"><span class="station-num">16</span><span>「拈花微笑」不是佛世現場筆錄？</span><small>敦煌 vs 1310 版與燈錄成書偵探</small></a></li>
-                <li><a href="#tibet"><span class="station-num">17</span><span>密教、伏藏與轉世怎麼看？</span><small>吐蕃史實、桑耶寺與宗教信念分界</small></a></li>
-                <li><a href="#politics"><span class="station-num">18</span><span>皇帝、戰爭與《大藏經》如何留下來？</span><small>滅佛、那爛陀衰退與《開寶藏》</small></a></li>
+                <li><a href="#mahayana"><span class="station-num">13</span><span>一棵不斷長出新枝葉的思想樹</span><small>大乘佛教是早年就有種子還是後來才創？</small></a></li>
+                <li><a href="#texts"><span class="station-num">14</span><span>古經身分證鑑定所</span><small>打開16部古書線索，對比《心經》和《楞嚴經》</small></a></li>
+                <li><a href="#china"><span class="station-num">15</span><span>印度僧人的中國生活大適應</span><small>孝順父母、不靠托缽跟全面吃素怎麼來</small></a></li>
+                <li><a href="#chan"><span class="station-num">16</span><span>一朵花的秘密時光書架</span><small>翻遍五本古書，找拈花微笑何時第一次寫出來</small></a></li>
+                <li><a href="#tibet"><span class="station-num">17</span><span>翻越喜馬拉雅山的書卷</span><small>高原古寺、伏藏和轉世放進哪個箱子？</small></a></li>
+                <li><a href="#politics"><span class="station-num">18</span><span>誰留下書，誰沒能留下？</span><small>戰亂、王室、木板刻經如何決定我們讀到什麼</small></a></li>
               </ol>
             </details>
 
             <details class="act" id="act-4">
-              <summary><span class="act-num">第四幕 · S19–S22</span><strong>近代變革、臺灣現場與七步工具</strong><small>日本明治法令、女性受戒、現代正念與查證工具</small></summary>
+              <summary><span class="act-num">第四區 · 第 19–22 關</span><strong>近代大變身、臺灣現場與偵探結案台</strong><small>日本明治改變、女眾受戒接力、臺灣百年照片與自己查證</small></summary>
               <ol class="station-list">
-                <li><a href="#japan"><span class="station-num">19</span><span>日本和尚為什麼能結婚生子？</span><small>親鸞先例、德川戶籍與 1872 解禁令</small></a></li>
-                <li><a href="#women"><span class="station-num">20</span><span>女性的地位一直都是這樣嗎？</span><small>八敬法、429/433南京與 2022/2025 不丹</small></a></li>
-                <li><a href="#modern"><span class="station-num">21</span><span>你認識的佛教，其實只有一百年？</span><small>佛教現代主義、禪修風險與臺灣四期</small></a></li>
-                <li><a href="#lab"><span class="station-num">22</span><span>下一次有人說「這是佛陀親口講的」</span><small>舉證負擔、五層模型與七步查證工作台</small></a></li>
+                <li><a href="#japan"><span class="station-num">19</span><span>日本寺院的時光機</span><small>為什麼看得到日本和尚結婚生小孩？</small></a></li>
+                <li><a href="#women"><span class="station-num">20</span><span>跨越海洋與高山的接力棒</span><small>女性出家受戒的中斷、渡海到南京與近年恢復</small></a></li>
+                <li><a href="#modern"><span class="station-num">21</span><span>你以為的佛教，其實只有一百年？</span><small>現代正念減壓與臺灣百年來的四段歷史</small></a></li>
+                <li><a href="#lab"><span class="station-num">22</span><span>下一次有人說「這是佛陀講的」…</span><small>像剝千層派看歷史，帶著查證筆記回家</small></a></li>
               </ol>
             </details>
           </div>
@@ -225,59 +207,59 @@ function buildHistoryHtml() {
       </div>
     </section>
 
-    <section id="quick" class="chapter" tabindex="-1">
+    <section id="quick" class="chapter theme-storybook" tabindex="-1">
       <div class="container">
-        <span class="kicker">五分鐘總覽 · 五大關鍵發現</span>
-        <h2>不想一次看 22 站？先掌握這五把鑰匙</h2>
+        <span class="kicker">五分鐘故事精華</span>
+        <h2>不想一次走完 22 關？先看懂這五個關鍵發現</h2>
         <ol class="quick-list">
-          <li><strong>早期經典主動教人查證，而非盲信權威：</strong><a href="#four">DN 16 與 DA 2 四大教法</a>要求即使是親聞佛陀或整個僧團的話也要比對經律；<a href="#kalama">AN 3.65《伽藍經》</a>但也不是「自己覺得對就好」，仍須受貪瞋癡與智者稱譽檢驗。</li>
-          <li><strong>最早的實物比傳世全本紙本早了許多世紀：</strong>目前有紀年實物為西元前3世紀<a href="#evidence">阿育王碑銘</a>，以及前1至後4世紀<a href="#evidence">犍陀羅樺皮手稿</a>；口傳期間既有嚴格集體背誦（Wynne 2004），也有異文與定型句編輯（Allon 2022）。</li>
-          <li><strong>沒有單一宗派能獨佔「100% 佛陀原汁原味」：</strong>南傳、漢傳、藏傳各有古老核與各自經歷的<a href="#branches">部派分化</a>、王權整理（如<a href="#south">1753 斯里蘭卡暹羅派重建</a>）與歷史篩選（如<a href="#politics">《開寶藏》與寺院衰退</a>）。</li>
-          <li><strong>後世發展不等於蓄意造假：</strong><a href="#mahayana">Split 寫本（約75 CE）</a>證明大乘源於印度文化圈；中國疑偽經、日本 1872 解禁令、漢傳 10 世紀確立僧尼素食與<a href="#modern">近現代正念詮釋</a>，都反映時代調適而非單純詐欺。</li>
-          <li><strong>帶走工具，把三件事永遠分開：</strong>歷史事實、哲學啟發與宗教信念各有檢驗方式。用第 22 站的<a href="#lab">七步查證法與五層歷史模型</a>，遇到「佛陀這樣說」即可獨立核實。</li>
+          <li><strong>最早的佛經自己就在教人先查一查：</strong>不管是<a href="#four">第 01 關的門口來客</a>還是<a href="#kalama">第 04 關的小鎮居民</a>，故事都要大家別只看名氣、傳統或剛好合胃口，還要看做法會不會讓心更貪氣、會不會傷害別人。</li>
+          <li><strong>真的摸得到的古董，比大家以為的更晚才寫成書：</strong>目前找得到最早的實物，是兩千兩百多年前的<a href="#evidence">石柱刻字</a>和約兩千年前的<a href="#evidence">樹皮古卷</a>；前面好幾百年都是靠人集體背誦傳下來的，大骨幹穩，細節仍會有差別。</li>
+          <li><strong>沒有單一宗派能獨佔「百分之百原汁原味」：</strong>每個留到今天的傳統都在保護古書的同時，也經歷過<a href="#branches">戰火整理、王室干預、跨國求戒</a>和<a href="#politics">印刷挑選</a>，拿不同版本互相對照最可靠。</li>
+          <li><strong>晚一點出現的文化發展，不等於壞人故意騙人：</strong>從印度長出的大乘思想、中國吃全素的演變、日本取消僧侶婚禁，到現代人熟悉的減壓課程，很多都是為了回應當下社會需要而一步步長出來的。</li>
+          <li><strong>學會分開三件事，就不會吵成一團：</strong>歷史找得到什麼事實、故事哲學對人生有沒有啟發、以及個人的宗教信仰，原本就是三個不同的抽屜。可以用第 22 關的<a href="#lab">偵探工作台</a>自己練習看看。</li>
         </ol>
         <div class="button-row">
-          <a class="button" href="#four">進第 01 站互動探索</a>
-          <a class="button secondary" href="#menu">回到四幕目錄</a>
-          <a class="button secondary" href="./history-research.html">打開學術證據詳頁</a>
+          <a class="button" href="#four">進第 01 關開始玩</a>
+          <a class="button secondary" href="#menu">回到四區地圖</a>
+          <a class="button secondary" href="./history-research.html">打開學術專業研究頁</a>
         </div>
       </div>
     </section>
 
     ${allStations.replace(/^/, '<span id="all"></span>\n    ')}
 
-    <section id="library" class="chapter" tabindex="-1">
+    <section id="library" class="chapter theme-archive" tabindex="-1">
       <div class="container">
-        <span class="kicker">核心文獻與館藏來源資料庫 · 共 ${EVIDENCE_ITEMS.length} 組</span>
-        <h2>全部核心資料來源與查證連結</h2>
-        <p><a id="source-back" class="button secondary js-only" href="#four" hidden>← 回到剛剛在看的站點</a></p>
-        <p class="small">本區對應站內全部引用並保留舊深連結；更完整的命題級正反證據表、多語引文與學界書目請見 <a href="./history-research.html#bib">研究詳頁完整書目</a>。</p>
-        <label class="js-only" for="source-search"><b>搜尋來源（支援繁簡字與全半形）：</b>
-          <input type="search" id="source-search" class="search" placeholder="例如：DN 16、伽藍經、阿育王、犍陀羅、心經、不丹、臺灣">
+        <span class="kicker">這座故事館查過的資料 · 共 ${EVIDENCE_ITEMS.length} 組</span>
+        <h2>全部古書、文物與研究來源庫</h2>
+        <p><a id="source-back" class="button secondary js-only" href="#four" hidden>← 回到剛剛玩的那一關</a></p>
+        <p class="small">這裡把全館提到的真實古書、博物館照片和研究文章全部列出來；想看學術命題、原文引文與完整書目細節，歡迎點進 <a href="./history-research.html#bib">專業研究頁書目總表</a>。</p>
+        <label class="js-only" for="source-search"><b>想找哪一本經、哪個朝代或地點？打字試試看：</b>
+          <input type="search" id="source-search" class="search" placeholder="例如：伽藍經、阿育王、樹皮、心經、不丹、臺灣">
         </label>
-        <div class="controls js-only" role="group" aria-label="常用關鍵詞快速篩選">
+        <div class="controls js-only" role="group" aria-label="熱門關鍵詞快速尋找">
           <button type="button" data-filter="四大教法">四大教法</button>
           <button type="button" data-filter="伽藍經">伽藍經</button>
           <button type="button" data-filter="阿育王">阿育王</button>
-          <button type="button" data-filter="犍陀羅">犍陀羅</button>
+          <button type="button" data-filter="犍陀羅">樹皮古卷</button>
           <button type="button" data-filter="心經">心經</button>
           <button type="button" data-filter="禪宗">禪宗</button>
           <button type="button" data-filter="比丘尼">比丘尼</button>
           <button type="button" data-filter="臺灣">臺灣</button>
           <button type="button" id="clear-search">顯示全部</button>
         </div>
-        <p id="source-count" class="small" role="status" aria-live="polite">顯示 ${EVIDENCE_ITEMS.length}／${EVIDENCE_ITEMS.length} 組來源。</p>
+        <p id="source-count" class="small" role="status" aria-live="polite">目前顯示 ${EVIDENCE_ITEMS.length}／${EVIDENCE_ITEMS.length} 組資料。</p>
         ${libraryArticles}
-        <nav class="station-nav" aria-label="來源庫導覽"><div class="button-row"><a class="button secondary" href="#menu">↑ 四幕目錄</a><a class="button secondary" href="#lab">← 回到第 22 站</a><a class="button" href="./history-research.html">前往完整學術研究詳頁 →</a></div></nav>
+        <nav class="station-nav" aria-label="資料來源底端導覽"><div class="button-row"><a class="button secondary" href="#menu">↑ 回到四區地圖</a><a class="button secondary" href="#lab">← 回到第 22 關</a><a class="button" href="./history-research.html">前往完整專業研究頁 →</a></div></nav>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <p><strong>看見更多｜The Naked Dhamma</strong> · 第三篇《這真的是佛陀說的嗎？》v2.0</p>
-      <p class="small">本作品為純靜態公開歷史與文獻科普；不使用任何外部追蹤、分析或個人資料收集。宗教信念真偽與醫學療效超越歷史研究範圍。</p>
-      <p><a href="./index.html">系列首頁</a><a href="./merit.html">第二篇：功德真相</a><a href="./history-research.html">研究與完整書目頁</a><a href="https://github.com/t14210184/The-Naked-Dhamma" target="_blank" rel="noopener noreferrer">GitHub 原始碼</a><a href="https://github.com/t14210184/The-Naked-Dhamma/issues" target="_blank" rel="noopener noreferrer">勘誤與建議（Issues）</a><a href="#top">回到本頁頂部</a></p>
+      <p><strong>看見更多｜The Naked Dhamma</strong> · 第三篇《這真的是佛陀說的嗎？》互動故事館</p>
+      <p class="small">本網站沒有廣告追蹤也不會收集任何個人資料；故事裡的歷史考證只針對看得到的史料與研究，不能代替個人宗教信仰選擇或專業醫療意見。</p>
+      <p><a href="./index.html">系列首頁</a><a href="./merit.html">第二篇：功德真相</a><a href="./history-research.html">專業研究與完整書目</a><a href="https://github.com/t14210184/The-Naked-Dhamma" target="_blank" rel="noopener noreferrer">GitHub 原始碼</a><a href="https://github.com/t14210184/The-Naked-Dhamma/issues" target="_blank" rel="noopener noreferrer">勘誤與建議</a><a href="#top">回到頂端</a></p>
     </div>
   </footer>
 </body>

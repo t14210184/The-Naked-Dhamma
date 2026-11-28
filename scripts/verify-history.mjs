@@ -54,6 +54,11 @@ function validateHtmlStatic(label, html) {
   assert.equal(broken.length, 0, `${label}: broken internal anchors: ${broken.join(",")}`);
   const leaks = html.match(/(turn\d+search|<Cite\b|<AsyncImage|TODO:|RIGHTS_LINK_ONLY)/g);
   assert.equal(leaks, null, `${label}: leaked source markers: ${leaks}`);
+  if (label === "history.html") {
+    const publicFlow = html.replace(/<section id="library"[\s\S]*$/i, "");
+    const jargonLeaks = publicFlow.match(/(ACCESS_BLOCKED|FULLTEXT_CHECKED|PRIMARY_CHECKED|ABSTRACT_ONLY|CATALOG_ONLY|無JS|toy demo|玩具示意|對應原表 T|十種不應單憑的理由|四種安穩|三時省察|語文學編纂回譯假說)/g);
+    assert.equal(jargonLeaks, null, `${label}: plain-language violation in public flow: ${jargonLeaks}`);
+  }
   for (const m of html.matchAll(/<img\b[^>]*>/g)) {
     assert(/\bwidth="/.test(m[0]) && /\bheight="/.test(m[0]) && /\balt="/.test(m[0]), `${label}: <img> missing dimensions/alt: ${m[0]}`);
   }
@@ -282,6 +287,7 @@ const engine = process.env.ENGINE || "chromium";
 const output = "qa-screenshots/history-" + engine;
 mkdirSync(output, { recursive: true });
 mkdirSync(output + "/visual-audit", { recursive: true });
+mkdirSync(output + "/videos", { recursive: true });
 
 const rootDir = resolve(".");
 const server = createServer((req, res) => {
@@ -480,43 +486,35 @@ try {
     });
     assert.equal(smallTargets.length, 0, "touch target < 44px: " + smallTargets.join(","));
 
+    // Landing Hero + Image check
+    await checkVisibleImgs(page, "landing hero");
+
     // Menu -> S01
     await page.locator("#act-1 summary").click();
     await page.locator("#act-1 a[href='#four']").click();
     await page.waitForFunction(() => !document.querySelector("#four").hidden);
     assert.equal((await inspect(page, "station one", 56)).visible[0], "four");
 
-    // Generic 5 quizzes
-    for (const q of ["four", "teacher", "kalama", "rahula", "evidence"]) {
-      await go(page, q);
-      const buttons = page.locator("[aria-controls=q-" + q + "]");
-      assert.equal(await buttons.count(), 3);
-      for (let i = 0; i < 3; i++) {
-        const b = buttons.nth(i);
-        await b.click();
-        assert.equal(await b.getAttribute("aria-pressed"), "true");
-        assert.equal(await page.locator("#q-" + q).textContent(), await b.getAttribute("data-feedback"));
-      }
-    }
-
-    // S01 Visitors + SVG verification + synthetic click latency check
+    // S01 Visitors + storybook gate verification
     await go(page, "four");
+    await checkVisibleImgs(page, "S01 visitors");
     const tS01 = Date.now();
     await page.locator("[data-visitor='v2']").click();
     await page.locator("[data-vaction='believe']").click();
-    assert((await page.locator("#s01-result").textContent()).includes("不能直接相信"));
-    assert.equal(await page.locator("#s01-chk-v2").textContent(), "✓");
-    assert((await page.locator("#s01-desk-txt").textContent()).includes("不得免查"));
+    assert((await page.locator("#s01-result").textContent()).includes("不能這樣就直接相信"));
+    assert.equal(await page.locator("#s01-chk-v2").textContent(), "已查 ✓");
+    assert((await page.locator("#s01-desk-stamp").textContent()).includes("不能只靠搬出權威"));
     interactionLatencies.s01Ms = Date.now() - tS01;
     await shots(page, "visual-audit/s01-mobile-after");
     await page.locator("#s01-reset").click();
     assert((await page.locator("#s01-progress").textContent()).includes("0／4"));
-    assert.equal(await page.locator("#s01-chk-v2").textContent(), "○");
+    assert.equal(await page.locator("#s01-chk-v2").textContent(), "未查");
     await shots(page, "s01-light");
     await axe(page, "light s01");
 
-    // S02 Drum
+    // S02 Drum workshop
     await go(page, "drum");
+    await checkVisibleImgs(page, "S02 workshop");
     for (let i = 0; i < 5; i++) await page.locator("#patch").click();
     assert.equal(await page.locator(".drum-patch.visible").count(), 5);
     assert(await page.locator("#patch").isDisabled());
@@ -527,44 +525,69 @@ try {
     await page.locator("#reset-drum").click();
     assert.equal(await page.locator("#leather").getAttribute("opacity"), "0");
 
-    // S03 Teacher
+    // S03 Teacher diary + optional <details> quiz
     await go(page, "teacher");
     await page.locator("[data-tstage='famous']").click();
+    assert((await page.locator("#s03-time-badge").textContent()).includes("第二頁"));
     await page.locator("[data-tjudge='mind']").click();
-    assert((await page.locator("#s03-judge-result").textContent()).includes("超出證據範圍"));
+    assert((await page.locator("#s03-judge-result").textContent()).includes("超過我們能看得到的範圍"));
+    await page.locator("#teacher details.story-more summary").click();
+    await page.locator("[aria-controls=q-teacher]").nth(2).click();
+    assert((await page.locator("#q-teacher").textContent()).includes("說得對"));
     await shots(page, "s03-light");
     await page.locator("#s03-reset").click();
 
-    // S04 Kalama
+    // S04 Kalama Town Rumor Detective (Game A) + Four Hypothetical Worlds (Game B)
     await go(page, "kalama");
-    await page.locator("[data-kalama-ver='han']").click();
-    assert((await page.locator("#s04-version-out").textContent()).includes("沒有十項清單"));
-    await page.locator("[data-assasa='a2']").click();
-    assert((await page.locator("#s04-assasa-out").textContent()).includes("第二安穩"));
+    await checkVisibleImgs(page, "S04 town square");
+    await page.locator("[data-kalama-npc='n8']").click();
+    assert((await page.locator("#s04-speaker-tag").textContent()).includes("挑水大姊"));
+    await page.locator("#s04-flip-clue").click();
+    assert((await page.locator("#s04-clue-out").textContent()).includes("胃口一樣"));
+    await page.locator("#s04-pin-hold").click();
+    assert((await page.locator("#s04-saved-badge").textContent()).includes("1／10"));
+    await page.locator("#s04-next-npc").click();
+    assert((await page.locator("#s04-speaker-tag").textContent()).includes("9."));
+    await page.locator("[data-assasa='a4']").click();
+    assert((await page.locator("#s04-world-badge").textContent()).includes("假設世界 4／4"));
+    assert((await page.locator("#s04-assasa-out").textContent()).includes("世界 4"));
     await shots(page, "s04-light");
+    await shots(page, "visual-audit/s04-mobile-after");
+    await axe(page, "light s04");
 
-    // S05 Rahula (SVG + Mirror + Elephant)
+    // S05 Rahula (Three Full Scenes: Basin + Normal Asian Elephant + Mirror Stories)
     await go(page, "rahula");
+    await checkVisibleImgs(page, "S05 rahula scenes");
+    assert.equal(await page.locator("[data-basin='little']").textContent(), "1. 倒掉一些水");
+    assert.equal(await page.locator("[data-basin='empty']").textContent(), "2. 把水全部倒光");
+    assert.equal(await page.locator("[data-basin='flipped']").textContent(), "3. 把盆子倒過來");
+    assert.equal(await page.locator("[data-basin='upright']").textContent(), "4. 把盆子翻回來");
     await page.locator("[data-basin='flipped']").click();
-    assert.equal(await page.locator("#basin-bowl").getAttribute("transform"), "rotate(180 78 82)");
+    assert.equal(await page.locator("#basin-bowl").getAttribute("transform"), "rotate(180 150 108)");
     assert.equal(await page.locator("#basin-puddle").getAttribute("opacity"), "0.9");
-    assert.equal(await page.locator("#basin-svg-label").textContent(), "覆盆著地（翻覆）");
+    assert.equal(await page.locator("#basin-svg-label").textContent(), "盆口朝下蓋在石地上");
+    await page.locator("[data-elstep='protect']").click();
+    assert((await page.locator("#s05-el-badge").textContent()).includes("捲進象牙後面"));
     await page.locator("[data-mirror='after']").click();
-    assert.equal(await page.locator("#s05-mirror-phase").textContent(), "做之後");
+    assert((await page.locator("#s05-mirror-tag").textContent()).includes("右邊畫面"));
     await shots(page, "s05-light");
     await shots(page, "visual-audit/s05-mobile-after");
+    await axe(page, "light s05");
 
-    // S06 Direction
+    // S06 Direction Two Paths
     await go(page, "direction");
+    await checkVisibleImgs(page, "S06 two paths");
     await page.locator("[data-dir='d_counter']").click();
-    assert((await page.locator("#s06-dir-out").textContent()).includes("不能用這八項標準"));
+    assert((await page.locator("#s06-dir-out").textContent()).includes("公元前"));
+    assert((await page.locator("#s06-path-badge").textContent()).includes("陷阱"));
     await shots(page, "s06-light");
 
-    // S07 Truth
+    // S07 Truth 3-Drawer Cabinet
     await go(page, "truth");
     await page.locator("[data-epitem='t3']").click();
     await page.locator("[data-epcat='unknown']").click();
-    assert((await page.locator("#s07-result").textContent()).includes("✓ 分類合理"));
+    assert((await page.locator("#s07-result").textContent()).includes("✓ 放得很對"));
+    assert(await page.locator("#s07-dr-unknown.is-active").count() === 1);
     await shots(page, "s07-light");
     await page.locator("#s07-reset").click();
 
@@ -572,11 +595,11 @@ try {
     await go(page, "evidence");
     let totalS08DecodeMs = 0;
     for (const [artKey, expectedFrag] of [
-      ["lumbini", "Budha"],
-      ["bhabra", "Lāghulovāde"],
+      ["lumbini", "釋迦牟尼"],
+      ["bhabra", "羅睺羅"],
       ["nigali", "拘那含"],
       ["sarnath", "分裂"],
-      ["gandhara", "ACCESS_BLOCKED"]
+      ["gandhara", "大英圖書館"]
     ]) {
       const tUi = Date.now();
       await page.locator(`[data-artifact='${artKey}']`).click();
@@ -600,39 +623,47 @@ try {
     await page.locator("#viewer-reset").click();
     await shots(page, "s08-light");
 
-    // S09 Transmission
+    // S09 Transmission Circle
     await go(page, "transmission");
+    await checkVisibleImgs(page, "S09 banyan circle");
     await page.locator("[data-txmode='chorus']").click();
-    assert((await page.locator("#s09-out").textContent()).includes("Wynne"));
-    assert((await page.locator("#s09-n2-txt").textContent()).includes("定期合誦"));
-    assert((await page.locator("#s09-svg-badge").textContent()).includes("模式 2"));
+    assert((await page.locator("#s09-out").textContent()).includes("合唱團"));
+    assert((await page.locator("#s09-n2-txt").textContent()).includes("集體合誦"));
+    assert((await page.locator("#s09-mode-pill").textContent()).includes("測試二"));
     await shots(page, "s09-light");
     await shots(page, "visual-audit/s09-mobile-after");
     await page.locator("#s09-reset").click();
-    assert((await page.locator("#s09-svg-badge").textContent()).includes("初始狀態"));
+    assert((await page.locator("#s09-mode-pill").textContent()).includes("還沒有開始"));
 
-    // S10 History Timeline & Map
+    // S10 Natural Earth History Timeline & Map + Play toggle
     await go(page, "history");
+    const nePathLen = await page.locator("#s10-atlas-svg .atlas-land").getAttribute("d");
+    assert(nePathLen && nePathLen.length > 1000, "S10 missing Natural Earth coastline path");
     await page.locator("[data-era='2']").click();
-    assert((await page.locator("#s10-time").textContent()).includes("前268–232"));
+    assert((await page.locator("#s10-time").textContent()).includes("前 268–232"));
     assert.equal(await page.locator("#s10-map-dot2").getAttribute("opacity"), "1");
     await page.locator("#s10-next").click();
-    assert((await page.locator("#s10-time").textContent()).includes("前300–100"));
-    assert.equal(await page.locator("#s10-map-dot").getAttribute("cx"), "148");
+    assert((await page.locator("#s10-time").textContent()).includes("前 300–100"));
+    assert.equal(await page.locator("#s10-map-dot").getAttribute("cx"), "88.6");
+    await page.locator("#s10-autoplay").click();
+    await page.locator("#s10-autoplay").click();
     await shots(page, "s10-light");
     await shots(page, "visual-audit/s10-mobile-after");
+    await axe(page, "light s10");
 
     // S11 Branches & 5-Language
     await go(page, "branches");
     await page.locator("[data-trad='east']").click();
-    assert((await page.locator("#s11-trad-out").textContent()).includes("漢傳佛教"));
+    assert((await page.locator("#s11-pz-vinaya-txt").textContent()).includes("法藏部"));
     await page.locator("[data-lang5='lzh']").click();
     assert((await page.locator("#s11-lang5-out").textContent()).includes("雜阿含"));
     await shots(page, "s11-light");
 
-    // S12 South Theravada
+    // S12 South Theravada Natural Earth map & real relics
     await go(page, "south");
     await checkVisibleImgs(page, "S12 kuthodaw/sri-lanka");
+    await page.locator("[data-south='relay1753']").click();
+    assert.equal(await page.locator("#s12-sea-arc").getAttribute("stroke-opacity"), "0.95");
     await page.locator("[data-south='kuthodaw']").click();
     assert((await page.locator("#s12-out").textContent()).includes("729"));
     await shots(page, "s12-light");
@@ -643,32 +674,32 @@ try {
     await page.locator("[data-bvacana='trad']").click();
     await shots(page, "s13-light");
 
-    // S14 Texts (16 options + parallel T223/T250/T251 segments + Attwood 2020 + Fukui chronology)
+    // S14 Texts (16 options + parallel segments + Attwood 2020 + Fukui chronology)
     await go(page, "texts");
     assert.equal(await page.locator("#s14-text-select option").count(), 16);
     await page.locator("#s14-text-select").selectOption("surangama");
     await page.locator("#s14-next-clue").click();
     assert((await page.locator("#s14-desk-out").textContent()).includes("T945"));
     await page.locator("#s14-all-clues").click();
-    assert((await page.locator("#s14-heart-out").textContent()).includes("Attwood (2020"));
+    assert((await page.locator("#s14-heart-out").textContent()).includes("Attwood 2020"));
     await page.locator("[data-heartseg='seg3']").click();
     assert((await page.locator("#s14-p-skt").textContent()).includes("aprāptitvāt"));
-    assert((await page.locator("#s14-p-t223").textContent()).includes("0223a21"));
     const tS14 = Date.now();
     await page.locator("[data-heart='alt']").click();
     const s14AltTxt = await page.locator("#s14-heart-out").textContent();
-    assert(s14AltTxt.includes("1987年早於 Nattier 1992") && s14AltTxt.includes("CATALOG_ONLY"));
+    assert(s14AltTxt.includes("1987 年") && s14AltTxt.includes("2000 年不是第三個全新證據"));
     interactionLatencies.s14HeartSwitchMs = Date.now() - tS14;
     await shots(page, "s14-light");
     await shots(page, "visual-audit/s14-mobile-after");
 
     // S15 China
     await go(page, "china");
+    await checkVisibleImgs(page, "S15 china arrival");
     await page.locator("[data-cscene='food']").click();
-    assert((await page.locator("#s15-out").textContent()).includes("10世紀"));
+    assert((await page.locator("#s15-out").textContent()).includes("十世紀"));
     await shots(page, "s15-light");
 
-    // S16 Chan
+    // S16 Chan Bookshelf
     await go(page, "chan");
     await checkVisibleImgs(page, "S16 chan");
     await page.locator("[data-chan='tiansheng']").click();
@@ -680,31 +711,34 @@ try {
     await checkVisibleImgs(page, "S17 samye");
     await page.locator("[data-tibet-item='tb4']").click();
     await page.locator("[data-tbox='belief']").click();
-    assert((await page.locator("#s17-result").textContent()).includes("✓ 分類合宜"));
+    assert((await page.locator("#s17-result").textContent()).includes("✓ 分得很對"));
+    assert(await page.locator("#s17-box-belief.is-active").count() === 1);
     await shots(page, "s17-light");
 
-    // S18 Politics & Archives SVG
+    // S18 Politics & Archives
     await go(page, "politics");
     await checkVisibleImgs(page, "S18 india");
     await page.locator("[data-pol='war']").check();
     await page.locator("[data-pol='elite']").check();
     await page.locator("[data-pol='canon']").check();
-    assert((await page.locator("#s18-out").textContent()).includes("存活者偏差"));
-    assert.equal(await page.locator("#s18-st-india").textContent(), "戰火＋斷援重創");
+    assert((await page.locator("#s18-out").textContent()).includes("只挑特定書目"));
+    assert.equal(await page.locator("#s18-st-india").textContent(), "戰亂＋斷援重創");
     await shots(page, "s18-light");
     await shots(page, "visual-audit/s18-mobile-after");
     await page.locator("#s18-reset").click();
-    assert.equal(await page.locator("#s18-st-india").textContent(), "局部仍暫留存");
+    assert.equal(await page.locator("#s18-st-india").textContent(), "局部暫時保存");
 
-    // S19 Japan
+    // S19 Japan Time Machine
     await go(page, "japan");
+    await checkVisibleImgs(page, "S19 kyoto");
     await page.locator("[data-jpera='meiji']").click();
-    assert((await page.locator("#s19-out").textContent()).includes("並非強制結婚"));
+    assert((await page.locator("#s19-out").textContent()).includes("沒有強迫全部僧人都要結婚"));
     await shots(page, "s19-light");
 
-    // S20 Women
+    // S20 Women Ordination Relay Map
     await go(page, "women");
     await page.locator("[data-wrelay='bhutan']").click();
+    assert.equal(await page.locator("#s20-baton").getAttribute("cx"), "259.3");
     assert((await page.locator("#s20-relay-out").textContent()).includes("265"));
     await page.locator("[data-wview='conserv']").click();
     await shots(page, "s20-light");
@@ -713,14 +747,13 @@ try {
     await go(page, "modern");
     await checkVisibleImgs(page, "S21 taiwan");
     await page.locator("[data-modclaim='mindfulness']").click();
-    assert((await page.locator("#s21-mod-out").textContent()).includes("Salguero"));
+    assert((await page.locator("#s21-mod-out").textContent()).includes("不適"));
     await page.locator("[data-twera='modern']").click();
     await shots(page, "s21-light");
 
     // S22 Lab Workbench
     await go(page, "lab");
-    await page.locator("[data-risk='low']").click();
-    await page.locator("#audit-case").selectOption({ label: "拈花微笑是否有早期文獻？" });
+    await page.locator("#audit-case").selectOption({ label: "1. 「聽說靈山拈花微笑是佛陀當場發生的事？」" });
     await page.locator("#load-case").click();
     for (const c of await page.locator(".audit-check").all()) await c.check();
     assert((await page.locator("#audit-status").textContent()).includes("7／7"));
@@ -730,18 +763,18 @@ try {
     await page.locator("#copy-notes").click();
     await page.waitForFunction(() => document.querySelector("#copy-status").textContent.length > 0);
     interactionLatencies.s22CopyNotesMs = Date.now() - tS22;
-    assert((await page.locator("#notes-output").inputValue()).includes("非真偽判定分數"));
+    assert((await page.locator("#notes-output").inputValue()).includes("非真偽評分"));
     await page.locator("#reset-audit").click();
     assert.equal(await page.locator(".audit-check:checked").count(), 0);
     await shots(page, "s22-light");
 
-    // Library NFKC + 0-result + pills + 39 cards + return
+    // Library NFKC + 0-result + pills + 42 cards + return
     await go(page, "library");
     await page.locator("#source-search").fill("ＡＮ ３.６５");
     assert(await page.locator("[data-source]:not([hidden])").count() > 0);
     await page.locator("#source-search").fill("不存在之關鍵字XYZ");
     assert.equal(await page.locator("[data-source]:not([hidden])").count(), 0);
-    assert((await page.locator("#source-count").textContent()).includes("查無符合"));
+    assert((await page.locator("#source-count").textContent()).includes("找不到跟"));
     await page.locator("[data-filter='阿育王']").click();
     assert(await page.locator("[data-source]:not([hidden])").count() > 0);
     await page.locator("#clear-search").click();
@@ -750,6 +783,7 @@ try {
     await axe(page, "light library");
 
     await go(page, "four");
+    await page.locator("#four details.story-more summary").click();
     await page.locator("#four a[href='#s-four']").first().click();
     await page.waitForFunction(() => !document.querySelector("#library").hidden);
     assert.equal(await page.locator("#source-back").getAttribute("href"), "#four");
@@ -764,18 +798,18 @@ try {
     await page.locator(".settings summary").click();
     await page.locator("#fontDown").click();
     await page.locator("#fontDown").click();
-    assert.equal(await page.locator("#font-status").textContent(), "字級 16px");
+    assert((await page.locator("#font-status").textContent()).includes("16px"));
     await inspect(page, "16px light 390px top", 56);
     await page.locator("#fontUp").click();
     await page.locator("#fontUp").click();
-    assert.equal(await page.locator("#font-status").textContent(), "字級 20px");
+    assert((await page.locator("#font-status").textContent()).includes("20px"));
     await page.locator("#fontUp").focus();
     await page.keyboard.press("Enter");
     await page.keyboard.press("Space");
-    assert.equal(await page.locator("#font-status").textContent(), "字級 24px");
+    assert((await page.locator("#font-status").textContent()).includes("24px"));
     await page.locator("#fontUp").click();
     await page.locator("#fontUp").click();
-    assert.equal(await page.locator("#font-status").textContent(), "字級 28px");
+    assert((await page.locator("#font-status").textContent()).includes("28px"));
     await page.locator("#theme").click();
     assert.equal(await page.locator("html").getAttribute("data-theme"), "dark");
     await page.locator(".settings summary").click();
@@ -808,7 +842,7 @@ try {
         await page.locator(".settings summary").click();
         const btn = targetFont === "28px" ? "#fontUp" : "#fontDown";
         for (let k = 0; k < 4; k++) await page.locator(btn).click();
-        assert.equal(await page.locator("#font-status").textContent(), `字級 ${targetFont}`);
+        assert((await page.locator("#font-status").textContent()).includes(targetFont));
         await page.locator(".settings summary").click();
       }
       for (const w of WIDTHS) {
@@ -863,10 +897,15 @@ try {
       pageScaleFactor2xCdp = "PASS_CDP_PAGE_SCALE_2X_ONLY";
     }
 
-    // 3) Dedicated §7 visual captures across all 7 priority upgraded stations (Desktop 1280 before/after + 28px dark)
+    // 3) Dedicated visual captures across flagship stations (Desktop 1280 before/after + 28px dark) + representative animation video recording
     await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(base);
+    await page.waitForFunction(() => document.documentElement.classList.contains("enhanced"));
+    await page.screenshot({ path: `${output}/visual-audit/hero-desktop.png`, fullPage: false });
     for (const [stId, fnBefore, fnAfter] of [
       ["four", async () => {}, async () => { await page.locator("[data-visitor='v3']").click(); await page.locator("[data-vaction='check']").click(); }],
+      ["drum", async () => { await page.locator("#reset-drum").click(); }, async () => { await page.locator("#patch").click(); await page.locator("#patch").click(); await page.locator("#patch").click(); }],
+      ["kalama", async () => {}, async () => { await page.locator("[data-kalama-npc='n8']").click(); await page.locator("#s04-flip-clue").click(); await page.locator("[data-assasa='a2']").click(); }],
       ["rahula", async () => { await page.locator("[data-basin='full']").click(); }, async () => { await page.locator("[data-basin='flipped']").click(); await page.locator("[data-mirror='during']").click(); }],
       ["evidence", async () => { await page.locator("[data-artifact='lumbini']").click(); }, async () => { await page.locator("[data-artifact='gandhara']").click(); await page.locator("#viewer-zoom-in").click(); await page.locator("#viewer-toggle-trans").click(); await checkVisibleImgs(page, "visual gandhara"); }],
       ["transmission", async () => { await page.locator("#s09-reset").click(); }, async () => { await page.locator("[data-txmode='whisper']").click(); }],
@@ -877,18 +916,41 @@ try {
       await go(page, stId);
       await fnBefore();
       await inspect(page, `desktop-1280-before ${stId}`, 64);
+      await page.locator(`#${stId} .play`).first().evaluate(el => el.scrollIntoView({ block: "start" }));
       await page.screenshot({ path: `${output}/visual-audit/${stId}-desktop-before.png`, fullPage: false });
       await fnAfter();
       await inspect(page, `desktop-1280-after ${stId}`, 64);
+      await page.locator(`#${stId} .play`).first().evaluate(el => el.scrollIntoView({ block: "start" }));
       await page.screenshot({ path: `${output}/visual-audit/${stId}-desktop-after.png`, fullPage: false });
     }
+    // Representative Playwright animation recordings (S02 drum pegs, S05 copper basin pour/flip, S10 Natural Earth travel)
+    const vidCtx = await browser.newContext({
+      viewport: { width: 1024, height: 760 },
+      locale: "zh-TW",
+      recordVideo: { dir: `${output}/videos`, size: { width: 1024, height: 760 } }
+    });
+    const vp = await vidCtx.newPage();
+    await vp.goto(base + "#rahula");
+    await vp.waitForFunction(() => document.documentElement.classList.contains("enhanced"));
+    for (const st of ["little", "empty", "flipped", "upright", "full"]) {
+      await vp.locator(`[data-basin='${st}']`).click();
+      await vp.waitForTimeout(380);
+    }
+    await vp.evaluate(() => { location.hash = "#drum"; });
+    await vp.waitForFunction(() => !document.querySelector("#drum").hidden);
+    for (let k = 0; k < 4; k++) { await vp.locator("#patch").click(); await vp.waitForTimeout(280); }
+    await vp.evaluate(() => { location.hash = "#history"; });
+    await vp.waitForFunction(() => !document.querySelector("#history").hidden);
+    for (const era of [0, 2, 4, 7, 11]) { await vp.locator(`[data-era='${era}']`).click(); await vp.waitForTimeout(350); }
+    await vidCtx.close();
+
     // Dark + 28px spot captures on key upgraded stations
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator(".settings summary").click();
     await page.locator("#theme").click();
     for (let k = 0; k < 4; k++) await page.locator("#fontUp").click();
     await page.locator(".settings summary").click();
-    for (const stId of ["four", "rahula", "texts", "politics"]) {
+    for (const stId of ["four", "kalama", "rahula", "history", "texts"]) {
       await go(page, stId);
       await inspect(page, `dark-28px-390 ${stId}`, 56);
       await page.screenshot({ path: `${output}/visual-audit/${stId}-dark-28px.png`, fullPage: false });

@@ -176,10 +176,108 @@ small,.small{font-size:.86em;color:var(--muted)}
 .card p:last-child,.card-box p:last-child{margin-bottom:0}
 
 .play{
-  margin:22px 0;background:var(--surface);
-  border:2px solid var(--line);border-radius:14px;padding:16px;
+  margin:18px 0;background:var(--surface);
+  border:2px solid var(--line);border-radius:16px;padding:16px;
+  box-shadow:0 4px 18px rgba(21,55,46,.06);
 }
+:root[data-theme=dark] .play{box-shadow:0 4px 18px rgba(0,0,0,.28)}
 .play h3{margin:6px 0 10px}
+
+/* Museum Theme Atmospheres (S01-S22 varied environments) */
+.theme-storybook{--stage-bg:#f7eedc;--stage-border:#c9a66b}
+.theme-workshop{--stage-bg:#efe5d6;--stage-border:#a37444}
+.theme-archive{--stage-bg:#f2ece0;--stage-border:#7e8275}
+.theme-atlas{--stage-bg:#dfece8;--stage-border:#588078}
+.theme-documentary{--stage-bg:#edf1ef;--stage-border:#627b73}
+:root[data-theme=dark] .theme-storybook{--stage-bg:#212722;--stage-border:#7d6a49}
+:root[data-theme=dark] .theme-workshop{--stage-bg:#25201b;--stage-border:#856343}
+:root[data-theme=dark] .theme-archive{--stage-bg:#202324;--stage-border:#6e7573}
+:root[data-theme=dark] .theme-atlas{--stage-bg:#162529;--stage-border:#588488}
+:root[data-theme=dark] .theme-documentary{--stage-bg:#1b2221;--stage-border:#617b74}
+
+/* Interactive Illustrated Stage & Overlays */
+.story-stage{
+  position:relative;overflow:hidden;border-radius:14px;
+  border:2px solid var(--stage-border,var(--line));
+  background:var(--stage-bg,var(--soft));margin:10px 0 14px;
+}
+.story-stage .stage-art{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.stage-overlay-row{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  padding:10px 12px;background:var(--surface);border-top:2px solid var(--stage-border,var(--line));
+}
+.speech-bubble{
+  margin:8px 0 0;padding:12px 14px;border-radius:12px;
+  background:var(--surface);border:2px solid var(--accent);
+  color:var(--ink);font-weight:600;position:relative;
+}
+.actor-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:8px;margin:10px 0}
+.actor-card{
+  display:flex;flex-direction:column;align-items:flex-start;gap:4px;
+  padding:10px 12px;border-radius:12px;border:2px solid var(--line);
+  background:var(--surface);color:var(--ink);text-align:left;min-height:48px;
+}
+.actor-card[aria-pressed=true]{
+  border-color:var(--accent);background:var(--soft);
+  transform:translateY(-2px);box-shadow:0 4px 12px rgba(21,91,76,.14);
+}
+.actor-badge{font-size:.78em;color:var(--gold);font-weight:800}
+
+/* Dedicated Water Basin & Physics Stage (S05) */
+.basin-stage{
+  position:relative;border-radius:14px;overflow:hidden;
+  border:2px solid var(--stage-border,var(--line));background:var(--stage-bg,var(--soft));
+  margin:10px 0;
+}
+.basin-hud{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;padding:12px;align-items:center}
+@media(max-width:700px){.basin-hud{grid-template-columns:1fr}}
+.basin-vessel{
+  background:var(--surface);border:2px solid var(--stage-border,var(--line));
+  border-radius:12px;padding:8px;text-align:center;
+}
+.basin-vessel svg{width:100%;max-width:300px;height:auto;display:block;margin:auto}
+
+/* Geographic Natural Earth Map Stage (S10, S12, S17, S20) */
+.atlas-stage{
+  position:relative;border-radius:14px;overflow:hidden;
+  border:2px solid var(--stage-border,var(--line));
+  background:var(--stage-bg,#dfece8);margin:10px 0;padding:8px;
+}
+.atlas-stage svg{width:100%;height:auto;display:block;border-radius:10px}
+.atlas-land{fill:#dfd1b4;stroke:#687464;stroke-width:.9}
+.atlas-lake{fill:#b8d7db;stroke:#687464;stroke-width:.6}
+.atlas-sea{fill:#cfe4e6}
+:root[data-theme=dark] .atlas-sea{fill:#162930}
+:root[data-theme=dark] .atlas-land{fill:#33423b;stroke:#79968b}
+:root[data-theme=dark] .atlas-lake{fill:#1d3942;stroke:#79968b}
+
+/* Drawer / Bookshelf / Relay / Jigsaw Interactive Modules */
+.drawer-bank,.shelf-row,.puzzle-board,.repo-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0;
+}
+.drawer-box,.book-spine,.puzzle-piece,.repo-card{
+  padding:12px;border-radius:12px;border:2px solid var(--line);
+  background:var(--surface);color:var(--ink);transition:transform .22s ease,border-color .22s ease,background .22s ease;
+}
+.drawer-box.is-active,.book-spine[aria-pressed=true],.puzzle-piece.snapped{
+  border-color:var(--accent);background:var(--soft);transform:translateY(-3px);
+}
+.story-takeaway{
+  margin:14px 0;padding:14px 16px;border-radius:12px;
+  background:var(--soft);border:2px solid var(--line);
+}
+.source-door{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+  margin:14px 0;padding:12px 14px;border-radius:12px;
+  background:var(--surface);border:2px dashed var(--line);
+}
+.source-door p{margin:0;flex:1 1 240px;font-size:.92em}
+.story-more{
+  margin:14px 0;border:2px solid var(--line);border-radius:12px;
+  background:var(--surface);padding:4px 14px;
+}
+.story-more summary{padding:10px 0;font-weight:750;color:var(--accent);display:list-item}
+.story-more[open]{padding-bottom:14px}
 .choices{display:grid;gap:10px;margin:14px 0}
 .choices button{
   min-height:48px;width:100%;text-align:left;
@@ -322,6 +420,7 @@ input[type=range]{padding:4px 0;min-height:44px;accent-color:var(--accent)}
 .js-only{display:none!important}
 .enhanced .js-only{display:revert!important}
 .enhanced .controls.js-only,.enhanced .drum-actions.js-only,.enhanced .tab-row.js-only{display:flex!important}
+.enhanced .actor-strip.js-only,.enhanced .drawer-bank.js-only,.enhanced .shelf-row.js-only,.enhanced .puzzle-board.js-only{display:grid!important}
 .enhanced a.js-only{display:inline-flex!important}
 .enhanced .search.js-only{display:block!important}
 [hidden]{display:none!important}
@@ -368,8 +467,15 @@ html:not(.enhanced) .choices:has(button[data-feedback]){display:none}
   .logo{font-size:15px}
 }
 @media(prefers-reduced-motion:no-preference){
-  .drum-patch{transition:opacity .2s}
+  .drum-patch{transition:opacity .26s ease,transform .26s ease}
   .artifact-stage img{transition:transform .18s ease-out}
+  .stage-animated{transition:transform .38s cubic-bezier(.22,.8,.28,1),opacity .28s ease}
+  #basin-bowl{transform-origin:150px 108px;transition:transform .45s cubic-bezier(.22,.8,.28,1)}
+  #basin-water{transition:y .38s ease,height .38s ease,opacity .28s ease}
+  .atlas-route{transition:stroke-opacity .35s ease,stroke-dashoffset .6s ease}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
 }
 @media(forced-colors:active){
   button,.button,summary,.play,.artifact-fig,.card-box{border:2px solid ButtonText}

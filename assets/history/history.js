@@ -5,6 +5,7 @@
   const allNodes = s => [...document.querySelectorAll(s)];
   const get = k => { try { return localStorage.getItem("dhamma-history-" + k); } catch { return null; } };
   const put = (k, v) => { try { if (v === null) localStorage.removeItem("dhamma-history-" + k); else localStorage.setItem("dhamma-history-" + k, v); } catch {} };
+  const reducedMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   root.classList.add("enhanced");
 
@@ -18,7 +19,7 @@
     root.style.setProperty("--base", size + "px");
     root.dataset.fontScale = size >= 22 ? "large" : "normal";
     const fs = $("#font-status");
-    if (fs) fs.textContent = "字級 " + size + "px";
+    if (fs) fs.textContent = "現在字級 " + size + "px";
     put("size", size);
   }
   $("#fontDown")?.addEventListener("click", () => { size = Math.max(16, size - 2); applyFont(); });
@@ -31,7 +32,7 @@
     const tb = $("#theme");
     if (tb) {
       tb.setAttribute("aria-pressed", String(dark));
-      tb.textContent = dark ? "切換暖紙淺色" : "切換柔光深色";
+      tb.textContent = dark ? "換成暖紙淺色" : "換成柔光深色";
     }
     put("theme", dark ? "dark" : "light");
   }
@@ -39,24 +40,20 @@
   applyFont();
   applyTheme(get("theme") === "dark");
 
-  // Optional browser speech synthesis (default OFF)
-  const ttsBtn = $("#tts-toggle");
-  const ttsStatus = $("#tts-status");
+  // Optional speech reader (OFF by default)
+  const ttsBtn = $("#tts-toggle"), ttsStatus = $("#tts-status");
   if (ttsBtn && "speechSynthesis" in window) {
     ttsBtn.hidden = false;
     const stopSpeech = () => {
       try { window.speechSynthesis.cancel(); } catch {}
       ttsBtn.setAttribute("aria-pressed", "false");
-      ttsBtn.textContent = "朗讀目前頁面";
-      if (ttsStatus) ttsStatus.textContent = "語音導讀已停止。";
+      ttsBtn.textContent = "唸這頁給我聽";
+      if (ttsStatus) ttsStatus.textContent = "已停止唸讀。";
     };
     ttsBtn.addEventListener("click", () => {
-      if (window.speechSynthesis.speaking) {
-        stopSpeech();
-        return;
-      }
+      if (window.speechSynthesis.speaking) { stopSpeech(); return; }
       const activeView = views.find(v => !v.hidden) || $("#top");
-      const text = (activeView?.innerText || "").replace(/\s+/g, " ").slice(0, 2600);
+      const text = (activeView?.innerText || "").replace(/\s+/g, " ").slice(0, 2400);
       if (!text) return;
       const u = new SpeechSynthesisUtterance(text);
       u.lang = "zh-TW";
@@ -64,16 +61,15 @@
       u.onend = stopSpeech;
       u.onerror = stopSpeech;
       ttsBtn.setAttribute("aria-pressed", "true");
-      ttsBtn.textContent = "停止語音朗讀";
-      if (ttsStatus) ttsStatus.textContent = "正在以瀏覽器原生語音朗讀目前畫面。";
+      ttsBtn.textContent = "停止唸讀";
+      if (ttsStatus) ttsStatus.textContent = "正在幫您唸出目前畫面的故事。";
       window.speechSynthesis.speak(u);
     });
     window.addEventListener("hashchange", () => { if (window.speechSynthesis.speaking) stopSpeech(); });
   }
 
   // Resume bookmark
-  const resume = $("#resume");
-  const resumeLink = $("#resume-link");
+  const resume = $("#resume"), resumeLink = $("#resume-link");
   let backSource = null;
   function resumeUpdate() {
     if (!resume || !resumeLink) return;
@@ -81,21 +77,19 @@
     resume.hidden = !saved;
     if (saved) {
       resumeLink.href = "#" + saved.id;
-      resumeLink.textContent = "繼續第 " + saved.dataset.station + " 站：" + saved.querySelector("h2").textContent;
+      resumeLink.textContent = "繼續第 " + String(saved.dataset.station).padStart(2, "0") + " 關：" + saved.querySelector("h2").textContent;
     }
   }
   $("#resume-close")?.addEventListener("click", () => { put("last", null); resumeUpdate(); });
 
-  // Library search & filter (needed before route)
-  const search = $("#source-search");
-  const cards = allNodes("[data-source]");
+  // Library search & filter
+  const search = $("#source-search"), cards = allNodes("[data-source]");
   const norm = s => s.normalize("NFKC").toLocaleLowerCase().replace(/\s+/g, "")
     .replace(/[蓝经释译传证觉伽罗门禅藏华严净]/g, x => ({
       "蓝": "藍", "经": "經", "释": "釋", "译": "譯", "传": "傳", "证": "證",
       "觉": "覺", "伽": "伽", "罗": "羅", "门": "門", "禅": "禪", "藏": "藏",
       "华": "華", "严": "嚴", "净": "淨"
     }[x] || x));
-
   function filterSources() {
     if (!search) return;
     const q = norm(search.value.trim());
@@ -107,8 +101,8 @@
     const sc = $("#source-count");
     if (sc) {
       sc.textContent = n === 0
-        ? "查無符合「" + search.value.trim() + "」的來源（代表本站目前未收錄該關鍵詞，不等於歷史上不存在）。"
-        : "顯示 " + n + "／" + cards.length + " 組來源。";
+        ? "找不到跟「" + search.value.trim() + "」有關的資料（代表這裡沒收進這幾個字，不是說歷史上不存在喔）。"
+        : "目前顯示 " + n + "／" + cards.length + " 組資料。";
     }
   }
   search?.addEventListener("input", filterSources);
@@ -133,7 +127,7 @@
     if (routeNotice) {
       if (id && !all && !target && id !== "main") {
         routeNotice.hidden = false;
-        routeNotice.textContent = "找不到網址標籤「#" + id + "」，已為您回到探索館首頁目錄。";
+        routeNotice.textContent = "找不到這個位置的標籤，先帶您回到故事館首頁地圖。";
       } else {
         routeNotice.hidden = true;
       }
@@ -163,141 +157,107 @@
     }
     const sb = $("#source-back");
     if (sb) {
-      if (view.id === "library" && backSource) { sb.hidden = false; sb.href = "#" + backSource; }
-      else sb.hidden = true;
+      const src = backSource && stations.find(s => s.id === backSource);
+      sb.hidden = !src || view.id !== "library";
+      if (src) {
+        sb.href = "#" + src.id;
+        sb.textContent = "← 回到第 " + String(src.dataset.station).padStart(2, "0") + " 關繼續玩";
+      }
     }
     if (scroll) {
-      requestAnimationFrame(() => {
-        const dest = all ? $("#top") : (target || view);
-        if (dest === view || dest.id === "menu" || dest.matches("[data-source]")) {
-          dest.setAttribute("tabindex", "-1");
-          dest.focus({ preventScroll: true });
-        }
-        dest.scrollIntoView({ block: "start", behavior: "auto" });
-      });
+      const focusTarget = all ? ($("#all")?.nextElementSibling || view) : (target || view);
+      if (target && !all && target !== view) target.scrollIntoView();
+      else window.scrollTo(0, 0);
+      focusTarget?.focus?.({ preventScroll: true });
     }
   }
-  window.addEventListener("hashchange", () => route());
-  allNodes("a[href^='#']").forEach(a => a.addEventListener("click", () => {
-    if (a.getAttribute("href") === location.hash) route();
-  }));
+  window.addEventListener("hashchange", () => route(true));
+  route(false);
+  resumeUpdate();
 
-  // Bad image graceful fallback
+  // Image failure graceful message
   allNodes("img[data-fallback]").forEach(img => {
     img.addEventListener("error", () => {
       img.hidden = true;
-      const box = img.closest(".artifact-stage")?.querySelector(".img-fallback");
+      const box = img.parentElement?.querySelector(".img-fallback");
       if (box) box.hidden = false;
     });
   });
 
-  // Generic [data-feedback] quiz handler (supports S01, S03, S04, S05, S08 & any quiz)
-  allNodes("[data-feedback]").forEach(b => b.addEventListener("click", () => {
-    b.closest(".choices").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-    const out = document.getElementById(b.getAttribute("aria-controls"));
-    if (out) out.textContent = b.dataset.feedback;
-  }));
+  // Generic multiple-choice helper (inside optional collapsible extras)
+  allNodes("button[data-feedback]").forEach(b => {
+    b.addEventListener("click", () => {
+      const out = document.getElementById(b.getAttribute("aria-controls"));
+      const box = b.closest("[role=group]");
+      if (!out || !box) return;
+      box.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      out.textContent = b.dataset.feedback;
+    });
+  });
 
-  // S01: Four Visitors Interactive Verification Table
+  // S01: Four Visitors Interactive Gate
   (() => {
     const visitors = {
-      v1: { name: "第一位：聲稱親聞佛陀", label: "來客 1：稱親聞佛陀", y: 36, desc: "「我在佛陀面前親耳聽到、親手領受這套法與律。」", ok: "即使宣稱親聞佛陀，仍須不急著信或斥責，先記清文句並比對經與律。" },
-      v2: { name: "第二位：聲稱來自長老僧團", label: "來客 2：稱和合僧團", y: 78, desc: "「我在某住處有上座領導的和合僧團面前親聞此法。」", ok: "整座寺院與多數長老的集體權威，仍須比對經與律（漢譯另列「依法」）。" },
-      v3: { name: "第三位：聲稱來自多位博學長老", label: "來客 3：稱多位長老", y: 120, desc: "「多位博學持法、持律、持本母的長老如此教導我。」", ok: "多位專家長老背書仍不能免查；不相應於經律者須捨棄。" },
-      v4: { name: "第四位：聲稱來自一位持律長老", label: "來客 4：稱一位長老", y: 162, desc: "「一位博學持法、持律的長老親自告訴我。」", ok: "單一權威名望高深者亦須經歷完全相同的比對程序。" }
+      v1: { tag: "1. 說親耳聽過的人", quote: "第一位客人開口：「我在佛陀面前親耳聽到這段話！」", ok: "就算搬出親耳聽見佛陀，一樣先不直接點頭或趕走，把句子記下來送去跟公認的經和律核對！" },
+      v2: { tag: "2. 代表一整座大寺的人", quote: "第二位客人拿出印章：「我們整座大寺院的長老都同意這段說法！」", ok: "整間廟人多勢眾也不能跳過檢查，照樣比對經典與生活規範。" },
+      v3: { tag: "3. 三位博學前輩代表", quote: "第三位客人說：「好幾位最會背經典、最懂戒規的老前輩都背書了！」", ok: "幾位老專家一致推薦一樣要拿上桌面核對，不合的就客氣放下。" },
+      v4: { tag: "4. 最受敬重的老師傳人", quote: "第四位客人自信滿滿：「我那位非常有名的師父親自這樣教我！」", ok: "不管師父名氣多響亮，查證程序跟其他人完全一模一樣。" }
     };
     let curV = "v1";
-    let lastAct = "";
     const tested = new Set();
-    const vText = $("#s01-visitor-text");
-    const vOut = $("#s01-result");
-    const vCount = $("#s01-progress");
-    const flowPath = $("#s01-flow-path"), flowTxt = $("#s01-flow-txt");
-    const deskBadge = $("#s01-desk-badge"), deskTxt = $("#s01-desk-txt");
-    const renderV = () => {
+    const vText = $("#s01-visitor-text"), vOut = $("#s01-result"), vCount = $("#s01-progress");
+    const badge = $("#s01-stage-badge"), stamp = $("#s01-desk-stamp");
+    const renderV = (actText) => {
       allNodes("[data-visitor]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.visitor === curV)));
-      if (vText && visitors[curV]) vText.textContent = visitors[curV].name + " — " + visitors[curV].desc;
-      if (vCount) vCount.textContent = "已檢驗來客：" + tested.size + "／4 位（無任何一位可免查）";
-      Object.entries(visitors).forEach(([k, info]) => {
-        const box = $("#s01-v-" + k + " rect");
+      if (vText && visitors[curV]) vText.textContent = visitors[curV].quote;
+      if (badge && visitors[curV]) badge.textContent = "目前站在桌前：" + visitors[curV].tag;
+      if (vCount) vCount.textContent = "已經盤問過的來客：" + tested.size + "／4 位（四位裡面沒有半個可以跳過比對！）";
+      Object.keys(visitors).forEach(k => {
         const chk = $("#s01-chk-" + k);
-        const done = tested.has(k);
-        if (box) {
-          box.setAttribute("stroke", k === curV ? "#ffd48b" : (done ? "#9fe0bd" : "#7a9186"));
-          box.setAttribute("stroke-width", k === curV ? "2.8" : "1.5");
-        }
-        if (chk) {
-          chk.textContent = done ? "✓" : "○";
-          chk.setAttribute("fill", done ? "#ffd48b" : "#9fe0bd");
-        }
-        if (k === curV && flowPath) {
-          flowPath.setAttribute("d", `M130 ${info.y} C185 ${info.y} 195 96 254 96`);
-        }
+        if (chk) chk.textContent = tested.has(k) ? "已查 ✓" : "未查";
       });
-      if (flowTxt && visitors[curV]) flowTxt.textContent = visitors[curV].label;
-      if (deskBadge && deskTxt) {
-        if (lastAct === "believe") {
-          deskBadge.setAttribute("stroke", "#f0a89b");
-          deskTxt.setAttribute("fill", "#f0a89b");
-          deskTxt.textContent = "誤直接輕信：不得免查！";
-        } else if (lastAct === "reject") {
-          deskBadge.setAttribute("stroke", "#f0a89b");
-          deskTxt.setAttribute("fill", "#f0a89b");
-          deskTxt.textContent = "誤直接斥責：先記文句！";
-        } else if (lastAct === "check") {
-          deskBadge.setAttribute("stroke", "#9fe0bd");
-          deskTxt.setAttribute("fill", "#9fe0bd");
-          deskTxt.textContent = "送交經律比對 ✓（" + tested.size + "/4）";
-        } else {
-          deskBadge.setAttribute("stroke", "#9fe0bd");
-          deskTxt.setAttribute("fill", "#9fe0bd");
-          deskTxt.textContent = "待操作：選來客與回應";
-        }
-      }
+      if (stamp && actText) stamp.textContent = actText;
     };
     allNodes("[data-visitor]").forEach(b => b.addEventListener("click", () => {
       curV = b.dataset.visitor;
-      lastAct = "";
       allNodes("[data-vaction]").forEach(x => x.setAttribute("aria-pressed", "false"));
-      if (vOut) vOut.textContent = "請選擇對這位來客的處理方式。";
-      renderV();
+      if (vOut) vOut.textContent = "輪到這位客人了！試著點下面三種回應看看桌面反應。";
+      renderV("桌上狀態：等著聽清楚他說的話");
     }));
     allNodes("[data-vaction]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-vaction]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
       const act = b.dataset.vaction;
-      lastAct = act;
       tested.add(curV);
-      if (vOut) {
-        if (act === "believe") vOut.textContent = "不能直接相信：" + visitors[curV].ok;
-        else if (act === "reject") vOut.textContent = "不能直接斥責：經文要求「勿遽讚喜、勿遽斥責（不應不信，亦不應毀）」，應先聽清文句再核對。";
-        else vOut.textContent = "✓ 符合經文程序：" + visitors[curV].ok;
+      if (act === "believe") {
+        if (vOut) vOut.textContent = "哎呀，不能這樣就直接相信！" + visitors[curV].ok;
+        renderV("桌上警示：不能只靠搬出權威就點頭！");
+      } else if (act === "reject") {
+        if (vOut) vOut.textContent = "先別急著趕走或罵人！故事說「不要急著誇，也不要急著斥責」，先把每句話記下來看仔細。";
+        renderV("桌上提醒：不先入為主反對，先把話記下");
+      } else {
+        if (vOut) vOut.textContent = "✓ 做得好！" + visitors[curV].ok;
+        renderV("桌上印章：已放上經律桌仔細比對 ✓");
       }
-      renderV();
     }));
     $("#s01-reset")?.addEventListener("click", () => {
-      curV = "v1"; lastAct = ""; tested.clear();
+      curV = "v1"; tested.clear();
       allNodes("[data-vaction]").forEach(x => x.setAttribute("aria-pressed", "false"));
-      if (vOut) vOut.textContent = "已重設查證桌。點選四位來客並測試三種處理方式。";
-      renderV();
+      if (vOut) vOut.textContent = "重設完成！再讓四位客人輪流走上前試試看。";
+      renderV("桌上狀態：還沒決定怎麼處理");
     });
-    renderV();
+    renderV("桌上狀態：還沒決定怎麼處理");
   })();
 
-  // S02: Drum (Pāli SN 20.7 vs Chinese SA 1258 + optional synthetic audio)
+  // S02: Ancient Drum Workshop
   (() => {
     let mode = "pali", step = 0, soundOn = false;
-    const patches = allNodes(".drum-patch");
-    const status = $("#drum-status");
-    const patch = $("#patch");
-    const soundBtn = $("#drum-sound");
+    const patches = allNodes(".drum-patch"), status = $("#drum-status"), patch = $("#patch"), soundBtn = $("#drum-sound");
     function beep(pitch, damp) {
       if (!soundOn) return;
       try {
         const AC = window.AudioContext || window.webkitAudioContext;
         if (!AC) return;
-        const ctx = new AC();
-        const osc = ctx.createOscillator();
-        const g = ctx.createGain();
+        const ctx = new AC(), osc = ctx.createOscillator(), g = ctx.createGain();
         osc.type = "triangle";
         osc.frequency.setValueAtTime(pitch, ctx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(Math.max(45, pitch * 0.45), ctx.currentTime + (damp ? 0.14 : 0.34));
@@ -311,8 +271,8 @@
       if (!patch || !status) return;
       const pali = mode === "pali", max = pali ? patches.length : 2;
       patches.forEach((p, i) => p.classList.toggle("visible", pali && i < step));
-      const leather = $("#leather");
-      const peel = $("#leather-peel");
+      const body = $("#drum-body"), leather = $("#leather"), peel = $("#leather-peel");
+      if (body) body.setAttribute("fill-opacity", pali ? String(Math.max(0.15, 1 - step * 0.17)) : (step >= 2 ? "0.2" : "1"));
       if (leather) leather.setAttribute("opacity", String(!pali && step >= 1 ? 1 : 0));
       if (peel) peel.setAttribute("opacity", String(!pali && step >= 2 ? 1 : 0));
       patch.disabled = step >= max;
@@ -320,13 +280,13 @@
       $("#mode-han")?.setAttribute("aria-pressed", String(!pali));
       const dm = $("#drum-mode");
       if (dm) dm.textContent = pali
-        ? "巴利版 SN 20.7：鼓身裂開後反覆打入木楔（āṇi），原木框逐漸消失。"
-        : "漢譯版 SA 1258：原聲徹四十里，破後以牛皮纏補而失美聲，終致皮剝落唯餘聚木。";
+        ? "故事 A（補新木片）：每裂開一次就塞進一塊新木頭，原木越來越少。"
+        : "故事 B（改繃牛皮）：裂開後改用牛皮繃緊纏補，聲音卻再也不像從前響亮。";
       if (pali) {
-        status.textContent = step ? (step + "／5 示意木楔已打入。" + (step === 5 ? "鼓名未變，原木框已全數消失，只剩木楔聚（示意）。" : "")) : "尚未修補（巴利版）。";
+        status.textContent = step ? ("已經塞入第 " + step + "／5 塊新木片。" + (step === 5 ? "整面鼓幾乎找不回原本那塊木頭，只剩一排木片補丁了！" : "看得出原鼓木色正一塊塊消失。")) : "還沒有動手修補，原木鼓身看得到一條裂痕。";
       } else {
-        status.textContent = step === 0 ? "尚未以牛皮修補（漢譯版：原聲清越徹四十里）。"
-          : (step === 1 ? "步驟 1／2：裁割牛皮周匝纏縛，但原本高美深聲已不復。" : "步驟 2／2：後時轉復朽壞，牛皮大剝落，唯有聚木（經文示意）。");
+        status.textContent = step === 0 ? "剛拿到鼓（這版說本來敲一聲可以傳幾十里遠！）。"
+          : (step === 1 ? "步驟 1／2：用牛皮把鼓面緊緊纏補一圈，雖然補起來了，美妙響聲卻再也回不來。" : "步驟 2／2：日子一久牛皮整片脫落爛掉，地上只剩下碎掉的木堆！");
       }
     }
     $("#mode-pali")?.addEventListener("click", () => { mode = "pali"; step = 0; drum(); });
@@ -340,227 +300,384 @@
     soundBtn?.addEventListener("click", () => {
       soundOn = !soundOn;
       soundBtn.setAttribute("aria-pressed", String(soundOn));
-      soundBtn.textContent = soundOn ? "合成音效：已開啟（非古鼓原聲）" : "合成音效：預設關閉";
+      soundBtn.textContent = soundOn ? "鼓聲示範：已開啟（只是模擬音色）" : "鼓聲示範：目前靜音";
     });
     drum();
   })();
 
-  // S03: Teacher Investigation (3 timepoints + observation vs mindreading)
+  // S03: Teacher Diary Across 3 Timepoints
   (() => {
-    const stages = {
-      early: "【情境一：成名前（虛構示範）】該老師生活簡樸、講解有條理，但你只相處兩週，尚未見過他面對金錢與衝突。",
-      famous: "【情境二：成名得供養後（虛構示範）】粉絲與供養大增，公開課堂依然溫和，但有人反映他私下斥責提問者並要求高額供養。",
-      critic: "【情境三：受公開批評時（虛構示範）】面對經文引用錯誤的指正，他選擇公開修正錯誤並致謝，而非咒罵提問者。"
+    const pages = {
+      early: {
+        badge: "📅 第一頁｜剛認識前兩週",
+        title: "看起來簡單樸素、講課也很清楚",
+        metrics: "👀 看得到的：每天穿很樸素、說話輕聲細語。<br>❓ 還看不到的：沒看過他生氣、遇到錢或被人批評會怎麼樣。",
+        quote: "「才相處兩個禮拜，課講得很順，可是他平常真的都這樣嗎？」"
+      },
+      famous: {
+        badge: "📅 第二頁｜突然紅起來、捐款變多之後",
+        title: "人前很溫和，私下對問問題的人發火",
+        metrics: "👀 看得到的：舞台上還是笑咪咪，但私下被看到責罵發問的學生、又開口要高額捐款。<br>⚖️ 線索改變了：前面好印象不代表後面可以不用看！",
+        quote: "「奇怪，有錢跟名氣進來之後，怎麼跟兩個禮拜前不太一樣？」"
+      },
+      critic: {
+        badge: "📅 第三頁｜被人公開抓出引用錯誤時",
+        title: "坦白承認講錯了並向對方說謝謝",
+        metrics: "👀 看得到的：沒生氣、沒叫粉絲去罵人，當場認錯修正。<br>🔍 還是記得分寸：這只能證明他願意改錯，還是不能猜測他心裡有沒有開悟。",
+        quote: "「他被挑毛病的時候能這麼平靜道歉，這部分滿值得敬佩，不過還是繼續觀察最穩妥。」"
+      }
     };
     let cur = "early";
     const sOut = $("#s03-stage-text"), jOut = $("#s03-judge-result");
+    const bEl = $("#s03-time-badge"), tEl = $("#s03-scene-title"), mEl = $("#s03-scene-metrics");
     const renderS = () => {
+      const p = pages[cur];
       allNodes("[data-tstage]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tstage === cur)));
-      if (sOut) sOut.textContent = stages[cur];
+      if (bEl) bEl.textContent = p.badge;
+      if (tEl) tEl.textContent = p.title;
+      if (mEl) mEl.innerHTML = p.metrics;
+      if (sOut) sOut.textContent = p.quote;
     };
     allNodes("[data-tstage]").forEach(b => b.addEventListener("click", () => {
       cur = b.dataset.tstage;
       allNodes("[data-tjudge]").forEach(x => x.setAttribute("aria-pressed", "false"));
-      if (jOut) jOut.textContent = "請依可觀察言行選擇判斷。";
+      if (jOut) jOut.textContent = "換到這一頁了，點下方決定你現在怎麼看他！";
       renderS();
     }));
     allNodes("[data-tjudge]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-tjudge]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
       const j = b.dataset.tjudge;
       if (!jOut) return;
-      if (j === "mind") jOut.textContent = "超出證據範圍：MN 47 明言「不知他心者」只能由眼見耳聞查驗言行，外在禮貌不能直接證明全知或開悟。";
-      else if (j === "insufficient") jOut.textContent = "✓ 誠實保留：兩週接觸或單一傳聞不足以定案，可繼續長期觀察身語與名利前後變化（MN 47／MA 186）。";
-      else jOut.textContent = cur === "famous"
-        ? "✓ 具體查證：發現成名後出現與教導衝突的可觀察言行，宜核實具體事實而非盲信名氣。"
-        : (cur === "critic" ? "✓ 具體查證：能承認錯誤屬良好公開行為線索，仍可繼續長期觀察，並分開「行為誠懇」與「一切主張皆真」。"
-        : "資料尚淺：目前雖無明顯雜染，但「時間仍短」，MN 47 提醒須觀察「長夜（長期）」與得名聞利養後是否變質。");
+      if (j === "mind") {
+        jOut.textContent = "超過我們能看得到的範圍囉！人的腦袋裡面在想什麼、有沒有全知開悟，不是看表面幾件事就能猜到的。";
+      } else if (j === "insufficient") {
+        jOut.textContent = cur === "early"
+          ? "✓ 很準！相處才兩週資料太少，故事裡本來就說要長時間慢慢觀察才算數。"
+          : "✓ 很公道！當線索還不夠時，留下觀察記錄而不亂下定論最誠實。";
+      } else {
+        jOut.textContent = cur === "famous"
+          ? "✓ 記下這些實際看得到的行為：紅起來之後出現貪心或發脾氣，正是這則故事最提醒我們留意的時刻。"
+          : "✓ 你看得很仔細！記下看得到的言行、又不斷言人家的心靈境界，就是最踏實的態度。";
+      }
     }));
     $("#s03-reset")?.addEventListener("click", () => {
-      cur = "early"; allNodes("[data-tjudge]").forEach(x => x.setAttribute("aria-pressed", "false"));
-      if (jOut) jOut.textContent = "已重設。切換三個時點觀察「可觀察事實」與「內心猜想」的界線。";
+      cur = "early";
+      allNodes("[data-tjudge]").forEach(x => x.setAttribute("aria-pressed", "false"));
+      if (jOut) jOut.textContent = "筆記本重設完成，從第一頁重新翻起。";
       renderS();
     });
     renderS();
   })();
 
-  // S04: Kalama version switcher & 4 assurances
+  // S04: PRIORITY REWORK — Game A (10 Town Villagers) + Game B (4 Hypothetical Worlds)
   (() => {
-    const kOut = $("#s04-version-out");
-    allNodes("[data-kalama-ver]").forEach(b => b.addEventListener("click", () => {
-      allNodes("[data-kalama-ver]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (!kOut) return;
-      kOut.textContent = b.dataset.kalamaVer === "pali"
-        ? "巴利 AN 3.65：先列「十種不應單憑的理由」，接著問貪瞋癡是否導致傷害、智者讚責何者，最後給出四種安穩。"
-        : "漢譯《中阿含》16《伽藍經》：沒有十項清單，直接問「汝等自無淨智，為有後世…當知諸業有三：貪、恚、癡」，接續十善與四安隱住處。";
+    const npcs = {
+      n1: {
+        tag: "1. 愛講古的村口阿伯（世代口傳）",
+        quote: "村口阿伯笑著說：「我們從祖父那時候就是這樣一直講下來的，還能錯嗎？」",
+        clue: "【打開線索】老人家的口述記憶很珍貴，有時候真的保存了老祖先的生活智慧；可是口耳相傳好幾代，也可能漏字、記錯年代或把後來的事誤當成老規矩。",
+        scale: "⚖️ 放上天平：光靠「大家都一直這樣講」不能直接確定它是對是錯，還要看照這樣做會不會帶來貪心、怒氣或傷害別人。"
+      },
+      n2: {
+        tag: "2. 謹慎的大廟小師兄（一代傳一代）",
+        quote: "小師兄說：「這套方法是我師公傳給師父、代代一脈單傳下來的規矩！」",
+        clue: "【打開線索】有師徒代代交接通常代表有系統的訓練，值得尊重；但哪怕是很有歷史的傳統，每一代在流傳過程中仍可能自己加料或改寫。",
+        scale: "⚖️ 放上天平：「傳了十代」不自動等於完全沒出錯，還是要看教法實際上讓人更善良還是更愛爭吵。"
+      },
+      n3: {
+        tag: "3. 熱心的茶館老闆娘（大家都在轉傳）",
+        quote: "老闆娘倒茶說：「整條街跟聊天群組都在轉傳這句名言，沒聽過就落伍啦！」",
+        clue: "【打開線索】街坊瘋狂轉傳的消息有時確實反映當下重要的事，但也最容易「一人傳一句」變成走樣消息。",
+        scale: "⚖️ 放上天平：一百萬人轉傳跟這句話是不是真的、對人有沒有好處，其實是兩回事！"
+      },
+      n4: {
+        tag: "4. 認真的捧書先生（書本或經典有寫）",
+        quote: "書生翻開書本：「你別不信，我手裡這本古老書卷上真的白紙黑字這樣寫！」",
+        clue: "【打開線索】書裡寫著代表這套說法確實有文字來源、不是隨便編的；但書也會經過抄錯、翻譯差異或不同年代整理，還得對別本跟看脈絡。",
+        scale: "⚖️ 放上天平：「書上寫了」是很好的開始，但仍不能單憑書裡一句話就停止檢查它造成的行為結果。"
+      },
+      n5: {
+        tag: "5. 聰明的年輕辯論員（邏輯推理起來很通）",
+        quote: "辯論員自信說：「你聽我的前提一、二、三推下去，邏輯完美無缺對吧？」",
+        clue: "【打開線索】思考有條理超棒，能幫忙抓出矛盾！但如果最開始的前提本身就錯了，越合邏輯的推論反而會把人帶往錯得更遠的地方。",
+        scale: "⚖️ 放上天平：想起來很有道理只是其中一個線索，還要走出紙上談兵，看現實做出來結果怎麼樣。"
+      },
+      n6: {
+        tag: "6. 精明的市集算帳人（看過類似例子就類推）",
+        quote: "算帳人敲敲算盤：「我遇過三次這種事都長一樣，所以第四次一定也是這樣！」",
+        clue: "【打開線索】從經驗找規律很好用，可是把少數例子直接套用到全部情況，很容易漏掉剛好不一樣的例外。",
+        scale: "⚖️ 放上天平：類推幫我們假設，但假設之後一樣需要看這件事是不是真的讓人減苦不害人。"
+      },
+      n7: {
+        tag: "7. 愛動腦筋的學生（自己想通的漂亮想法）",
+        quote: "學生興奮跑來：「我昨晚邊散步邊想，突然把所有人生大事想通成一套圓滿理論！」",
+        clue: "【打開線索】反覆思考幫助整理頭緒，但一個人覺得自己想得無懈可擊，不代表世界現實跟那套想法長得一模一樣。",
+        scale: "⚖️ 放上天平：想得通順不等於事實已經驗證過，還要經得起日常生活跟明理人的檢驗。"
+      },
+      n8: {
+        tag: "8. 直爽的挑水大姊（剛好符合我原本想法）",
+        quote: "大姊點頭說：「這一位講的跟我想的完全一樣！不用再比了，我就選這個！」",
+        clue: "【打開線索】碰到跟自己胃口一樣的看法會特別開心很正常——但危險就在這裡：人最容易「剛好順我意就當成真理」，直接跳過反省。",
+        scale: "⚖️ 放上天平：我喜歡 ≠ 這是對的！越符合自己原本胃口的說法，越要問自己「這有沒有助長我的私心跟偏見？」"
+      },
+      n9: {
+        tag: "9. 穿體面長袍的大講者（看起來很有風度、有學問）",
+        quote: "穿長袍的先生微笑：「看我的氣質、頭銜跟說話風範，我是騙人的人嗎？」",
+        clue: "【打開線索】態度溫和有教養會讓人安心；但有才華、口才好、穿得莊嚴的人，也可能教錯方向或偶爾看錯事情。",
+        scale: "⚖️ 放上天平：外表風度跟這句話是否真實、是否叫人更少貪氣是分開的兩件事。"
+      },
+      n10: {
+        tag: "10. 敬愛老師的忠實徒弟（因為他是我敬重的師父）",
+        quote: "徒弟恭敬說：「他平常對我們那麼好、又是我的老師，他說的話我就照收！」",
+        clue: "【打開線索】尊重與感謝用心教導的好老師非常美；但真正的好老師也希望學生看清楚道理，而不是因為人情壓力閉眼睛照單全收。",
+        scale: "⚖️ 放上天平：尊重老師和替自己做的選擇負起責任，一點都不衝突！"
+      }
+    };
+    const keys = Object.keys(npcs);
+    let curN = "n1";
+    const pinned = new Set();
+    const nTag = $("#s04-speaker-tag"), nQuote = $("#s04-npc-quote"), nOut = $("#s04-clue-out"), savedBadge = $("#s04-saved-badge");
+    const renderNpc = () => {
+      const info = npcs[curN];
+      allNodes("[data-kalama-npc]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kalamaNpc === curN)));
+      if (nTag) nTag.textContent = "目前走到廣場中間：" + info.tag;
+      if (nQuote) nQuote.textContent = info.quote;
+      if (savedBadge) savedBadge.textContent = "已放進「先保留不亂定案」板：" + pinned.size + "／10 則";
+      $("#s04-flip-clue")?.setAttribute("aria-pressed", "false");
+      $("#s04-weigh-harm")?.setAttribute("aria-pressed", "false");
+      $("#s04-pin-hold")?.setAttribute("aria-pressed", String(pinned.has(curN)));
+    };
+    allNodes("[data-kalama-npc]").forEach(b => b.addEventListener("click", () => {
+      curN = b.dataset.kalamaNpc;
+      if (nOut) nOut.textContent = "聽完這個人說的話了！按下面按鈕打開線索，或放上天平量一量。";
+      renderNpc();
     }));
-    const aOut = $("#s04-assasa-out");
-    const aTexts = {
-      a1: "第一安穩：若確有來世與善惡業報，不懷怨害、清淨行善者死後可生善處（經典觀點）。",
-      a2: "第二安穩：若沒有來世與業報，今生依然無怨無惱、安樂自持，受智者稱譽（現世可觀察）。",
-      a3: "第三安穩：若惡行有惡果報，因我不行惡、不念惡，故無須因恐懼受報而不安。",
-      a4: "第四安穩：若惡行沒有死後報應，我在此生依然保持清白無過（兩面皆清淨，但不保證永不受他人外力傷害）。"
+    $("#s04-flip-clue")?.addEventListener("click", e => {
+      e.currentTarget.setAttribute("aria-pressed", "true");
+      if (nOut) nOut.textContent = npcs[curN].clue;
+    });
+    $("#s04-weigh-harm")?.addEventListener("click", e => {
+      e.currentTarget.setAttribute("aria-pressed", "true");
+      if (nOut) nOut.textContent = npcs[curN].scale;
+    });
+    $("#s04-pin-hold")?.addEventListener("click", e => {
+      pinned.add(curN);
+      e.currentTarget.setAttribute("aria-pressed", "true");
+      if (savedBadge) savedBadge.textContent = "已放進「先保留不亂定案」板：" + pinned.size + "／10 則";
+      if (nOut) nOut.textContent = "✓ 記下這條線索先擱著！現在已經留待繼續查對 " + pinned.size + "／10 位居民的話。不急著馬上選邊站就是好習慣。";
+    });
+    $("#s04-next-npc")?.addEventListener("click", () => {
+      const idx = (keys.indexOf(curN) + 1) % keys.length;
+      curN = keys[idx];
+      if (nOut) nOut.textContent = "換下一位街坊站上來講他的理由了！";
+      renderNpc();
+    });
+    renderNpc();
+
+    // Game B: Four Hypothetical Worlds
+    const worlds = {
+      a1: {
+        badge: "假設世界 1／4｜假如有下輩子，好壞也有報應",
+        title: "阿明幫助鄰居，心安理得走下去",
+        scene: "🌤️ <strong>眼前生活：</strong>街坊喜歡他，他每天睡得安穩。<br>🚶 <strong>未來路徑：</strong>照這個世界的假設，不傷人的人走到未來也會走向好地方。",
+        txt: "世界 1：如果真的有死後世界和善惡報應，阿明因為平常不害人、心裡善良，死後也能安心。（這是故事裡推想的安慰，並不是用動畫證明真有來世喔！）"
+      },
+      a2: {
+        badge: "假設世界 2／4｜假如根本沒有下輩子，也沒有報應",
+        title: "沒有天堂獎賞，阿明今天依然過得好好的！",
+        scene: "🏡 <strong>眼前生活：</strong>今天在村裡不怨恨、少紛爭、晚上不怕有人上門討債。<br>😌 <strong>當下收穫：</strong>明理的鄰居也喜歡跟他做朋友，根本不用等到死後才有用。",
+        txt: "世界 2：就算什麼下輩子跟神明算帳都不存在，阿明靠著不故意傷人、放掉嫉妒怨氣，光是在今天這輩子就過得平靜受尊重，完全不虧！"
+      },
+      a3: {
+        badge: "假設世界 3／4｜假如做壞事會帶來不好的後果（不只死後！）",
+        title: "不害人的阿明，自然避開那些因作惡招來的麻煩",
+        scene: "🛡️ <strong>真實人際：</strong>不說謊、不偷搶、不騙人，自然不容易惹上官司、報復或眾叛親離。<br>🌿 <strong>心裡狀態：</strong>不用每天提心吊膽怕東窗事發。",
+        txt: "世界 3：如果做壞事在今生或之後真的會招來苦果——阿明根本沒有去做那些害人的事，當然也就避開了做惡帶來的苦頭！"
+      },
+      a4: {
+        badge: "假設世界 4／4｜假如做壞事不會帶來這種惡果（包含這輩子沒抓到！）",
+        title: "就算做壞事都不會挨罰，阿明還是站在乾淨清白這邊",
+        scene: "✨ <strong>乾淨的心：</strong>不用靠害怕挨罰才做個好人！<br>💛 <strong>人際信任：</strong>自己問心無愧、不用躲躲藏藏，兩邊（現在與心安）都站得住。",
+        txt: "世界 4：就算在一個「壞人做壞事好像也不會被罰」的世界，阿明不靠害怕報應才守規矩——因為不害人讓他現在心裡乾乾淨淨、坦然面對自己和鄰居。（再次提醒：做好人並不保證完全免於天災或別人的惡意，但至少對得起自己的心。）"
+      }
     };
     allNodes("[data-assasa]").forEach(b => b.addEventListener("click", () => {
+      const w = worlds[b.dataset.assasa] || worlds.a1;
       allNodes("[data-assasa]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (aOut) aOut.textContent = aTexts[b.dataset.assasa] || "";
+      if ($("#s04-world-badge")) $("#s04-world-badge").textContent = w.badge;
+      if ($("#s04-world-title")) $("#s04-world-title").textContent = w.title;
+      if ($("#s04-world-scene")) $("#s04-world-scene").innerHTML = w.scene;
+      if ($("#s04-assasa-out")) $("#s04-assasa-out").textContent = w.txt;
     }));
   })();
 
-  // S05: Rahula Water Basin + Mirror + Elephant
+  // S05: TEMPLATE FLAGSHIP — Three Full Storybook Scenes (Basin, Elephant, Mirror)
   (() => {
-    const bOut = $("#s05-basin-out");
-    const water = $("#basin-water"), bowl = $("#basin-bowl"), drops = $("#basin-drops"), puddle = $("#basin-puddle"), svgLabel = $("#basin-svg-label");
+    const bOut = $("#s05-basin-out"), water = $("#basin-water"), surface = $("#basin-surface"), bowl = $("#basin-bowl"), drops = $("#basin-drops"), puddle = $("#basin-puddle"), lbl = $("#basin-svg-label");
     const states = {
-      full: { y: 58, h: 51, flip: false, drop: 0, pud: 0, lbl: "盛滿水（未動）", txt: "初始盛滿水的洗腳盆：準備開始操作（MN 61／MA 14）。" },
-      little: { y: 95, h: 14, flip: false, drop: 1, pud: 0.45, lbl: "只餘一點點水", txt: "步驟 1（瀉留少水）：佛問羅睺羅：「故意妄語卻不知羞悔，他的沙門實質就像這剩餘的一點點水。」" },
-      empty: { y: 109, h: 0, flip: false, drop: 0.7, pud: 0.9, lbl: "倒光成空盆", txt: "步驟 2（盡瀉棄水）：「他的沙門實質就像這樣全部倒光。」" },
-      flipped: { y: 109, h: 0, flip: true, drop: 0, pud: 0.9, lbl: "覆盆著地（翻覆）", txt: "步驟 3（覆盆著地）：「他的沙門實質就像這樣整個翻覆過來，無法容納善法。」" },
-      upright: { y: 109, h: 0, flip: false, drop: 0, pud: 0.9, lbl: "仰轉空盆（空無實質）", txt: "步驟 4（仰轉空器）：「看那空空洞洞的盆！故意說謊不悔改者就像這只空盆。」（MN 61 / MA 14 皆記）" }
+      full: { y: 66, h: 86, surfY: 66, surfOp: 0.88, flip: false, drop: 0, pud: 0, lbl: "盆裡原本裝滿乾淨的水", txt: "銅盆剛洗完腳、裡面還裝滿水。請照故事順序點點看下面的按鈕！" },
+      little: { y: 124, h: 28, surfY: 124, surfOp: 0.8, flip: false, drop: 1, pud: 0.45, lbl: "只剩下淺淺一點水", txt: "1. 倒掉一些水：師父指著幾乎倒空的小盆問小羅睺羅：「如果一個人故意說謊卻一點也不覺得難為情，他的修行就只像這剩下的一點點水！」" },
+      empty: { y: 152, h: 0, surfY: 152, surfOp: 0, flip: false, drop: 0.7, pud: 0.85, lbl: "裡頭水全倒乾了", txt: "2. 把水全部倒光：剩下的那一點也全潑出來了——「故意說謊不認錯，就等於把原本的好意全倒光。」" },
+      flipped: { y: 152, h: 0, surfY: 152, surfOp: 0, flip: true, drop: 0, pud: 0.9, lbl: "盆口朝下蓋在石地上", txt: "3. 把盆子倒過來：空盆整個蓋住地面，上面什麼都裝不進去，提醒「固執說謊的人連好話也聽不進去了」。" },
+      upright: { y: 152, h: 0, surfY: 152, surfOp: 0, flip: false, drop: 0, pud: 0.9, lbl: "翻回來還是空空的盆", txt: "4. 把盆子翻回來：看一看那裡面空空如也！只要人自己不想誠實，就算翻正了裡頭也裝不進實實在在的好修行。" }
     };
     allNodes("[data-basin]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-basin]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
       const st = states[b.dataset.basin] || states.full;
       if (water) { water.setAttribute("y", String(st.y)); water.setAttribute("height", String(st.h)); }
-      if (bowl) bowl.setAttribute("transform", st.flip ? "rotate(180 78 82)" : "");
+      if (surface) { surface.setAttribute("cy", String(st.surfY)); surface.setAttribute("opacity", String(st.surfOp)); }
+      if (bowl) bowl.setAttribute("transform", st.flip ? "rotate(180 150 108)" : "");
       if (drops) drops.setAttribute("opacity", String(st.drop));
       if (puddle) puddle.setAttribute("opacity", String(st.pud));
-      if (svgLabel) svgLabel.textContent = st.lbl;
+      if (lbl) lbl.textContent = st.lbl;
       if (bOut) bOut.textContent = st.txt;
     }));
-    const mOut = $("#s05-mirror-out");
-    const mPhase = $("#s05-mirror-phase"), mSub = $("#s05-mirror-sub"), mRim = $("#s05-mirror-rim");
+
+    const elBadge = $("#s05-el-badge"), elOut = $("#s05-el-out");
+    const elSteps = {
+      look: { badge: "目前聚焦：看清楚這頭真實的亞洲大象", txt: "古印度國王的戰象身高體壯，前面走著四條粗壯像柱子的腿、有堅硬的象牙和大耳朵——但牠最寶貝的其實是敏感又不能受傷的長鼻子。" },
+      protect: { badge: "目前聚焦：鼻子捲進象牙後面保護起來！", txt: "馴象師看戰象上戰場時，看到牠雖然全身用力衝鋒，卻死死把軟軟的長鼻子捲起來藏好；一旦連最重要的長鼻子都不保護了，代表這頭象已經失控了。" },
+      meaning: { badge: "目前聚焦：這跟說話誠實有什麼關係？", txt: "故事以此告訴羅睺羅：一個人如果連「故意講假話欺騙別人」都不在乎、也不覺害臊，那就像大象連最要緊的鼻子都放棄保護了，什麼事情都可能幹得出來。" }
+    };
+    allNodes("[data-elstep]").forEach(b => b.addEventListener("click", () => {
+      allNodes("[data-elstep]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      const e = elSteps[b.dataset.elstep] || elSteps.look;
+      if (elBadge) elBadge.textContent = e.badge;
+      if (elOut) elOut.textContent = e.txt;
+    }));
+
+    const mTag = $("#s05-mirror-tag"), mOut = $("#s05-mirror-out");
     const mTexts = {
-      before: { phase: "做之前", sub: "先照是否害人", stroke: "#9fe0bd", txt: "做之前（鏡前自照）：先想這句話或行動會不會傷害自己、別人或雙方？若會傷害，盡力不做。" },
-      during: { phase: "做當中", sub: "傷人立即止損", stroke: "#ffd48b", txt: "做當中（及時止損）：發現正在造成傷害時，立即停止，不以「都說出口了」硬撐。" },
-      after: { phase: "做之後", sub: "出錯即坦承改", stroke: "#f0a89b", txt: "做之後（發現出錯）：已經傷到人或傳錯消息時，依經文向善知識／受影響者坦承更正，避免再犯。" }
+      before: { tag: "故事定格：左邊畫面｜準備講出口前先照一下", txt: "【做之前先想一想】小安差點把同學的糗事發到班群，拿起銅鏡想了一秒：「這句話發出去會害別人受傷嗎？」想通了就決定先不講，省下一場傷害。" },
+      during: { tag: "故事定格：中間畫面｜話講到一半看見朋友臉色不對", txt: "【正在做的時候留意】小安原本想開個玩笑，講到一半看到朋友眼神慌了、自己也有點愧疚——趕快像中間畫面這樣喊卡剎車，不硬撐把傷害說完！" },
+      after: { tag: "故事定格：右邊畫面｜做錯之後主動跟朋友道歉修補", txt: "【做錯了之後怎麼辦】如果話已經傳錯或傷了朋友的心，就像右邊畫面這樣不逃避、坦坦白白跟受影響的人認錯更正，以後不要再犯。" }
     };
     allNodes("[data-mirror]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-mirror]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
       const m = mTexts[b.dataset.mirror] || mTexts.before;
-      if (mPhase) mPhase.textContent = m.phase;
-      if (mSub) mSub.textContent = m.sub;
-      if (mRim) mRim.setAttribute("stroke", m.stroke);
+      if (mTag) mTag.textContent = m.tag;
       if (mOut) mOut.textContent = m.txt;
     }));
   })();
 
-  // S06: Direction Compass
+  // S06: Two Lifestyle Paths
   (() => {
-    const dOut = $("#s06-dir-out");
+    const badge = $("#s06-path-badge"), out = $("#s06-dir-out");
     const cases = {
-      d1: "【分享正確資訊而不藏私炫耀】方向趨向「少欲、不積聚（apacaya）、離貪」——減輕占有與攀比（生活比喻，非果位判定）。",
-      d2: "【課程不斷推銷高價開運法會】方向趨向「增長貪求、增加負擔（dubbharatā）」——與 AN 8.53「易養（subharatā）」相反。",
-      d3: "【正當工作養家並量力布施】在家人正當生計不違反 AN 8.53；「少欲知足」指不被貪欲奴役，不是禁止謀生。",
-      d_counter: "⚠️ 重要反例：單憑外表穿得樸素或獨居，無法判定一個人內心是否真的離貪，更不能用這八項標準去鑑定某部經「是不是佛陀親口說」的歷史年代。"
+      d1: { b: "🚶 旅人腳步：走上左邊清爽森林路", t: "【不藏私分享正確知識】這條路讓人越走越輕快：不需要拼命佔有、炫耀或綁住別人，心裡更安定。" },
+      d2: { b: "🏋️ 旅人腳步：被拖上右邊背大金袋的累人路", t: "【一直推銷花錢消災課程】一直鼓吹花更多錢去買福報或怕錯失好處，只會增加慾望和心頭沉重，跟經典建議的方向正好相反。" },
+      d3: { b: "🚶 旅人腳步：走在左邊踏實不誇張的小路", t: "【正常上班賺錢養家、量力幫助人】在家人好好工作照顧家庭完全合情合理；經典反對的是被貪心綁死，不是叫大家不能謀生！" },
+      d_counter: { b: "⚠️ 小心這個看走眼的陷阱！", t: "就算有人穿得很破舊、住深山，也不代表他內心真的不貪不氣；而且這八個生活方向只能量「身心健康」，絕對不能拿來鑑定「這部佛經是不是公元前寫的」！"}
     };
     allNodes("[data-dir]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-dir]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (dOut) dOut.textContent = cases[b.dataset.dir] || "";
+      const c = cases[b.dataset.dir] || cases.d1;
+      if (badge) badge.textContent = c.b;
+      if (out) out.textContent = c.t;
     }));
   })();
 
-  // S07: Epistemic Sorter (MN 95)
+  // S07: Three Drawers
   (() => {
-    const items = [
-      { id: "t1", label: "「某高僧有天眼通能預知大樂透」", rec: "belief", why: "屬超自然／個人信念，缺乏可獨立重現的公開證據（守護真理：不應宣稱唯此真實）。" },
-      { id: "t2", label: "「西元前3世紀阿育王曾參訪藍毘尼並立柱」", rec: "supported", why: "有孔雀王朝藍毘尼石柱婆羅米文實物與考古脈絡支持（有條件支持的歷史事實）。" },
-      { id: "t3", label: "「釋迦牟尼佛確切出生於西元前幾月幾日」", rec: "unknown", why: "無同時代文字檔案，當代學界對佛滅年份本身仍有數十年至逾百年爭議（目前未知）。" },
-      { id: "t4", label: "「同一個信念『每日靜坐10分鐘能減壓』，有人靠網友口傳相信，有人看過臨床隨機對照試驗」", rec: "supported", why: "MN 95 核心洞見：同一主張可能來自『口傳』也可能來自『實證查驗』，須依證據強度與條件界線區分，而非只看信不信。" }
-    ];
-    let cur = items[0];
-    const tLabel = $("#s07-item-text"), tOut = $("#s07-result");
-    const renderItem = () => {
-      allNodes("[data-epitem]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.epitem === cur.id)));
-      if (tLabel) tLabel.textContent = cur.label;
+    const items = {
+      t1: { text: "卡片 1：「聽說某位師父會神通，能算準下次樂透頭獎號碼。」", rec: "belief", why: "這沒有公開可檢驗的紀錄，只能算個人相不相信（別忘記故事第一步：承認這是個人信念，不要宣稱全世界沒信的人都是傻瓜）。" },
+      t2: { text: "卡片 2：「西元前三世紀阿育王曾走訪藍毘尼村並立石柱紀念佛陀出生地。」", rec: "supported", why: "這找得到實實在在的石頭刻字跟考古紀錄！只要不多猜出石頭上沒寫的神話，就是有憑有據的歷史事實。" },
+      t3: { text: "卡片 3：「釋迦牟尼佛確切是在公元前幾年幾月幾號出生的？」", rec: "unknown", why: "當時並沒有現代戶政機關或生日紀錄，今天全世界的學者對他過世年份都還有好幾十年的差距——老實放進「現在還不知道」最對！" },
+      t4: { text: "卡片 4：「朋友說『每天靜坐十分鐘比較不焦慮』，一開始只有網路傳聞，後來看到醫院做了幾百人的對照試驗！」", rec: "supported", why: "這就是故事最妙的地方：同一句話一開始只有傳聞，放抽屜一；等真的出現嚴謹實驗證據（仍有適用條件），就可以誠實移動到抽屜二！" }
     };
+    let cur = "t1";
+    const drawers = { belief: $("#s07-dr-belief"), supported: $("#s07-dr-supported"), unknown: $("#s07-dr-unknown") };
+    const activateDrawer = k => Object.entries(drawers).forEach(([id, el]) => el?.classList.toggle("is-active", id === k));
     allNodes("[data-epitem]").forEach(b => b.addEventListener("click", () => {
-      cur = items.find(x => x.id === b.dataset.epitem) || items[0];
+      cur = b.dataset.epitem;
+      allNodes("[data-epitem]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
       allNodes("[data-epcat]").forEach(x => x.setAttribute("aria-pressed", "false"));
-      if (tOut) tOut.textContent = "請選擇這則主張目前較適合歸類於哪一層（MN 95 五依據皆可真可假）。";
-      renderItem();
+      if ($("#s07-item-text")) $("#s07-item-text").textContent = items[cur].text;
+      if ($("#s07-result")) $("#s07-result").textContent = "這張卡片應該收進上面哪一個抽屜呢？";
     }));
     allNodes("[data-epcat]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-epcat]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      const cat = b.dataset.epcat;
-      if (tOut) {
-        tOut.textContent = (cat === cur.rec ? "✓ 分類合理：" : "提示比較：") + cur.why;
+      const pick = b.dataset.epcat, info = items[cur];
+      activateDrawer(pick);
+      if ($("#s07-result")) {
+        $("#s07-result").textContent = (pick === info.rec ? "✓ 放得很對！" : "換個抽屜想想看：") + info.why;
       }
     }));
     $("#s07-reset")?.addEventListener("click", () => {
-      cur = items[0]; allNodes("[data-epcat]").forEach(x => x.setAttribute("aria-pressed", "false"));
-      if (tOut) tOut.textContent = "已重設分類桌。點選上方四則範例，比較「個人信念」「有條件支持」與「目前未知」。";
-      renderItem();
+      cur = "t1";
+      allNodes("[data-epitem]").forEach((x, i) => x.setAttribute("aria-pressed", String(i === 0)));
+      allNodes("[data-epcat]").forEach(x => x.setAttribute("aria-pressed", "false"));
+      activateDrawer("belief");
+      if ($("#s07-item-text")) $("#s07-item-text").textContent = items.t1.text;
+      if ($("#s07-result")) $("#s07-result").textContent = "抽屜重整完畢！挑張卡片重新收收看。";
     });
-    renderItem();
   })();
 
-  // S08: Real Artifact Magnifier (Zoom, Pan, Overlay, Step-1 Observation vs Step-2 Text)
+  // S08: Museum Artifact Magnifier (synchronous UI feedback before async image decode)
   (() => {
     const artifacts = {
       lumbini: {
         src: "assets/history/evidence/img01-rummindei-inscription.jpg",
-        alt: "1896年印度考古調查局拍攝的藍毘尼阿育王石柱五行婆羅米文石刻銘文近照",
-        title: "藍毘尼（倫明代）阿育王石柱銘文（約前249年）",
-        obs: "先看實物：石柱表面刻有五行垂直整齊的古代幾何筆畫字母（婆羅米文），第2行右段可見「Budha Sakyamunī」字跡。",
-        trans: "轉寫與譯意：天愛喜見王登基第20年親自參訪禮敬，因『釋迦牟尼佛（Budha Sakyamunī）』生於此地而立石柱，減免藍毘尼村稅賦為八分之一。",
-        limit: "權利與限制：Public Domain（ASI 1896）。證明前3世紀聖地認定；不證明出生走七步或出生年分。"
+        alt: "1896年印度考古調查局拍攝的藍毘尼阿育王石柱五行古代石刻文字近照",
+        title: "藍毘尼石柱上的刻字（約兩千兩百多年前，真實古物照片未修圖）",
+        obs: "先自己看圖找線索：石頭表面刻了五排整齊的古代文字，從上往下數第二排右邊，看得出「釋迦牟尼佛」的古老寫法。",
+        cue: "放大提示：點下面「放大細節 ＋」到 140%–180%，看第二排右半段的石刻筆畫。",
+        trans: "上面刻了什麼意思？國王登基第二十年親自來這裡禮敬，寫說因為「釋迦牟尼佛生在這個村子」，所以立柱紀念，並減免村裡稅金剩八分之一。",
+        limit: "來源與限度：1896 年老檔案照片（已無版權限制）。證明公元前三世紀人們已認定這裡是佛陀誕生地，但沒有證明生在哪一年或出生走七步的神話。"
       },
       bhabra: {
         src: "assets/history/evidence/img01-bhabra-edict.jpg",
-        alt: "1925年Hultzsch所刊加爾各答－拜拉特阿育王石刻八行婆羅米文拓印圖版",
-        title: "拜拉特／加爾各答－拜拉特阿育王石刻（前3世紀）",
-        obs: "先看實物：花崗岩塊上共刻八行婆羅米文，石面邊緣略有風化剝落，字距較藍毘尼石柱緊密。",
-        trans: "轉寫與譯意：阿育王向僧團致敬並推薦七部法門，第6行見「Lāghulovāde musāvādaṁ adhigicya（對羅睺羅關於妄語的教誡）」。",
-        limit: "權利與限制：Public Domain（Hultzsch 1925）。交叉佐證第5站教誡主題已流傳；不證明現存MN 61逐字未變。"
+        alt: "1925年阿育王碑銘書籍刊印的加爾各答－拜拉特八行石刻拓片",
+        title: "加爾各答－拜拉特石刻拓片（約兩千兩百多年前，真實拓片）",
+        obs: "先自己看圖找線索：黑白色拓片上一共有八行密集的古代婆羅米文。",
+        cue: "放大提示：中間偏右第六行提到了我們剛剛第 05 關玩的「教導羅睺羅不要故意說謊」！",
+        trans: "上面刻了什麼意思？阿育王向大家致敬並推薦七段最值得反覆學習的經法，其中一段點名就是「關於羅睺羅不說假話的教誡」。",
+        limit: "來源與限度：1925 年公開古文圖版（已無版權限制）。證實第 05 關那個教導主題早於公元前三世紀已流傳，但不代表今天看到的整篇長文一字未變。"
       },
       nigali: {
         src: "assets/history/evidence/img01-nigali-sagar.jpg",
-        alt: "尼泊爾尼迦利薩格爾阿育王石柱表面四行婆羅米文石刻照片",
-        title: "尼迦利薩格爾阿育王石柱銘文（約前249年）",
-        obs: "先看實物：石柱斷段上保留四行清楚刻痕，表面有自然風化紋路。",
-        trans: "轉寫與譯意：記載阿育王即位第14年將過去佛「拘那含佛（Konākamana）」佛塔擴建為兩倍，第20年親自參拜並立石柱。",
-        limit: "權利與限制：CC BY 2.0（David Lowry）。證明前3世紀已有過去佛崇拜與佛塔制度，不證實過去佛神話傳記。"
+        alt: "尼泊爾尼迦利薩格爾斷裂阿育王石柱表面的四行石刻照片",
+        title: "尼迦利薩格爾阿育王石柱（約兩千兩百多年前，實景照片）",
+        obs: "先自己看圖找線索：石柱斷段上保留了四行清楚刻痕跟風化痕跡。",
+        cue: "放大提示：四排字直直對齊在石柱表面左下方位置。",
+        trans: "上面刻了什麼意思？寫著國王即位第 14 年幫「更早以前出現過的佛（拘那含佛）」把佛塔擴建成兩倍大，第 20 年再親自來看並立石柱。",
+        limit: "來源與限度：攝影作品分享（CC BY 2.0）。證明那時人們已經相信過去還有更早的古佛與建塔紀念，但石柱本身不能證明過去古佛神話為真。"
       },
       sarnath: {
         src: "assets/history/evidence/img01-sarnath-edict.jpg",
-        alt: "1925年Hultzsch所刊鹿野苑阿育王石柱僧團分裂詔令拓印圖版",
-        title: "鹿野苑阿育王石柱分裂詔令（前3世紀）",
-        obs: "先看實物：上方幾行嚴重殘損，下方五行較為完整，顯示石柱曾斷裂或受損。",
-        trans: "轉寫與譯意：王權要求不得分裂僧團，違者須令還俗（著白衣）並遷離住處；反映王室以行政秩序介入僧團。",
-        limit: "權利與限制：Public Domain（Hultzsch 1925）。支持王權介入僧團紀錄，但不獨立證實南傳第三次結集所有細節。"
+        alt: "1925年印行的鹿野苑阿育王石柱告示拓片，上方破損下方五行完整",
+        title: "鹿野苑防止分裂石柱（約兩千兩百多年前，真實拓片）",
+        obs: "先自己看圖找線索：上方幾行破損掉字了，底下連續五行刻得非常清楚。",
+        cue: "放大提示：拉近看底下完整五行裡嚴整的官方文告格式。",
+        trans: "上面刻了什麼意思？國王下令誰要是企圖把出家僧團拆裂分裂，就要請他穿回一般白衣離開寺院住處，顯示當時王權也直接介入維持團體秩序。",
+        limit: "來源與限度：1925 年公開古文圖版（已無版權限制）。顯示王權確實介入維護僧團秩序，但沒有寫後世史書記的所有「第三次大集會」細節。"
       },
       gandhara: {
         src: "assets/history/evidence/img02-gandhara-bl-or14915.jpg",
-        alt: "大英圖書館Or. 14915號西元1世紀犍陀羅語佉盧文樺樹皮手稿殘片實物影像",
-        title: "犍陀羅語樺樹皮卷（BL Or. 14915，約西元1世紀前半葉）",
-        obs: "先看實物：六條縱向捲曲殘損的淺褐色樺樹皮條片，表面有纖維紋理與黑色墨跡寫成的佉盧文字母。",
-        trans: "館藏與斷代：大英圖書館藏本（研究歸屬多指向法藏部）；另有美國國會圖書館 2018305008 及 Split 藏本《八千頌般若》（C14 約 75 CE，2σ 47–147 CE）。",
-        limit: "權利與限制：BL Or. 14915 為 CC0（British Library）；LOC 2018305008 為 Public Domain Mark 1.0，但對自動抓取回傳 HTTP 403（ACCESS_BLOCKED，技術存取受阻而非版權禁止），請讀者點研究頁官方連結查閱。均距佛陀數百年，非佛陀親筆。"
+        alt: "大英圖書館收藏的西元一世紀犍陀羅語佉盧文樺樹皮手稿六片殘卷",
+        title: "大英圖書館一世紀樺樹皮古卷（約兩千歲真實寫本）",
+        obs: "先自己看圖找線索：六條脆弱捲曲的淺褐色樹皮條上，一行一行用黑墨寫著由右往左唸的古文字。",
+        cue: "放大提示：放大後可以看清樺樹皮天然的橫向纖維和兩千年黑墨水滲透進去的樣子！",
+        trans: "這卷古書是什麼？目前人類真的拿得到手裡測年代、還找得出字的早期佛經實物（相關藏品經碳十四測年也落在西元前 1 世紀到西元 1、2 世紀左右）。",
+        limit: "來源與限度：大英圖書館公版免授權影像；美國國會圖書館亦有類似藏品（該官網擋自動化抓取，已附網址供親自點開瀏覽）。這早於許多傳世紙本，但仍晚於佛陀好幾百年。"
       }
     };
     let curA = "lumbini", zoom = 1, px = 0, py = 0, showOverlay = true, showTrans = false;
     const img = $("#viewer-img"), fb = $("#viewer-fallback"), ov = $("#viewer-overlay");
     const infoObs = $("#viewer-obs"), infoCue = $("#viewer-cue"), infoTrans = $("#viewer-trans"), infoLim = $("#viewer-limit"), zStat = $("#viewer-zoom-status");
-    const cues = {
-      lumbini: "放大與行次對照：第 2 行右側刻「Budha Sakyamunī」；建議放大至 140%–180% 並搭配下方「顯示轉寫與譯意」對讀原刻位置。",
-      bhabra: "放大與行次對照：拓片中央偏右行次可見「Lāghulovāde」（羅睺羅教誡）與七法名號；放大可看婆羅米文字母間距。",
-      nigali: "放大與行次對照：柱身中段四行垂直刻寫，記錄「Konākamana（拘那含佛）」佛塔擴建為兩倍。",
-      sarnath: "放大與行次對照：上方幾行因石柱斷裂僅餘殘痕，下方連續五行詔令要求分裂僧團者令著白衣遷離。",
-      gandhara: "放大與行次對照：棕色樺樹皮呈縱向纖維紋與雙欄卷軸殘片，右側黑色佉盧文（Kharoṣṭhī）自右向左書寫。"
-    };
     const renderImg = () => {
       const a = artifacts[curA];
       if (!a || !img) return;
       img.style.transform = `translate(${px}px, ${py}px) scale(${zoom})`;
       if (ov) {
         ov.hidden = !showOverlay;
-        ov.querySelector(".overlay-pill").textContent = a.title + "（可關閉圖層，原圖像素未經AI修改）";
+        ov.querySelector(".overlay-pill").textContent = a.title;
       }
       if (infoObs) infoObs.textContent = a.obs;
-      if (infoCue) infoCue.textContent = cues[curA] || "";
+      if (infoCue) infoCue.textContent = a.cue;
       if (infoTrans) { infoTrans.textContent = a.trans; infoTrans.hidden = !showTrans; }
       if (infoLim) infoLim.textContent = a.limit;
-      if (zStat) zStat.textContent = "目前縮放：" + Math.round(zoom * 100) + "%";
+      if (zStat) zStat.textContent = "目前大小：" + Math.round(zoom * 100) + "%";
       allNodes("[data-artifact]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.artifact === curA)));
       $("#viewer-toggle-overlay")?.setAttribute("aria-pressed", String(showOverlay));
       $("#viewer-toggle-trans")?.setAttribute("aria-pressed", String(showTrans));
@@ -572,9 +689,7 @@
         img.src = a.src;
       }
     };
-    allNodes("[data-artifact]").forEach(b => b.addEventListener("click", () => {
-      curA = b.dataset.artifact; zoom = 1; px = 0; py = 0; showTrans = false; renderImg();
-    }));
+    allNodes("[data-artifact]").forEach(b => b.addEventListener("click", () => { curA = b.dataset.artifact; zoom = 1; px = 0; py = 0; showTrans = false; renderImg(); }));
     $("#viewer-zoom-in")?.addEventListener("click", () => { zoom = Math.min(2.4, +(zoom + 0.4).toFixed(1)); renderImg(); });
     $("#viewer-zoom-out")?.addEventListener("click", () => { zoom = Math.max(1, +(zoom - 0.4).toFixed(1)); if (zoom === 1) { px = 0; py = 0; } renderImg(); });
     $("#viewer-pan-left")?.addEventListener("click", () => { px += 28; renderImg(); });
@@ -582,242 +697,259 @@
     $("#viewer-reset")?.addEventListener("click", () => { zoom = 1; px = 0; py = 0; showOverlay = true; showTrans = false; renderImg(); });
     $("#viewer-toggle-overlay")?.addEventListener("click", () => { showOverlay = !showOverlay; renderImg(); });
     $("#viewer-toggle-trans")?.addEventListener("click", () => { showTrans = !showTrans; renderImg(); });
-    $("#viewer-stage")?.addEventListener("keydown", e => {
-      if (e.key === "+" || e.key === "=") { zoom = Math.min(2.4, +(zoom + 0.4).toFixed(1)); renderImg(); }
-      else if (e.key === "-") { zoom = Math.max(1, +(zoom - 0.4).toFixed(1)); if (zoom === 1) { px = 0; py = 0; } renderImg(); }
-      else if (e.key === "0") { zoom = 1; px = 0; py = 0; renderImg(); }
-      else if (e.key === "ArrowLeft") { e.preventDefault(); px += 24; renderImg(); }
-      else if (e.key === "ArrowRight") { e.preventDefault(); px -= 24; renderImg(); }
-    });
     renderImg();
   })();
 
-  // S09: Oral Transmission Sandbox (Toy demo, NOT real probability)
+  // S09: Oral Transmission Circle
   (() => {
-    const out = $("#s09-out");
-    const n1t = $("#s09-n1-txt"), n1s = $("#s09-n1-sub");
-    const n2t = $("#s09-n2-txt"), n2s = $("#s09-n2-sub"), n2b = $("#s09-n2-box");
-    const n3t = $("#s09-n3-txt"), n3s = $("#s09-n3-sub"), n3b = $("#s09-n3-box");
-    const a1 = $("#s09-arrow1"), a2 = $("#s09-arrow2"), badge = $("#s09-svg-badge");
+    const out = $("#s09-out"), pill = $("#s09-mode-pill"), n1 = $("#s09-n1-txt"), n2 = $("#s09-n2-txt"), n3 = $("#s09-n3-txt");
     const demos = {
       whisper: {
-        n1t: "「不依人，只比經律」", n1s: "起始口述短句",
-        n2t: "單線私下轉述", n2s: "缺少群體對誦校正", stroke: "#f0a89b",
-        n3t: "「聽說只信自己就好」", n3s: "個人記憶易漏字偏移",
-        badge: "模式 1：無集體複核機制時，個人口述容易遺漏與改寫",
-        txt: "【單人耳語傳話（玩具示意）】原始短句：「不依人，只比對經律。」→ 第3人：「好像說不要亂聽別人的話。」→ 第6人：「聽說大師說只要信自己就好。」（個人記憶容易漏字變形。）"
+        pill: "測試一｜悄悄一個人傳給一個人",
+        n1: "「不要看誰面子，要拿經典查」",
+        n2: "靠單一個人記憶往下傳",
+        n3: "「聽說大師講只要靠自己心裡感受」",
+        txt: "【只有一個人悄悄往下傳】經過五六個人之後，本來最重要的幾句話常會漏字、甚至意思被改得面目全非！"
       },
       chorus: {
-        n1t: "「無常、苦、非我」", n1s: "韻律與定型句骨幹",
-        n2t: "多群體定期合誦", n2s: "Wynne 2004 校對模型", stroke: "#9fe0bd",
-        n3t: "核心骨幹高度穩定", n3s: "整齊未必等於最早（需別判）",
-        badge: "模式 2：集體合誦保護核心穩定，但模板化整齊亦可能屬後期編輯",
-        txt: "【集體合誦與定型句校對（玩具示意）】原始短句：「色無常，無常即苦，苦即非我。」→ 三組僧人定期對誦戒本與固定句型 → 關鍵骨幹保持高度穩定（呼應 Wynne 2004 集體校對機制，並非一定失真）。"
+        pill: "測試二｜一大群人定期大聲一起對詞",
+        n1: "「一切現象無常、苦、非我」",
+        n2: "數十位僧團固定集體合誦檢查",
+        n3: "重要大骨幹穩穩留了下來 ✓",
+        txt: "【大家一起定期大聲對詞】研究口傳的學者發現，古代僧團像合唱團定期對唱互抓漏字一樣，確實把重要教義穩穩保住！但要小心：有時念起來非常整齊對稱，反而是後來的人整理編輯出來的喔。"
       },
       translate: {
-        n1t: "Dhamma / Dharma", n1s: "印度語言原文脈絡",
-        n2t: "語際翻譯與文化詮釋", n2s: "Allon 2022 異文分析", stroke: "#ffd48b",
-        n3t: "漢「法」／英 Truth", n3s: "詞義隨接收文化再讀",
-        badge: "模式 3：跨語翻譯（俗語→梵／漢／英）會在文化語境中移位",
-        txt: "【跨語言翻譯轉換（玩具示意）】印度語詞「Dhamma / Dharma」譯為漢語「法」或英文「Teaching / Truth」，讀者依各自文化語境產生不同理解（Allon 2022 異文成因之一）。"
+        pill: "測試三｜換成不同國家的語言",
+        n1: "古印度原語「Dhamma / Dharma」",
+        n2: "翻成中文、藏文或英文",
+        n3: "變成「法 / 真理 / Teaching」",
+        txt: "【翻譯到外地語言】不同國家本來就用不同文化詞彙來思考，同一個詞翻過去，常會自然帶入新文化的理解角度。"
       },
       expand: {
-        n1t: "比對經與律", n1s: "DN 16 ／ DA 2 基準",
-        n2t: "三藏定型期教學編整", n2s: "因應傳法與分類增補", stroke: "#ffd48b",
-        n3t: "EA 28.5 增阿毘曇・戒", n3s: "顯現多層次編輯痕跡",
-        badge: "模式 4：同一母題經由不同部派編整，會留下可察覺的增補層次",
-        txt: "【因應爭議或教學需要而編整（玩具示意）】如《增壹阿含》28.5 在「經、律」後再加入「阿毘曇、戒」，反映後代編輯層次與三藏分類系統化。"
+        pill: "測試四｜遇到新疑問時補進說明",
+        n1: "原本標準：對照經跟律兩件事",
+        n2: "後來整理三藏分類的人加進新條目",
+        n3: "多出了「阿毘曇跟戒」四項標準",
+        txt: "【因應教學需要補進去新內容】譬如第 01 關提到同一標題的另一部漢譯經典《增壹阿含》，就在原本兩項後面加上了後來才整理完整的「阿毘曇」分類！"
       }
-    };
-    const applyState = st => {
-      if (n1t) n1t.textContent = st.n1t;
-      if (n1s) n1s.textContent = st.n1s;
-      if (n2t) n2t.textContent = st.n2t;
-      if (n2s) n2s.textContent = st.n2s;
-      if (n2b) n2b.setAttribute("stroke", st.stroke);
-      if (n3t) n3t.textContent = st.n3t;
-      if (n3s) n3s.textContent = st.n3s;
-      if (n3b) n3b.setAttribute("stroke", st.stroke);
-      if (a1) a1.setAttribute("stroke", st.stroke);
-      if (a2) a2.setAttribute("stroke", st.stroke);
-      if (badge) badge.textContent = st.badge;
-      if (out) out.textContent = st.txt;
     };
     allNodes("[data-txmode]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-txmode]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      const st = demos[b.dataset.txmode];
-      if (st) applyState(st);
+      const d = demos[b.dataset.txmode];
+      if (!d) return;
+      if (pill) pill.textContent = d.pill;
+      if (n1) n1.textContent = d.n1;
+      if (n2) n2.textContent = d.n2;
+      if (n3) n3.textContent = d.n3;
+      if (out) out.textContent = d.txt;
     }));
     $("#s09-reset")?.addEventListener("click", () => {
       allNodes("[data-txmode]").forEach(x => x.setAttribute("aria-pressed", "false"));
-      applyState({
-        n1t: "早期教導／定型句", n1s: "共同起點",
-        n2t: "集體合誦或語際轉譯", n2s: "請點選下方情境", stroke: "#9fe0bd",
-        n3t: "平行核心與異文並存", n3s: "非全真亦非全假",
-        badge: "初始狀態：點按四個按鈕，看文句如何經各節點穩定保存或漂移",
-        txt: "已重設傳承沙盒。請選擇上方情境，比較「集體穩定保存」與「邊緣異文增刪」（示範模擬，非歷史機率）。"
-      });
+      if (pill) pill.textContent = "目前測試：還沒有開始傳話";
+      if (n1) n1.textContent = "「這句教導很重要」";
+      if (n2) n2.textContent = "點下方選傳遞方式";
+      if (n3) n3.textContent = "結果會出現在這裡";
+      if (out) out.textContent = "重設好了！再點點看不同傳法有什麼差別。";
     });
   })();
 
-  // S10: Interactive Historical Timeline Slider + Map
+  // S10: TEMPLATE FLAGSHIP — Natural Earth Asia Interactive Explorer
   (() => {
+    const pts = {
+      lumbini: [198, 205.9], magadha: [215.3, 228.3], gandhara: [88.6, 133.2],
+      anuradhapura: [171.2, 418.8], samye: [274.4, 185.2], dunhuang: [303.8, 65.1],
+      mandalay: [317.1, 267.1], ayutthaya: [358.7, 351.6], changan: [436.7, 130.4],
+      nanjing: [528.4, 154.9], taipei: [554, 232.9], kyoto: [686.2, 122.1]
+    };
     const periods = [
-      { time: "前600–400", title: "沙門運動與歷史佛陀", rel: "高；生平細節未定", region: "恒河中游（今北印／尼泊爾南）", mx: 185, my: 145, note: "喬達摩在多元沙門競爭環境中教導；佛滅確切年份仍有約前5世紀區間爭議。" },
-      { time: "前400–300", title: "早期僧團、口傳與早期分化", rel: "中", region: "摩揭陀、毘舍離一帶", mx: 192, my: 148, route: "sea", note: "第二次結集具較強基礎；第一次結集細節與根本分裂確切年分仍有學界討論。" },
-      { time: "前268–232左右", title: "阿育王政治支持與碑銘", rel: "極高（實物碑銘）", region: "華氏城至藍毘尼、拜拉特・兼及西北與斯里蘭卡傳訊", mx: 175, my: 148, mx2: 192, my2: 226, route: "sea", note: "目前最早實物檔案；同時銘文載遣使西北與南方，第三次結集則主要見於南傳編年史。" },
-      { time: "前300–100", title: "部派佛教發展", rel: "高（分裂細節未定）", region: "印度次大陸、大犍陀羅、斯里蘭卡", mx: 148, my: 132, mx2: 192, my2: 226, route: "nw", note: "十八／二十部派名單互有矛盾；印度西北與錫蘭平行各自傳承經律與論。" },
-      { time: "前100–後200", title: "早期手稿與大乘經典萌芽", rel: "高（實物測年支持）", region: "大犍陀羅、絲路與印度多地", mx: 122, my: 98, mx2: 185, my2: 150, route: "nw", note: "BL Or.14915 與 Split《八千頌般若》（C14約75 CE）提供最早寫本實物；與南傳錫蘭口耳傳誦平行發生。" },
-      { time: "100–500", title: "般若、中觀、瑜伽行派與巴利義註", rel: "高", region: "印度各地、漢地譯場與斯里蘭卡", mx: 168, my: 162, mx2: 330, my2: 122, route: "nw", note: "龍樹中觀與無著世親唯識系統成熟；鳩摩羅什長安譯經，覺音於5世紀在錫蘭整理巴利義註。" },
-      { time: "100–600", title: "經中亞與海路進入東亞", rel: "高", region: "中亞絲路走廊、長安建康至韓日", mx: 332, my: 118, mx2: 226, my2: 58, route: "nw", note: "429／433 斯里蘭卡比丘尼赴南京傳戒；中亞與海上路徑並存（非單線），漢譯大量阿含與大乘經典。" },
-      { time: "500–1000", title: "印度密教、東亞宗派與藏傳形成", rel: "高", region: "北印大寺、吐蕃喜馬拉雅與唐宋漢地", mx: 252, my: 116, mx2: 336, my2: 124, route: "himalaya", note: "約779桑耶寺；801《寶林傳》；971–983《開寶藏》雕印；唐武宗會昌滅佛；各地同步重組。" },
-      { time: "1000–1300", title: "北印大寺衰退與斯里蘭卡重整", rel: "高", region: "那爛陀超戒寺；斯里蘭卡與緬甸", mx: 192, my: 226, mx2: 204, my2: 136, route: "sea", note: "12世紀波羅迦羅摩跋訶一世統合斯里蘭卡僧團；北印度大寺多重因素衰退，東亞與東南亞持續演進。" },
-      { time: "1200–1600", title: "上座部確立東南亞主流", rel: "高", region: "緬甸、泰國、柬寮・兼及日本宗派化", mx: 274, my: 194, mx2: 414, my2: 130, route: "sea", note: "區域王權支持巴利三藏體系；同期日本鎌倉新佛教興起、親鸞開創淨土真宗婚配傳統。" },
-      { time: "1600–1900", title: "王權、殖民與宗教改革", rel: "極高", region: "斯里蘭卡、東南亞、日本、清代臺灣", mx: 276, my: 196, mx2: 382, my2: 168, route: "sea", note: "1753暹羅傳戒、1868–1871固都陶729碑、1872日本解禁、1895臺灣進入日治。" },
-      { time: "1900至今", title: "現代化、人間佛教與全球正念", rel: "極高", region: "臺灣、亞洲跨區與全球網路", mx: 382, my: 168, mx2: 266, my2: 128, route: "himalaya", note: "居士內觀、人間佛教、世俗正念與2022／2025不丹比丘尼復戒。" }
+      { time: "西元前 600–400 年", title: "北印恆河流域｜歷史上的佛陀誕生與教學", p1: pts.lumbini, p2: pts.magadha, note: "真的確定有個叫喬達摩的老師在北印度教導離苦的方法；但確切生日跟早年細節還沒辦法逐條證實。" },
+      { time: "西元前 400–300 年", title: "摩揭陀一帶｜靠大家一起背誦跟早期分家", p1: pts.magadha, note: "僧侶開始把故事背下來互相對詞；這時還沒寫成一本書，也開始因日常規矩看法不同分成不同小組。" },
+      { time: "西元前 268–232 年左右", title: "印度全境至海島｜阿育王在石柱刻字支持", p1: pts.lumbini, p2: pts.anuradhapura, route: "sea", note: "這是目前最早摸得到的實體大證據！阿育王把石柱立在藍毘尼等地，也派使者往西北與南方斯里蘭卡交流。" },
+      { time: "西元前 300–100 年", title: "印度各地・大犍陀羅・斯里蘭卡｜各部派各自發展", p1: pts.gandhara, p2: pts.anuradhapura, route: "nw", note: "各地距離遠又靠口傳，慢慢分化出不同流派（傳說常講十八派，但各地列出的名單彼此還打架）。" },
+      { time: "西元前 100–西元 200 年", title: "大犍陀羅・絲路起點｜最早寫在樹皮上的古經出現了！", p1: pts.gandhara, p2: pts.magadha, route: "nw", note: "目前挖出來最早的手稿（包括大英圖書館跟約西元 75 年的大乘樹皮殘卷）出現在這個時期的西北大犍陀羅地區！" },
+      { time: "西元 100–500 年", title: "印度・斯里蘭卡・長安｜大哲學書和大量中文翻譯同時發生", p1: pts.magadha, p2: pts.changan, route: "nw", note: "印度出現重要哲學大師、中國長安如火如荼翻譯阿含與大乘經、同時斯里蘭卡也完成大部頭巴利語註釋書。" },
+      { time: "西元 100–600 年", title: "經過中亞絲路與海路｜走進長安、建康(南京)、韓國日本", p1: pts.dunhuang, p2: pts.nanjing, route: "nw", note: "西元 429 與 433 年斯里蘭卡女出家人還坐船來南京幫忙傳戒！海路跟絲路一起把文化帶進東亞。" },
+      { time: "西元 500–1000 年", title: "西藏高原與唐宋中國｜桑耶寺、敦煌藏書、宋朝印《開寶藏》", p1: pts.samye, p2: pts.changan, route: "him", note: "約 779 年西藏建立桑耶寺；中國經歷唐武宗拆廟後，北宋花了十幾年雕刻第一套木板大藏經《開寶藏》。" },
+      { time: "西元 1000–1300 年", title: "斯里蘭卡重整與北印大寺院衰退｜一邊消失一邊整合", p1: pts.anuradhapura, p2: pts.magadha, route: "sea", note: "北印那爛陀等大寺院因為戰火、王權贊助轉移和民間疏離而漸漸沒落；斯里蘭卡則由國王統合出大寺派主導。" },
+      { time: "西元 1200–1600 年", title: "東南亞跟日本｜南傳主流定型・日本親鸞開創成家先例", p1: pts.ayutthaya, p2: pts.kyoto, route: "sea", note: "緬甸、泰國、柬埔寨等國陸續確立巴利語傳統；同時期的日本也長出淨土真宗和各種地方宗派。" },
+      { time: "西元 1600–1900 年", title: "斯里蘭卡・緬甸・日本・清代臺灣｜求戒・刻碑・解禁", p1: pts.mandalay, p2: pts.taipei, route: "sea", note: "1753 年從泰國搭船幫斯里蘭卡恢復僧團；1868 年緬甸刻完 729 塊大石碑；1872 年日本撤銷和尚結婚罰則。" },
+      { time: "西元 1900 年至今", title: "臺灣・亞洲・全世界｜百年大變身、人間佛教與現代正念", p1: pts.taipei, p2: pts.samye, route: "him", note: "這百年亞洲佛教開始跟現代教育、心理學與公共醫療慈善結合，同時 2022／2025 年不丹也完成大型女性受戒！" }
     ];
-    const slider = $("#s10-slider"), prev = $("#s10-prev"), next = $("#s10-next");
+    const slider = $("#s10-slider"), prev = $("#s10-prev"), next = $("#s10-next"), playBtn = $("#s10-autoplay");
     const outTime = $("#s10-time"), outTitle = $("#s10-title"), outInfo = $("#s10-info");
-    const dot = $("#s10-map-dot"), dot2 = $("#s10-map-dot2"), ring = $("#s10-map-ring"), dotLabel = $("#s10-map-label");
-    const rNw = $("#s10-route-nw"), rSea = $("#s10-route-sea"), rHim = $("#s10-route-himalaya"), svgNote = $("#s10-era-note-svg");
-    let idx = 0;
+    const dot = $("#s10-map-dot"), dot2 = $("#s10-map-dot2"), ring = $("#s10-map-ring"), noteSvg = $("#s10-era-note-svg");
+    const rNw = $("#s10-route-nw"), rSea = $("#s10-route-sea"), rHim = $("#s10-route-him");
+    let idx = 0, timer = null;
+    const stopAuto = () => {
+      if (timer) { clearInterval(timer); timer = null; }
+      if (playBtn) { playBtn.setAttribute("aria-pressed", "false"); playBtn.textContent = "▶ 沿時間軸播放"; }
+    };
     const render = () => {
-      const p = periods[idx];
-      if (!p) return;
+      const e = periods[idx];
+      if (!e) return;
       if (slider) slider.value = String(idx);
-      if (outTime) outTime.textContent = p.time + "（第 " + (idx + 1) + "／12 期）";
-      if (outTitle) outTitle.textContent = p.title + "｜地區：" + p.region;
-      if (outInfo) outInfo.textContent = "史料可信：" + p.rel + " — " + p.note;
-      if (dot) { dot.setAttribute("cx", String(p.mx)); dot.setAttribute("cy", String(p.my)); }
-      if (ring) { ring.setAttribute("cx", String(p.mx)); ring.setAttribute("cy", String(p.my)); }
+      if (outTime) outTime.textContent = e.time + "（第 " + (idx + 1) + "／12 站）";
+      if (outTitle) outTitle.textContent = e.title;
+      if (outInfo) outInfo.textContent = e.note;
+      if (dot) { dot.setAttribute("cx", String(e.p1[0])); dot.setAttribute("cy", String(e.p1[1])); }
+      if (ring) { ring.setAttribute("cx", String(e.p1[0])); ring.setAttribute("cy", String(e.p1[1])); }
       if (dot2) {
-        if (p.mx2 != null && p.my2 != null) {
-          dot2.setAttribute("cx", String(p.mx2)); dot2.setAttribute("cy", String(p.my2)); dot2.setAttribute("opacity", "1");
-        } else {
-          dot2.setAttribute("opacity", "0");
-        }
+        if (e.p2) { dot2.setAttribute("cx", String(e.p2[0])); dot2.setAttribute("cy", String(e.p2[1])); dot2.setAttribute("opacity", "1"); }
+        else dot2.setAttribute("opacity", "0");
       }
-      if (dotLabel) { dotLabel.setAttribute("x", String(p.mx)); dotLabel.setAttribute("y", String(Math.max(20, p.my - 20))); dotLabel.textContent = p.time; }
-      if (rNw) rNw.setAttribute("stroke-opacity", p.route === "nw" ? "0.95" : "0.28");
-      if (rSea) rSea.setAttribute("stroke-opacity", p.route === "sea" ? "0.95" : "0.28");
-      if (rHim) rHim.setAttribute("stroke-opacity", p.route === "himalaya" ? "0.95" : "0.28");
-      if (svgNote) svgNote.textContent = p.time + "｜" + p.region + (p.mx2 != null ? "（綠點＝同期並行區域）" : "");
+      if (rNw) rNw.setAttribute("stroke-opacity", e.route === "nw" ? "0.95" : "0.22");
+      if (rSea) rSea.setAttribute("stroke-opacity", e.route === "sea" ? "0.95" : "0.22");
+      if (rHim) rHim.setAttribute("stroke-opacity", e.route === "him" ? "0.95" : "0.22");
+      if (noteSvg) noteSvg.textContent = e.time + "（橘點與綠點代表同一時代多地一起發生，非單一直線）";
       if (prev) prev.disabled = idx <= 0;
       if (next) next.disabled = idx >= periods.length - 1;
       allNodes("[data-era]").forEach(b => b.setAttribute("aria-pressed", String(Number(b.dataset.era) === idx)));
     };
-    slider?.addEventListener("input", () => { idx = Number(slider.value); render(); });
-    prev?.addEventListener("click", () => { if (idx > 0) { idx--; render(); } });
-    next?.addEventListener("click", () => { if (idx < periods.length - 1) { idx++; render(); } });
-    allNodes("[data-era]").forEach(b => b.addEventListener("click", () => { idx = Number(b.dataset.era); render(); }));
+    slider?.addEventListener("input", () => { stopAuto(); idx = Number(slider.value); render(); });
+    prev?.addEventListener("click", () => { stopAuto(); if (idx > 0) { idx--; render(); } });
+    next?.addEventListener("click", () => { stopAuto(); if (idx < periods.length - 1) { idx++; render(); } });
+    allNodes("[data-era]").forEach(b => b.addEventListener("click", () => { stopAuto(); idx = Number(b.dataset.era); render(); }));
+    playBtn?.addEventListener("click", () => {
+      if (timer) { stopAuto(); return; }
+      if (reducedMotion()) { idx = (idx + 1) % periods.length; render(); return; }
+      playBtn.setAttribute("aria-pressed", "true");
+      playBtn.textContent = "⏸ 暫停播放";
+      timer = setInterval(() => {
+        idx = (idx + 1) % periods.length;
+        render();
+        if (idx === periods.length - 1) stopAuto();
+      }, 2400);
+    });
     render();
   })();
 
-  // S11: Braided River + 5-Language Anattalakkhaṇa Switcher
+  // S11: Shared Puzzle & 5-Language
   (() => {
-    const tOut = $("#s11-trad-out");
-    const tInfo = {
-      south: "南傳上座部：保存巴利尼柯耶與上座部律，但經12世紀統合與18世紀傳戒重建，非完全等同古代全體上座系。",
-      east: "漢傳佛教：保存法藏部四分律、四阿含（出於不同部派）與大乘經論，融合儒道與地方宗教制度。",
-      tibet: "藏傳佛教：保存根本說一切有部律與大量印度後期中觀、因明及密教文獻，並與藏地文化互動。",
-      lost: "消失古部派（如犢子部、經量部等）：原典多半散佚，今日認識高度依賴其他派別的批評轉述（存活者偏差）。"
+    const vTxt = $("#s11-pz-vinaya-txt"), dTxt = $("#s11-pz-dev-txt"), vBox = $("#s11-pz-vinaya"), dBox = $("#s11-pz-dev"), out = $("#s11-trad-out");
+    const info = {
+      south: {
+        v: "帶走「上座部」生活戒本跟整套巴利語經藏。",
+        d: "加上十二世紀斯里蘭卡整合、十八世紀泰國幫接棒，以及東南亞王室傳統。",
+        txt: "南傳保存了一整套完整的巴利語早期經律，但中間也經歷過十二世紀國王整理、十八世紀從外國請僧人重新傳戒，並不是兩千多年一動也不動。"
+      },
+      east: {
+        v: "帶走古代「法藏部」的四分律生活戒規，以及大量的阿含早期經典。",
+        d: "加上印度傳來的大乘經典，並在中國長出禪宗、淨土、天台、華嚴、全面吃素。",
+        txt: "漢傳跟東亞佛教保存了很多早期阿含翻譯（跟南傳巴利語很像但有不同細節），同時又融合中華文化與後代哲學，成為非常豐富的多層傳統。"
+      },
+      tibet: {
+        v: "帶走「根本說一切有部」戒規跟大量印度晚期大學院的論典。",
+        d: "保存了很多印度本國燒光的梵文經典翻本，並融入雪域苯教互動與密續傳統。",
+        txt: "藏傳佛教是把八世紀以後印度大寺院與密續整個保存下來的寶庫，同時也保有轉世制度與雪山文化自己的歷史演變。"
+      },
+      lost: {
+        v: "古代還有十幾個重要流派（像說一切有部、大眾部等）後來消失了。",
+        d: "今天只能從別人書本或沙漠挖出來的樹皮碎片拼出他們原本的樣子。",
+        txt: "只看到今天還活著的三大傳承，不代表當年原本就只有這三種講法！很多早期派別是在戰火和改朝換代中消失不見的。"
+      }
     };
     allNodes("[data-trad]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-trad]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (tOut) tOut.textContent = tInfo[b.dataset.trad] || "";
+      const d = info[b.dataset.trad] || info.south;
+      if (vTxt) vTxt.textContent = d.v;
+      if (dTxt) dTxt.textContent = d.d;
+      vBox?.classList.add("snapped");
+      dBox?.classList.add("snapped");
+      if (out) out.textContent = d.txt;
     }));
-
-    const lOut = $("#s11-lang5-out");
+    const l5Out = $("#s11-lang5-out");
     const langs = {
-      pli: "【巴利文 SN 22.59（已完整核對）】Rūpaṁ, bhikkhave, anattā... ‘netaṁ mama, nesohamasmi, na meso attā’ti（色非我…這不是我、非我所）。",
-      lzh: "【漢譯《雜阿含》34（已完整核對）】「色非有我。若色有我者，於色不應病、苦生…彼一切非我、非我所。」（求那跋陀羅譯，屬說一切有部系統）。",
-      pgd: "【犍陀羅語 Senior 22（目錄／研究論文確認）】Mark Allon 刊布之 Aṇatvalakṣaṇa Sutra 樺樹皮殘卷，保存無我相主題平行段落，但屬殘卷而非完整大藏本。",
-      san: "【梵文平行線索（《大事》Mahāvastu 等）】SuttaCentral 平行索引用 San Lo Mvu 95 等出處保存五比丘無我對答母題，細節與巴漢本不逐字等同。",
-      xct: "【藏文平行狀況（缺獨立經藏對應，須誠實標界線）】藏文甘珠爾主要於《根本說一切有部毘奈耶破僧事》等律藏脈絡保存五比丘說法敘事，非如巴利 SN 22.59 獨立單經；不以 AI 翻譯冒充實證。"
+      pli: "【巴利語本（完整對讀）】講身體不是永遠不變的我：「這不是我的，這不是我，這不是我的真我。」",
+      lzh: "【古代漢語《雜阿含》譯本（對讀完成）】同樣反覆分析身體與心裡五樣感受都在變，不能抓著當成永恆的我——用詞順序和巴利本略有差異。",
+      pgd: "【兩千歲大犍陀羅樹皮殘卷（部分殘缺）】已經看得到這篇早年核心經文的片段，證明西北印度古代也背過同一套教法。",
+      san: "【古印度梵語線索】在其他印度古律典跟論書裡常被引到類似句子，可見各派早期都很重視。",
+      xct: "【古藏語翻譯狀況】《無我相經》等後來也有譯進藏文系統（因多處對讀目錄與版本散見甘珠爾不同部冊，保留版本對照邊界）。"
     };
     allNodes("[data-lang5]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-lang5]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (lOut) lOut.textContent = langs[b.dataset.lang5] || "";
+      if (l5Out) l5Out.textContent = langs[b.dataset.lang5] || "";
     }));
   })();
 
-  // S12: South Restructuring
+  // S12: South Theravada
   (() => {
-    const out = $("#s12-out");
+    const sOut = $("#s12-out"), arc = $("#s12-sea-arc"), sl = $("#s12-pin-sl"), mm = $("#s12-pin-mm"), th = $("#s12-pin-th");
     const items = {
-      maha: "【大寺派（Mahāvihāra）】保存巴利三藏與覺音（約5世紀）《清淨道論》義註傳統，12世紀（約1165）在王權支持下取得主導。",
-      abhaya: "【無畏山寺派（Abhayagiri）】曾容納大乘與多元思想，Max Deeg (2024) 指出大寺派編年史往往掩蓋無畏山寺的歷史影響力。",
-      jeta: "【祇陀林寺派（Jetavana）】與無畏山寺並列古代三大僧團中心，12世紀統合後皆失去原本獨立機構地位。",
-      relay1753: "【1753暹羅傳戒與種姓轉折】斯里蘭卡具足戒中斷後迎請暹羅優波離長老重建；1764年卻限於 Govigama 種姓，促成其他社群1801／1803赴緬甸另立阿摩羅補羅派。",
-      kuthodaw: "【1860–1871緬甸固都陶碑林與1902泰國僧團法】敏東王刻成 729 塊經文大理石碑（1868完工、1871第五次結集）；泰國於1833法宗派與1902僧團法走向中央化。"
+      maha: { p: "sl", arcOp: "0.3", txt: "【大寺派】五世紀時在這裡把古老巴利三藏跟詳細註解整理下來；十二世紀國王下令把三座大寺院統一起來，才定出今天南傳的主要系統。" },
+      abhaya: { p: "sl", arcOp: "0.3", txt: "【無畏山寺】規模曾經超級龐大，而且比大寺派更願意接納大乘和各地新想法；後來十二世紀統合時被收併，歷史常常只剩贏的一方來寫。" },
+      jeta: { p: "sl", arcOp: "0.3", txt: "【祇陀林寺】在古代斯里蘭卡也是重要大中心，有自己的規矩和傳承；十二世紀王權統合之後便沒有再獨立下去。" },
+      relay1753: { p: "th", arcOp: "0.95", txt: "【1753 跨海接力救命】當時斯里蘭卡戰亂連連，島上居然湊不齊規定人數的正式比丘來幫新手受戒！國王派人坐船去泰國阿瑜陀耶請來二十位高僧接續傳承；另外注意這批新建立的宗派後來在斯里蘭卡還受到種姓制度限制影響。" },
+      kuthodaw: { p: "mm", arcOp: "0.3", txt: "【緬甸 729 塊大石碑】1860–1868 年敏東王為了怕英國殖民戰亂讓經書遺失，把整部巴利三藏刻在整整 729 塊白色大理石經碑上（另加上 1 塊記錄建碑過程的紀念碑，總計常見報導 730 塊，實為 729 經碑＋1 記碑）。" }
     };
     allNodes("[data-south]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-south]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (out) out.textContent = items[b.dataset.south] || "";
+      const d = items[b.dataset.south] || items.maha;
+      if (arc) arc.setAttribute("stroke-opacity", d.arcOp);
+      if (sl) sl.setAttribute("fill", d.p === "sl" ? "#d97706" : "#fffdf7");
+      if (mm) mm.setAttribute("fill", d.p === "mm" ? "#d97706" : "#fffdf7");
+      if (th) th.setAttribute("fill", d.p === "th" ? "#d97706" : "#fffdf7");
+      if (sOut) sOut.textContent = d.txt;
     }));
   })();
 
-  // S13: Mahayana Concepts & Buddhavacana
+  // S13: Mahayana Idea Tree
   (() => {
-    const cOut = $("#s13-concept-out");
+    const cOut = $("#s13-concept-out"), sTxt = $("#s13-seed-txt"), bTxt = $("#s13-bloom-txt");
     const concepts = {
-      compassion: "慈悲：早期阿含／尼柯耶已有四無量心（慈悲喜捨），屬跨傳承共同基礎。",
-      bodhisattva: "菩薩：早期多指釋迦牟尼成道前；大乘擴展為眾生皆可發願實踐的普遍道路。",
-      sunyata: "般若、空性：與早期無我、緣起有思想關聯，但後來發展為系統化哲學體系（Split C14約75 CE）。",
-      paramita: "六波羅蜜：布施持戒等實踐各有早期基礎，完整六度體系為後續發展。",
-      fields: "無量佛與佛國：早期已有過去佛（如阿育王尼迦利薩格爾碑），大乘大幅擴充十方現在諸佛。",
-      amitabha: "阿彌陀佛與極樂淨土：後來在印度與中亞發展起來的特定淨土信仰系統。",
-      tathagata: "如來藏、佛性：後期印度大乘及東亞極為核心的思想發展。",
-      yogacara: "唯識學：約西元4–5世紀在印度形成高度系統化哲學理論。",
-      trikaya: "三身佛：後世對佛陀身分與存在形式的系統化哲學詮釋。"
+      compassion: { s: "最早的經典本來就一再教大家對所有生命友善不害人（四無量心）。", b: "大乘把它拉成整條修行大道最核心的出發點。", t: "「對大家友善不害人（慈悲）」：這顆種子最早在跨傳承古書裡就已經有了！" },
+      bodhisattva: { s: "早年古書通常用這個詞稱呼「還沒覺悟前的釋迦牟尼過去世故事」。", b: "大乘鼓勵每個人都可以自己發願走這條幫別人的成佛之路。", t: "「想成佛幫大家（菩薩）」：名稱早就有了，但把這變成大家共同目標是後來的展開。" },
+      sunyata: { s: "早年就很重視「東西沒有永遠不變的靈魂或本體（無我・緣起）」。", b: "龍樹等大乘哲學家把這套道理分析得像大學哲學課一樣嚴謹。", t: "「一切都在變、沒有固定本體（空性）」：跟早期想法相通，後來哲學化非常精細。" },
+      paramita: { s: "布施、守規矩、忍耐、打坐和智慧，在早年全部都分開講過。", b: "把它們整齊排成一組「六種修練清單」，是後來整理出的好記套餐。", t: "「六項日常修練」：零件都很早就有，組成六項套餐是後來整理。" },
+      fields: { s: "早期已經相信過去有過好幾位佛，未來還會有別的佛出現。", b: "大乘把它想像擴展成宇宙十個方向同時有無數佛的世界。", t: "「其他世界也有佛」：從「過去未來有別的佛」延伸成了浩瀚宇宙圖景。" },
+      amitabha: { s: "早年印度阿含與尼柯耶經典裡找不到阿彌陀佛西方極樂世界。", b: "這是西元前後逐步在印度與中亞興起的淨土信仰，在東亞影響極大。", t: "「阿彌陀佛淨土世界」：屬於後來慢慢成熟長出來的重要信仰分支。" },
+      tathagata: { s: "早年重點在人人有機會靠練習止息煩惱，很少講每個人本來內藏「佛性」。", b: "較後期印度與東亞大乘強調每個人本來都有成佛的潛能。", t: "「人人都有成佛潛力」：是比較後期才完整發展出來的鼓勵與理論。" },
+      yogacara: { s: "早年已經分析「六根接觸外境會產生心念感受」。", b: "大約西元四、五世紀左右才寫成細膩完整的唯識心理學系統。", t: "「心如何認識世界」：到了四、五世紀才變成一套高度系統的哲學。" },
+      trikaya: { s: "早年經典就把佛看成「人身的老師」與「教導本身的化身」。", b: "後世哲學才完整整理成「法身、報身、應化身」三種身分的理論。", t: "「佛的三種呈現方式」：是後世學者思考佛陀究竟是什麼的哲學總結。" }
     };
     allNodes("[data-mahac]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-mahac]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (cOut) cOut.textContent = concepts[b.dataset.mahac] || "";
+      const c = concepts[b.dataset.mahac];
+      if (!c) return;
+      if (sTxt) sTxt.textContent = c.s;
+      if (bTxt) bTxt.textContent = c.b;
+      if (cOut) cOut.textContent = c.t;
     }));
     const vOut = $("#s13-bvacana-out");
     allNodes("[data-bvacana]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-bvacana]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
       if (vOut) vOut.textContent = b.dataset.bvacana === "hist"
-        ? "定義一（歷史學）：指西元前5世紀歷史上的釋迦牟尼本人實際說出的言論。依此標準，成熟大乘經典缺乏足夠直接證據。"
-        : "定義二（宗教傳統）：指符合佛法智慧、被信仰社群承認具宗教權威的教導。史學不能代替信徒決定宗教正統，但第二定義不能拿來證明第一定義。";
+        ? "【歷史學問法】問的是公元前五世紀喬達摩有沒有親口說過這些成套理論。照歷史手邊看得到的證據，成熟的系統大多是數百年後才慢慢形成的。"
+        : "【信徒傳統裡的感受】許多大乘傳統認為：只要教導真的讓人減少自私痛苦、合於佛法智慧精神，就能尊稱為廣義的佛說——兩種問法定義不同，不該互相拿來罵人。";
     }));
   })();
 
-  // S14: 16-Text Attribution Desk + Heart Sutra Hypothesis Sync
+  // S14: Ancient Scripture ID Desk & Heart Sutra Side-by-Side
   (() => {
-    const texts16 = [
-      { id: "nikaya", name: "巴利四部尼柯耶", clues: ["線索1：以巴利語保存，構成南傳上座部核心經藏。", "線索2：與漢譯阿含共享大量結構平行，屬早期核心材料。", "結論：相對較強早期證據，但經口傳編輯，仍非佛陀逐字錄音。"] },
-      { id: "agama", name: "漢譯四阿含經", clues: ["線索1：分別出自不同古印度部派（如法藏部、說一切有部等），於4–5世紀漢譯。", "線索2：與巴利尼柯耶具高度平行但也有明顯異文（如古鼓、伽藍經）。", "結論：相對較強早期證據，須逐篇跨語言比對，不能一概假定同源逐字相同。"] },
-      { id: "dhp", name: "《法句經》", clues: ["線索1：有多語平行（巴利 Dhp、犍陀羅《法句》、梵文 Udānavarga、漢譯諸本）。", "線索2：部分偈頌具極古老語言特徵，但義註背景故事多晚數百年。", "結論：偈頌部分有強早期證據，附屬故事需分開查證。"] },
-      { id: "snp", name: "《經集》（Suttanipāta）", clues: ["線索1：義品、彼岸道品等包含古奧詩體，且見阿育王拜拉特碑銘線索。", "線索2：全集為不同年代作品匯編。", "結論：部分篇章具較強早期證據，內部仍有明顯時代層次差異。"] },
-      { id: "diamond", name: "《金剛經》T235", clues: ["線索1：屬印度早期般若經典脈絡。", "線索2：尚無考古實物證實為前5世紀佛陀親宣。", "結論：印度大乘般若經典；缺乏歷史佛陀逐字親說直接證據。"] },
-      { id: "lotus", name: "《法華經》T262", clues: ["線索1：具備多部漢譯與梵文／中亞殘卷，內部呈現多層次形成跡象。", "線索2：成熟結構與佛壽無量思想屬大乘發展。", "結論：早期印度大乘重要經典；無歷史佛陀直接親說證據。"] },
-      { id: "avatamsaka", name: "《華嚴經》T278／T279", clues: ["線索1：由〈十地品〉、〈入法界品〉等多種獨立大乘文獻漸次集合而成。", "線索2：西域與印度文化圈各有組編演變。", "結論：複合匯集型大乘經典；無直接出自歷史佛陀證據。"] },
-      { id: "amitabha", name: "《阿彌陀經》T366", clues: ["線索1：反映印度西北及中亞淨土信仰傳統（有梵本與漢譯）。", "線索2：屬於佛滅數百年後逐步成形之他方佛土信仰。", "結論：印度及中亞淨土系統；缺乏直接出自歷史佛陀證據。"] },
-      { id: "sukh", name: "《無量壽經》T360", clues: ["線索1：漢譯存在多種差異顯著之譯本（T360–T364 等），顯示文本仍在長期演變。", "線索2：亦見印度梵本傳本。", "結論：多語言多版本淨土經典；無直接出自歷史佛陀證據。"] },
-      { id: "heart", name: "《心經》T251", clues: ["線索1：Nattier (1992) 與 Attwood (2021) 比對發現核心段直接承自羅什《大品般若》漢譯語詞。", "線索2：仍有日本學者解讀為般若要義摘錄與陀羅尼結合之修持本，非蓄意作偽。", "結論：漢地摘編並回譯假說證據強，出自歷史佛陀本人證據極弱。"] },
-      { id: "surangama", name: "《楞嚴經》T945（勿混 T642）", clues: ["線索1：唐代以來即見來源爭議；須區分羅什譯《首楞嚴三昧經》T642（確有印度梵本）與 T945。", "線索2：Jia (2022) 重新考察房融潤色／翻譯互動，仍不證實全為單一中國人惡意偽造。", "結論：印度來源與漢地編集長期爭議，直接出自歷史佛陀證據極弱。"] },
-      { id: "qixin", name: "《大乘起信論》T1666", clues: ["線索1：無可靠印度梵本，卻自稱馬鳴造、真諦譯。", "線索2：望月信亨（1922）至 Jorgensen 等牛津譯註（2019）多傾向判定為6世紀中國撰述。", "結論：本身屬論書而非佛經，作者與譯者歸屬高度存疑，具重要漢傳哲學價值。"] },
-      { id: "yulanpen", name: "《盂蘭盆經》T685", clues: ["線索1：結合目連救母、夏安居自恣日與中國祖先孝道祭祀。", "線索2：印度已有餓鬼與施食迴向觀念，但現行經文具高度漢地文化編集疑慮。", "結論：重要中印宗教調適文本；直接出自歷史佛陀證據極弱。"] },
-      { id: "fumu", name: "《父母恩重經》等", clues: ["線索1：敦煌與歷代經錄中存在多種版本，早期疑經錄多有存疑。", "線索2：具備鮮明漢地孝道倫理與本土撰述特徵。", "結論：漢地本土化重要文本；直接出自歷史佛陀證據極弱。"] },
-      { id: "platform", name: "《六祖壇經》T2008", clues: ["線索1：為唐代禪宗六祖慧能說法記錄，後經宋元明多番增訂（敦煌 S.5475 與 1310 高麗本字數差異甚大）。", "線索2：本身即是中國祖師文獻，而非釋迦牟尼佛典。", "結論：研究中國禪宗演變核心史料，不冒充釋迦牟尼原說。"] },
-      { id: "tantras", name: "佛教密續（Tantras）", clues: ["線索1：咒語護持雖早已有之，完整無上瑜伽灌頂、曼荼羅等成熟體系主要於西元7世紀後展開。", "線索2：藏傳保存大量印度失傳密續寫本，但無獨立證據支持為佛陀秘密親授未改。", "結論：中世紀印度與喜馬拉雅宗教史極重要文獻；出自歷史佛陀證據極弱。"] }
-    ];
-    let curT = texts16[0], clueIdx = 1;
-    const sel = $("#s14-text-select"), out = $("#s14-desk-out");
-    const renderDesk = () => {
-      if (!out) return;
-      const shown = curT.clues.slice(0, clueIdx);
-      out.innerHTML = "<strong>" + curT.name + "</strong><br>" + shown.map(s => "• " + s).join("<br>");
-      const nextBtn = $("#s14-next-clue");
-      if (nextBtn) nextBtn.disabled = clueIdx >= curT.clues.length;
+    const texts = {
+      nikaya: { title: "巴利文四部早期大經集", clues: ["線索 1：以南亞古巴利語保存下來，是南傳佛教最核心的經藏。", "線索 2：裡面有很多地方跟中國翻譯的《阿含經》對得上，很可能是佛滅後早期口傳留下來的主要骨幹。", "線索 3：但現存抄寫在貝葉上的古本也是後代整理，並不是公元前五世紀的錄音帶。"] },
+      agama: { title: "中國保存的四阿含經", clues: ["線索 1：四、五世紀時從印度和西域多種語言陸續翻成中文，保存了原本已經失傳的幾個古印度派別版本。", "線索 2：跟巴利本互相對照時，看得到相同的核心架構，也常發現不同的細節與排比。"] },
+      dhp: { title: "法句經", clues: ["線索 1：一首首好背的四句話人生短詩，巴利文、中文、大犍陀羅樹皮跟梵文都有不同編排本。", "線索 2：短詩本身非常古老，但旁邊寫的故事背景解釋多是幾百年後補進來的。"] },
+      snp: { title: "經集", clues: ["線索 1：裡面〈犀牛角經〉〈義品〉〈彼岸道品〉的古語言非常古老。", "線索 2：研究顯示同一本書裡仍然混了早一點和晚一點編入的篇章。"] },
+      diamond: { title: "金剛經", clues: ["線索 1：屬於印度早期大乘智慧系統的代表經典，在東亞影響超級大。", "線索 2：歷史上目前找不到直接出自公元前五世紀佛陀親口的實物證據。"] },
+      lotus: { title: "法華經", clues: ["線索 1：印度早期大乘經典，有幾品看得出是不同階段接續寫上去的。", "線索 2：像「觀世音菩薩普門品」就是很多中國信徒最熟悉也單獨流通的段落。"] },
+      avatamsaka: { title: "華嚴經", clues: ["線索 1：原本在印度是好幾部各自獨立的小經（例如〈十地經〉〈入法界品〉），後來才漸漸合編成大部頭。", "線索 2：裡面描寫了非常壯闊重重無盡的宇宙觀念。"] },
+      amitabha: { title: "阿彌陀經", clues: ["線索 1：出身印度西北部與中亞淨土思想傳統，講求念阿彌陀佛名號往生西方淨土。", "線索 2：找不到早年阿含經或公元前五世紀史料的直接記載。"] },
+      sukh: { title: "無量壽經", clues: ["線索 1：中文就有好幾種差很大的不同年代譯本（24願到48願數量都有變化！），還保存有梵文本。", "線索 2：這正好顯示古經在流傳跟翻譯途中是可以慢慢加長改寫的。"] },
+      heart: { title: "心經", clues: ["線索 1：這本才兩百六十個字的短經，爭議卻是整個佛學史數一數二大的！", "線索 2：下面「特別對比桌」幫你把幾個關鍵證據直接攤開看個仔細！"] },
+      surangama: { title: "楞嚴經（注意：編號 T945，千萬別跟羅什譯的另一部同名經 T642 搞混！）", clues: ["線索 1：八世紀初唐代才出現的十卷大經《大佛頂首楞嚴經》（T945），內容提到很多中國本土陰陽五行跟神仙概念，歷史爭議很大。", "線索 2：早三百年鳩摩羅什確實從印度翻譯過一部叫《首楞嚴三昧經》（T642）的經——那是完全不同內容的兩本書，只是名字裡都有「楞嚴」兩個字！", "線索 3：2022 年研究也提醒要留意當年宰相房融在廣州參與文字潤色的跨文化故事，不能單靠罵「一定是偽經」一句帶過。"] },
+      qixin: { title: "大乘起信論", clues: ["線索 1：這本來就自稱是「論書」（後人寫的哲學研究心得），從來沒說是佛陀親自講的經。", "線索 2：唐代早年的疑經錄就懷疑它的印度作者真假，近代很多學者認為更像六世紀中國出家哲學家寫出的精彩思想傑作（目前仍在學術討論，沒有把所有書都看過一次定案）。"] },
+      yulanpen: { title: "盂蘭盆經", clues: ["線索 1：故事講目連救母親跟七月十五供僧，跟中國人重視祭祖孝道非常合拍。", "線索 2：印度找不回對應古本，加上行文習慣帶有濃厚中文與西域改編色彩，學者高度懷疑是在中國整理成書。"] },
+      fumu: { title: "父母恩重難報經", clues: ["線索 1：整篇用傳統中式孝順故事書寫懷胎十月之苦，文字風格非常在地化。", "線索 2：連古代中國僧人自己編的《出三藏記集》《開元釋教錄》早期錄本裡，很多學者早就把它歸類成疑偽或本土作品了。"] },
+      platform: { title: "六祖壇經", clues: ["線索 1：這是中國唯一一部非由印度人講、卻被後世尊稱為「經」的中國祖師著作！主角是唐代六祖慧能。", "線索 2：看第 16 關你就知道：八、九世紀的敦煌手寫本，跟 1310 年木刻板內容增加了將近一倍多！"] },
+      tantras: { title: "佛教密續", clues: ["線索 1：早年確實有一點點護身短咒，但有本尊觀想、曼荼羅壇城和灌頂儀式的成熟密教經典，大約在西元七世紀以後才在印度成熟發展。", "線索 2：用歷史眼光看，這屬於較後期的印度文化產物，不是公元前五世紀佛陀親口當面傳授的錄音。"] }
     };
-    sel?.addEventListener("change", () => {
-      curT = texts16.find(x => x.id === sel.value) || texts16[0];
-      clueIdx = 1;
-      renderDesk();
-    });
+    const sel = $("#s14-text-select"), out = $("#s14-desk-out");
+    let curT = texts.nikaya, clueIdx = 1;
+    const renderDesk = () => {
+      if (!out || !curT) return;
+      out.innerHTML = `<strong>${curT.title}</strong><ul style="margin:6px 0 0;padding-left:1.3em">${curT.clues.slice(0, clueIdx).map(c => `<li>${c}</li>`).join("")}</ul>`;
+    };
+    sel?.addEventListener("change", () => { curT = texts[sel.value] || texts.nikaya; clueIdx = 1; renderDesk(); });
     $("#s14-next-clue")?.addEventListener("click", () => { clueIdx = Math.min(curT.clues.length, clueIdx + 1); renderDesk(); });
     $("#s14-all-clues")?.addEventListener("click", () => { clueIdx = curT.clues.length; renderDesk(); });
     $("#s14-reset-desk")?.addEventListener("click", () => { clueIdx = 1; renderDesk(); });
@@ -826,28 +958,28 @@
     const p223 = $("#s14-p-t223"), p250 = $("#s14-p-t250"), p251 = $("#s14-p-t251"), pSkt = $("#s14-p-skt");
     const segData = {
       seg1: {
-        t223: "（〈習應品〉T08, 0223a13 前後）無對應句——未見「觀自在菩薩行深…度一切苦厄」開首語。",
-        t250: "「觀世音菩薩行深般若波羅蜜時，照見五陰空，度一切苦厄。」（Attwood 2020 推論此本或反係晚起偽托）",
-        t251: "「觀自在菩薩行深般若波羅蜜多時，照見五蘊皆空，度一切苦厄。」（T08, 0848c06–07）",
-        skt: "通行梵本無「度一切苦厄」對應句（Attwood 2020, p.178；該句僅見於北涼《十輪經》T410等漢譯），顯示漢本開首非全自現存通行梵本直譯。"
+        t223: "這一大段裡面找不到「觀自在菩薩行深…度一切苦厄」這幾句開頭。",
+        t250: "寫作「觀世音菩薩…照見五陰空，度一切苦厄」（有學者懷疑這版其實較晚才寫上舊翻譯家的名字）。",
+        t251: "寫作「觀自在菩薩…照見五蘊皆空，度一切苦厄」。",
+        skt: "通行梵文原本沒有「度一切苦厄」這一句！目前只有在另一部漢譯經典裡看得到類似話，表示《心經》開頭不像整段直接照現存梵文翻譯。"
       },
       seg2: {
-        t223: "「色不異空，空不異色；色即是空，空即是色；受想行識，亦復如是…諸法空相，不生不滅…無苦集滅道，亦無智亦無得。」（T08, 0223a13–21，羅什404年譯）",
-        t250: "與 T0223 核心段措辭高度貼近，僅略去長段繁文，保留「受想行識亦如是／無苦集滅道，無智亦無得」等羅什句型（T08, 0847c13–21）。",
-        t251: "「色不異空…受想行識亦復如是。舍利子！是諸法空相…無苦集滅道，無智亦無得。」僅略調「諸法」為「是諸法」及微調虛字（T08, 0848c07–16）。",
-        skt: "關鍵分歧（Attwood 2020 pp.166–170）：梵本將羅什概括前段五蘊空相之「無智亦無得」轉成對無「得（prāpti）」之詮釋；玄奘譯文與羅什 T0223 卻字句高度重合。"
+        t223: "早兩百多年翻譯的這段就已經寫著：「色不異空，空不異色；色即是空，空即是色；受想行識亦復如是…無苦集滅道，亦無智亦無得」——用字幾乎和後來玄奘《心經》一樣！",
+        t250: "用字同樣緊緊貼著這套羅什 404 年翻譯的老句型。",
+        t251: "照理玄奘法師習慣把羅什舊詞都改成新譯法（比如「蘊」換「陰」），但最核心這一大段卻只微調虛字、幾乎照搬羅什舊文！",
+        skt: "關鍵疑點（Attwood 2020）：原本梵文說「用無執著的方式修行」，羅什很自然翻出「無智亦無得」；結果後來的《心經》梵文本卻被寫成像是從中文句子再反推回去的意思。"
       },
       seg3: {
-        t223: "「菩薩…以無所得故，不驚不怖，不畏不沒」（意為「以無所執著相之方式 [anupalambhayogena]」修行，T08, 0223a21 後續脈絡）。",
-        t250: "「菩提薩埵以無所得故，依般若波羅蜜，心無罣礙。」（將副詞轉折接成前因）",
-        t251: "「以無所得故，菩提薩埵依般若波羅蜜多故，心無罣礙…」（T08, 0848c16–18）",
-        skt: "Attwood (2020, pp.169–171) 指出關鍵異常：梵本《心經》作 aprāptitvāt（因「沒有得到」之故），偏離《二萬五千頌》梵本原語 anupalambhayogena（無所得方便），此歧義高度吻合「經由漢語再轉梵文」的痕跡。"
+        t223: "接續前面脈絡講「以無所執著（anupalambhayogena）的方式」修行而不害怕。",
+        t250: "寫成「以無所得故，依般若波羅蜜，心無罣礙」。",
+        t251: "同樣是把「以無所得故」接在前面當「因為沒有得到…」的原因。",
+        skt: "顯著異常處：通行《心經》梵文本在這裡寫了「aprāptitvāt（因為沒有得到東西）」，跟它原本母經《大品》用字大不相同，反而很像看中文「以無所得故」翻回去的！"
       },
       seg4: {
-        t223: "《大品般若經》為長篇經典，〈習應品〉脈絡並無「大神咒、大明咒」與「揭諦揭諦…」短咒收尾。",
-        t250: "名為《摩訶般若波羅蜜大明咒經》；以「是大神咒、是大明咒…能除一切苦」收束至咒語。",
-        t251: "名《般若波羅蜜多心經》，保留「故知般若波羅蜜多是大神咒、是大明咒…即說咒曰」完整咒語嘆詠（T08, 0848c19–25）。",
-        skt: "福井文雅（1987, 1994, 2000）強調須從陀羅尼／咒語實修課誦與「心（hṛdaya）」即本質核心之印度傳統考察（日文全文尚待直接校核，本館依 Attwood 2020 摘要其立場並明標局限）。"
+        t223: "大部長篇經文這裡講完智慧道理後，完全沒有後面的「大神咒、大明咒」與「揭諦揭諦…」短咒。",
+        t250: "書名本身就叫《摩訶般若波羅蜜大明咒經》，直接收束在神咒讚嘆上。",
+        t251: "把整段核心跟「是大神咒…即說咒曰」合在一起唸完。",
+        skt: "日本學者福井文雅等則提醒：在印度跟東亞宗教現場，「心（hṛdaya）」字本來常被當成整部大經的本質或保護短咒使用，這也跟古代修持課誦習慣有關。"
       }
     };
     allNodes("[data-heartseg]").forEach(b => b.addEventListener("click", () => {
@@ -862,9 +994,9 @@
 
     const hOut = $("#s14-heart-out");
     const hTexts = {
-      trad: "【傳統假說：印度梵本 → 漢文翻譯】玄奘譯出梵本《心經》（T0251），為古印度般若精要。限制：難解釋《心經》核心段為何與羅什早期譯《大品般若經》（T0223 卷1〈習應品〉）逐字高度重疊、為何通行梵本缺開首「度一切苦厄」，及「無所得／aprāptitvāt」與唐代窺基 T1710／圓測 T1711 已提到的漢地「抄經」記載。",
-      nattier: "【漢編回譯假說（須區分兩層推論）】(1) 語文學證據：CBETA T0223〈習應品〉(223a13–21) 與 T250／T251 核心段高度重疊，Attwood (2020 Pacific World 全文，pp.159–176) 亦指出「以無所得故→aprāptitvāt」與窺基 T1710／圓測 T1711 的「抄經（chao jing）」線索（註：Attwood 2021 22點與 Nattier 1992 原論文受 403／PoW 阻擋未核對全數細節）。(2) 動機爭議：Tokuno／紀贇視抄經非詐騙；Attwood (2020 pp.157,181–182) 則另主張 T250 與梵本似屬「明知而為之假前史偽作」，此點屬學者個人推論，非全學界共識。",
-      alt: "【反對意見與福井文雅書誌脈絡】福井文雅《般若心経の歴史的研究》（1987年早於 Nattier 1992 五年，非1992後才提出之反駁）、1994年於《仏教学》對 Nattier 提出反論，並於 2000年改題增補《般若心経の総合的研究》（非完全獨立第三證據）。本館現僅取得書目（NDL/CiNii/臺大規範 CATALOG_ONLY），日文原著尚待全文核對；整體而言，《心經》研究仍有嚴重立場分歧，尚無單一全學界定案。"
+      trad: "【傳統一直認為的說法：印度原本寫好 → 玄奘翻成中文】困難點是：這樣很難解釋為什麼《心經》最有名那段跟早兩百多年羅什翻的大經字句幾乎一樣，也解釋不了為什麼現在看到的梵文原本缺了開頭的「度一切苦厄」。",
+      nattier: "【先在中國整理再回譯的看法】有研究者對字句發現《心經》中段跟早兩百多年翻譯的《大品般若經》幾乎一樣，連古文裡一處特別的詞「以無所得故」轉成梵文時也留下一樣的小疙瘩（Attwood 2020 完整論文看得出這些文字證據；另兩篇 1992 與 2021 詳細論文因網站防抓取或付費牆還沒拿到全本核對）。另外要分開：有些學者覺得這只是當時常見的重點摘錄，另一位學者個人則推論部分舊本可能屬故意托名——這點學者間還在吵，沒有定論！",
+      alt: "【日本學者的不同反對意見】福井文雅早在 1987 年（比 Nattier 1992 還早五年！）就出版專書考察印度與漢地般若神咒傳統；1994 年也曾針對回譯說提出反對論文；2000 年把 1987 年那本書修訂擴編再版（所以 2000 年不是第三個全新證據）。因這批日文專書我們目前只查到圖書館書目、還沒讀過全書，這場學術辯論目前完全沒有誰一家獨勝的最後結論。"
     };
     allNodes("[data-heart]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-heart]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
@@ -872,29 +1004,31 @@
     }));
   })();
 
-  // S15: China Adaptation Scenarios
+  // S15: China Arrival
   (() => {
-    const out = $("#s15-out");
+    const out = $("#s15-out"), badge = $("#s15-scene-badge");
     const scenes = {
-      filial: "【孝親與家族張力（模擬比較）】早期印度經典（如 DN 31／DA 16《善生經》、AN 2.31）本已重視奉養父母，稱父母為「梵天、初師」；但中國宗法強調不婚無後之不孝，佛教遂發展出家大孝、四重恩、盂蘭盆超度等制度調適。",
-      work: "【托缽與寺院生計】古印度律制禁止僧人耕作墾土並依賴托缽；進入中國後面對士大夫「不事生產」批評，逐漸形成寺院莊園經濟與「百丈清規／農禪」勞作傳統。",
-      food: "【三淨肉與素食制度】巴利 MN 55 與早期律藏禁食十種特定肉類並允許「不見、不聞、不疑為己殺」之三淨肉；漢傳結合《大般涅槃經》不殺生教義及6世紀梁武帝推行，歷經數百年遲至約10世紀確立為僧尼全面素食正統。"
+      filial: { b: "目前生活話題：1. 父母與家族怎麼辦？", t: "【孝親與家族】其實最早的印度古經早就非常看重照顧爸爸媽媽；但面對中國「無後為大」的壓力，後來發展出了「出家修好幫助全家人」「盂蘭盆追思祖先」這些接地氣的說法與法會。" },
+      work: { b: "目前生活話題：2. 吃飯和種田怎麼辦？", t: "【托缽 vs 寺院莊園】早期印度出家人禁止自己種田、完全靠每天早上沿門乞討食物；到了中國被士大夫批評「不種田吃白飯」，才漸漸發展出寺院自己開墾種菜、「一日不作，一日不食」的農禪生活。" },
+      food: { b: "目前生活話題：3. 為什麼漢傳佛教吃全素？", t: "【三淨肉到十世紀全面素食】早年印度律藏禁止大象等十種肉但允許「沒見、沒聞、沒懷疑為自己而殺」的三淨肉；到中國後加上大乘不殺生經典跟六世紀梁武帝帶頭戒酒肉，一路演變到約十世紀才變成漢地出家人全面吃素的規矩。" }
     };
     allNodes("[data-cscene]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-cscene]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (out) out.textContent = scenes[b.dataset.cscene] || "";
+      const s = scenes[b.dataset.cscene] || scenes.filial;
+      if (badge) badge.textContent = s.b;
+      if (out) out.textContent = s.t;
     }));
   })();
 
-  // S16: Chan Chronicle Detective
+  // S16: Chan Bookshelf
   (() => {
     const out = $("#s16-out");
     const books = {
-      early: "【早期大藏經與隋唐禪籍（含敦煌本《壇經》S.5475）】未載靈山拈花公案；敦煌本展現較早質樸面貌，與 1310 年高麗刻本字句增廣形成明顯對照。",
-      baolin: "【801年《寶林傳》（現存殘卷）】記載佛陀付囑「清淨法眼、涅槃妙心」予迦葉，但現存殘本未載拈花情節（缺卷部分不可直接斷定原本絕無記載）。",
-      jingde: "【1004年《景德傳燈錄》】整理禪宗世系與付法傳承，同樣沒有完整「拈花微笑」記錄。",
-      tiansheng: "【1029年編／約1036年刊《天聖廣燈錄》】北宋臨濟宗脈絡下，首度完整記錄「拈花微笑」與付法迦葉相結合；1093年《宗門統要集》進一步定型。",
-      dafan: "【宋代《大梵天王問佛決疑經》（見《人天眼目》王安石引）】近代禪學史多判定為宋代本土撰述之疑偽經。文獻斷層不減損其在哲學上象徵「離言體證」的隱喻意義。"
+      early: "【早年大藏經與唐代敦煌手抄本】沒有記「佛陀拿一朵花、迦葉微笑」的故事；這時期的寫本看得出文字比較單純，跟後來印刷的厚版書差很多。",
+      baolin: "【西元 801 年《寶林傳》（現在只剩下殘缺部分）】書裡已經講到佛陀把「微妙法門」交給大迦葉，但現存看得見的殘片裡還沒寫出舉起一朵花的畫面（不過沒看到的那幾卷不敢百分百亂猜）。",
+      jingde: "【西元 1004 年《景德傳燈錄》】這本超有名的禪宗大家譜把各位祖師名單全排出來了，不過裡面依然沒把「拈花微笑」這段故事完整寫上去。",
+      tiansheng: "【西元 1029 年編好／約 1036 年印行的《天聖廣燈錄》】在北宋禪宗興盛的環境下，我們第一次在正經出版的大部頭書裡，清清楚楚看見完整的「佛陀拈花、迦葉微笑」登場了！",
+      dafan: "【宋代才流傳的《大梵天王問佛決疑經》】後來還多出了一整部據說記載這段問答的經典，但近代許多禪史研究者檢查發現，它更像是宋代中國本地寫成的作品。故事晚出不代表沒意義，哲學上「有些體會光靠嘴講不出來」的比喻依然很有韻味。"
     };
     allNodes("[data-chan]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-chan]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
@@ -902,141 +1036,132 @@
     }));
   })();
 
-  // S17: Tibet Source Box Sorter
+  // S17: Tibet Three Boxes
   (() => {
-    const items = [
-      { id: "tb1", label: "約779年赤松德贊建桑耶寺及吐蕃王室碑銘", rec: "archive", why: "具同時代吐蕃碑銘與歷史檔案佐證（歷史檔案／實物）。" },
-      { id: "tb2", label: "西藏譯存大量印度已失傳的中觀、因明與密續文獻", rec: "archive", why: "現存丹珠爾／甘珠爾及梵藏對勘可獨立驗證其極高史料價值。" },
-      { id: "tb3", label: "寧瑪派11世紀起桑傑喇嘛等地伏藏與意伏藏傳統", rec: "lineage", why: "可考出現年代常晚於所稱隱藏年代數百年，且曾受薩迦班智達批判；屬宗派傳統敘事，須逐份考察。" },
-      { id: "tb4", label: "活佛轉世者確實是前世同一心識人物再生", rec: "belief", why: "13世紀噶瑪巴世系與1792金瓶掣籤屬制度史實；但『前世再生』本身屬宗教信仰，歷史學無法證實或證偽。" }
-    ];
-    let cur = items[0];
-    const tText = $("#s17-item-text"), tOut = $("#s17-result");
-    const render = () => {
-      allNodes("[data-tibet-item]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tibetItem === cur.id)));
-      if (tText) tText.textContent = cur.label;
+    const items = {
+      tb1: { label: "「西元八世紀後期赤松德贊國王支持建立了桑耶寺，石碑也還留在現場。」", rec: "archive", why: "實地留有那個時代刻好的石碑和官方建築檔案，放進「歷史檔案箱」完全成立！" },
+      tb2: { label: "「西藏用藏文保存了好大批印度本土已經燒毀找不到的古老佛學大書。」", rec: "archive", why: "現存藏文《大藏經》裡面找得到原本、還可以跟零碎梵文殘片逐句對照，這是貨真價實的歷史寶庫！" },
+      tb3: { label: "「十一世紀起有些藏傳宗派說，祖師早就預先將經典埋在土地或心中等待幾百年後出土。」", rec: "lineage", why: "這種發現最早被記錄出來的時代往往比傳說晚很多百年，而且連古代藏傳大學者（薩迦班智達）自己也曾提出質疑——這是宗派內的傳統講法，無法由歷史考古證明！" },
+      tb4: { label: "「活佛轉世出來的那位小朋友，真的就是上一輩子同一個心識人物再生嗎？」", rec: "belief", why: "十三世紀出現轉世傳承、1792 年清廷金瓶掣籤這些是寫進歷史檔案的制度；但「前世再生」本身屬於宗教信仰，用歷史或科學儀器是查不出來也推翻不了的。" }
     };
+    let cur = "tb1";
+    const tText = $("#s17-item-text"), tOut = $("#s17-result");
+    const boxes = { archive: $("#s17-box-archive"), lineage: $("#s17-box-lineage"), belief: $("#s17-box-belief") };
+    const activateBox = k => Object.entries(boxes).forEach(([id, el]) => el?.classList.toggle("is-active", id === k));
     allNodes("[data-tibet-item]").forEach(b => b.addEventListener("click", () => {
-      cur = items.find(x => x.id === b.dataset.tibetItem) || items[0];
+      cur = b.dataset.tibetItem;
+      allNodes("[data-tibet-item]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
       allNodes("[data-tbox]").forEach(x => x.setAttribute("aria-pressed", "false"));
-      if (tOut) tOut.textContent = "請把這項說法放入對應的來源盒。";
-      render();
+      if (tText) tText.textContent = items[cur].label;
+      if (tOut) tOut.textContent = "這件事比較適合收進哪一個木箱？點下面箱子試試看。";
     }));
     allNodes("[data-tbox]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-tbox]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (tOut) tOut.textContent = (b.dataset.tbox === cur.rec ? "✓ 分類合宜：" : "參考分析：") + cur.why;
+      const k = b.dataset.tbox;
+      activateBox(k);
+      if (tOut) tOut.textContent = (k === items[cur].rec ? "✓ 分得很對！" : "換個箱子想想看：") + items[cur].why;
     }));
-    render();
   })();
 
-  // S18: Ancient Library Preservation Sandbox (Toy demo)
+  // S18: Vanishing Libraries
   (() => {
-    const out = $("#s18-out");
-    const boxIn = $("#s18-box-india"), stIn = $("#s18-st-india");
-    const boxSl = $("#s18-box-sl"), stSl = $("#s18-st-sl");
-    const boxCn = $("#s18-box-china"), stCn = $("#s18-st-china");
-    const boxDh = $("#s18-box-dunhuang"), stDh = $("#s18-st-dunhuang");
-    const setRepo = (box, stEl, stroke, txt, fill) => {
-      if (box) box.setAttribute("stroke", stroke);
-      if (stEl) { stEl.textContent = txt; stEl.setAttribute("fill", fill); }
-    };
+    const out = $("#s18-out"), stIn = $("#s18-st-india"), stSl = $("#s18-st-sl"), stCn = $("#s18-st-china"), stDh = $("#s18-st-dunhuang");
+    const setSt = (el, cls, txt) => { if (el) { el.className = "badge " + cls; el.textContent = txt; } };
     function calc() {
       const checks = allNodes("[data-pol]:checked").map(c => c.dataset.pol);
-      const hasWar = checks.includes("war");
-      const hasElite = checks.includes("elite");
-      const hasCanon = checks.includes("canon");
-      const hasCopy = checks.includes("copy");
-      let msg = [];
-      if (hasWar) msg.push("戰亂與滅佛（如北魏、北周、會昌、突厥軍事破壞）造成區域寫本大量焚毀");
-      if (hasElite) msg.push("大寺過度依賴王室田產而疏離居士日常（Fogelin 模型），贊助一轉移即迅速萎縮");
-      if (hasCanon) msg.push("《開寶藏》依《開元釋教錄》雕印，使入選經典長期存世，未入錄者易隨時代散佚（存活者偏差）");
-      if (hasCopy) msg.push("跨區域抄寫、石經（如房山、固都陶）與外傳（如斯里蘭卡、漢藏轉譯）增加文本留存機會");
+      const war = checks.includes("war"), elite = checks.includes("elite"), canon = checks.includes("canon"), copy = checks.includes("copy");
+      const msg = [];
+      if (war) msg.push("戰火或皇帝拆廟，讓好幾座古代木造圖書館一把火燒個精光");
+      if (elite) msg.push("大寺太靠國王供養土地卻疏遠了老百姓，贊助一換人很快便垮了");
+      if (canon) msg.push("朝廷印《大藏經》只挑特定書目去刻板（被挑上的留下，沒挑進去的就失傳了）");
+      if (copy) msg.push("多抄幾本、刻在石頭上或跨國翻譯，大大救回了原本可能會消失的古籍");
 
-      if (hasWar && hasElite) setRepo(boxIn, stIn, "#f0a89b", "戰火＋斷援重創", "#f0a89b");
-      else if (hasWar) setRepo(boxIn, stIn, "#f0a89b", "戰亂毀壞風險", "#f0a89b");
-      else if (hasElite) setRepo(boxIn, stIn, "#ffd48b", "贊助萎縮失修", "#ffd48b");
-      else setRepo(boxIn, stIn, "#9fe0bd", "局部仍暫留存", "#9fe0bd");
+      if (war && elite) setSt(stIn, "warn", "戰亂＋斷援重創");
+      else if (war) setSt(stIn, "warn", "戰火摧毀風險");
+      else if (elite) setSt(stIn, "", "少掉民間支持");
+      else setSt(stIn, "ok", "局部暫時保存");
 
-      if (hasCopy) setRepo(boxSl, stSl, "#9fe0bd", "異地抄傳續存", "#9fe0bd");
-      else if (hasWar) setRepo(boxSl, stSl, "#ffd48b", "單點貝葉脆危", "#ffd48b");
-      else setRepo(boxSl, stSl, "#7a9186", "待條件觀察", "#cfe8dc");
+      if (copy) setSt(stSl, "ok", "抄傳與跨區救回");
+      else if (war) setSt(stSl, "warn", "海島單點也脆危");
+      else setSt(stSl, "", "看條件變化");
 
-      if (hasCanon && hasCopy) setRepo(boxCn, stCn, "#9fe0bd", "刻藏＋石經固本", "#9fe0bd");
-      else if (hasCanon) setRepo(boxCn, stCn, "#ffd48b", "入錄本篩選存", "#ffd48b");
-      else if (hasWar) setRepo(boxCn, stCn, "#f0a89b", "未入藏遭損毀", "#f0a89b");
-      else setRepo(boxCn, stCn, "#7a9186", "僅散本零星傳", "#cfe8dc");
+      if (canon && copy) setSt(stCn, "ok", "刻藏＋石經雙重護身");
+      else if (canon) setSt(stCn, "ok", "進了正典書單得救");
+      else if (war) setSt(stCn, "warn", "沒進官方書單恐失傳");
+      else setSt(stCn, "", "零散抄本流傳");
 
-      if (hasCopy) setRepo(boxDh, stDh, "#9fe0bd", "封洞＋跨區留存", "#9fe0bd");
-      else setRepo(boxDh, stDh, "#7a9186", "無複本易全亡", "#cfe8dc");
+      if (copy) setSt(stDh, "ok", "沙漠封洞＋外地留存");
+      else setSt(stDh, "", "無複本一燒全無");
 
       if (out) out.textContent = msg.length
-        ? "【模擬示意，非古代真實統計】目前勾選因素顯示：" + msg.join("；") + "。"
-        : "請勾選上方影響保存的因素，觀察為何後人能見到的經典往往只是歷史上存在過的一部分。";
+        ? "目前看到：" + msg.join("；") + "。所以後人找得到的古書，永遠只是當年存在過的一部分！"
+        : "勾選上面的選項看看，古時候的書有多不容易才活到今天。";
     }
     allNodes("[data-pol]").forEach(c => c.addEventListener("change", calc));
-    $("#s18-reset")?.addEventListener("click", () => {
-      allNodes("[data-pol]").forEach(c => { c.checked = false; });
-      calc();
-    });
+    $("#s18-reset")?.addEventListener("click", () => { allNodes("[data-pol]").forEach(c => { c.checked = false; }); calc(); });
     calc();
   })();
 
-  // S19: Japan 3-Era Switcher
+  // S19: Japan Time Machine
   (() => {
-    const out = $("#s19-out");
+    const out = $("#s19-out"), eb = $("#s19-era-badge"), et = $("#s19-era-title");
     const eras = {
-      india: "【早期印度出家理想】強調離家不婚、依律共同生活、不以血緣世襲寺院地位，與王權保持相對自主（與當代部分日本寺院制度形成鮮明對比）。",
-      medieval: "【13世紀親鸞至德川時代】淨土真宗開祖親鸞（1173–1263）早於明治數百年即採「非僧非俗」婚配；德川幕府檀家制度使寺院承擔戶籍登記功能。",
-      meiji: "【1868神佛分離與1872肉食妻帶解禁】1872年明治政府解除國家對僧侶婚食之刑罰禁制（並非強制結婚），經各宗派激烈辯論後逐步普遍化；今日不同日本宗派與僧侶間仍有差異，不可一概而論。"
+      india: { b: "⏳ 時代一｜兩千多年前古印度", ti: "離開家庭生活、靠大家一起守規矩", t: "古印度出家人的理想是離開自己原本的家、不結婚、不靠血緣把廟傳給親生兒子，跟國王保持一點獨立距離。" },
+      medieval: { b: "⏳ 時代二｜13世紀與江戶幕府", ti: "淨土真宗親鸞開先例＋政府規定的寺院戶口制度", t: "早在明治時代好幾百年前，淨土真宗祖師親鸞就採取「非僧非俗」公開成家；到了江戶時期，政府規定百姓都在特定寺院登記戶口辦喪事，家業制逐漸常見。" },
+      meiji: { b: "⏳ 時代三｜1872年明治政府取消禁止罰則", ti: "不是強迫每個和尚都得結婚，而是撤銷國家懲罰！", t: "1872 年日本政府撤除「和尚吃肉結婚要被官方治罪」的規定，並沒有強迫全部僧人都要結婚；今天日本各宗派、各個出家人之間做法依然很不同，不能一句話蓋過全部。" }
     };
     allNodes("[data-jpera]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-jpera]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (out) out.textContent = eras[b.dataset.jpera] || "";
+      const e = eras[b.dataset.jpera] || eras.india;
+      if (eb) eb.textContent = e.b;
+      if (et) et.textContent = e.ti;
+      if (out) out.textContent = e.t;
     }));
   })();
 
-  // S20: Women Ordination Relay & Perspectives
+  // S20: Women Ordination Relay Map
   (() => {
-    const rOut = $("#s20-relay-out");
+    const rOut = $("#s20-relay-out"), baton = $("#s20-baton");
+    const pts = { early: [198, 140.9], nanjing: [528.4, 89.9], revival96: [215.3, 163.3], bhutan: [259.3, 139.6] };
     const relays = {
-      early: "【早期經律與八敬法研究】早期經文記載女眾證果解脫；Anālayo 與 Hüsken 跨部派比較指出《八敬法》與《摩訶僧祇律》等各律記載不一，未必全為佛世初創原始定規。",
-      nanjing: "【429／433 斯里蘭卡→南朝建康（南京）】《比丘尼傳》（T2063）載 429 年首批斯里蘭卡比丘尼來華未滿十人，433 年鐵薩羅（Devasāra）率第二批抵南林寺補足法定人數行二部僧授戒，建立延續至今之漢傳比丘尼法脈。",
-      revival96: "【1996 鹿野苑／1998 菩提伽耶】當代南傳比丘尼透過跨傳承合作（1998 年獲臺灣佛光山等漢傳僧團參與）舉行大型復戒，惟南傳各國與宗派承認度不一。",
-      bhutan: "【2022／2025 不丹比丘尼大戒】2022年6月23日不丹第70任傑堪布首度為144位女眾授具足戒；2025年11月15–19日第二屆大戒，主辦方 Bhutan Nuns Foundation 公布為來自14國之265位女眾授戒（媒體報導亦稱近270位）。"
+      early: "【早年記載與各派規矩】最早的經典記載女性出家一樣能修成大成就；至於要求尼眾從屬男眾的「八條特別規定」，研究各派古律的學者發現不同派別寫得不太一樣，可能有後來慢慢加進來的歷史痕跡。",
+      nanjing: "【西元 429 與 433 年｜從斯里蘭卡坐船來到南京！】古代史書記載 429 年第一批斯里蘭卡尼眾來華人數不足十人，433 年又來第二批補足法定人數在建康(南京)南林寺行大戒，一直延續成為今天漢傳尼眾傳承！",
+      revival96: "【1996 鹿野苑／1998 菩提伽耶｜跨國合作復戒】當代南傳佛教透過跨國請師幫忙（1998 年有臺灣佛光山等法師參與協助）舉辦復戒大典，但東南亞各國承認程度至今仍有差別。",
+      bhutan: "【2022 與 2025 不丹大型比丘尼授戒】2022 年不丹首度替 144 位女眾授具足戒；2025 年 11 月舉辦第二屆，主辦單位公布有來自 14 國的 265 位女眾受戒（部分新聞寫近 270 位）。"
     };
     allNodes("[data-wrelay]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-wrelay]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (rOut) rOut.textContent = relays[b.dataset.wrelay] || "";
+      const k = b.dataset.wrelay, pt = pts[k] || pts.early;
+      if (baton) { baton.setAttribute("cx", String(pt[0])); baton.setAttribute("cy", String(pt[1])); }
+      if (rOut) rOut.textContent = relays[k] || "";
     }));
     const vOut = $("#s20-view-out");
     allNodes("[data-wview]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-wview]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
       if (vOut) vOut.textContent = b.dataset.wview === "open"
-        ? "支持跨傳承復戒觀點：指出早期律藏有比丘單獨授戒或跨部派整合歷史，且《八敬法》文本層次有後期編輯跡象（例如 Anālayo 等學者討論）。"
-        : "傳統律學保留觀點：依本派傳承律法，認為具足戒須由本派現存無間斷比丘尼僧團共同授受，中斷後不得任意援引他部派恢復。本站並陳雙方理據，不代為投票判定宗教正統。";
+        ? "支持跨派別協力恢復的一方指出：古戒本裡也曾記錄過特殊情況的變通做法，而且現存東亞法脈當年正是靠斯里蘭卡幫忙跨海接起來的！"
+        : "照本派舊律條嚴守的一方認為：既然本派原本的尼眾傳承在該地已經中斷，就不能隨便拿別派戒規來算數——兩派立場各有所本，本館不代為裁判誰對誰錯。";
     }));
   })();
 
   // S21: Taiwan Eras & Modern Myths
   (() => {
-    const tOut = $("#s21-tw-out");
+    const tOut = $("#s21-tw-out"), mOut = $("#s21-mod-out");
     const eras = {
-      qing: "【清代至近代：觀音、民間信仰與齋教】觀音信仰、祖先祭祀與地方神明共構（附 1895–1922 艋舺龍山寺歷史照片）。",
-      jp: "【1895–1945 日治時期】日本宗派來臺、1922年南瀛佛教會成立，推動近代佛教教育與女性出家調適（附約 1932 年西本願寺臺灣別院歷史照片）。",
-      postwar: "【1945年後：漢傳重建與人間佛教思想】戰後來臺僧侶建立規範傳戒制度，太虛與印順法師推動人間佛教與《阿含》結構研究（佛光山創於 1967 年；此處配當代園區實景並明標非戰後初期檔案）。",
-      modern: "【20世紀後期至今：公民社會與多元傳承】1987解嚴後慈濟、佛光山、法鼓山等投入慈善醫療教育，並廣泛引進南傳、藏傳修行（附 2011 臺北慈濟醫院外觀照，兼顧個人隱私）。"
+      qing: "【清代到近代早期】觀音菩薩、祖先祭祀跟地方神明常常同在一座廟裡（看下面約百年前的艋舺龍山寺老照片！）。",
+      jp: "【1895–1945 日本時代】日本佛教宗派來臺蓋佛寺、興辦教育、成立南瀛佛教會，帶來新式的組織運作（見下圖西本願寺臺灣別院老照片）。",
+      postwar: "【1945 戰後重建與人間佛教】來臺法師建立規範傳戒、太虛與印順法師推動貼近人群的「人間佛教」（配圖為高雄佛光山當代實景，特別註明創立於 1967 年，不是戰後初期老照片）。",
+      modern: "【20 世紀後期至今的多元現場】解嚴後大型慈善、醫療、環保與大學迅速開展，南傳、藏傳修行團體也走進街坊（見下圖 2011 臺北慈濟醫院外觀，不拍路人臉孔保護隱私）。"
     };
     allNodes("[data-twera]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-twera]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
       if (tOut) tOut.textContent = eras[b.dataset.twera] || "";
     }));
-
-    const mOut = $("#s21-mod-out");
     const myths = {
-      phil: "「佛教只是哲學或心理學」：McMahan (2008) 與 Braun (2013) 指出這是19–20世紀亞洲改革者與西方對話建構的現代詮釋，早期文獻確含神祇與出離生死目標。",
-      science: "「所有佛教教義都已符合現代科學」：缺乏充分證據；早期內觀與宗教信念不能混同於控制實驗室證實。",
-      mindfulness: "「現代正念＝完整八正道，且絕對安全」：世俗正念常抽離戒律與涅槃脈絡；Salguero (2026) 與 PMC11300403 均記錄禪修可能引發焦慮或解離等「禪病」風險，須視個人條件並勿代替醫療。",
-      charity: "「慈善服務是佛教唯一核心」：人間佛教是現代社會極具價值的實踐取向之一，但不等於古印度早期僧團的全部生活形態。"
+      phil: "把佛教講成純哲學或心理學，其實是近一百多年亞洲改革者面對西方科學跟殖民衝擊時，重新找出來的介紹方式——早年古書裡照樣有寫到諸天鬼神跟脫離生死的宗教追求。",
+      science: "古代修行思考有深刻的地方，但並不是早年每一條宇宙觀跟宗教信念都能用現代科學實驗室驗證。",
+      mindfulness: "只抽出呼吸減壓的「現代正念」，常拿掉了原本的倫理要求；近年心理與歷史研究也提醒，有些人不當打坐可能出現強烈焦慮或抽離感等不適，有身心問題時務必看醫生，不能把正念當成醫療替代品！",
+      charity: "投入救災跟辦醫院是很讓人敬佩的現代實踐，但不能反過來以為兩千五百年前的印度托缽僧人原本也是這樣運作。"
     };
     allNodes("[data-modclaim]").forEach(b => b.addEventListener("click", () => {
       allNodes("[data-modclaim]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
@@ -1044,78 +1169,61 @@
     }));
   })();
 
-  // S22: 7-Step Workbench + Qualitative Burden Selector + Copy Notes
-  const checks = allNodes(".audit-check");
-  const sample = $("#audit-case");
-  let selected = "";
-  const cases = {
-    "拈花微笑是否有早期文獻？": "先查站點16與研究頁 #flower-sermon（801《寶林傳》→1004《景德》→1029/1036《天聖廣燈錄》），區分歷史文獻斷層與哲學象徵。",
-    "《伽藍經》是否叫人只相信自己？": "先查站點04與研究頁 #kalama-context（AN 3.65 與 MA 16），留意十條之外的智者讚責、貪瞋癡與四安穩。",
-    "「佛陀說過」的網路語錄圖卡": "先追溯可定位之原典經號與最早版本；查無可靠出處時誠實保持「目前未知」。"
-  };
-  function audit() {
-    if (!checks.length) return;
-    const n = checks.filter(x => x.checked).length;
-    const as = $("#audit-status");
-    if (as) as.textContent = n + "／7 個步驟已勾選。" + (n === 7 ? "流程自填完成，仍須逐項核對證據品質與限制（絕非驗證通過分數）。" : "這是進度記錄，不是真偽分數。");
-    put("checks", JSON.stringify(checks.map(x => x.checked)));
-    put("case", selected);
-  }
-  try {
-    const saved = JSON.parse(get("checks") || "[]");
-    checks.forEach((c, i) => { c.checked = !!saved[i]; });
-    selected = get("case") || "";
-    if (sample && cases[selected]) {
-      sample.value = selected;
-      const cs = $("#case-status");
-      if (cs) cs.textContent = cases[selected];
-    }
-  } catch {}
-  checks.forEach(c => c.addEventListener("change", audit));
-  $("#load-case")?.addEventListener("click", () => {
-    if (!sample) return;
-    selected = sample.value;
-    checks.forEach(c => { c.checked = false; });
-    const cs = $("#case-status");
-    if (cs) cs.textContent = cases[selected] || "請自行輸入或選擇要查證的主張。";
-    audit();
-  });
-  $("#reset-audit")?.addEventListener("click", () => {
-    checks.forEach(c => { c.checked = false; });
-    audit();
-  });
-  $("#copy-notes")?.addEventListener("click", async () => {
-    const notes = "佛法查證筆記（僅作個人筆記，非真偽判定分數）\n主張：" + (selected || "自行選擇") + "\n" +
-      checks.map(c => (c.checked ? "[已勾選] " : "[待查] ") + c.parentElement.innerText).join("\n") +
-      "\n結論與未知：請註明在何種新證據出現時修正。\n" + location.origin + location.pathname + "#lab";
-    const out = $("#notes-output");
-    if (out) out.value = notes;
-    const cs = $("#copy-status");
-    try {
-      await navigator.clipboard.writeText(notes);
-      if (cs) cs.textContent = "已複製純文字筆記。";
-      if (out) out.hidden = true;
-    } catch {
-      if (out) { out.hidden = false; out.focus(); out.select(); }
-      if (cs) cs.textContent = "無法自動複製；請手動選取下方純文字筆記複製。";
-    }
-  });
-
-  // S22: Qualitative Burden Selector (replaces 5-bar score)
+  // S22: Final Detective Desk
   (() => {
-    const out = $("#s22-risk-out");
-    const burdens = {
-      high: "【極高舉證負擔（非偽造百分比）】秘密未改傳承、神聖祖師世系、後世經典稱佛陀逐字親授、唯一正統、神通認證：須要求超越宗派自述之獨立同時代證據，缺證據時保持未知。",
-      mid: "【中度審查（須比對版本脈絡）】後世祖師詮釋、單一部派保存的早期經文（P2）：確認其代表某時期或該傳承觀點，不直接等於全體早期共識或佛陀逐字原音。",
-      low: "【較低來源風險（仍須界定證明範圍）】跨部派共同早期思想（P1）與可獨立查證碑銘實物（A）：支持「該時期已有此教法或聖地」，仍不等於超自然命題或全部故事為真。"
+    const checks = allNodes(".audit-check"), sample = $("#audit-case");
+    let selected = "";
+    const cases = {
+      "拈花微笑是否有早期文獻？": "先回到第 16 關《一朵花的秘密時光書架》：早年古書沒出現，一直到 1029／1036 年的宋代書籍才首度寫完整——晚出不減哲學比喻價值，但不是現場筆錄！",
+      "《伽藍經》是否叫人只相信自己？": "先回到第 04 關《小鎮傳聞偵探》：不是只要順我心意就好，還要檢查行為是不是令人更貪、更氣、更糊塗、害人，以及明理人認不認同！",
+      "「佛陀說過」的網路語錄圖卡": "先問自己找得到出自哪一部經、哪一頁嗎？查不到具體出處時，先放進「目前還不知道」抽屜最聰明！"
     };
-    allNodes("[data-risk]").forEach(b => b.addEventListener("click", () => {
-      allNodes("[data-risk]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      if (out) out.textContent = burdens[b.dataset.risk] || "";
-    }));
+    function audit() {
+      if (!checks.length) return;
+      const n = checks.filter(x => x.checked).length, as = $("#audit-status");
+      if (as) as.textContent = "目前進度：" + n + "／7（只是自己看的筆記進度，不是什麼聰明或功德分數喔！）";
+      put("checks", JSON.stringify(checks.map(x => x.checked)));
+      put("case", selected);
+    }
+    try {
+      const saved = JSON.parse(get("checks") || "[]");
+      checks.forEach((c, i) => { c.checked = !!saved[i]; });
+      selected = get("case") || "";
+      if (sample && cases[selected]) {
+        sample.value = selected;
+        if ($("#case-status")) $("#case-status").textContent = cases[selected];
+      }
+    } catch {}
+    checks.forEach(c => c.addEventListener("change", audit));
+    $("#load-case")?.addEventListener("click", () => {
+      if (!sample) return;
+      selected = sample.value;
+      checks.forEach(c => { c.checked = false; });
+      if ($("#case-status")) $("#case-status").textContent = cases[selected] || "自己在心裡想好要查的一句話，跟著下面清單檢查一遍！";
+      audit();
+    });
+    $("#reset-audit")?.addEventListener("click", () => {
+      selected = "";
+      if (sample) sample.value = "";
+      checks.forEach(c => { c.checked = false; });
+      if ($("#case-status")) $("#case-status").textContent = "清單已清空，隨時可以拿來檢驗下一個聽來的故事。";
+      const box = $("#notes-output");
+      if (box) { box.hidden = true; box.value = ""; }
+      if ($("#copy-status")) $("#copy-status").textContent = "";
+      audit();
+    });
+    $("#copy-notes")?.addEventListener("click", async () => {
+      const lines = checks.map((c, i) => (c.checked ? "[x] " : "[ ] ") + c.parentElement.textContent.trim());
+      const out = "《看見更多》歷史偵探查證筆記（僅供個人備忘，非真偽評分）\n題目：" + (selected || "自選主張") + "\n" + lines.join("\n");
+      const box = $("#notes-output"), st = $("#copy-status");
+      if (box) { box.hidden = false; box.value = out; }
+      try {
+        await navigator.clipboard.writeText(out);
+        if (st) st.textContent = "✓ 筆記已經複製進剪貼簿了，可以直接貼給朋友參考。";
+      } catch {
+        if (st) st.textContent = "已把純文字筆記顯示在下方框裡，請全選複製即可。";
+      }
+    });
+    audit();
   })();
-
-  audit();
-  filterSources();
-  route(!!location.hash);
 })();
